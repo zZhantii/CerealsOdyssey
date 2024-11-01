@@ -317,9 +317,19 @@ section {
 
 /* footer */
 
-footer {
+#footerMain {
     background: rgb(238, 81, 31);
     background: linear-gradient(49deg, rgba(238, 81, 31, 1) 0%, rgba(234, 51, 62, 1) 29%, rgba(185, 45, 134, 1) 53%, rgba(108, 100, 186, 1) 71%, rgba(27, 158, 240, 1) 87%, rgba(27, 158, 240, 1) 88%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    padding-top: 35px;
+    padding-bottom: 40px;
+}
+
+#footerMain2 {
+    background: #0359ca;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -415,6 +425,8 @@ footer .profile {
     margin: auto;
     display: flex;
     align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 50px;
 }
 
 .filters {
@@ -424,28 +436,61 @@ footer .profile {
     flex-direction: column;
 }
 
-.product {
+.products {
     display: flex;
     flex-wrap: wrap;
     width: 77%;
+    gap: 2rem;
 }
 
-.div {
+.product {
+    border: 1px solid #B4BBC3;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.img {
     display: flex;
     align-items: center;
+    width: 284px;
+    height: 284px;
+}
+
+.img img {
+    width: 284px;
+}
+
+.information {
+    display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    border: 1px solid black;
-    width: 318px;
-    height: 481px;
+    gap: 16px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.information a {
+    font-family: 'PlutoHeavy';
+    font-size: 1.375rem;
+    color: #303B43;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 284px;
+    padding: 16px 0px 0px;
+}
+
+.buttons button {
+    width: 134px;
+    height: 50px;
+    padding: 0px 4px;
 }
 
 .div img {
     height: 285px;
     width: auto;
 }
-
-
 
 .filters h2 {
     font-size: 20px;
@@ -462,3 +507,6 @@ footer .profile {
     border-bottom: 1px solid #CED3D8;
     height: 62px;
 }
+
+
+/* Checkout */
