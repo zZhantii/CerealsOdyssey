@@ -420,7 +420,37 @@ footer .profile {
 
 /* Shop */
 
-.mainShop {
+.filterHeader {
+    display: flex;
+    align-items: center;
+    background-color: #0359ca;
+    padding: 32px 40px 48px;
+}
+
+.filterHeader div {
+    padding: 0px 32px;
+    margin: 32px 0px;
+}
+
+.filterHeader img {
+    object-fit: cover;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.filterHeader h2 {
+    margin-bottom: 20px;
+}
+
+
+.filterHeader .contentFilter p {
+    font-size: 2rem;
+    font-family: 'PlutoBold';
+}
+
+
+
+.main2 {
     max-width: 1376px;
     margin: auto;
     display: flex;
@@ -495,6 +525,25 @@ footer .profile {
 .filters h2 {
     font-size: 20px;
     font-family: 'PlutoMedium';
+    margin-bottom: 16px;
+}
+
+.filterBy {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #CED3D8;
+}
+
+.filterBy svg {
+    transform: rotate(90deg);
+}
+
+.filters p {
+    display: flex;
+    align-items: center;
+    padding: 16px 0px;
+    height: 62px;
+    font-size: 1rem;
 }
 
 .selectfilter {
@@ -506,6 +555,43 @@ footer .profile {
     border-top: 1px solid #CED3D8;
     border-bottom: 1px solid #CED3D8;
     height: 62px;
+}
+
+.selectfilter2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 0;
+    height: 62px;
+}
+
+.selectfilter2 svg {
+    transform: rotate(180deg);
+}
+
+.squareCheckBox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.cereals {
+    border-bottom: 1px solid #CED3D8;
+}
+
+.cereals ul {
+    margin-left: 20px;
+}
+
+.cereals li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-family: 'PlutoLight';
+    margin-bottom: 25px;
 }
 
 
@@ -521,21 +607,21 @@ footer .profile {
 .buy {
     display: flex;
     width: 100%;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .informationPersonal {
     border-right: 1px solid #303B43;
     padding: 43px;
-    width: 660px;
+    width: 50%;
 }
 
 .buyProducts {
     border-left: 1px solid #303B43;
     background-color: #B4BBC3;
     padding: 43px;
-    width: auto;
+    width: 50%;
 }
 
 .cart,
@@ -701,12 +787,11 @@ input[type="text"] {
 
 /* BuyProducts */
 
-.product {
+.buyProducts .product {
     padding: 0;
     border: 0;
     display: flex;
     align-items: center;
-
 }
 
 .img-product img {
@@ -724,10 +809,6 @@ input[type="text"] {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.product p {
-    margin-left: 20px;
 }
 
 .discounts {
