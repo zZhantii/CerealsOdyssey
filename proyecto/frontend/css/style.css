@@ -46,9 +46,15 @@ h2 {
     margin: 0;
 }
 
-h2 {
+h3 {
     font-family: 'PlutoHeavy', sans-serif;
     font-size: 1.8rem;
+    margin: 0;
+}
+
+h4 {
+    font-family: 'PlutoHeavy', sans-serif;
+    font-size: 1.3rem;
     margin: 0;
 }
 
@@ -109,6 +115,11 @@ svg {
     gap: 10px;
 }
 
+.buttonMain:hover {
+    background-color: #29AAEB;
+    color: black;
+}
+
 .buttonMain img {
     height: 30px;
 }
@@ -121,6 +132,11 @@ svg {
     cursor: pointer;
     border-radius: 8px;
     gap: 10px;
+}
+
+.buttonMain2:hover {
+    background-color: #29AAEB;
+    color: black;
 }
 
 /* Header */
@@ -206,7 +222,7 @@ hr {
     border-bottom-right-radius: 0;
 }
 
-.filters {
+#main .filters {
     margin: 188px
 }
 
@@ -276,6 +292,10 @@ hr {
     font-family: 'PlutoLight';
 }
 
+.containt-product {
+    width: 32%;
+}
+
 .col select {
     padding-left: 12px;
     padding-right: 40px;
@@ -289,7 +309,7 @@ hr {
 }
 
 .price {
-    width: 95%;
+    width: 90%;
 }
 
 .buttons a {
@@ -298,235 +318,33 @@ hr {
     padding: 0px 4px;
 }
 
-/* 
 
-.main2 {
-    max-width: 1376px;
-    margin: auto;
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    padding-bottom: 50px;
+/* Checkout*/
+
+.informationPersonal,
+.buyProducts {
+    padding: 43px;
 }
 
-.filters {
-    width: 23%;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
+.informationPersonal {
+    width: 50%;
+    padding-left: 15%;
 }
 
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    width: 77%;
-    gap: 2rem;
+.buyProducts {
+    width: 50%;
+    padding-right: 15%;
 }
 
-.product {
-    border: 1px solid #B4BBC3;
-    border-radius: 8px;
-    padding: 16px;
+.buyProducts {
+    background-color: #F6F7F8;
 }
-
-.img {
-    display: flex;
-    align-items: center;
-    width: 284px;
-    height: 284px;
-}
-
-.img img {
-    width: 284px;
-}
-
-.information {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 7px;
-    margin-bottom: 7px;
-}
-
-.information a {
-    font-family: 'PlutoHeavy';
-    font-size: 1.375rem;
-    color: #303B43;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 284px;
-    padding: 16px 0px 0px;
-}
-
-.buttons button {
-    width: 134px;
-    height: 50px;
-    padding: 0px 4px;
-}
-
-.div img {
-    height: 285px;
-    width: auto;
-}
-
-.filters h2 {
-    font-size: 20px;
-    font-family: 'PlutoMedium';
-    margin-bottom: 16px;
-}
-
-.filterBy {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #CED3D8;
-}
-
-.filterBy svg {
-    transform: rotate(90deg);
-}
-
-.filters p {
-    display: flex;
-    align-items: center;
-    padding: 16px 0px;
-    height: 62px;
-    font-size: 1rem;
-}
-
-.selectfilter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
-    border: 0;
-    border-top: 1px solid #CED3D8;
-    border-bottom: 1px solid #CED3D8;
-    height: 62px;
-}
-
-.selectfilter2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
-    border: 0;
-    height: 62px;
-}
-
-.selectfilter2 svg {
-    transform: rotate(180deg);
-}
-
-.squareCheckBox {
-    width: 16px;
-    height: 16px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
-
-.cereals {
-    border-bottom: 1px solid #CED3D8;
-}
-
-.cereals ul {
-    margin-left: 20px;
-}
-
-.cereals li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    font-family: 'PlutoLight';
-    margin-bottom: 25px;
-} */
-
-
-/* Checkout
 
 .inputs {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 16px 0px 0px;
-}
-
-.buy {
-    display: flex;
-    width: 100%;
-    padding-left: 15%;
-    padding-right: 15%;
-}
-
-.informationPersonal {
-    border-right: 1px solid #303B43;
-    padding: 43px;
-    width: 50%;
-}
-
-.buyProducts {
-    border-left: 1px solid #303B43;
-    background-color: #B4BBC3;
-    padding: 43px;
-    width: 50%;
-}
-
-.cart,
-.contact div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.cart img {
-    height: 80px;
-}
-
-.cart svg {
-    height: 30px;
-    color: #0359ca;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form h2 {
-    font-size: 0.75rem;
-}
-
-form .inputs {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    justify-content: space-between;
-}
-
-form .inputs button {
-    width: auto;
-    height: 48px;
-    border-radius: 8px;
-}
-
-.separation {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 22px 0px 29px;
-}
-
-.buy h2 {
-    font-size: 2rem;
-}
-
-.contact {
-    display: flex;
-    flex-direction: column;
 }
 
 input[type="text"] {
@@ -537,18 +355,6 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'PlutoLight';
-}
-
-.accept {
-    display: flex;
-}
-
-.delivery,
-.payment {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .selects {
@@ -573,19 +379,6 @@ input[type="text"] {
     width: 100%;
 }
 
-.delivery .inputs {
-    display: flex;
-    justify-content: space-between;
-}
-
-.delivery p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #B4BBC3;
-    padding: 20px;
-}
-
 .checkbox {
     display: flex;
     align-items: center;
@@ -604,28 +397,7 @@ input[type="text"] {
     font-family: 'PlutoLight';
 }
 
-.payment .header {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #0359ca;
-    border-radius: 4px 4px 0px 0px;
-    background-color: #29AAEB;
-    padding: 16px;
-}
-
-.payment .body {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border-radius: 0px 0px 4px 4px;
-    background-color: #D2EBF7;
-}
-
-.payment .checkbox {
-    border: 0;
-}
-
-.informationPersonal input[type="submit"] {
+asdas .informationPersonal input[type="submit"] {
     padding: 14px;
     background-color: #0359ca;
     color: white;
@@ -634,6 +406,7 @@ input[type="text"] {
     height: 70px;
     font-size: 1.5rem;
 }
+
 
 /* BuyProducts */
 /* 
@@ -710,14 +483,9 @@ input[type="text"] {
 
 /* Cart */
 
-/* .cartMain {
-    margin-left: 27%;
-    margin-right: 27%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 100px;
-    margin-bottom: 175px;
+.cart {
+    width: 56rem;
+    margin: auto;
 }
 
 .container-product {
@@ -728,31 +496,13 @@ input[type="text"] {
     padding: 8px 16px;
 }
 
-.container-product img {
-    height: 160px;
-    width: 160px;
-    object-fit: cover;
-}
-
-.container-buy {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.productInformation {
     width: 100%;
 }
 
-.container-buy div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.container-buy h4 {
-    margin: 0;
-}
-
-.plusandminus {
-    border-radius: 4px 0px 0px 4px;
+.container-product p {
+    font-size: 1rem;
+    font-family: 'PlutoBold', sans-serif;
 }
 
 .plusandminus div {
@@ -763,8 +513,8 @@ input[type="text"] {
     padding: 0px 8px;
 }
 
-.amount {
-    background-color: #CED3D8;
+.buttons p {
+    font-family: 'PlutoLigth', sans-serif;
 }
 
 .minus,
@@ -772,26 +522,11 @@ input[type="text"] {
     background-color: #B4BBC3;
 }
 
-.minus {
-    border-radius: 4px 0px 0px 4px;
-}
-
-.plus {
-    border-radius: 0px 4px 4px 0px;
+.amount {
+    background-color: #CED3D8;
 }
 
 .container-like {
-    display: flex;
-    border: 1px solid black;
-    border-radius: 4px;
     height: 114px;
-    padding: 8px 16px;
     width: 75%;
 }
-
-.container-like img {
-    height: 96px;
-    width: 96px;
-    object-fit: cover;
-}
- */

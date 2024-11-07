@@ -11,7 +11,7 @@
     <title>Cereals Odyssey</title>
 </head>
 
-<body>
+<body id="main">
     <main>
         <section class="mx-5">
             <div id="carouselExampleRide" class="carousel slide my-3" data-bs-ride="true">

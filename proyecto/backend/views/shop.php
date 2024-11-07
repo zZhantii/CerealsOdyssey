@@ -12,7 +12,7 @@
 
 <body>
     <main>
-        <!-- <section class="mx-5 d-flex justify-content-center flex-column">
+        <section class="mx-5 d-flex justify-content-center flex-column">
             <h2>Shop by</h2>
             <div class="container filters my-3 d-flex justify-content-start">
                 <div class="row d-flex gap-4">
@@ -38,17 +38,24 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
         <section class="mx-5 d-flex justify-content-center flex-column">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 d-flex flex-column filterShop">
-                        <div>
+                        <div class="d-flex justify-content-between">
                             <p class="mb-3">FILTER BY</p>
+                            <p>sliders</p>
                         </div>
                         <h2 class="py-3 border border-end-0 border-start-0">Selecd Filters (0)</h2>
-                        <a href="#" class="btn btn-secundary py-3 ps-0 border-bottom d-flex">Merch</a>
-                        <a href="#" class="btn btn-secundary py-3 ps-0  d-flex">Cereals</a>
+                        <a href="#" class="btn btn-secundary py-3 ps-0 border-bottom d-flex justify-content-between">
+                            Merch
+                            <p>flecha</p>
+                        </a>
+                        <a href="#" class="btn btn-secundary py-3 ps-0 d-flex justify-content-between">
+                            Cereals
+                            <p>flecha</p>
+                        </a>
                         <div class="border-bottom">
                             <ul class="ms-2">
                                 <li class="d-flex align-items-center gap-3 mb-4 cereals ">
@@ -64,17 +71,14 @@
                         </div>
                     </div>
                     <div class="col-sm-9">
-                        <div class="row">
-                            <div class="col col-sm-4">
+                        <div class="row d-flex justify-content-center gap-3">
+                            <div class="col col-sm-12 d-flex justify-content-between">
                                 <h2 class="mb-4">Products (100)</h2>
-                            </div>
-                            <div class="col col-sm-4"></div>
-                            <div class="col col-sm-4">
                                 <select name="" id="" class="border border-black py-2">
                                     <option value="Feature">Feature</option>
                                 </select>
                             </div>
-                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3">
+                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 justify-content-between containt-product">
                                 <div>
                                     <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover">
                                 </div>
@@ -87,6 +91,33 @@
                                     <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
                                 </div>
                             </div>
+                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
+                                <div>
+                                    <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover">
+                                </div>
+                                <div class="d-flex gap-3 flex-column price">
+                                    <a href="#" class="information">Cereales de colores</a>
+                                    <p>2.50€</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 pt-3 buttons">
+                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
+                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
+                                </div>
+                            </div>
+                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
+                                <div>
+                                    <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover">
+                                </div>
+                                <div class="d-flex gap-3 flex-column price">
+                                    <a href="#" class="information">Cereales de colores</a>
+                                    <p>2.50€</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 pt-3 buttons">
+                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
+                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
