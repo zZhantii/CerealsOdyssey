@@ -31,6 +31,76 @@ body {
     color: #303B43;
 }
 
+/* Header */
+
+.buttonSpecial {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgb(238, 81, 31);
+    background: linear-gradient(49deg, rgba(238, 81, 31, 1) 0%, rgba(234, 51, 62, 1) 29%, rgba(185, 45, 134, 1) 53%, rgba(108, 100, 186, 1) 71%, rgba(27, 158, 240, 1) 87%, rgba(27, 158, 240, 1) 88%);
+    cursor: pointer;
+    padding: 0px 16px;
+    height: 50px;
+    width: auto;
+    color: white;
+    border-radius: 8px;
+}
+
+.buttonSpecial img {
+    height: 30px;
+}
+
+.navbar-nav {
+    gap: 0.25rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 56px;
+    padding: 8px 16px !important;
+    border-radius: 9999px;
+}
+
+.nav-link-icon {
+    color: #303B43;
+    cursor: pointer;
+}
+
+.nav-link-profile svg {
+    height: 24px;
+    padding-left: 10px;
+}
+
+.subnav-link {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 40px;
+    padding: 8px 16px !important;
+    border-radius: 9999px;
+    color: #303B43;
+}
+
+.subnav-link svg {
+    height: 20px;
+    padding-left: 10px;
+}
+
+.subnav-link:hover {
+    background-color: #D2EBF7;
+    color: #0359ca;
+}
+
+hr {
+    margin: 0;
+}
+
+
 /* Text */
 
 h1 {
@@ -65,11 +135,11 @@ li {
 
 a {
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
 svg {
-    height: 24px;
-    margin-left: 15px;
+    height: 40px;
 }
 
 nav {
@@ -81,53 +151,7 @@ nav {
 
 /* Buttons */
 
-.buttonHeader {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    height: 56px;
-    padding: 8px 16px;
-    border-radius: 9999px;
-}
 
-.buttonHeader:hover {
-    background-color: #D2EBF7;
-    color: #0359ca;
-}
-
-.buttonHeader svg {
-    height: 40px;
-    margin: 0;
-}
-
-.buttonSubmenu {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 40px;
-    padding: 8px 16px;
-    border-radius: 9999px;
-}
-
-.buttonSubmenu:hover {
-    background-color: #D2EBF7;
-    color: #0359ca;
-}
-
-.buttonSubmenu svg {
-    height: 24px;
-    margin: 0;
-}
 
 .buttonMain {
     background-color: #0359ca;
@@ -137,11 +161,6 @@ nav {
     color: white;
     border-radius: 8px;
     gap: 10px;
-}
-
-.buttonMain:hover {
-    background-color: #29AAEB;
-    color: black;
 }
 
 .buttonMain img {
@@ -158,90 +177,16 @@ nav {
     gap: 10px;
 }
 
-.buttonMain2:hover {
-    background-color: #29AAEB;
-    color: black;
-}
+/* footer */
 
-.buttonSpecial {
-    display: flex;
-    align-items: center;
+.footerMain {
     background: rgb(238, 81, 31);
     background: linear-gradient(49deg, rgba(238, 81, 31, 1) 0%, rgba(234, 51, 62, 1) 29%, rgba(185, 45, 134, 1) 53%, rgba(108, 100, 186, 1) 71%, rgba(27, 158, 240, 1) 87%, rgba(27, 158, 240, 1) 88%);
-    border: 0;
-    cursor: pointer;
-    padding: 15px 32px;
     color: white;
-    border-radius: 8px;
-    gap: 10px;
 }
 
-.buttonSpecial img {
-    height: 30px;
-}
-
-/* Containers */
-
-.container {
-    max-width: 1440px;
-    margin: auto;
-}
-
-.container2 {
-    max-width: 1280px;
-    margin: auto;
-}
-
-.footer-container {
-    max-width: 1280px;
-    margin: auto;
-}
-
-/* Header */
-
-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header img {
-    height: 75px;
-    width: 75px;
-}
-
-header .profile svg:hover {
-    color: #0359ca;
-}
-
-header div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-header .subContainer {
-    max-width: 1440px;
-    margin: auto;
-    border-top: 1px solid #CED3D8;
-    display: flex;
-    justify-content: center;
-}
 
 /* Main */
-
-/* Carrusel / Banner */
-#banner img {
-    width: 1440px;
-    object-fit: cover;
-    border-end-start-radius: 8px;
-    border-top-left-radius: 8px;
-}
-
-#banner .container {
-    display: flex;
-    height: 550px;
-}
 
 .square {
     display: flex;
@@ -271,35 +216,6 @@ header .subContainer {
     justify-content: center;
 }
 
-/* Secionts */
-
-section {
-    margin-bottom: 60px;
-    display: flex;
-    flex-direction: column;
-}
-
-#product .container2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border: 4px solid #B4BBC3;
-    padding: 0px 40px;
-    border-radius: 8px;
-    gap: 128px;
-}
-
-#product .container2 h1 {
-    width: 550px;
-    margin-bottom: 16px;
-}
-
-#product .container2 p {
-    width: 550px;
-    margin-bottom: 16px;
-    font-size: 1rem;
-}
-
 .content {
     display: flex;
     align-items: center;
@@ -310,24 +226,19 @@ section {
     background-color: #29AAEB;
 }
 
-#product .content img {
+.content img {
     width: 380px;
     height: auto;
 }
 
+
+
+
 /* footer */
 
-#footerMain {
-    background: rgb(238, 81, 31);
-    background: linear-gradient(49deg, rgba(238, 81, 31, 1) 0%, rgba(234, 51, 62, 1) 29%, rgba(185, 45, 134, 1) 53%, rgba(108, 100, 186, 1) 71%, rgba(27, 158, 240, 1) 87%, rgba(27, 158, 240, 1) 88%);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    padding-top: 35px;
-    padding-bottom: 40px;
-}
 
+
+/*
 #footerMain2 {
     background: #0359ca;
     display: flex;
@@ -350,27 +261,15 @@ footer img {
 .redes {
     height: 110px;
     width: 512px;
-}
+}*/
 
-.redes img {
-    height: 100px;
-}
 
-.redes .redes-svg {
-    cursor: pointer;
-    fill: white;
-    gap: 10px;
-}
 
+/*
 .redes .redes-svg svg:hover {
     fill: #29AAEB;
 }
 
-.links {
-    width: 345px;
-    height: 356px;
-    cursor: pointer;
-}
 
 .links li:hover {
     text-decoration: underline;
@@ -420,7 +319,7 @@ footer .profile {
 
 /* Shop */
 
-.filterHeader {
+/* .filterHeader {
     display: flex;
     align-items: center;
     background-color: #0359ca;
@@ -446,9 +345,8 @@ footer .profile {
 .filterHeader .contentFilter p {
     font-size: 2rem;
     font-family: 'PlutoBold';
-}
-
-
+}  */
+/* 
 
 .main2 {
     max-width: 1376px;
@@ -592,10 +490,10 @@ footer .profile {
     font-size: 1rem;
     font-family: 'PlutoLight';
     margin-bottom: 25px;
-}
+} */
 
 
-/* Checkout */
+/* Checkout
 
 .inputs {
     display: flex;
@@ -786,7 +684,7 @@ input[type="text"] {
 }
 
 /* BuyProducts */
-
+/* 
 .buyProducts .product {
     padding: 0;
     border: 0;
@@ -856,11 +754,11 @@ input[type="text"] {
     margin-top: 20px;
     font-family: 'PlutoBold';
     font-size: 2rem;
-}
+}  */
 
 /* Cart */
 
-.cartMain {
+/* .cartMain {
     margin-left: 27%;
     margin-right: 27%;
     display: flex;
@@ -944,3 +842,4 @@ input[type="text"] {
     width: 96px;
     object-fit: cover;
 }
+ */
