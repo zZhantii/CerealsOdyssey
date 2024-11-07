@@ -276,14 +276,26 @@ hr {
     font-family: 'PlutoLight';
 }
 
-.information a {
+.col select {
+    padding-left: 12px;
+    padding-right: 40px;
+    height: 40px;
+}
+
+.information {
     font-size: 1.3rem;
     font-family: 'PlutoHeavy';
     color: #303B43;
 }
 
-.buttons {
-    height: 66px;
+.price {
+    width: 95%;
+}
+
+.buttons a {
+    height: 50px;
+    width: 134px;
+    padding: 0px 4px;
 }
 
 /* 
