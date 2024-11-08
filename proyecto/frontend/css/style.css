@@ -85,6 +85,11 @@ svg {
     height: 40px;
 }
 
+label {
+    font-family: 'PlutoLight';
+    font-size: 1rem;
+}
+
 /* Buttons */
 
 .buttonSpecial {
@@ -327,8 +332,12 @@ hr {
 }
 
 .informationPersonal {
-    width: 50%;
+    width: 60%;
     padding-left: 15%;
+}
+
+.informationPersonal .col {
+    padding: 0;
 }
 
 .buyProducts {
@@ -338,13 +347,6 @@ hr {
 
 .buyProducts {
     background-color: #F6F7F8;
-}
-
-.inputs {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 16px 0px 0px;
 }
 
 input[type="text"] {
@@ -361,15 +363,11 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: center;
     border: 1px solid #B4BBC3;
     border-radius: 4px;
     padding: 15px 13px;
     height: 65px;
-}
-
-.selects label {
-    font-family: 'PlutoLight';
-    font-size: 0.75rem;
 }
 
 .selects select {
@@ -397,7 +395,8 @@ input[type="text"] {
     font-family: 'PlutoLight';
 }
 
-asdas .informationPersonal input[type="submit"] {
+input[type="submit"] {
+    width: 100%;
     padding: 14px;
     background-color: #0359ca;
     color: white;
@@ -409,6 +408,8 @@ asdas .informationPersonal input[type="submit"] {
 
 
 /* BuyProducts */
+
+
 /* 
 .buyProducts .product {
     padding: 0;

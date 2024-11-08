@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="d-flex flex-column align-items-center">
-                        <a href="../main.php"><img src="../../../frontend/img/Logo.png" alt="Logo" height="335px" width="335"></a>
+                        <a href="../main.php"><img src="../../../frontend/img/Logo.png" alt="Logo" height="335px" width="335" class="img-fluid"></a>
                         <h1>Stay Playful</h1>
                     </div>
                     <div class="d-flex align-item-start mt-5">
                         <div class="d-flex flex-column container-fluid ">
-                            <img src="../../../frontend/img/Logo.png" alt="Logo" width="70" height="70">
+                            <img src="../../../frontend/img/Logo.png" alt="Logo" width="70" height="70" class="img-fluid">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24px" height="24px">
                                     <g id="filled">

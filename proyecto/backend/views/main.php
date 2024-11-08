@@ -17,7 +17,7 @@
             <div id="carouselExampleRide" class="carousel slide my-3" data-bs-ride="true">
                 <div class="carousel-inner">
                     <div class="carousel-item active d-flex">
-                        <img src="../../frontend/img/banner1.png" class="d-block w-100 object-fit-cover" alt="Banner1" height="540px">
+                        <img src="../../frontend/img/banner1.png" class="d-block w-100 object-fit-cover img-fluid" alt="Banner1" height="540px">
                         <div class="square d-flex flex-column gap-4">
                             <h1 class="text-white">Shop your favorite cereals</h1>
                             <a href="#" class="btn btn-primary buttonMain2">Shop Celebrations</a>
@@ -38,15 +38,15 @@
             <div class="container filters my-3 d-flex justify-content-center">
                 <div class="row d-flex gap-4">
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover"></a>
+                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover"></a>
+                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover"></a>
+                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
                     </div>
                     <div class="col d-flex justify-content-center">
-                        <img src="../../frontend/img/photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
+                        <img src="../../frontend/img/photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle img-fluid">
                     </div>
                 </div>
             </div>
