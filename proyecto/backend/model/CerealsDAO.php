@@ -31,7 +31,7 @@ class CerealsDAO
         $conex = Database::connect();
 
         $stmt = $conex->prepare('INSERT INTO shirts (name, price, images) VALUES (?,?,?)');
-        $stmt->bind_param("ssd", $product->getName(), $product->getPrice(), $product->getImage());
+        $stmt->bind_param("sdb", $product->getName(), $product->getPrice(), $product->getImage());
 
         $stmt->execute();
         $conex->close();

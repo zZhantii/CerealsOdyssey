@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <?php include_once $viewHome; ?>
+
 </body>
 
 </html>

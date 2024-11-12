@@ -11,12 +11,11 @@
 </head>
 
 <body>
-    <?= 'hello' ?>
     <!-- Header -->
     <?php include_once 'views/partials/header.php' ?>
 
     <main>
-        <?= 'hello' ?>
+
         <section class="mx-5 d-flex justify-content-center flex-column">
             <h2>Shop by</h2>
             <div class="container filters my-3 d-flex justify-content-start">

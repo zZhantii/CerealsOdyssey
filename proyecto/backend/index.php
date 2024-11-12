@@ -18,7 +18,7 @@ if (!isset($_GET['controller'])) {
             $action = default_action;
         }
 
-        $controller->main();
+        $controller->$action();
     } else {
         echo "No existe el controller" . $name_controller;
     }

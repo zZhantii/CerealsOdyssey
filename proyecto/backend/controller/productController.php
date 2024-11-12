@@ -11,11 +11,17 @@ class productController
         $viewList = 'views/products/list.php';
     }
 
-    public function main()
+    public function home()
     {
-        $viewHome = 'views/pages/home.php';
         include_once 'views/pages/home.php';
     }
+
+    public function shop()
+    {
+        include_once 'views/pages/shop.php';
+    }
+
+
 
 
 
@@ -38,5 +44,10 @@ class productController
         $product->setAmount($amount);
 
         CerealsDAO::createProduct($product);
+    }
+
+    public function create()
+    {
+        include_once 'views/products/create.php';
     }
 }

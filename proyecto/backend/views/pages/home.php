@@ -12,17 +12,19 @@
 
 <body id="main">
     <!-- Header -->
-    <?php include_once 'views/partials/header.php' ?>
+    <!-- <?php include_once 'views/partials/header.php' ?> -->
 
     <main>
         <section class="mx-5">
             <div id="carouselExampleRide" class="carousel slide my-3" data-bs-ride="true">
                 <div class="carousel-inner">
-                    <div class="carousel-item active d-md-flex">
-                        <img src="<?= img ?>banner1.png" class="d-block w-100 object-fit-cover" alt="Banner1" height="540px">
-                        <div class="square d-flex flex-column justify-content-center gap-4">
-                            <h1 class="text-white">Shop your favorite cereals</h1>
-                            <a href="#" class="btn btn-primary buttonMain2">Shop Celebrations</a>
+                    <div class="carousel-item active">
+                        <div class="d-lg-flex col-lg-12 ">
+                            <img src="<?= img ?>banner1.png" class="d-block w-100 object-fit-cover" alt="Banner1" height="540px">
+                            <div class="square d-flex flex-column justify-content-center gap-4">
+                                <h1 class="text-white">Shop your favorite cereals</h1>
+                                <a href="?controller=product&action=shop" class="btn btn-primary buttonMain2">Shop Celebrations</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,64 +40,49 @@
         </section>
         <section class="mx-5 mt-5">
             <div class="container my-3">
-                <div class="row gap-4 d-flex justify-content-center filters">
-                    <div class="col-md-3 col-sm-12 gap-2 d-flex align-items-center flex-column">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
+                <div class="row filters">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="d-flex align-items-center align-items-between flex-column">
+                            <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
+                            <h3>Classics</h3>
+                        </div>
                     </div>
-                    <div class="col-md-3 col-sm-12 gap-2 d-flex align-items-center flex-column">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
+                    <div class="col-sm-12 col-md-6 col-lg-4 ">
+                        <div class="d-flex align-items-center flex-column">
+                            <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
+                            <h3>Classics</h3>
+
+                        </div>
                     </div>
-                    <div class="col-md-3 col-sm-12 gap-2 d-flex align-items-center flex-column text">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="container d-flex justify-content-center ">
-            <div class="container m-5 p-0">
-                <div class="row productMain ps-5 d-flex align-items-center">
-                    <div class="col w-max py-5 px-0 d-flex gap-4 flex-column align-items-start">
-                        <h2>Celebrate with Odyssey</h2>
-                        <p>The perfect sweet snacks for your next party, or the perfect gift for your friends and family. Check out our cereal celebrations.</p>
-                        <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                        <img src="<?= img ?>photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
+                    <div class="col-sm-12 col-md-6 col-lg-4 ">
+                        <div class="d-flex align-items-center flex-column">
+                            <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
+                            <h3>Classics</h3>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="container d-flex justify-content-center ">
-            <div class="container m-5 p-0">
-                <div class="row productMain ps-5 d-flex align-items-center">
-                    <div class="col w-max py-5 px-0 d-flex gap-4 flex-column align-items-start">
-                        <h2>Celebrate with Odyssey</h2>
-                        <p>The perfect sweet snacks for your next party, or the perfect gift for your friends and family. Check out our cereal celebrations.</p>
-                        <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
+        <section class="section-product-main ">
+            <div class="container-product-main my-5 d-flex justify-content-center">
+                <div class="row productMain w-75">
+                    <div class="col py-5">
+                        <div>
+                            <h2>Celebrate with Odyssey</h2>
+                            <p>The perfect sweet snacks for your next party, or the perfect gift for your friends and family. Check out our cereal celebrations.</p>
+                            <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
+                        </div>
                     </div>
-                    <div class="col d-flex justify-content-center">
-                        <img src="<?= img ?>photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="container d-flex justify-content-center ">
-            <div class="container m-5 p-0">
-                <div class="row productMain ps-5 d-flex align-items-center">
-                    <div class="col w-max py-5 px-0 d-flex gap-4 flex-column align-items-start">
-                        <h2>Celebrate with Odyssey</h2>
-                        <p>The perfect sweet snacks for your next party, or the perfect gift for your friends and family. Check out our cereal celebrations.</p>
-                        <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                        <img src="<?= img ?>photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
+                    <div class="col">
+                        <div>
+                            <img src="<?= img ?>photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
