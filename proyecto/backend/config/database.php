@@ -1,21 +1,15 @@
 <?php
 
-$host = 'localhost';
-$port = '3306';
-$dbname = 'CerealsOdyssey_DB';
-$username = 'root';
-$password = 'Cereals2024!@#';
+class database
+{
+    public static function connect($host = 'localhost', $user = 'root', $pass = 'Cereals2024!@#', $db = 'CerealsOdyssey_DB')
+    {
+        $con = new mysqli($host, $user, $pass, $db);
 
-
-$dsn = "mysql:host=$host;port=$port;dbname=$dbname";
-$pdo = new PDO($dsn, $username, $password);
-
-
-try {
-    $dsn = "mysql:host=$host;port=$port;dbname=$dbname";
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexión exitosa!";
-} catch (PDOException $e) {
-    echo "Error de conexión: " . $e->getMessage();
+        if ($con->connect_error) {
+            die("ERROR!!: No te puedes conectar " . $con->connect_error);
+        } else {
+            return $con;
+        }
+    }
 }

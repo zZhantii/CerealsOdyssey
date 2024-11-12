@@ -5,35 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../frontend/css/style.css">
-    <link rel="shortcut icon" href="../../../frontend/img/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= css ?>">
+    <link rel="shortcut icon" href="<?= img ?>Logo.png" type="image/x-icon">
     <title>All Products</title>
 </head>
 
 <body>
+    <?= 'hello' ?>
+    <!-- Header -->
+    <?php include_once 'views/partials/header.php' ?>
+
     <main>
+        <?= 'hello' ?>
         <section class="mx-5 d-flex justify-content-center flex-column">
             <h2>Shop by</h2>
             <div class="container filters my-3 d-flex justify-content-start">
                 <div class="row d-flex gap-4">
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
+                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
+                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
+                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
+                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                     <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="../../frontend/img/photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
+                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
                         <h3>Classics</h3>
                     </div>
                 </div>
@@ -80,7 +85,7 @@
                             </div>
                             <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 justify-content-between containt-product">
                                 <div>
-                                    <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
+                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
                                 </div>
                                 <div class="d-flex gap-3 flex-column price">
                                     <a href="#" class="information">Cereales de colores</a>
@@ -93,7 +98,7 @@
                             </div>
                             <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
                                 <div>
-                                    <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
+                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
                                 </div>
                                 <div class="d-flex gap-3 flex-column price">
                                     <a href="#" class="information">Cereales de colores</a>
@@ -106,7 +111,7 @@
                             </div>
                             <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
                                 <div>
-                                    <img src="../../frontend/img/photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
+                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
                                 </div>
                                 <div class="d-flex gap-3 flex-column price">
                                     <a href="#" class="information">Cereales de colores</a>
@@ -124,6 +129,9 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <?php include_once 'views/partials/footer.php' ?>
 </body>
 
 </html>
