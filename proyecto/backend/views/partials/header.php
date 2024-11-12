@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../frontend/css/style.css">
+    <link rel="stylesheet" href="<?= css ?>">
 </head>
 
 <body>
-    <div class="px-5">
+    <header class="px-5 sticky-top">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../main.php">
-                    <img src="../../../frontend/img/logo.png" alt="Logo" width="64" height="64" class="img-fluid">
+                    <img src="<?= img ?>logo.png" alt="Logo" width="64" height="64" class="img-fluid">
                 </a>
                 <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="../main.php">
                     Custom cookies with OdysseyID
@@ -121,13 +121,7 @@
                 </svg>
             </a>
         </div>
-    </div>
-
-
-
-    <!-- BootStrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    </header>
 </body>
 
 </html>

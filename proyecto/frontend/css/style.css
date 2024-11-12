@@ -90,6 +90,10 @@ label {
     font-size: 1rem;
 }
 
+header {
+    background-color: white;
+}
+
 /* Buttons */
 
 .buttonSpecial {
@@ -203,6 +207,12 @@ hr {
     color: white;
 }
 
+.footerMain svg {
+    fill: white;
+    height: 16px;
+    width: 16px;
+}
+
 /* footer2 */
 
 /* #footerMain2 {
@@ -217,23 +227,18 @@ hr {
 
 /* Main */
 
-#carouselExampleRide {
-    margin: 188px;
-}
-
 .carousel-item img {
     border-radius: 0.5rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#main .filters {
-    margin: 188px
-}
 
-.filters .col img {
+.filters img {
     background-color: bisque;
     border-radius: 0.5rem;
+    height: 260px;
+    width: 260px;
 }
 
 .productMain {
@@ -409,78 +414,30 @@ input[type="submit"] {
 
 /* BuyProducts */
 
-
-/* 
-.buyProducts .product {
-    padding: 0;
-    border: 0;
-    display: flex;
-    align-items: center;
-}
-
-.img-product img {
+.img-product {
     height: 64px;
     width: 64px;
     object-fit: cover;
-    border: 1px solid black;
     background-color: white;
     border-radius: 4px;
 }
 
-.informationProduct {
-    width: 300px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.discounts {
-    margin-top: 20px;
-}
-
-.discounts div {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.discounts div input[type="text"] {
+.buyProducts input[type="text"] {
     padding: 15px 13px;
-    border: 1px solid black;
     font-family: 'PlutoLight';
     width: 80%;
 }
 
-.discounts div input[type="submit"] {
+.buyProducts input[type="submit"] {
     padding: 15px 13px;
-    border: 1px solid black;
     font-family: 'PlutoBold';
     font-size: 1rem;
-    width: 20%;
     height: 56px;
+    width: 20%;
     border-radius: 4px;
+    background-color: #ECEFF1;
+    color: #303B43;
 }
-
-.totalPrice {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.totalPrice div {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.total {
-    margin-top: 20px;
-    font-family: 'PlutoBold';
-    font-size: 2rem;
-}  */
 
 /* Cart */
 

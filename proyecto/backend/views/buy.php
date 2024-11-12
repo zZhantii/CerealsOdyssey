@@ -142,23 +142,37 @@
         </form>
         <section class="buyProducts border-start">
             <div class="container">
-                <div class="row">
-                    <div class="col">
+                <div class="row d-flex flex-column gap-4">
+                    <div class="col d-flex gap-3">
                         <div>
-                            <img src="../../frontend/img/photo1home.png" alt="producto" height="64" width="64" class="object-fit-cover img-fluid border rounded-3">
+                            <img src="../../frontend/img/photo1home.png" alt="producto" height="64" width="64" class="img-product border">
                         </div>
-                        <div>
+                        <div class="d-flex flex-column">
                             <p>Celeraes de coores</p>
                             <p>1</p>
                         </div>
-                        <div>
-                            <p>2.5€</p>
+                        <div class="col">
+                            <p class="text-end">2.5€</p>
                         </div>
                     </div>
                     <div class="col">
-                        <div>
-                            <input type="text" name="" id="">
-                            <input type="submit">
+                        <div class="d-flex gap-3">
+                            <input type="text" name="" id="" class="border">
+                            <input type="submit" value="Apply" class="border">
+                        </div>
+                    </div>
+                    <div class="col d-flex flex-column gap-3">
+                        <div class="col d-flex justify-content-between p-0">
+                            <p>Subtotal</p>
+                            <p>2.50€</p>
+                        </div>
+                        <div class="col d-flex justify-content-between p-0">
+                            <p>Shipping</p>
+                            <p>Enter shipping address</p>
+                        </div>
+                        <div class="col d-flex justify-content-between p-0 mt-3">
+                            <h3>Total</h3>
+                            <h4>2.50€</h4>
                         </div>
                     </div>
                 </div>
