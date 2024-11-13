@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= css ?>">
+    <link rel="stylesheet" type="text/css" href="<?= css ?>">
 </head>
 
 <body>
@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="d-flex flex-column align-items-center">
-                        <a href="?controller=product&action=home"><img src="<?= img ?>Logo.png" alt="Logo" height="335px" width="335" class="img-fluid"></a>
+                        <a href="?controller=product&action=home"><img src="Logo.png" alt="Logo" height="335px" width="335" class="img-fluid"></a>
                         <h1>Stay Playful</h1>
                     </div>
                     <div class="d-flex align-item-start mt-5">
                         <div class="d-flex flex-column container-fluid ">
-                            <img src="<?= img ?>Logo.png" alt="Logo" width="70" height="70" class="img-fluid">
+                            <img src="Logo.png" alt="Logo" width="70" height="70" class="img-fluid">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24px" height="24px">
                                     <g id="filled">
