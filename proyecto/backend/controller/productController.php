@@ -25,8 +25,8 @@ class productController
     public function listCategories()
     {
         $categories = CerealsDAO::listCategories();
-        include_once 'views/products/listCategories.php';
         $viewListCategories = 'views/products/listCategories.php';
+        include_once 'views/products/listCategories.php';
     }
 
 

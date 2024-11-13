@@ -311,6 +311,11 @@ hr {
     width: 32%;
 }
 
+.img-product-shop {
+    height: 285px;
+    width: 285px;
+}
+
 .col select {
     padding-left: 12px;
     padding-right: 40px;

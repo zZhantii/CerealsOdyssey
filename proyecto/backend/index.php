@@ -1,11 +1,9 @@
 <?php
-
-include_once 'controller/productController.php';
 include_once 'config/params.php';
-
+include_once 'controller/homeController.php';
 
 if (!isset($_GET['controller'])) {
-    echo 'No me has pasado ningun controllador';
+    // header("Location:" . url_base . "?controller=home");
 } else {
     $name_controller = $_GET['controller'] . "Controller";
 
@@ -20,6 +18,6 @@ if (!isset($_GET['controller'])) {
 
         $controller->$action();
     } else {
-        echo "No existe el controller" . $name_controller;
+        // header("Location:" . url_base . "?controller=home");
     }
 }
