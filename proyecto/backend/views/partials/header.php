@@ -99,20 +99,20 @@
         </nav>
         <hr>
         <div class="navbar mx-auto d-flex justify-content-center gap-4">
-            <a class="subnav-link" href="#">
+            <a class="subnav-link disabled" href="#" aria-disabled="true">
                 New arrivals
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                     <rect width="256" height="256" fill="none" />
                     <polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                 </svg>
             </a>
-            <a class="subnav-link" href="#">
+            <a class="subnav-link disabled" href="#" aria-disabled="true">
                 Celebrations
             </a>
-            <a class="subnav-link" href="#">
+            <a class="subnav-link disabled" href="#" aria-disabled="true">
                 Classics
             </a>
-            <a class="subnav-link" href="#">
+            <a class="subnav-link" href="?controller=product&action=shop">
                 Shop All
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                     <rect width="256" height="256" fill="none" />

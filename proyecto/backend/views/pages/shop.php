@@ -15,35 +15,16 @@
     <?php include_once 'views/partials/header.php' ?>
 
     <main>
-
-        <section class="mx-5 d-flex justify-content-center flex-column">
-            <h2>Shop by</h2>
-            <div class="container filters my-3 d-flex justify-content-start">
-                <div class="row d-flex gap-4">
-                    <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
-                    <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
-                    <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
-                    <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
-                    <div class="col d-flex flex-column gap-2">
-                        <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" height="262" width="262" class="object-fit-cover img-fluid"></a>
-                        <h3>Classics</h3>
-                    </div>
+        <section class="mx-5">
+            <h3>Shop by</h3>
+            <div class="container my-3">
+                <div class="row filters">
+                    <?= include_once $viewListCategories ?>
                 </div>
             </div>
         </section>
-        <section class="mx-5 d-flex justify-content-center flex-column">
+        </section>
+        <section class="mx-5 my-5 d-flex justify-content-center flex-column">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 d-flex flex-column filterShop">
@@ -77,49 +58,10 @@
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-center gap-3">
                             <div class="col col-sm-12 d-flex justify-content-between">
-                                <h2 class="mb-4">Products (100)</h2>
+                                <h3 class="mb-4">Products (100)</h3>
                                 <select name="" id="" class="border border-black py-2">
                                     <option value="Feature">Feature</option>
                                 </select>
-                            </div>
-                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 justify-content-between containt-product">
-                                <div>
-                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
-                                </div>
-                                <div class="d-flex gap-3 flex-column price">
-                                    <a href="#" class="information">Cereales de colores</a>
-                                    <p>2.50€</p>
-                                </div>
-                                <div class="d-flex align-items-center gap-3 pt-3 buttons">
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
-                                </div>
-                            </div>
-                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
-                                <div>
-                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
-                                </div>
-                                <div class="d-flex gap-3 flex-column price">
-                                    <a href="#" class="information">Cereales de colores</a>
-                                    <p>2.50€</p>
-                                </div>
-                                <div class="d-flex align-items-center gap-3 pt-3 buttons">
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
-                                </div>
-                            </div>
-                            <div class="col col-sm-4 border rounded-2 d-flex flex-column align-items-center p-3 containt-product">
-                                <div>
-                                    <img src="<?= img ?>photo1home.png" alt="product" height="284" width="284" class="object-fit-cover img-fluid">
-                                </div>
-                                <div class="d-flex gap-3 flex-column price">
-                                    <a href="#" class="information">Cereales de colores</a>
-                                    <p>2.50€</p>
-                                </div>
-                                <div class="d-flex align-items-center gap-3 pt-3 buttons">
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
-                                    <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
-                                </div>
                             </div>
 
                         </div>

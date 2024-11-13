@@ -44,21 +44,19 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="d-flex align-items-center align-items-between flex-column">
                             <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                            <h3>Classics</h3>
+                            <h3 class="mt-3">Classics</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="d-flex align-items-center flex-column">
+                            <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
+                            <h3 class="mt-3">Classics</h3>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 ">
                         <div class="d-flex align-items-center flex-column">
                             <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                            <h3>Classics</h3>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 ">
-                        <div class="d-flex align-items-center flex-column">
-                            <a href="#"><img src="<?= img ?>photo1home.png" alt="filter1" class="object-fit-cover img-fluid"></a>
-                            <h3>Classics</h3>
-
+                            <h3 class="mt-3">Classics</h3>
                         </div>
                     </div>
                 </div>
@@ -66,16 +64,16 @@
         </section>
         <section class="section-product-main ">
             <div class="container-product-main my-5 d-flex justify-content-center">
-                <div class="row productMain w-75">
+                <div class="row productMain w-75 px-3">
                     <div class="col py-5">
-                        <div>
+                        <div class="d-flex flex-column gap-3 align-items-start">
                             <h2>Celebrate with Odyssey</h2>
                             <p>The perfect sweet snacks for your next party, or the perfect gift for your friends and family. Check out our cereal celebrations.</p>
-                            <a href="#" class="btn btn-primary buttonMain">Shop Celebrations</a>
+                            <a href="?controller=product&action=shop" class="btn btn-primary buttonMain">Shop Celebrations</a>
                         </div>
                     </div>
                     <div class="col">
-                        <div>
+                        <div class="d-flex justify-content-center">
                             <img src="<?= img ?>photo1home.png" alt="photo1home" height="380" width="380" class="object-fit-cover circle">
                         </div>
                     </div>

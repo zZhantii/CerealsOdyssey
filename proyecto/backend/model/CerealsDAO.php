@@ -1,6 +1,9 @@
 <?php
-include_once 'config/database.php';
-include_once 'model/Cereals.php';
+include_once 'config/params.php';
+include_once url_base . 'config/database.php';
+include_once url_base . 'model/Product.php';
+include_once 'Cereals.php';
+include_once 'Categories.php';
 
 
 class CerealsDAO
@@ -24,6 +27,25 @@ class CerealsDAO
         $conex->close();
         // Devolvemos el resultado
         return $cereals;
+    }
+
+    public static function listCategories()
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare('SELECT * FROM categories');
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $categories = [];
+        while ($row = $result->fetch_object('Categories')) {
+            $categories[] = $row;
+        }
+
+        $conex->close();
+
+        return $categories;
     }
 
     public static function createProduct($product)

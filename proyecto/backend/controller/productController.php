@@ -8,6 +8,7 @@ class productController
     public function listStore()
     {
         $cereals = CerealsDAO::getAll();
+        include_once 'views/products/list.php';
         $viewList = 'views/products/list.php';
     }
 
@@ -21,7 +22,12 @@ class productController
         include_once 'views/pages/shop.php';
     }
 
-
+    public function listCategories()
+    {
+        $categories = CerealsDAO::listCategories();
+        include_once 'views/products/listCategories.php';
+        $viewListCategories = 'views/products/listCategories.php';
+    }
 
 
 
