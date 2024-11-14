@@ -4,8 +4,8 @@
 
             <?php foreach ($categories as $item) { ?>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="d-flex align-items-center flex-column">
-                        <a href="#"><img src="<?= img . $item->getImage() ?>" alt="filter" class="object-fit-cover img-fluid"></a>
+                    <div class="d-flex align-items-center align-items-between flex-column">
+                        <a href="#"><img src="public/img/categories/<?= $item->getImage() ?>" alt="filter1" class="object-fit-cover img-fluid"></a>
                         <h3 class="mt-3"><?= $item->getName() ?></h3>
                     </div>
                 </div>

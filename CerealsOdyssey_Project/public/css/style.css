@@ -108,6 +108,7 @@ header {
     width: auto;
     color: white;
     border-radius: 8px;
+    border-color: transparent;
 }
 
 .buttonSpecial img {
@@ -235,10 +236,14 @@ hr {
 
 
 .filters img {
-    background-color: bisque;
+    background-color: ghostwhite;
     border-radius: 0.5rem;
     height: 260px;
     width: 260px;
+}
+
+.filters img:hover {
+    background-color: #0359ca;
 }
 
 .section-product-main {
@@ -254,7 +259,7 @@ hr {
 .circle {
     border-radius: 50%;
     clip-path: inset(5% 0 5% 0);
-    background-color: #29AAEB;
+    background-color: #D2EBF7;
 }
 
 .square {

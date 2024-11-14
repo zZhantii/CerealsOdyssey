@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="<?= css ?>">
 </head>
 
 <body>
     <header class="px-5 sticky-top">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../main.php">
-                    <img src="logo.png" alt="Logo" width="64" height="64" class="img-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="public/img/logo.png" alt="Logo" width="64" height="64" class="img-fluid">
                 </a>
-                <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="../main.php">
+                <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="#">
                     Custom cookies with OdysseyID
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= css ?>">
-    <link rel="shortcut icon" href="<?= img ?>Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
     <title>All Products</title>
 </head>
 
@@ -67,7 +67,7 @@
                             <div class="col-sm-12 col-md-6 col-lg-4 border rounded-2 d-flex flex-column align-items-center p-3 justify-content-between containt-product">
                                 <div>
                                     <div class="img-product-shop d-flex justify-content-center">
-                                        <img src="<?= img ?>photo1home.png" alt="product" class="object-fit-cover img-fluid">
+                                        <img src="photo1home.png" alt="product" class="object-fit-cover img-fluid">
                                     </div>
                                     <div class="d-flex gap-3 flex-column price">
                                         <a href="#" class="information"> $item->getname() </a>

@@ -1,9 +1,9 @@
 <?php
 include_once 'config/params.php';
-include_once 'controller/homeController.php';
+include_once 'controller/categoriesController.php';
 
 if (!isset($_GET['controller'])) {
-    header("Location:" . url_base . "?controller=home");
+    header("Location:" . url_base . "?controller=categories");
 } else {
     $name_controller = $_GET['controller'] . "Controller";
 
@@ -18,6 +18,6 @@ if (!isset($_GET['controller'])) {
 
         $controller->$action();
     } else {
-        header("Location:" . url_base . "?controller=home");
+        header("Location:" . url_base . "?controller=categories");
     }
 }
