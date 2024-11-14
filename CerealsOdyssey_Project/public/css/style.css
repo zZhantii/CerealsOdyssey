@@ -216,7 +216,7 @@ hr {
 
 /* footer2 */
 
-/* #footerMain2 {
+.footerMain2 {
     background: #0359ca;
     display: flex;
     align-items: center;
@@ -224,7 +224,7 @@ hr {
     color: white;
     padding-top: 35px;
     padding-bottom: 40px;
-} */
+}
 
 /* Main */
 
