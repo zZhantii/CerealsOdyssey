@@ -10,10 +10,10 @@
     <header class="px-5 sticky-top">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="?controller=categories">
                     <img src="public/img/logo.png" alt="Logo" width="64" height="64" class="img-fluid">
                 </a>
-                <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="#">
+                <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="?controller=product&action=getProductID">
                     Custom cookies with OdysseyID
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +110,7 @@
             <a class="subnav-link disabled" href="#" aria-disabled="true">
                 Classics
             </a>
-            <a class="subnav-link" href="?controller=product&action=shop">
+            <a class="subnav-link" href="?controller=product&action=getAllProducts">
                 Shop All
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                     <rect width="256" height="256" fill="none" />

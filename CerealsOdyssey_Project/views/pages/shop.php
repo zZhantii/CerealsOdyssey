@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CerealsOdyssey | Shop</title>
 </head>
 
 <body>
@@ -13,7 +14,7 @@
             <div class="container my-3">
                 <div class="row filters">
 
-                    <?php include_once 'views/assets/listAllCategories.php' ?>
+                    <?php include_once 'views/assets/listCategories.php' ?>
 
                 </div>
             </div>
@@ -24,6 +25,22 @@
                 <div class="row">
                     <div class="col-sm-3 d-flex flex-column filterShop">
                         <div class="d-flex justify-content-between">
+                            <p class="mb-3">FILTER BY</p>
+                            <p>sliders</p>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed p-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Accordion Item #1
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="d-flex justify-content-between">
                             <p class="mb-3">FILTER BY</p>
                             <p>sliders</p>
                         </div>
@@ -48,7 +65,7 @@
                                     <div class="squareCheckBox"></div> Cookies Crips
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-center gap-3">

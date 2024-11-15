@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="d-flex flex-column align-items-center">
-                        <a href="#"><img src="public/img/logo.png" alt="Logo" height="335px" width="335" class="img-fluid"></a>
+                        <a href="?controller=categories"><img src="public/img/logo.png" alt="Logo" height="335px" width="335" class="img-fluid"></a>
                         <h1>Stay Playful</h1>
                     </div>
                     <div class="d-flex align-item-start mt-5">
@@ -56,7 +56,7 @@
                         <div class="d-flex flex-column container-fluid gap-3">
                             <h2>Odyssey in your inbox</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque praesentium fugit minus illo. Corporis maxime minima consequuntur qui ipsa consectetur laboriosam ea, aspernatur reiciendis reprehenderit, iusto quasi repellat minus.</p>
-                            <a href="?controller=product&action=shop" class="btn btn-primary buttonMain2">Shop Celebrations</a>
+                            <a href="#" class="btn btn-primary buttonMain2">Sign in</a>
                         </div>
                     </div>
                 </div>
