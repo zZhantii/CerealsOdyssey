@@ -13,7 +13,8 @@
 <body>
     <main class="d-flex justify-content-center">
         <section class="informationPersonal">
-            <form action="#">
+
+            <!-- <form action="#">
                 <div class="container">
                     <div class="row d-flex flex-column gap-3">
                         <div class="col d-flex align-items-center justify-content-between">
@@ -49,6 +50,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col">
                             <h3 class="mb-4">Delivery</h3>
                             <div class="container">
@@ -87,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <div class="col">
                             <h3 class="mb-4">Payment</h3>
                             <h4>All transactions are secure and encrypted.</h4>
@@ -138,46 +140,46 @@
                     </div>
                     <input type="submit" value="Pay Now">
                 </div>
-        </section>
-        </form>
-        <section class="buyProducts border-start">
-            <div class="container">
-                <div class="row d-flex flex-column gap-4">
-                    <div class="col d-flex gap-3">
-                        <div>
-                            <img src="../../frontend/img/photo1home.png" alt="producto" height="64" width="64" class="img-product border">
-                        </div>
-                        <div class="d-flex flex-column">
-                            <p>Celeraes de coores</p>
-                            <p>1</p>
+        </section> -->
+            </form>
+            <section class="buyProducts border-start">
+                <div class="container">
+                    <div class="row d-flex flex-column gap-4">
+                        <div class="col d-flex gap-3">
+                            <div>
+                                <img src="../../frontend/img/photo1home.png" alt="producto" height="64" width="64" class="img-product border">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p>Celeraes de coores</p>
+                                <p>1</p>
+                            </div>
+                            <div class="col">
+                                <p class="text-end">2.5€</p>
+                            </div>
                         </div>
                         <div class="col">
-                            <p class="text-end">2.5€</p>
+                            <div class="d-flex gap-3">
+                                <input type="text" name="" id="" class="border">
+                                <input type="submit" value="Apply" class="border">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex gap-3">
-                            <input type="text" name="" id="" class="border">
-                            <input type="submit" value="Apply" class="border">
-                        </div>
-                    </div>
-                    <div class="col d-flex flex-column gap-3">
-                        <div class="col d-flex justify-content-between p-0">
-                            <p>Subtotal</p>
-                            <p>2.50€</p>
-                        </div>
-                        <div class="col d-flex justify-content-between p-0">
-                            <p>Shipping</p>
-                            <p>Enter shipping address</p>
-                        </div>
-                        <div class="col d-flex justify-content-between p-0 mt-3">
-                            <h3>Total</h3>
-                            <h4>2.50€</h4>
+                        <div class="col d-flex flex-column gap-3">
+                            <div class="col d-flex justify-content-between p-0">
+                                <p>Subtotal</p>
+                                <p>2.50€</p>
+                            </div>
+                            <div class="col d-flex justify-content-between p-0">
+                                <p>Shipping</p>
+                                <p>Enter shipping address</p>
+                            </div>
+                            <div class="col d-flex justify-content-between p-0 mt-3">
+                                <h3>Total</h3>
+                                <h4>2.50€</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
     </main>
 </body>
 

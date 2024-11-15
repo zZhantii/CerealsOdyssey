@@ -31,48 +31,37 @@
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed p-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Accordion Item #1
+                                    <button class="accordion-button collapsed p-0 py-3 bg-transparent bor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Cereals
                                     </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse border-bottom box-shadow-none" data-bs-parent="#accordionFlushExample">
+                                    <ul class="ms-3">
+                                        <li class="d-flex align-items-center gap-3 mb-4 mt-4 cereals">
+                                            <input type="checkbox" class="squareCheckBox">OdysseyID</input>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4 cereals ">
+                                            <input type="checkbox" class="squareCheckBox">Cereals</input>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4 cereals ">
+                                            <input type="checkbox" class="squareCheckBox">Milks</input>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="d-flex justify-content-between">
-                            <p class="mb-3">FILTER BY</p>
-                            <p>sliders</p>
-                        </div>
-                        <h2 class="py-3 border border-end-0 border-start-0">Selecd Filters (0)</h2>
-                        <a href="#" class="btn btn-secundary py-3 ps-0 border-bottom d-flex justify-content-between">
-                            Merch
-                            <p>flecha</p>
-                        </a>
-                        <a href="#" class="btn btn-secundary py-3 ps-0 d-flex justify-content-between">
-                            Cereals
-                            <p>flecha</p>
-                        </a>
-                        <div class="border-bottom">
-                            <ul class="ms-2">
-                                <li class="d-flex align-items-center gap-3 mb-4 cereals ">
-                                    <div class="squareCheckBox"></div> Cookies Crips
-                                </li>
-                                <li class="d-flex align-items-center gap-3 mb-4 cereals ">
-                                    <div class="squareCheckBox"></div> Cookies Crips
-                                </li>
-                                <li class="d-flex align-items-center gap-3 mb-4 cereals ">
-                                    <div class="squareCheckBox"></div> Cookies Crips
-                                </li>
-                            </ul>
-                        </div> -->
                     </div>
                     <div class="col-sm-9">
-                        <div class="row d-flex justify-content-center gap-3">
+                        <div class="row d-flex justify-content-around">
                             <div class="col col-sm-12 d-flex justify-content-between">
                                 <h3 class="mb-4">Products (100)</h3>
                                 <select name="" id="" class="border border-black py-2">
+                                    <option value="Order By" disabled>Order By</option>
                                     <option value="Feature">Feature</option>
+                                    <option value="Price1">Price: Low to High</option>
+                                    <option value="Price2">Price: High to Low</option>
+                                    <option value="BestSelling">BestSelling</option>
+                                    <option value="Newest">Newest</option>
                                 </select>
                             </div>
 

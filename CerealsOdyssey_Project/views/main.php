@@ -11,13 +11,28 @@
 
 <body>
     <!-- Header -->
-    <?php include_once 'partials/header.php' ?>
+    <?php
+    if (isset($_GET['controller']) && $_GET['controller'] == 'buy') {
+    } else {
+        include_once 'partials/header.php';
+    }
+    ?>
 
     <!-- View -->
     <?php include_once $view ?>
 
     <!-- Footer -->
-    <?php include_once 'partials/footer.php' ?>
+    <?php
+    if (isset($_GET['controller']) && $_GET['controller'] != 'categories') {
+        include_once 'partials/footer2.php';
+    } else {
+        include_once 'partials/footer.php';
+    }
+
+    ?>
+
+    <!-- JS -->
+    <?php include_once 'public/js/index.js' ?>
 
     <!-- BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

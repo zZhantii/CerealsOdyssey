@@ -214,6 +214,14 @@ hr {
     width: 16px;
 }
 
+.footerMain svg:hover {
+    fill: #29AAEB;
+}
+
+.footerMain ul:hover {
+    text-decoration: underline;
+}
+
 /* footer2 */
 
 .footerMain2 {
@@ -224,6 +232,14 @@ hr {
     color: white;
     padding-top: 35px;
     padding-bottom: 40px;
+}
+
+.footerMain2 svg:hover {
+    fill: #29AAEB;
+}
+
+.footerMain2 ul:hover {
+    text-decoration: underline;
 }
 
 /* Main */

@@ -1,4 +1,6 @@
 <?php
+include_once('model/CelebrateDAO.php');
+include_once('model/Celebrate.php');
 include_once('model/OdysseyIDDAO.php');
 include_once('model/OdysseyID.php');
 include_once('model/MilkDAO.php');
@@ -38,6 +40,14 @@ class productController
     public static function getOdysseyID()
     {
         $allProducts = OdysseyIDDAO::getOdysseyID();
+        $categories = CategoriesDAO::getAllCategories();
+        $view = 'views/pages/shop.php';
+        include_once 'views/main.php';
+    }
+
+    public static function getCelebrate()
+    {
+        $allProducts = CelebrateDAO::getCelebrate();
         $categories = CategoriesDAO::getAllCategories();
         $view = 'views/pages/shop.php';
         include_once 'views/main.php';
