@@ -2,31 +2,10 @@
 
 abstract class Products
 {
-    protected $id;
     protected $name;
     protected $price;
     protected $image;
     protected $link;
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get the value of name

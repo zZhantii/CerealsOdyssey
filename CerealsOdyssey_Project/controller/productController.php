@@ -1,53 +1,22 @@
 <?php
-include_once('model/CelebrateDAO.php');
-include_once('model/Celebrate.php');
-include_once('model/OdysseyIDDAO.php');
-include_once('model/OdysseyID.php');
-include_once('model/MilkDAO.php');
-include_once('model/Milk.php');
-include_once('model/CerealsDAO.php');
-include_once('model/Cereals.php');
-include_once('model/CerealsAndMilkDAO.php');
-include_once('model/CerealsAndMilk.php');
+include_once('model/AllProductsDAO.php');
+include_once('model/AllProducts.php');
 include_once('config/dataBase.php');
 
 class productController
 {
     public static function getAllProducts()
     {
-        $allProducts = CerealsAndMilkDAO::getAllCerealsAndMilk();
+        $allProducts = AllProductsDAO::getAllProducts();
         $categories = CategoriesDAO::getAllCategories();
         $view = 'views/pages/shop.php';
         include_once 'views/main.php';
     }
 
-    public static function getCereals()
+    public static function filter()
     {
-        $allProducts = CerealsDAO::getAllCereals();
-        $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/shop.php';
-        include_once 'views/main.php';
-    }
-
-    public static function getMilks()
-    {
-        $allProducts = MilkDAO::getAllMilks();
-        $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/shop.php';
-        include_once 'views/main.php';
-    }
-
-    public static function getOdysseyID()
-    {
-        $allProducts = OdysseyIDDAO::getOdysseyID();
-        $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/shop.php';
-        include_once 'views/main.php';
-    }
-
-    public static function getCelebrate()
-    {
-        $allProducts = CelebrateDAO::getCelebrate();
+        $id = $_GET['id'];
+        $allProducts = AllProductsDAO::getProductsFilter($id);
         $categories = CategoriesDAO::getAllCategories();
         $view = 'views/pages/shop.php';
         include_once 'views/main.php';

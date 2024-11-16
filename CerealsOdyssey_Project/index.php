@@ -6,7 +6,7 @@ include_once 'controller/buyController.php';
 
 if (!isset($_GET['controller'])) {
     echo 'No hay controlador';
-    // header("Location:" . url_base . "?controller=categories");
+    header("Location:" . url_base . "?controller=categories");
 } else {
     $name_controller = $_GET['controller'] . "Controller";
 
@@ -22,6 +22,6 @@ if (!isset($_GET['controller'])) {
         $controller->$action();
     } else {
         echo 'No existe';
-        // header("Location:" . url_base . "?controller=categories");
+        header("Location:" . url_base . "?controller=categories");
     }
 }
