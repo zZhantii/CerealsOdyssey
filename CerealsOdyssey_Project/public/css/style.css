@@ -519,3 +519,16 @@ input[type="submit"] {
     height: 114px;
     width: 75%;
 }
+
+/* login */
+
+#login {
+    background-color: #CED3D8;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 33%;
+}

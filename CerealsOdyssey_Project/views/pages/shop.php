@@ -54,7 +54,7 @@
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-around">
                             <div class="col col-sm-12 d-flex justify-content-between">
-                                <h3 class="mb-4">Products (100)</h3>
+                                <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
                                 <select name="" id="" class="border border-black py-2">
                                     <option value="Order By" disabled>Order By</option>
                                     <option value="Feature">Feature</option>
