@@ -47,7 +47,7 @@
         <section class="section-product-main ">
             <div class="container-product-main my-5 d-flex justify-content-center">
                 <div class="row px-3 d-flex justify-content-center ">
-                    <div class="col-lg-8 col-md-12 mb-5 mx-5">
+                    <div class="col-lg-10 col-md-12 mb-5 mx-5">
                         <div class="d-flex flex-column flex-md-row align-items-center productMain px-5 justify-content-between">
                             <div class="py-5 w-50">
                                 <div class="d-flex flex-column gap-3 align-items-start">
@@ -57,11 +57,11 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center circle">
-                                <img src="public/img/home/home1.webp" alt="photo1home" height="280" width="380" class="object-fit-contain ">
+                                <img src="public/img/home/home1.webp" alt="photo1home" height="280" width="280" class="object-fit-contain ">
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12 mb-5 mx-5">
+                    <div class="col-lg-10 col-md-12 mb-5 mx-5">
                         <div class="d-flex flex-column flex-md-row align-items-center productMain px-5 justify-content-between">
                             <div class="py-5 w-50">
                                 <div class="d-flex flex-column gap-3 align-items-start">
@@ -71,11 +71,11 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center circle">
-                                <img src="public/img/home/home2.webp" alt="photo2home" height="280" width="380" class="object-fit-contain ">
+                                <img src="public/img/home/home2.png" alt="photo2home" height="280" width="280" class="object-fit-contain ">
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12 mb-5 mx-5">
+                    <div class="col-lg-10 col-md-12 mb-5 mx-5">
                         <div class="d-flex flex-column flex-md-row align-items-center productMain px-5 justify-content-between">
                             <div class="py-5 w-50">
                                 <div class="d-flex flex-column gap-3 align-items-start">
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center circle">
-                                <img src="public/img/home/home3.webp" alt="photo3home" height="280" width="380" class="object-fit-contain ">
+                                <img src="public/img/home/home3.png" alt="photo3home" height="280" width="280" class="object-fit-contain ">
                             </div>
                         </div>
                     </div>

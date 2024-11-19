@@ -3,6 +3,7 @@ include_once 'config/params.php';
 include_once 'controller/categoriesController.php';
 include_once 'controller/productController.php';
 include_once 'controller/buyController.php';
+include_once 'controller/userController.php';
 
 if (!isset($_GET['controller'])) {
     echo 'No hay controlador';

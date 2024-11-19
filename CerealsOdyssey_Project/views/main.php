@@ -11,25 +11,25 @@
 
 <body>
     <!-- Header -->
-    <!-- <?php
-            if (isset($_GET['controller']) && $_GET['controller'] == 'buy') {
-            } else {
-                include_once 'partials/header.php';
-            }
-            ?> -->
+    <?php
+    if (!(isset($_GET['controller']) && ($_GET['controller'] == 'buy' || $_GET['action'] == 'show'))) {
+        include_once 'partials/header.php';
+    }
+    ?>
 
     <!-- View -->
     <?php include_once $view ?>
 
     <!-- Footer -->
-    <!-- <?php
-            if (isset($_GET['controller']) && $_GET['controller'] != 'categories') {
-                include_once 'partials/footer2.php';
-            } else {
-                include_once 'partials/footer.php';
-            }
-
-            ?> -->
+    <?php
+    if (!(isset($_GET['controller']) && ($_GET['action'] == 'show'))) {
+        if (isset($_GET['controller']) && $_GET['controller'] != 'categories') {
+            include_once 'partials/footer2.php';
+        } else {
+            include_once 'partials/footer.php';
+        }
+    }
+    ?>
 
     <!-- JS -->
     <?php include_once 'public/js/index.js' ?>

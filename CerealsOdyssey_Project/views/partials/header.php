@@ -78,7 +78,7 @@
                             <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         </svg>
                     </a>
-                    <a href="#" class="nav-link-icon">
+                    <a href="?controller=Users&action=createUser" class="nav-link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                             <rect width="256" height="256" fill="none" />
                             <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />

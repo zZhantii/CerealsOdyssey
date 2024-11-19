@@ -362,113 +362,40 @@ hr {
 
 /* Checkout*/
 
+
 .informationPersonal,
 .buyProducts {
     padding: 43px;
 }
 
 .informationPersonal {
-    width: 60%;
-    padding-left: 15%;
+    width: 37%;
+    padding-left: 0;
 }
 
 .informationPersonal .col {
     padding: 0;
 }
 
-.buyProducts {
-    width: 50%;
-    padding-right: 15%;
+.payment {
+    background-color: #F4F6FF;
+}
+
+.payment svg {
+    height: 55px;
+    width: 43px;
+}
+
+.payment2 {
+    background-color: #F4F4F4;
 }
 
 .buyProducts {
     background-color: #F6F7F8;
-}
 
-input[type="text"] {
-    padding: 15.5px 13px;
-    height: 56px;
-    width: 100%;
-    border: 1px solid #B4BBC3;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'PlutoLight';
-}
-
-.selects {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    border: 1px solid #B4BBC3;
-    border-radius: 4px;
-    padding: 15px 13px;
-    height: 65px;
-}
-
-.selects select {
-    font-family: 'PlutoMedium';
-    border: 0;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px;
-    border: 1px solid #B4BBC3;
-    border-radius: 4px;
-}
-
-.checkbox input {
-    height: 20px;
-    width: 20px;
-}
-
-.checkbox label {
-    font-family: 'PlutoLight';
-}
-
-input[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    background-color: #0359ca;
-    color: white;
-    border: 0;
-    border-radius: 4px;
-    height: 70px;
-    font-size: 1.5rem;
 }
 
 
-/* BuyProducts */
-
-.img-product {
-    height: 64px;
-    width: 64px;
-    object-fit: cover;
-    background-color: white;
-    border-radius: 4px;
-}
-
-.buyProducts input[type="text"] {
-    padding: 15px 13px;
-    font-family: 'PlutoLight';
-    width: 80%;
-}
-
-.buyProducts input[type="submit"] {
-    padding: 15px 13px;
-    font-family: 'PlutoBold';
-    font-size: 1rem;
-    height: 56px;
-    width: 20%;
-    border-radius: 4px;
-    background-color: #ECEFF1;
-    color: #303B43;
-}
 
 /* Cart */
 

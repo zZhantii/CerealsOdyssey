@@ -8,7 +8,7 @@ class categoriesController
     public function index()
     {
         $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/buy.php';
+        $view = 'views/pages/home.php';
         include_once 'views/main.php';
     }
 }

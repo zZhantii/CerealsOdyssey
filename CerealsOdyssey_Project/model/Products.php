@@ -5,7 +5,6 @@ abstract class Products
     protected $name;
     protected $price;
     protected $image;
-    protected $link;
 
     /**
      * Get the value of name
@@ -63,26 +62,6 @@ abstract class Products
     public function setImage($image)
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of link
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-
-    /**
-     * Set the value of link
-     *
-     * @return  self
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
 
         return $this;
     }
