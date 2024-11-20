@@ -1,4 +1,5 @@
 <?php
+include_once('model/CategoriesDAO.php');
 include_once('model/AllProductsDAO.php');
 include_once('model/AllProducts.php');
 include_once('config/dataBase.php');

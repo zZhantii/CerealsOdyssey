@@ -363,8 +363,11 @@ hr {
 /* Checkout*/
 
 
-.informationPersonal,
-.buyProducts {
+.informationPersonal {
+    padding: 43px;
+}
+
+.buyProducts2 {
     padding: 43px;
 }
 

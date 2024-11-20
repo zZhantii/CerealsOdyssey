@@ -11,6 +11,18 @@ class userController
         include_once 'views/main.php';
     }
 
+    public static function profile()
+    {
+        $view = 'views/pages/user/profile.php';
+        include_once 'views/main.php';
+    }
+
+    public static function settings()
+    {
+        $view = 'views/pages/user/settings.php';
+        include_once 'views/main.php';
+    }
+
     public static function logUser()
     {
         // $name = $_POST['name'];
@@ -28,7 +40,10 @@ class userController
 
     public static function createUser()
     {
-        if (isset($_POST['password']) && isset($_POST['email'])) {
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+
+        if (isset($_POST['password']) && ($_POST['email'])) {
             $password = $_POST['password'];
             $email = $_POST['email'];
 
@@ -37,6 +52,7 @@ class userController
             $user->setEmail($email);
 
             UsersDAO::createUser($user);
+            header("Location:?controller=user&action=profile");
         } else {
             var_dump($_POST);
             die("Error: Los campos de contraseña y correo electrónico son obligatorios.");

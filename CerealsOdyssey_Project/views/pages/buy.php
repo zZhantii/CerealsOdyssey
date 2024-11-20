@@ -180,7 +180,7 @@
             </form>
         </section>
         <section class="buyProducts border-start">
-            <div class="container mt-3 sticky-top">
+            <div class="container sticky-top buyProducts2">
                 <div class="row d-flex flex-column gap-4">
                     <div class="col d-flex gap-3">
                         <div>

@@ -16,11 +16,15 @@
             <div class="mb-3 col-12">
                 <h3 class="mb-2">Log In</h3>
                 <label for="email" class="form-label">Email address</label>
-                <input required type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3 col-12">
                 <label for="password" class="form-label">Password</label>
-                <input required type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp">
+                <input type="password" class="form-control" id="password" name="password" required aria-describedby="passwordHelp">
+            </div>
+            <div class="mb-3 col-12">
+                <label for="password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="password" name="password" required aria-describedby="passwordHelp">
                 <div id="passwordHelp" class="form-text">We'll never share your password with anyone else.</div>
             </div>
 
