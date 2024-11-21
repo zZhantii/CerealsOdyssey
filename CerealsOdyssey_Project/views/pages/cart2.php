@@ -17,7 +17,7 @@
                 <h3>Oh no, your cart is empty!</h3>
                 <div>
                     <h3 class="mt-5">Shop by</h2>
-                        <?php include_once 'views/assets/listCategoriesCar.php' ?>
+                        <?php include_once 'views/assets/listCategoriesCart.php' ?>
                 </div>
             </div>
             <div class="col-6 sticky-bottom">

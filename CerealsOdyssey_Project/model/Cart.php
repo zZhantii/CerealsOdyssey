@@ -1,19 +1,25 @@
 <?php
 session_start();
 
-class Sesions
+class Cart
 {
-    public static function addCart($productId, $quantity)
+    public static function addCart($product)
     {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
 
-        if (isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId] += $quantity;
-        } else {
-            $_SESSION['cart'][$productId] = $quantity;
+        foreach ($product as $item) {
+            $productDetails = [
+                'name' => $item->getName(),
+                'price' => $item->getPrice(),
+                'image' => $item->getImage()
+            ];
+
+            $_SESSION['cart'][] = $productDetails;
         }
+
+        return $_SESSION['cart'];
     }
 
     public static function getCart()

@@ -1,21 +1,22 @@
 <?php
 include_once('model/Cart.php');
+include_once('model/AllProductsDAO.php');
+include_once('config/dataBase.php');
 
-class CartContreller
+class CartController
 {
-    public function add()
+    public static function add()
     {
-        if (isset($_POST['add_cart'])) {
-            $productId = $_POST['productId'];
-            $quantity = $_POST['quantity'];
-            $cart = Cart::addCart($productId, $quantity);
+        $productId = $_GET['id'];
+        $product = AllProductsDAO::getProductId($productId);
+        $categories = CategoriesDAO::getAllCategories();
+        $cart = Cart::addCart($product);
 
-            $view = 'views/pages/cart.php';
-            include_once 'views/main.php';
-        }
+        $view = 'views/pages/cart.php';
+        include_once 'views/main.php';
     }
 
-    public function remove()
+    public static function remove()
     {
         if (isset($_POST['remove_cart'])) {
             $productId = $_POST['productId'];
@@ -26,7 +27,7 @@ class CartContreller
         }
     }
 
-    public function clear()
+    public static function clear()
     {
         Cart::clearCart();
 

@@ -262,6 +262,17 @@ hr {
     background-color: #0359ca;
 }
 
+.filters2 img {
+    background-color: ghostwhite;
+    border-radius: 0.5rem;
+    height: 150px;
+    width: 150px;
+}
+
+.filters2 img:hover {
+    background-color: #0359ca;
+}
+
 .section-product-main {
     margin-left: 32px;
     margin-right: 32px;
@@ -461,4 +472,9 @@ hr {
     align-items: center;
     height: 100vh;
     width: 33%;
+}
+
+.container-margin {
+    width: 500px;
+    margin: auto;
 }

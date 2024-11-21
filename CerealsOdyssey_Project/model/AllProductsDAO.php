@@ -43,4 +43,24 @@ class AllProductsDAO
         $conex->close();
         return $categories;
     }
+
+    public static function getProductId($productId)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM products WHERE product_id = ?");
+
+        $stmt->bind_param("i", $productId);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $product = [];
+        while ($row = $result->fetch_object('AllProducts')) {
+            $product[] = $row;
+        }
+
+        $conex->close();
+        return $product;
+    }
 }
