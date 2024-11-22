@@ -24,6 +24,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="?controller=user&action=profile">profile</a></li>
                             <li><a class="dropdown-item" href="?controller=user&action=settings">Settings</a></li>
+                            <li><a class="dropdown-item" href="">Cerrar Sesion</a></li>
                         </ul>
                     </div>
                     <a href="?controller=product&action=getAllProducts" class="btn btn-primary buttonMain">Go to Shop</a>

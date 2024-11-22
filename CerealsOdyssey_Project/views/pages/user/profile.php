@@ -20,7 +20,8 @@
                 </div>
                 <div>
                     <p>Email</p>
-                    <p>santiago.lozada.925602@gmail.com</p>
+                    <p><?= $_SESSION['user']['email'] ?></p>
+                    <?= var_dump($_SESSION['user']); ?>
                 </div>
             </div>
             <div class="container bg-white mt-4 p-4 rounded d-flex flex-column gap-4">

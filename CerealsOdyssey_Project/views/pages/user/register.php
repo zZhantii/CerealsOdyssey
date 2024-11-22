@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cereals Odyssey | Log In</title>
+    <title>Cereals Odyssey | Register</title>
 </head>
 
 <body id="login">
@@ -14,23 +14,23 @@
                 <img src="<?= url_base ?>public/img/logo.png" height="60" width="60" alt="logo">
             </div>
             <div class="mb-3 col-12">
-                <h3 class="mb-2">Log In</h3>
+                <h3 class="mb-2">Register</h3>
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required autocomplete="off">
             </div>
             <div class="mb-3 col-12">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required aria-describedby="passwordHelp">
+                <input type="password" class="form-control" id="password" name="password" required pattern=".{8,}" title="La contraseña debe tener al menos 8 caracteres" aria-describedby="passwordHelp">
             </div>
             <div class="mb-3 col-12">
-                <label for="password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="password" name="password" required aria-describedby="passwordHelp">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required aria-describedby="passwordHelp" autocomplete="new-password">
                 <div id="passwordHelp" class="form-text">We'll never share your password with anyone else.</div>
             </div>
 
             <div class="mb-3 col-12 form-check">
                 <input required type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones</label>
             </div>
             <button type="submit" class="btn btn-primary buttonMain">Submit</button>
         </form>

@@ -13,4 +13,62 @@ class UsersDAO
         $stmt->execute();
         $conex->close();
     }
+
+    public static function getUser($userId)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM products WHERE user_id = ?");
+
+        $stmt->bind_param("i", $userId);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $users = [];
+        while ($row = $result->fetch_object('users')) {
+            $users[] = $row;
+        }
+
+        $conex->close();
+        return $users;
+    }
+
+    public static function findUser($email)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+        $stmt->close();
+        $conex->close();
+    }
+
+    public static function logUser($email, $password)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+        $stmt->bind_param("ss", $email, $password);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+        $stmt->close();
+        $conex->close();
+    }
 }

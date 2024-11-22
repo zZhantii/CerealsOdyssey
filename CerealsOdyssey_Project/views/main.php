@@ -12,7 +12,9 @@
 <body>
     <!-- Header -->
     <?php
-
+    if (isset($_GET['controller']) && $_GET['controller'] == 'categories' || $_GET['controller'] == 'product' || $_GET['controller'] == 'cart') {
+        include_once 'partials/header.php';
+    }
     ?>
 
     <!-- View -->
@@ -20,7 +22,14 @@
 
     <!-- Footer -->
     <?php
-
+    if (isset($_GET['controller']) && $_GET['controller'] == 'categories') {
+        include_once 'partials/footer.php';
+    } elseif (isset($_GET['controller']) && $_GET['controller'] == 'user') {
+        include_once 'partials/footerUser.php';
+    } elseif (isset($_GET['action']) && $_GET['action'] == 'login' || $_GET['action'] == 'register') {
+    } else {
+        include_once 'partials/footer2.php';
+    }
     ?>
 
     <!-- JS -->

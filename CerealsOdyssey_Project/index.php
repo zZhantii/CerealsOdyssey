@@ -7,8 +7,7 @@ include_once 'controller/userController.php';
 include_once 'controller/cartController.php';
 
 if (!isset($_GET['controller'])) {
-    echo 'No hay controlador';
-    // header("Location:" . url_base . "?controller=categories");
+    header("Location:" . url_base . "?controller=categories");
 } else {
     $name_controller = $_GET['controller'] . "Controller";
 
@@ -23,6 +22,6 @@ if (!isset($_GET['controller'])) {
 
         $controller->$action();
     } else {
-        // header("Location:" . url_base . "?controller=categories");
+        header("Location:" . url_base . "?controller=categories");
     }
 }

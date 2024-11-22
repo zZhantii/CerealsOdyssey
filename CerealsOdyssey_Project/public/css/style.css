@@ -234,6 +234,12 @@ hr {
     padding-bottom: 40px;
 }
 
+.footerMain2 svg {
+    fill: white;
+    height: 16px;
+    width: 16px;
+}
+
 .footerMain2 svg:hover {
     fill: #29AAEB;
 }

@@ -27,7 +27,9 @@
             <div class="mb-3 col-12 form-check">
                 <input required type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <a href="?controller=user&action=register">Don't have an account?</a>
             </div>
+
             <button type="submit" class="btn btn-primary buttonMain">Submit</button>
         </form>
     </div>

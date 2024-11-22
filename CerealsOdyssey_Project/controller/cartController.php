@@ -5,6 +5,15 @@ include_once('config/dataBase.php');
 
 class CartController
 {
+    public static function show()
+    {
+        $productId = $_GET['id'];
+        $product = AllProductsDAO::getProductId($productId);
+        $categories = CategoriesDAO::getAllCategories();
+        $view = 'views/pages/cart.php';
+        include_once 'views/main.php';
+    }
+
     public static function add()
     {
         $productId = $_GET['id'];
@@ -21,10 +30,8 @@ class CartController
         if (isset($_POST['remove_cart'])) {
             $productId = $_POST['productId'];
             Cart::removeProduct($productId);
-
-            $view = 'views/pages/cart.php';
-            include_once 'views/main.php';
         }
+        header("Location:?controller=cart&action=show");
     }
 
     public static function clear()

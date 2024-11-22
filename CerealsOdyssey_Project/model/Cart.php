@@ -1,30 +1,26 @@
 <?php
-session_start();
+include_once 'config/proteccion.php';
 
 class Cart
 {
     public static function addCart($product)
     {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-
         foreach ($product as $item) {
             $productDetails = [
                 'name' => $item->getName(),
                 'price' => $item->getPrice(),
-                'image' => $item->getImage()
+                'image' => $item->getImage(),
+                'id' => $item->getProduct_id()
             ];
 
             $_SESSION['cart'][] = $productDetails;
         }
-
         return $_SESSION['cart'];
     }
 
-    public static function getCart()
+    public static function showCart()
     {
-        return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+        $view = '';
     }
 
     public static function removeProduct($productId)
