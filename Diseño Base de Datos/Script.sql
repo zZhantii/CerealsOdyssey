@@ -1,10 +1,11 @@
 -- Tabla users
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
+    name VARCHAR(100),
+    password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone INT,
-    rol VARCHAR(100) NOT NULL
+    rol VARCHAR(100) NOT NULL DEFAULT 'user'
 );
 
 -- Tabla discounts
@@ -32,7 +33,8 @@ CREATE TABLE products (
     discount_id INT,
     name VARCHAR(100) NOT NULL,
     price INT NOT NULL,
-    image VARCHAR(100)
+    image VARCHAR(100),
+    description VARCHAR(100)
 );
 
 -- Tabla orders

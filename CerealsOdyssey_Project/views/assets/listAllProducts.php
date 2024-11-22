@@ -6,7 +6,7 @@
             <p class="card-text"><?= $item->getPrice() ?> €</p>
             <div class="d-flex align-items-center gap-3 pt-3 pb-3 buttons">
                 <a href="?controller=cart&action=add&id=<?= $item->getProduct_id() ?>" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain">Add to Cart</a>
-                <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
+                <a href="?controller=product&action=showProduct&id=<?= $item->getProduct_id() ?>" class="btn btn-primary d-flex align-items-center justify-content-center buttonMain2">More Details</a>
             </div>
         </div>
     </div>

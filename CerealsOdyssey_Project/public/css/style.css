@@ -484,3 +484,31 @@ hr {
     width: 500px;
     margin: auto;
 }
+
+/* Product */
+
+#product .c1 {
+    width: 55%;
+}
+
+#product .c2 {
+    width: 45%;
+}
+
+#product .col .btn-group .minus,
+.plus,
+.amount {
+    height: 54px;
+    width: 72px;
+    border-radius: 0;
+}
+
+#product .col .buttonMain {
+    height: 54px;
+    width: 300px;
+    border-radius: 0;
+}
+
+#product .row .text p {
+    margin-right: 250px;
+}

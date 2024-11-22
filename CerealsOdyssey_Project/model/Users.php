@@ -13,20 +13,6 @@ class Users
     protected $zipCode;
     protected $phone;
 
-    public static function addUser($user)
-    {
-        foreach ($user as $item) {
-            $user = [
-                'email' => $item->getEmail(),
-                'password' => $item->getPassword(),
-                'id' => $item->getId()
-            ];
-
-            $_SESSION['user'][] = $user;
-        }
-        return $_SESSION['user'];
-    }
-
     /**
      * Get the value of user_id
      */

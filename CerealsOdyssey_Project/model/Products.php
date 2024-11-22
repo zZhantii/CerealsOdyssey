@@ -6,6 +6,7 @@ abstract class Products
     protected $name;
     protected $price;
     protected $image;
+    protected $description;
 
     /**
      * Get the value of product_id
@@ -83,6 +84,26 @@ abstract class Products
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }

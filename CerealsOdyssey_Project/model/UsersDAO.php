@@ -7,17 +7,17 @@ class UsersDAO
     public static function createUser($user)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("INSERT INTO users (password, email) VALUES (?,?)");
-        $stmt->bind_param("ss", $user->getPassword(), $user->getEmail());
+        $stmt = $conex->prepare("INSERT INTO users ( email, password) VALUES (?,?)");
+        $stmt->bind_param("ss", $user->getEmail(), $user->getPassword());
 
         $stmt->execute();
         $conex->close();
     }
 
-    public static function getUser($userId)
+    public static function findUserId($userId)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM products WHERE user_id = ?");
+        $stmt = $conex->prepare("SELECT * FROM users WHERE user_id = ?");
 
         $stmt->bind_param("i", $userId);
 
@@ -32,43 +32,5 @@ class UsersDAO
 
         $conex->close();
         return $users;
-    }
-
-    public static function findUser($email)
-    {
-        $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
-        $stmt->close();
-        $conex->close();
-    }
-
-    public static function logUser($email, $password)
-    {
-        $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-        $stmt->bind_param("ss", $email, $password);
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
-        $stmt->close();
-        $conex->close();
     }
 }
