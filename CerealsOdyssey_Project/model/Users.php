@@ -13,11 +13,8 @@ class Users
     protected $country;
     protected $zipCode;
     protected $phone;
-<<<<<<< HEAD
     protected $apartment;
     protected $stage;
-=======
->>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
 
     /**
      * Get the value of user_id

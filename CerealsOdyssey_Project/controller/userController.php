@@ -6,33 +6,23 @@ include_once('config/proteccion.php');
 
 class userController
 {
-    public static function addUser()
+    public static function login()
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $view = 'views/pages/user/login.php';
+        include_once 'views/main.php';
+    }
 
-        $user = new Users();
-
-        $user->setEmail($email);
-        $user->setPassword($password);
-
-        UsersDAO::createUser($user);
-
-        $_SESSION['user'] = $user->getEmail();
-
+    public static function register()
+    {
         $view = 'views/pages/user/register.php';
         include_once 'views/main.php';
     }
 
-    public static function searchUser()
+    public static function profile()
     {
-        $userId = $_GET['id'];
-        $userData = UsersDAO::findUserId($userId);
-
-        $view = 'views/pages/user/login.php';
+        $view = 'views/pages/user/profile.php';
         include_once 'views/main.php';
     }
-<<<<<<< HEAD
 
     public static function settings()
     {
@@ -71,6 +61,20 @@ class userController
         if (!is_array($users)) {
             $users = [$users];
         }
+
+        // $inputs = ['Country/regions', 'name', 'lastName', 'address', 'aparment', 'city', 'stage', 'zipCode'];
+        // $inputsTrue = [];
+
+        // foreach ($inputs as $item) {
+        //     if (!isset($_POST[$item])) {
+        //         $items = false;
+        //         break;
+        //     } else {
+        //         $inputsTrue[] = $item;
+        //     }
+        // }
+
+        // var_dump($inputsTrue);
 
         foreach ($users as $item) {
             $userData = [
@@ -158,6 +162,4 @@ class userController
             return;
         }
     }
-=======
->>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
 }

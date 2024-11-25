@@ -65,10 +65,9 @@
                             <p>Cruz</p>
                         </div>
                     </div>
-
                     <div>
                         <div class="form-floating p-0">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="Country/regions">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -80,34 +79,34 @@
                     <div>
                         <div class="d-flex justify-content-between p-0 ">
                             <div class="form-floating p-0 col-md-6 pe-2">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="First Name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="name">
                                 <label for="floatingInput">First Name</label>
                             </div>
                             <div class="form-floating p-0 col-md-6 ps-2">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="lastName">
                                 <label for="floatingInput">Last Name</label>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="form-floating p-0 col-md-12">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="address">
                             <label for="floatingInput">Address</label>
                         </div>
                     </div>
                     <div>
                         <div class="form-floating p-0 col-md-12">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Address">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="aparment">
                             <label for="floatingInput">Aparment</label>
                         </div>
                     </div>
                     <div class="d-flex ">
                         <div class="form-floating p-0 pe-3 col-md-4">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="City">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="City" name="city">
                             <label for="floatingInput">City</label>
                         </div>
                         <div class="form-floating p-0 pe-3 col-md-4">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="stage">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -116,8 +115,8 @@
                             <label for="floatingSelect">Works with selects</label>
                         </div>
                         <div class="form-floating p-0 col-md-4">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Address">
-                            <label for="floatingInput">Address</label>
+                            <input type="text" class="form-control" id="floatingInput" placeholder="zipCode" name="zipCode">
+                            <label for="floatingInput">Zip Code</label>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
@@ -132,7 +131,6 @@
                 </div>
             </form>
         </div>
-
     </main>
     <?php include_once 'views\partials\footerUser.php' ?>
 </body>

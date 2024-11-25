@@ -14,7 +14,6 @@ class UsersDAO
         $conex->close();
     }
 
-<<<<<<< HEAD
     public static function insertInformation($userData)
     {
         $conex = database::connect();
@@ -26,9 +25,6 @@ class UsersDAO
     }
 
     public static function getUser($userId)
-=======
-    public static function findUserId($userId)
->>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
     {
         $conex = database::connect();
         $stmt = $conex->prepare("SELECT * FROM users WHERE user_id = ?");
@@ -47,7 +43,6 @@ class UsersDAO
         $conex->close();
         return $users;
     }
-<<<<<<< HEAD
 
     public static function getUserEmail($email)
     {
@@ -107,6 +102,4 @@ class UsersDAO
         $stmt->close();
         $conex->close();
     }
-=======
->>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
 }

@@ -14,8 +14,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between align-items-center">
-                            <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
-                            <p class="m-0">bolsa</p>
+                            <a href="?contoller=categories">
+                                <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
+                            </a>
+                            <a href="?contoller=cart&action=show">
+                                <p class="m-0">bolsa</p>
+                            </a>
                         </div>
                     </div>
                     <div class="row g-3 mt-5 mb-3">

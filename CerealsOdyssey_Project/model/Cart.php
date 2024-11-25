@@ -34,4 +34,13 @@ class Cart
     {
         unset($_SESSION['cart']);
     }
+
+    public static function total_price($cart)
+    {
+        $total = 0;
+        foreach ($cart as $item) {
+            $total += $item['price'];
+        }
+        return $total;
+    }
 }

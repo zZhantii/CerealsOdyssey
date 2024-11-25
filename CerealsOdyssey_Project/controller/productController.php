@@ -27,7 +27,6 @@ class productController
     {
         $product_id = $_GET['id'];
         $product = AllProductsDAO::getProductId($product_id);
-
         $view = 'views/pages/product.php';
         include_once 'views/main.php';
     }

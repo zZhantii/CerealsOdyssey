@@ -7,9 +7,8 @@ class CartController
 {
     public static function show()
     {
-        $productId = $_GET['id'];
-        $product = AllProductsDAO::getProductId($productId);
-        $categories = CategoriesDAO::getAllCategories();
+        $cart = $_SESSION['cart'];
+        $total = Cart::total_price($cart);
         $view = 'views/pages/cart.php';
         include_once 'views/main.php';
     }
@@ -17,20 +16,23 @@ class CartController
     public static function add()
     {
         $productId = $_GET['id'];
+        $cartPrice = $_SESSION['cart'];
+
         $product = AllProductsDAO::getProductId($productId);
         $categories = CategoriesDAO::getAllCategories();
-        $cart = Cart::addCart($product);
 
+        $cart = Cart::addCart($product);
+        $total = Cart::total_price($cartPrice);
         $view = 'views/pages/cart.php';
         include_once 'views/main.php';
     }
 
     public static function remove()
     {
-        if (isset($_POST['remove_cart'])) {
-            $productId = $_POST['productId'];
-            Cart::removeProduct($productId);
-        }
+        $productId = $_GET['productId'];
+        Cart::removeProduct($productId);
+        $cart = $_SESSION['cart'];
+        $total = Cart::total_price($cart);
         header("Location:?controller=cart&action=show");
     }
 
