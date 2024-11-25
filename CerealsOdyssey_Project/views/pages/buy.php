@@ -186,18 +186,7 @@
         <section class="buyProducts border-start">
             <div class="container sticky-top buyProducts2">
                 <div class="row d-flex flex-column gap-4">
-                    <div class="col d-flex gap-3">
-                        <div>
-                            <img src="<?= url_base ?>public/img/products/product1.jpg" alt="producto" height="64" width="64" class="img-product border">
-                        </div>
-                        <div class="d-flex flex-column">
-                            <p>Celeraes de coores</p>
-                            <p>1</p>
-                        </div>
-                        <div class="col">
-                            <p class="text-end">2.5€</p>
-                        </div>
-                    </div>
+                    <?= include_once 'views/assets/listProductBuy.php' ?>
                     <div class="col">
                         <div class="form-floating my-3 d-flex gap-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="Discount Code">
