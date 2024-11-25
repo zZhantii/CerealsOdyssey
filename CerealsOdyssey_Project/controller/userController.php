@@ -6,23 +6,33 @@ include_once('config/proteccion.php');
 
 class userController
 {
-    public static function login()
+    public static function addUser()
     {
-        $view = 'views/pages/user/login.php';
-        include_once 'views/main.php';
-    }
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    public static function register()
-    {
+        $user = new Users();
+
+        $user->setEmail($email);
+        $user->setPassword($password);
+
+        UsersDAO::createUser($user);
+
+        $_SESSION['user'] = $user->getEmail();
+
         $view = 'views/pages/user/register.php';
         include_once 'views/main.php';
     }
 
-    public static function profile()
+    public static function searchUser()
     {
-        $view = 'views/pages/user/profile.php';
+        $userId = $_GET['id'];
+        $userData = UsersDAO::findUserId($userId);
+
+        $view = 'views/pages/user/login.php';
         include_once 'views/main.php';
     }
+<<<<<<< HEAD
 
     public static function settings()
     {
@@ -148,4 +158,6 @@ class userController
             return;
         }
     }
+=======
+>>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
 }

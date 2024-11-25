@@ -7,13 +7,14 @@ class UsersDAO
     public static function createUser($user)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("INSERT INTO users (password, email) VALUES (?,?)");
-        $stmt->bind_param("ss", $user->getPassword(), $user->getEmail());
+        $stmt = $conex->prepare("INSERT INTO users ( email, password) VALUES (?,?)");
+        $stmt->bind_param("ss", $user->getEmail(), $user->getPassword());
 
         $stmt->execute();
         $conex->close();
     }
 
+<<<<<<< HEAD
     public static function insertInformation($userData)
     {
         $conex = database::connect();
@@ -25,6 +26,9 @@ class UsersDAO
     }
 
     public static function getUser($userId)
+=======
+    public static function findUserId($userId)
+>>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
     {
         $conex = database::connect();
         $stmt = $conex->prepare("SELECT * FROM users WHERE user_id = ?");
@@ -43,6 +47,7 @@ class UsersDAO
         $conex->close();
         return $users;
     }
+<<<<<<< HEAD
 
     public static function getUserEmail($email)
     {
@@ -102,4 +107,6 @@ class UsersDAO
         $stmt->close();
         $conex->close();
     }
+=======
+>>>>>>> f6cea5172fcd98986b6fab3c214f33590e8e5d35
 }
