@@ -11,7 +11,9 @@
     <div class="container d-flex align-items-center login">
         <form class="row p-3 rounded-3 bg-white" method="POST" action="?controller=user&action=logUser">
             <div class="my-4 col-12 d-flex justify-content-center">
-                <img src="<?= url_base ?>public/img/logo.png" height="60" width="60" alt="logo">
+                <a href="?controller=categories">
+                    <img src="<?= url_base ?>public/img/logo.png" height="60" width="60" alt="logo">
+                </a>
             </div>
             <div class="mb-3 col-12">
                 <h3 class="mb-2">Log In</h3>
@@ -25,8 +27,6 @@
             </div>
 
             <div class="mb-3 col-12 form-check">
-                <input required type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 <a href="?controller=user&action=register">Don't have an account?</a>
             </div>
 

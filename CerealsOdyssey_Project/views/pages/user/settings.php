@@ -18,7 +18,7 @@
                     <p>Si perdiste un dispositivo o tienes inquietudes relacionadas con la seguridad, cierra todas las sesiones para garantizar la seguridad de tu cuenta.</p>
                 </div>
                 <div class="container bg-white mt-4 p-4 rounded d-flex gap-4 align-items-center">
-                    <a href="" class="btn btn-primary buttonMain2">Cerrar todas las sesiones</a>
+                    <a href="?controller=user&action=destroy" class="btn btn-primary buttonMain2">Cerrar todas las sesiones</a>
                     <p>Se cerrará también la sesión en este dispositivo.</p>
                 </div>
             </div>

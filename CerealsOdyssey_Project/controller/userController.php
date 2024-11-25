@@ -32,20 +32,82 @@ class userController
 
     public static function orders() {}
 
+    public static function destroy()
+    {
+        session_destroy();
+        header("location:" . url_base . "?controller=categories");
+    }
+
+    public static function addUser($users)
+    {
+        if (!is_array($users)) {
+            $users = [$users];
+        }
+
+        foreach ($users as $item) {
+            $userData = [
+                'email' => $item->getEmail(),
+                'password' => $item->getPassword(),
+                'id' => $item->getUser_id(),
+            ];
+
+            $_SESSION['user'][] = $userData;
+        }
+        return $_SESSION['user'];
+    }
+
+    public static function addInformation($users)
+    {
+        if (!is_array($users)) {
+            $users = [$users];
+        }
+
+        foreach ($users as $item) {
+            $userData = [
+                'name' => $item->getName(),
+                'email' => $item->getEmail(),
+                'password' => $item->getPassword(),
+                'id' => $item->getUser_id(),
+                'address' => $item->getAddress(),
+                'apartment' => $item->getApartment(),
+                'city' => $item->getCity(),
+                'stage' => $item->getStage(),
+                'ZipCode' => $item->getZipCode(),
+                'Country' => $item->getCountry()
+            ];
+
+            UsersDAO::insertInformation($userData);
+            $_SESSION['user'][] = $userData;
+        }
+        return $_SESSION['user'];
+    }
+
     public static function logUser()
     {
-        if (isset($_POST['password']) && ($_POST['email'])) {
+        if (isset($_POST['password']) && isset($_POST['email'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $userAdd = [
-                'email' => $email,
-                'password' => $password
-            ];
-
             if (UsersDAO::logUser($email, $password)) {
-                // Users::addUser($userAdd);
-                header("Location:?controller=user&action=profile&id=" . $_SESSION['user']['id']);
+                $user = new Users();
+                $user->setEmail($email);
+                $user->setPassword($password);
+
+                $user_Id = UsersDAO::getUserEmail($email);
+
+                foreach ($user_Id as $item) {
+                    $user_Id = $item->getUser_id();
+                }
+
+                $user->setUser_id($user_Id);
+
+
+                // Agregar el usuario a la sesión.
+                self::addUser([$user]);
+
+                // Redirigir al perfil del usuario.
+                header("Location:?controller=user&action=profile");
+                exit;
             } else {
                 echo "Invalid email or password";
             }
@@ -74,8 +136,7 @@ class userController
                     $user->setEmail($email);
 
                     UsersDAO::createUser($user);
-                    Users::addUser($user);
-                    header("Location:?controller=user&action=profile");
+                    header("Location:?controller=user&action=login");
                     exit;
                 } else {
                     echo "Error: Las contraseñas no coinciden.";

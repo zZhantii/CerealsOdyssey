@@ -1,4 +1,4 @@
-<footer class="mt-5 fixed-bottom">
+<footer class="mt-5 mb-3">
     <div class="container border-top d-flex p-3 gap-5">
         <p>Politica de reembloso</p>
         <p>politica de envio</p>

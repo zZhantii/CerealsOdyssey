@@ -175,6 +175,10 @@ header {
     padding-left: 10px;
 }
 
+.nav-link-profile svg:hover {
+    color: #0359ca;
+}
+
 .subnav-link {
     display: flex;
     align-items: center;
@@ -195,6 +199,7 @@ header {
     background-color: #D2EBF7;
     color: #0359ca;
 }
+
 
 hr {
     margin: 0;

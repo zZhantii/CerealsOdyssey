@@ -5,6 +5,7 @@ class Users
 {
     protected $user_id;
     protected $name;
+    protected $lastName;
     protected $email;
     protected $password;
     protected $address;
@@ -12,20 +13,8 @@ class Users
     protected $country;
     protected $zipCode;
     protected $phone;
-
-    public static function addUser($user)
-    {
-        foreach ($user as $item) {
-            $user = [
-                'email' => $item->getEmail(),
-                'password' => $item->getPassword(),
-                'id' => $item->getId()
-            ];
-
-            $_SESSION['user'][] = $user;
-        }
-        return $_SESSION['user'];
-    }
+    protected $apartment;
+    protected $stage;
 
     /**
      * Get the value of user_id
@@ -63,6 +52,26 @@ class Users
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastName
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -203,6 +212,46 @@ class Users
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of apartment
+     */
+    public function getApartment()
+    {
+        return $this->apartment;
+    }
+
+    /**
+     * Set the value of apartment
+     *
+     * @return  self
+     */
+    public function setApartment($apartment)
+    {
+        $this->apartment = $apartment;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of stage
+     */
+    public function getStage()
+    {
+        return $this->stage;
+    }
+
+    /**
+     * Set the value of stage
+     *
+     * @return  self
+     */
+    public function setStage($stage)
+    {
+        $this->stage = $stage;
 
         return $this;
     }
