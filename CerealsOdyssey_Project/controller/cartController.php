@@ -29,11 +29,17 @@ class CartController
 
     public static function remove()
     {
-        $productId = $_GET['productId'];
-        Cart::removeProduct($productId);
-        $cart = $_SESSION['cart'];
-        $total = Cart::total_price($cart);
-        header("Location:?controller=cart&action=show");
+        if (isset($_GET['id'])) {
+            $productId = $_GET['id'];
+            Cart::removeProduct($productId);
+            $cart = $_SESSION['cart'];
+            $total = Cart::total_price($cart);
+            header("Location:?controller=cart&action=show");
+            exit;
+        } else {
+            header("Location:?controller=cart&action=show&error=invalid_id");
+            exit;
+        }
     }
 
     public static function clear()

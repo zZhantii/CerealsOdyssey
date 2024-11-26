@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cereals Odyssey | Checkout</title>
 </head>
 
@@ -18,7 +14,11 @@
                                 <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
                             </a>
                             <a href="?contoller=cart&action=show">
-                                <p class="m-0">bolsa</p>
+                                <p class="m-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#0359ca" viewBox="0 0 256 256">
+                                        <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path>
+                                    </svg>
+                                </p>
                             </a>
                         </div>
                     </div>
@@ -101,7 +101,6 @@
                         <h3 class="mb-3">Payment</h3>
                         <div class="col-12 d-flex justify-content-between rounded-top border border-primary payment">
                             <p class="text-center m-0 p-3">Credit Card</p>
-
                             <div class="d-flex gap-3">
                                 <svg width="800px" height="800px" viewBox="0 -11 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="0.5" y="0.5" width="69" height="47" rx="5.5" fill="white" stroke="#D9D9D9" />
@@ -186,7 +185,9 @@
         <section class="buyProducts border-start">
             <div class="container sticky-top buyProducts2">
                 <div class="row d-flex flex-column gap-4">
-                    <?= include_once 'views/assets/listProductBuy.php' ?>
+
+                    <?php include_once 'views/assets/listProductBuy.php' ?>
+
                     <div class="col">
                         <div class="form-floating my-3 d-flex gap-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="Discount Code">
@@ -213,5 +214,3 @@
         </section>
     </main>
 </body>
-
-</html>

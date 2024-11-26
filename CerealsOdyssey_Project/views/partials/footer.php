@@ -56,24 +56,24 @@
                         <div class="d-flex flex-column container-fluid gap-3">
                             <h2>Odyssey in your inbox</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque praesentium fugit minus illo. Corporis maxime minima consequuntur qui ipsa consectetur laboriosam ea, aspernatur reiciendis reprehenderit, iusto quasi repellat minus.</p>
-                            <a href="#" class="btn btn-primary buttonMain2">Sign in</a>
+                            <a href="?controller=user&action=register" class="btn btn-primary buttonMain2">Sign in</a>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-space-between">
-                    <p>© 2024 Mondelez International Group. All Rights reserved.</p>
-                    <div class="footer-links">
-                        <a href="#">Terms and Conditions</a>
-                        <span>•</span>
-                        <a href="#">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="#">Cookie Policy</a>
-                        <span>•</span>
-                        <a href="#">Accessibility</a>
-                        <span>•</span>
-                        <a href="#">Do not sell or share my personal information</a>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="d-flex container-fluid gap-5 justify-content-between mt-5 px-4">
+            <p class="w-50">© 2024 Mondelez International Group. All Rights reserved.</p>
+            <div class="footer-links d-flex flex-wrap justify-content-end">
+                <a href="#" class="px-3">Terms and Conditions</a>
+                <span>•</span>
+                <a href="#" class="px-3">Privacy Policy</a>
+                <span>•</span>
+                <a href="#" class="px-3">Cookie Policy</a>
+                <span>•</span>
+                <a href="#" class="px-3">Accessibility</a>
+                <span>•</span>
+                <a href="#" class="px-3">Do not sell or share my personal information</a>
             </div>
         </div>
     </footer>

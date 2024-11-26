@@ -215,8 +215,10 @@ hr {
 
 .footerMain svg {
     fill: white;
-    height: 16px;
-    width: 16px;
+    margin-right: 25px;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
 }
 
 .footerMain svg:hover {
@@ -241,8 +243,10 @@ hr {
 
 .footerMain2 svg {
     fill: white;
-    height: 16px;
-    width: 16px;
+    margin-right: 25px;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
 }
 
 .footerMain2 svg:hover {
@@ -446,25 +450,37 @@ hr {
     font-family: 'PlutoBold', sans-serif;
 }
 
-.plusandminus div {
-    display: flex;
-    justify-content: center;
+.buttons p {
+    font-family: 'PlutoLigth', sans-serif;
+}
+
+#cart .minus {
+    background-color: #D5DADE;
     height: 40px;
     width: 40px;
     padding: 0px 8px;
 }
 
-.buttons p {
-    font-family: 'PlutoLigth', sans-serif;
-}
-
-.minus,
-.plus {
+#cart .minus:hover {
     background-color: #B4BBC3;
 }
 
-.amount {
-    background-color: #CED3D8;
+#cart .plus {
+    background-color: #D5DADE;
+    height: 40px;
+    width: 40px;
+    padding: 0px 8px;
+}
+
+#cart .plus:hover {
+    background-color: #B4BBC3;
+}
+
+#cart .amount {
+    background-color: #F7F8F9;
+    height: 40px;
+    width: 40px;
+    padding: 0px 8px;
 }
 
 .container-like {
@@ -516,4 +532,8 @@ hr {
 
 #product .row .text p {
     margin-right: 250px;
+}
+
+.rotate {
+    transform: rotate(90deg);
 }

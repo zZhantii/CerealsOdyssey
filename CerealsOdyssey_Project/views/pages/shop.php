@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CerealsOdyssey | Shop</title>
 </head>
 
@@ -24,14 +19,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 d-flex flex-column filterShop">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between border-bottom">
                             <p class="mb-3">FILTER BY</p>
-                            <p>sliders</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#303B43" viewBox="0 0 256 256" class="rotate">
+                                <path d="M84,136a28,28,0,0,1-20,26.83V216a8,8,0,0,1-16,0V162.83a28,28,0,0,1,0-53.66V40a8,8,0,0,1,16,0v69.17A28,28,0,0,1,84,136Zm52-74.83V40a8,8,0,0,0-16,0V61.17a28,28,0,0,0,0,53.66V216a8,8,0,0,0,16,0V114.83a28,28,0,0,0,0-53.66Zm72,80V40a8,8,0,0,0-16,0V141.17a28,28,0,0,0,0,53.66V216a8,8,0,0,0,16,0V194.83a28,28,0,0,0,0-53.66Z"></path>
+                            </svg>
                         </div>
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed p-0 py-3 bg-transparent bor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed border-bottom p-0 py-3 bg-transparent bor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                         Cereals
                                     </button>
                                 </h2>
@@ -74,5 +71,3 @@
         </section>
     </main>
 </body>
-
-</html>

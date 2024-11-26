@@ -100,7 +100,9 @@ class userController
     {
         if (isset($_POST['password']) && isset($_POST['email'])) {
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password =  $_POST['password'];
+
+            // Verify_password
 
             if (UsersDAO::logUser($email, $password)) {
                 $user = new Users();
@@ -132,7 +134,7 @@ class userController
     {
         if (isset($_POST['password']) && isset($_POST['email']) && isset($_POST['confirmPassword'])) {
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-            $password = $_POST['password'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $confirmPassword = $_POST['confirmPassword'];
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

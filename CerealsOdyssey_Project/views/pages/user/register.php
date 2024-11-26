@@ -11,7 +11,9 @@
     <div class="container d-flex align-items-center login">
         <form class="row p-3 rounded-3 bg-white" method="POST" action="?controller=user&action=createUser">
             <div class="my-4 col-12 d-flex justify-content-center">
-                <img src="<?= url_base ?>public/img/logo.png" height="60" width="60" alt="logo">
+                <a href="?controller=categories">
+                    <img src="<?= url_base ?>public/img/logo.png" height="60" width="60" alt="logo">
+                </a>
             </div>
             <div class="mb-3 col-12">
                 <h3 class="mb-2">Register</h3>
