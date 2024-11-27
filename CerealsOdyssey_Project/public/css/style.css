@@ -398,8 +398,12 @@ hr {
 }
 
 .informationPersonal {
-    width: 37%;
+    margin-left: 13%;
     padding-left: 0;
+}
+
+.buyProducts {
+    padding-right: 13%;
 }
 
 .informationPersonal .col {
@@ -486,6 +490,20 @@ hr {
 .container-like {
     height: 114px;
     width: 75%;
+}
+
+.notification {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    opacity: 0.6;
+    width: 20px;
+    height: 20px;
+    right: 380px;
+}
+
+.offcanvas.show {
+    width: 43%;
 }
 
 /* login */

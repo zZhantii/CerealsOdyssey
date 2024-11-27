@@ -63,4 +63,24 @@ class AllProductsDAO
         $conex->close();
         return $product;
     }
+
+    public static function createOrder($order)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("");
+
+        $stmt->bind_param("i", $productId);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $product = [];
+        while ($row = $result->fetch_object('AllProducts')) {
+            $product[] = $row;
+        }
+
+        $conex->close();
+        return $product;
+    }
 }
