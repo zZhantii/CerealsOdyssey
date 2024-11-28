@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cereals Odyssey | Log In</title>
 </head>
 
@@ -30,9 +25,9 @@
                 <a href="?controller=user&action=register">Don't have an account?</a>
             </div>
 
-            <button type="submit" class="btn btn-primary buttonMain">Submit</button>
+            <button type="submit" class="btn btn-primary buttonMain" id="liveToastBtn">Submit</button>
+
+            <?php include_once 'views/assets/errors.php' ?>
         </form>
     </div>
 </body>
-
-</html>

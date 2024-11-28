@@ -12,16 +12,94 @@ class userController
         include_once 'views/main.php';
     }
 
+    public static function logUser()
+    {
+        if (isset($_POST['password']) && isset($_POST['email'])) {
+            $email = $_POST['email'];
+            $password =  $_POST['password'];
+
+            if (UsersDAO::logUser($email, $password)) {
+                $user = new Users();
+                $user->setEmail($email);
+                $user->setPassword($password);
+
+                $user_Id = UsersDAO::getUserEmail($email);
+
+                foreach ($user_Id as $item) {
+                    $user_Id = $item->getUser_id();
+                }
+
+                $user->setUser_id($user_Id);
+
+                self::addUser([$user]);
+
+                header("Location:?controller=user&action=profile");
+                exit;
+            } else {
+                header("Location:?controller=user&action=login&error=401");
+                exit;
+            }
+        }
+    }
+
     public static function register()
     {
         $view = 'views/pages/user/register.php';
         include_once 'views/main.php';
     }
 
+    public static function createUser()
+    {
+        if (isset($_POST['password']) && isset($_POST['email']) && isset($_POST['confirmPassword'])) {
+            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $confirmPassword = password_hash($_POST['confirmPassword'], PASSWORD_DEFAULT);
+
+            if (UsersDAO::findUser($email)) {
+                header("Location:?controller=user&action=register&error=4012");
+                exit;
+            } else {
+                if ($password === $confirmPassword) {
+                    $user = new Users();
+                    $user->setPassword($password);
+                    $user->setEmail($email);
+
+                    UsersDAO::createUser($user);
+                    header("Location:?controller=user&action=login");
+                    exit;
+                } else {
+                    header("Location:?controller=user&action=register&error=4013");
+                    exit;
+                }
+            }
+        }
+    }
+
     public static function profile()
     {
         $view = 'views/pages/user/profile.php';
         include_once 'views/main.php';
+    }
+
+    public static function addInformationUser()
+    {
+        if (isset($_POST['firstName']) && isset($_POST['lastName'])) {
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
+
+            $informaion = [$firstName, $lastName];
+
+            UsersDAO::addInformation($firstName, $lastName);
+
+            $userData = [
+                'firstName' => $firstName,
+                'lastName' => $lastName
+            ];
+
+            $_SESSION['userInformation'][] = $userData;
+
+            return $_SESSION['userInformation'];
+        }
     }
 
     public static function settings()
@@ -94,74 +172,5 @@ class userController
             $_SESSION['user'][] = $userData;
         }
         return $_SESSION['user'];
-    }
-
-    public static function logUser()
-    {
-        if (isset($_POST['password']) && isset($_POST['email'])) {
-            $email = $_POST['email'];
-            $password =  $_POST['password'];
-
-            // Verify_password
-
-            if (UsersDAO::logUser($email, $password)) {
-                $user = new Users();
-                $user->setEmail($email);
-                $user->setPassword($password);
-
-                $user_Id = UsersDAO::getUserEmail($email);
-
-                foreach ($user_Id as $item) {
-                    $user_Id = $item->getUser_id();
-                }
-
-                $user->setUser_id($user_Id);
-
-
-                // Agregar el usuario a la sesión.
-                self::addUser([$user]);
-
-                // Redirigir al perfil del usuario.
-                header("Location:?controller=user&action=profile");
-                exit;
-            } else {
-                echo "Invalid email or password";
-            }
-        }
-    }
-
-    public static function createUser()
-    {
-        if (isset($_POST['password']) && isset($_POST['email']) && isset($_POST['confirmPassword'])) {
-            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $confirmPassword = $_POST['confirmPassword'];
-
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "Error: El formato del correo electrónico es inválido.";
-                return;
-            }
-
-            if (UsersDAO::findUser($email)) {
-                echo "Error: El usuario ya existe.";
-                return;
-            } else {
-                if ($password === $confirmPassword) {
-                    $user = new Users();
-                    $user->setPassword($password);
-                    $user->setEmail($email);
-
-                    UsersDAO::createUser($user);
-                    header("Location:?controller=user&action=login");
-                    exit;
-                } else {
-                    echo "Error: Las contraseñas no coinciden.";
-                    return;
-                }
-            }
-        } else {
-            echo "Error: Los campos de contraseña y correo electrónico son obligatorios.";
-            return;
-        }
     }
 }

@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cereals Odyssey | Register</title>
 </head>
 
@@ -34,7 +29,10 @@
                 <input required type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones</label>
             </div>
-            <button type="submit" class="btn btn-primary buttonMain">Submit</button>
+
+            <button type="submit" class="btn btn-primary buttonMain" id="liveToastBtn">Submit</button>
+
+            <?php include_once 'views/assets/errors.php' ?>
         </form>
     </div>
 </body>

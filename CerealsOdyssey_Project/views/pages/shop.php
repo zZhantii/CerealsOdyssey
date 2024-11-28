@@ -7,11 +7,10 @@
         <section class="mx-5">
             <h3>Shop by</h3>
             <div class="container my-3">
-                <div class="row filters">
 
-                    <?php include_once 'views/assets/listCategories.php' ?>
+                <?php include_once 'views/assets/listCategories.php' ?>
 
-                </div>
+            </div>
             </div>
         </section>
         </section>
