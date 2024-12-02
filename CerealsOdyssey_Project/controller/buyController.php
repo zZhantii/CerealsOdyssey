@@ -13,18 +13,20 @@ class buyController
 
     public function createOrder()
     {
-        $inputs = ['country', 'first_name', 'last_name', 'email', 'address', 'city', 'state', 'Zip_Code'];
-        $order = [];
+        $inputs = ['country', 'first_name', 'last_name', 'email', 'address', 'city', 'state', 'postal_code'];
+        $orderInputs = [];
 
         foreach ($inputs as $item) {
-            if (!isset($_POST[$item])) {
-                $item = false;
-                break;
+            if (isset($_POST[$item])) {
+                $orderInputs[$item] = $_POST[$item];
             } else {
-                $order[] = $item;
+                break;
             }
         }
 
-        AllProductsDAO::createOrder($order);
+        AllProductsDAO::createOrder($_SESSION['user'], $_SESSION['cart']);
+        header("Location:?controller=categories");
+
+        // AllProductsDAO::createOrder($orderInputs);
     }
 }

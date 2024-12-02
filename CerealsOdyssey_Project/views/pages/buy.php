@@ -6,7 +6,7 @@
 <body>
     <main class="d-flex justify-content-center">
         <section class="informationPersonal container-fluid">
-            <form action="?controller=buy&action=createOrder" method="POST" novalidate>
+            <form action="?controller=buy&action=createOrder" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between align-items-center">
@@ -23,10 +23,10 @@
                     <div class="row g-3 mt-5 mb-3">
                         <p class="m-0 text-center">CheckOut Express</p>
                         <div class="col-6 ps-0">
-                            <input type="text" class="form-control" name="first_name" placeholder="First name" aria-label="First name" required>
+                            <input type="text" class="form-control" name="first_name" placeholder="First name" aria-label="First name">
                         </div>
                         <div class="col-6 pe-0">
-                            <input type="text" class="form-control" name="last_name" placeholder="Last name" aria-label="Last name" required>
+                            <input type="text" class="form-control" name="last_name" placeholder="Last name" aria-label="Last name">
                         </div>
                     </div>
                     <div class="row">
@@ -35,10 +35,10 @@
                     <div class="row mt-4">
                         <div class="col mb-3 d-flex justify-content-between align-items-center">
                             <h3>Contact</h3>
-                            <a href="">Log In</a>
+                            <a href="?controller=user&action=login">Log In</a>
                         </div>
                         <div class="form-floating mb-3 p-0">
-                            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-check">
@@ -103,21 +103,21 @@
                         </div>
                         <div class="col-12 rounded-bottom payment2">
                             <div class="form-floating my-3">
-                                <input type="text" class="form-control" name="card_number" id="floatingInput" placeholder="Card Number" required>
+                                <input type="text" class="form-control" name="card_number" id="floatingInput" placeholder="Card Number">
                                 <label for="floatingInput">Card Number</label>
                             </div>
                             <div class="col-12 d-flex  p-0">
                                 <div class="form-floating col-mb-6">
-                                    <input type="text" class="form-control" name="expiry_date" id="floatingInput" placeholder="MM/YY" required>
+                                    <input type="text" class="form-control" name="expiry_date" id="floatingInput" placeholder="MM/YY">
                                     <label for="floatingInput">Expiry Date</label>
                                 </div>
                                 <div class="form-floating col-mb-6">
-                                    <input type="text" class="form-control" name="cvv" id="floatingInput" placeholder="CVV" required>
+                                    <input type="text" class="form-control" name="cvv" id="floatingInput" placeholder="CVV">
                                     <label for="floatingInput">CVV</label>
                                 </div>
                             </div>
                             <div class="form-floating my-3">
-                                <input type="text" class="form-control" name="card_number" id="floatingInput" placeholder="Card Number" required>
+                                <input type="text" class="form-control" name="card_number" id="floatingInput" placeholder="Card Number">
                                 <label for="floatingInput">Card Number</label>
                             </div>
                             <div class="form-check my-3">
@@ -135,7 +135,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                         <label for="floatingInput">Email address</label>
                                     </div>
                                     <div>

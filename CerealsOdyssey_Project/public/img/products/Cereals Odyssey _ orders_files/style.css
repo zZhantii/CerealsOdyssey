@@ -555,25 +555,3 @@ hr {
 .rotate {
     transform: rotate(90deg);
 }
-
-
-
-/* order */
-
-#orders {
-    background-color: #F6F7F8;
-}
-
-.container-order {
-    width: 32%;
-}
-
-.container-order .container {
-    height: 350px;
-    /* height: fit-content; */
-    background-color: #F6F7F8;
-}
-
-.container-order .title {
-    background-color: #F6F7F8;
-}

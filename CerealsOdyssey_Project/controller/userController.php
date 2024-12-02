@@ -6,6 +6,14 @@ include_once('config/proteccion.php');
 
 class userController
 {
+    public static function orders()
+    {
+        $order_details = AllProductsDAO::getOrder_details();
+        $orders = AllProductsDAO::getOrder();
+        $view = 'views/pages/orders.php';
+        include_once 'views/main.php';
+    }
+
     public static function login()
     {
         $view = 'views/pages/user/login.php';
@@ -108,8 +116,6 @@ class userController
         include_once 'views/main.php';
     }
 
-    public static function orders() {}
-
     public static function destroy()
     {
         session_destroy();
@@ -139,20 +145,6 @@ class userController
         if (!is_array($users)) {
             $users = [$users];
         }
-
-        // $inputs = ['Country/regions', 'name', 'lastName', 'address', 'aparment', 'city', 'stage', 'zipCode'];
-        // $inputsTrue = [];
-
-        // foreach ($inputs as $item) {
-        //     if (!isset($_POST[$item])) {
-        //         $items = false;
-        //         break;
-        //     } else {
-        //         $inputsTrue[] = $item;
-        //     }
-        // }
-
-        // var_dump($inputsTrue);
 
         foreach ($users as $item) {
             $userData = [

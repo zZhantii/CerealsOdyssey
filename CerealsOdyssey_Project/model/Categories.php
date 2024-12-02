@@ -5,7 +5,6 @@ class Categories extends Products
 {
     protected $categorie_id;
 
-
     /**
      * Get the value of categorie_id
      */

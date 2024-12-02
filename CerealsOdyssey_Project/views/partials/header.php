@@ -78,7 +78,7 @@
                         </svg>
                     </a>
                 <?php } else { ?>
-                    <a href="?controller=user&action=profile" class="nav-link-icon ps-3">
+                    <a href="?controller=user&action=orders" class="nav-link-icon ps-3">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                             <rect width="256" height="256" fill="none" />
                             <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />

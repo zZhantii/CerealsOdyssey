@@ -64,23 +64,75 @@ class AllProductsDAO
         return $product;
     }
 
-    public static function createOrder($order)
+    public static function createOrder($user, $cart)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("");
 
-        $stmt->bind_param("i", $productId);
+        // Create order
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status) VALUES (?, 'making')");
 
-        $stmt->execute();
+        foreach ($user as $itemUser) {
+            $stmtOrder->bind_param("i", $itemUser['id']);
 
-        $result = $stmt->get_result();
+            $stmtOrder->execute();
+        }
 
-        $product = [];
+        $orderId = $stmtOrder->insert_id;
+
+        // Create Order_details
+        $stmtCart = $conex->prepare("INSERT INTO order_details (order_id, product_id, price, amount) VALUES ($orderId, ?, ?, ?)");
+
+        foreach ($cart as $itemCart) {
+            $stmtCart->bind_param("idi", $itemCart['id'], $itemCart['price'], $itemCart['amount']);
+
+            $stmtCart->execute();
+        }
+
+        $stmtCart->close();
+        $conex->close();
+    }
+
+    public static function getOrder()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT o.order_id, price  FROM orders o
+                                    INNER JOIN order_details od ON o.order_id = od.order_id");
+
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $orders = [];
         while ($row = $result->fetch_object('AllProducts')) {
-            $product[] = $row;
+            $orders[] = $row;
         }
 
         $conex->close();
-        return $product;
+
+        return $orders;
+    }
+
+    public static function getOrder_details()
+    {
+        $conex = database::connect();
+
+        // Order_details
+        $stmtOrder_Details = $conex->prepare("SELECT p.name, p.price, d.discount_value, od.amount FROM order_details od 
+                                            INNER JOIN products p ON p.product_id = od.product_id 
+                                            INNER JOIN discounts d ON d.discount_id = od.discount_id ");
+
+        $stmtOrder_Details->execute();
+
+        $result = $stmtOrder_Details->get_result();
+
+        $order_details = [];
+        while ($row = $result->fetch_object('AllProducts')) {
+            $order_details[] = $row;
+        }
+
+        $conex->close();
+
+        return $order_details;
     }
 }

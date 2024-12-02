@@ -6,6 +6,8 @@ abstract class Products
     protected $name;
     protected $price;
     protected $image;
+    protected $amount;
+    protected $discount_value;
     protected $description;
 
     /**
@@ -104,6 +106,46 @@ abstract class Products
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set the value of amount
+     *
+     * @return  self
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of discount_value
+     */
+    public function getDiscount_value()
+    {
+        return $this->discount_value;
+    }
+
+    /**
+     * Set the value of discount_value
+     *
+     * @return  self
+     */
+    public function setDiscount_value($discount_value)
+    {
+        $this->discount_value = $discount_value;
 
         return $this;
     }
