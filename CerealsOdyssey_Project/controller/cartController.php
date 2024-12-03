@@ -23,8 +23,6 @@ class CartController
 
         $cart = Cart::addCart($product);
         $total = Cart::total_price($cartPrice);
-        $view = 'views/pages/cart.php';
-        include_once 'views/main.php';
     }
 
     public static function remove()

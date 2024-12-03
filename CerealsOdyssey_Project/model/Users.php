@@ -4,7 +4,7 @@ include_once 'config/proteccion.php';
 class Users
 {
     protected $user_id;
-    protected $name;
+    protected $firstName;
     protected $lastName;
     protected $email;
     protected $password;
@@ -14,7 +14,7 @@ class Users
     protected $zipCode;
     protected $phone;
     protected $apartment;
-    protected $stage;
+    protected $state;
 
     /**
      * Get the value of user_id
@@ -39,9 +39,9 @@ class Users
     /**
      * Get the value of name
      */
-    public function getName()
+    public function getfirstName()
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
@@ -49,9 +49,9 @@ class Users
      *
      * @return  self
      */
-    public function setName($name)
+    public function setfirstName($firstName)
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
 
         return $this;
     }
@@ -237,21 +237,21 @@ class Users
     }
 
     /**
-     * Get the value of stage
+     * Get the value of state
      */
-    public function getStage()
+    public function getState()
     {
-        return $this->stage;
+        return $this->state;
     }
 
     /**
-     * Set the value of stage
+     * Set the value of state
      *
      * @return  self
      */
-    public function setStage($stage)
+    public function setState($state)
     {
-        $this->stage = $stage;
+        $this->state = $state;
 
         return $this;
     }

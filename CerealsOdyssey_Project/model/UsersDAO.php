@@ -51,17 +51,43 @@ class UsersDAO
         return $usersInformation;
     }
 
-    public static function insertInformation($userData)
-    {
+    public static function updateUser(
+        $userId,
+        $firstName,
+        $lastName,
+        $apartment,
+        $address,
+        $city,
+        $state,
+        $zipCode,
+        $country
+    ) {
         $conex = database::connect();
-        $stmt = $conex->prepare("UPDATE users SET name = ?, lastName = ?, aparment = ?, address = ?, city = ?, stage = ?, zipCode = ?, country = ? WHERE user_id = ?");
-        $stmt->bind_param("sssisi", $userData->getName(), $userData->getLastName(), $userData->getAparment(), $userData->getAddress(), $userData->getCity(), $userData->getZipCode(), $userData->getCountry(), $userData->getUser_Id());
+        $stmt = $conex->prepare("UPDATE users SET firstName = ?, lastName = ?, apartment = ?, address = ?, city = ?, state = ?, zipCode = ?, country = ? WHERE user_id = ?
+    ");
 
-        $stmt->execute();
+        $stmt->bind_param(
+            "ssssssssi",
+            $firstName,
+            $lastName,
+            $apartment,
+            $address,
+            $city,
+            $state,
+            $zipCode,
+            $country,
+            $userId
+        );
+
+        $success = $stmt->execute();
+
         $conex->close();
+
+        return $success;
     }
 
-    public static function getUser($userId)
+
+    public static function getUserID($userId)
     {
         $conex = database::connect();
         $stmt = $conex->prepare("SELECT * FROM users WHERE user_id = ?");
@@ -81,25 +107,24 @@ class UsersDAO
         return $users;
     }
 
-    public static function getUserEmail($email)
+    public static function getUserByEmail($email)
     {
         $conex = database::connect();
         $stmt = $conex->prepare("SELECT * FROM users WHERE email = ?");
-
-        $stmt->bind_param("i", $email);
+        $stmt->bind_param("s", $email);
 
         $stmt->execute();
-
         $result = $stmt->get_result();
 
-        $users = [];
-        while ($row = $result->fetch_object('users')) {
-            $users[] = $row;
-        }
+        $user = $result->fetch_object('Users');
 
+        $stmt->close();
         $conex->close();
-        return $users;
+
+        return $user;
     }
+
+
 
 
     public static function findUser($email)

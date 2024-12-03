@@ -11,9 +11,8 @@
                 <?php include_once 'views/assets/listCategories.php' ?>
 
             </div>
-            </div>
         </section>
-        </section>
+
         <section class="mx-5 my-5 d-flex justify-content-center flex-column">
             <div class="container">
                 <div class="row">

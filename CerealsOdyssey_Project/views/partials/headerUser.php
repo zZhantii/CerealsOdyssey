@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item m-0">
-                        <a class="nav-link active" aria-current="page" href="#">Orders</a>
+                        <a class="nav-link active" aria-current="page" href="?controller=user&action=orders">Orders</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center gap-3">

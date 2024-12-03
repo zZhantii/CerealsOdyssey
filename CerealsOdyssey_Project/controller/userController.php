@@ -24,26 +24,24 @@ class userController
     {
         if (isset($_POST['password']) && isset($_POST['email'])) {
             $email = $_POST['email'];
-            $password =  $_POST['password'];
+            $password = $_POST['password'];
 
+            // Verificar si las credenciales son válidas
             if (UsersDAO::logUser($email, $password)) {
-                $user = new Users();
-                $user->setEmail($email);
-                $user->setPassword($password);
 
-                $user_Id = UsersDAO::getUserEmail($email);
+                $user_Id = UsersDAO::getUserByEmail($email);
 
-                foreach ($user_Id as $item) {
-                    $user_Id = $item->getUser_id();
-                }
+                // Almacena datos en la variable
+                $_SESSION['user'] = [
+                    'id' => $user_Id,
+                    'email' => $email
+                ];
 
-                $user->setUser_id($user_Id);
-
-                self::addUser([$user]);
-
+                // Redirigir al perfil del usuario
                 header("Location:?controller=user&action=profile");
                 exit;
             } else {
+                // Redirigir con un error
                 header("Location:?controller=user&action=login&error=401");
                 exit;
             }
@@ -124,10 +122,6 @@ class userController
 
     public static function addUser($users)
     {
-        if (!is_array($users)) {
-            $users = [$users];
-        }
-
         foreach ($users as $item) {
             $userData = [
                 'email' => $item->getEmail(),
@@ -135,34 +129,86 @@ class userController
                 'id' => $item->getUser_id(),
             ];
 
-            $_SESSION['user'][] = $userData;
+            $_SESSION['users'][] = $userData;
         }
         return $_SESSION['user'];
     }
 
-    public static function addInformation($users)
+    public static function addInformationPersonal()
     {
-        if (!is_array($users)) {
-            $users = [$users];
-        }
+        if (isset($_POST['firstName']) && isset($_POST['lastName'])) {
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
 
-        foreach ($users as $item) {
-            $userData = [
-                'name' => $item->getName(),
-                'email' => $item->getEmail(),
-                'password' => $item->getPassword(),
-                'id' => $item->getUser_id(),
-                'address' => $item->getAddress(),
-                'apartment' => $item->getApartment(),
-                'city' => $item->getCity(),
-                'stage' => $item->getStage(),
-                'ZipCode' => $item->getZipCode(),
-                'Country' => $item->getCountry()
-            ];
+            $_SESSION['user']['firstName'] = $firstName;
+            $_SESSION['user']['lastName'] = $lastName;
 
-            UsersDAO::insertInformation($userData);
-            $_SESSION['user'][] = $userData;
+            header("Location:?controller=user&action=profile&success=1");
+            exit;
+        } else {
+            header("Location:?controller=user&action=profile&error=500");
+            exit;
         }
-        return $_SESSION['user'];
+    }
+
+    public static function addInformation()
+    {
+        if (isset(
+            $_POST['first_name'],
+            $_POST['last_name'],
+            $_POST['apartment'],
+            $_POST['address'],
+            $_POST['city'],
+            $_POST['state'],
+            $_POST['zipCode'],
+            $_POST['country']
+        )) {
+
+            // Recoger los datos enviados por el formulario
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $apartment = $_POST['apartment'];
+            $address = $_POST['address'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $zipCode = $_POST['zipCode'];
+            $country = $_POST['country'];
+
+            // Obtener el ID del usuario desde la sesión
+            $userId = $_SESSION['user']['id']->getUser_id();
+
+            // Actualizar los datos del usuario en la base de datos
+            $success = UsersDAO::updateUser(
+                $userId,
+                $first_name,
+                $last_name,
+                $apartment,
+                $address,
+                $city,
+                $state,
+                $zipCode,
+                $country
+            );
+
+            if ($success) {
+                // Actualizar los datos en la variable de sesión
+                $_SESSION['user']['first_name'] = $first_name;
+                $_SESSION['user']['last_name'] = $last_name;
+                $_SESSION['user']['apartment'] = $apartment;
+                $_SESSION['user']['address'] = $address;
+                $_SESSION['user']['city'] = $city;
+                $_SESSION['user']['state'] = $state;
+                $_SESSION['user']['zipCode'] = $zipCode;
+                $_SESSION['user']['country'] = $country;
+
+                header("Location:?controller=user&action=profile&success=1");
+                exit;
+            } else {
+                header("Location:?controller=user&action=profile&error=500");
+                exit;
+            }
+        } else {
+            echo "No entra isset";
+        }
     }
 }
