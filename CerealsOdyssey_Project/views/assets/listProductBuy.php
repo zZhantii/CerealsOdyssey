@@ -12,7 +12,7 @@
             <p><?= $itemName ?></p>
         </div>
         <div class="col d-flex flex-column justify-content-center">
-            <p class="text-end"><?= $itemPrice ?> €</p>
+            <p class="text-end"><?= $itemPrice * $itemAmount ?> €</p>
         </div>
     </div>
 <?php } ?>

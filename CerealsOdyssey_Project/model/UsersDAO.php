@@ -51,33 +51,12 @@ class UsersDAO
         return $usersInformation;
     }
 
-    public static function updateUser(
-        $userId,
-        $firstName,
-        $lastName,
-        $apartment,
-        $address,
-        $city,
-        $state,
-        $zipCode,
-        $country
-    ) {
+    public static function updateUser($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
+    {
         $conex = database::connect();
-        $stmt = $conex->prepare("UPDATE users SET firstName = ?, lastName = ?, apartment = ?, address = ?, city = ?, state = ?, zipCode = ?, country = ? WHERE user_id = ?
-    ");
+        $stmt = $conex->prepare("UPDATE users SET firstName = ?, lastName = ?, apartment = ?, address = ?, city = ?, state = ?, zipCode = ?, country = ? WHERE user_id = ?");
 
-        $stmt->bind_param(
-            "ssssssssi",
-            $firstName,
-            $lastName,
-            $apartment,
-            $address,
-            $city,
-            $state,
-            $zipCode,
-            $country,
-            $userId
-        );
+        $stmt->bind_param("ssssssssi", $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country, $userId);
 
         $success = $stmt->execute();
 
@@ -85,7 +64,6 @@ class UsersDAO
 
         return $success;
     }
-
 
     public static function getUserID($userId)
     {
@@ -123,9 +101,6 @@ class UsersDAO
 
         return $user;
     }
-
-
-
 
     public static function findUser($email)
     {

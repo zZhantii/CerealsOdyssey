@@ -86,7 +86,7 @@
                         </svg>
                     </a>
                 <?php } ?>
-                <a class="btn" href="?controller=cart&action=show" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <a class="btn" href="javascript:void(0)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                         <rect width="256" height="256" fill="none" />
                         <rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         <path d="M168,88a40,40,0,0,1-80,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <div class="col-12 d-flex sticky-bottom bg-white justify-content-center flex-column mt-3">
-                    <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> -</a>
+                    <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= $total ?></a>
                     <div class="container">
                         <div class="row">
                             <div class="col-3 d-flex align-items-center justify-content-center">

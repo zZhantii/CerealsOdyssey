@@ -26,10 +26,14 @@ class userController
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            // Verificar si las credenciales son válidas
-            if (UsersDAO::logUser($email, $password)) {
+            $user = UsersDAO::getUserByEmail($email);
 
-                $user_Id = UsersDAO::getUserByEmail($email);
+            if ($user) {
+                $hashedPassword = $user->getPassword();
+                // Comprueba la contraseña encriptada
+                if (password_verify($password, $hashedPassword)) {
+                    $user_Id = $user->getUser_id();
+                }
 
                 // Almacena datos en la variable
                 $_SESSION['user'] = [
@@ -58,16 +62,18 @@ class userController
     {
         if (isset($_POST['password']) && isset($_POST['email']) && isset($_POST['confirmPassword'])) {
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $confirmPassword = password_hash($_POST['confirmPassword'], PASSWORD_DEFAULT);
+            $password = $_POST['password']; // Mantener la contraseña en texto plano
+            $confirmPassword = $_POST['confirmPassword']; // Mantener la confirmación en texto plano
 
             if (UsersDAO::findUser($email)) {
                 header("Location:?controller=user&action=register&error=4012");
                 exit;
             } else {
-                if ($password === $confirmPassword) {
+                if ($password === $confirmPassword) { // Comparar las contraseñas en texto plano
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash de la contraseña
+
                     $user = new Users();
-                    $user->setPassword($password);
+                    $user->setPassword($hashedPassword);
                     $user->setEmail($email);
 
                     UsersDAO::createUser($user);
@@ -120,20 +126,6 @@ class userController
         header("location:" . url_base . "?controller=categories");
     }
 
-    public static function addUser($users)
-    {
-        foreach ($users as $item) {
-            $userData = [
-                'email' => $item->getEmail(),
-                'password' => $item->getPassword(),
-                'id' => $item->getUser_id(),
-            ];
-
-            $_SESSION['users'][] = $userData;
-        }
-        return $_SESSION['user'];
-    }
-
     public static function addInformationPersonal()
     {
         if (isset($_POST['firstName']) && isset($_POST['lastName'])) {
@@ -175,7 +167,7 @@ class userController
             $country = $_POST['country'];
 
             // Obtener el ID del usuario desde la sesión
-            $userId = $_SESSION['user']['id']->getUser_id();
+            $userId = $_SESSION['user']['id'];
 
             // Actualizar los datos del usuario en la base de datos
             $success = UsersDAO::updateUser(

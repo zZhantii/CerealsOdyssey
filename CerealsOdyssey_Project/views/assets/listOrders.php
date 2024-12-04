@@ -10,6 +10,7 @@ foreach ($order_details as $items) {
             <div class="container mt-3 p-3">
                 <h4>Order summary</h4>
                 <div class="m-3 d-flex justify-content-between">
+                    <p><?= $items->getAmount() ?></p>
                     <p><?= $items->getName() ?></p>
                     <p><?= $items->getPrice() ?> €</p>
                 </div>
@@ -17,7 +18,7 @@ foreach ($order_details as $items) {
             </div>
             <div class="mt-3 d-flex justify-content-between px-4">
                 <strong>Total Amount:</strong>
-                <p><?= $items->getAmount() ?></p>
+                <p><?= count($_SESSION['cart']) ?></p>
             </div>
             <div class="mt-3 d-flex justify-content-between px-4">
                 <strong>Discount:</strong>

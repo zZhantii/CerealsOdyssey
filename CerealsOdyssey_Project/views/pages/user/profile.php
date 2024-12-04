@@ -222,9 +222,8 @@
                         <p><?= $_SESSION['user']['apartment'] ?></p>
                         <p><?= $_SESSION['user']['city'] . ' ' . $_SESSION['user']['state'] . ' ' . $_SESSION['user']['zipCode'] ?></p>
                         <p><?= $_SESSION['user']['country'] ?></p>
-                        <?php $userId = $_SESSION['user']['id']->getUser_id(); ?>
                     <?php } else { ?>
-                        <div class="bg-secondary p-3 rounded border">
+                        <div class="bg-secondary p-3 mt-3 rounded border">
                             <p>No se agregaron direcciones.</p>
                         </div>
                     <?php } ?>

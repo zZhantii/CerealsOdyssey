@@ -69,10 +69,10 @@ class AllProductsDAO
         $conex = database::connect();
 
         // Create order
-        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status) VALUES (?, 'making')");
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber) VALUES (?, 'making', ?)");
 
         foreach ($user as $itemUser) {
-            $stmtOrder->bind_param("i", $itemUser['id']);
+            $stmtOrder->bind_param("ii", $itemUser['id']);
 
             $stmtOrder->execute();
         }

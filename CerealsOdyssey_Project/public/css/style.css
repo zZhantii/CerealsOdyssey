@@ -569,8 +569,7 @@ hr {
 }
 
 .container-order .container {
-    height: 350px;
-    /* height: fit-content; */
+    height: fit-content;
     background-color: #F6F7F8;
 }
 

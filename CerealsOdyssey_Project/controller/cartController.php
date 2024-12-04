@@ -13,6 +13,12 @@ class CartController
         include_once 'views/main.php';
     }
 
+    public static function cart2()
+    {
+        $cart = $_SESSION['cart'];
+        $total = Cart::total_price($cart);
+    }
+
     public static function add()
     {
         $productId = $_GET['id'];
