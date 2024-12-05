@@ -70,9 +70,9 @@ CREATE TABLE shipments (
     shipment_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,
     status VARCHAR(100) NOT NULL,
-    address VARCHAR(100),  -- Corregido 'addres' a 'address'
+    address VARCHAR(100), 
     city VARCHAR(100),
-    date_shipment DATE  -- Cambié el tipo a DATE
+    date_shipment DATE  
 );
 
 -- Tabla intermedia users-orders

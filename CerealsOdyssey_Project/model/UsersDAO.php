@@ -35,28 +35,25 @@ class UsersDAO
 
     public static function addInformation($fistName, $lastName)
     {
+        $userId = $_SESSION['user']['id'];
+
         $conex = database::connect();
-        $stmt = $conex->prepare("INSERT INTO users (firstName, lastName) VALUES (?,?)");
-        $stmt->bind_param("ss", $fistName, $lastName);
+        $stmt = $conex->prepare("UPDATE users SET firstName = ?, lastName = ? WHERE user_id = ?");
+        $stmt->bind_param("ssi", $fistName, $lastName, $userId);
 
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $usersInformation = [];
-        while ($row = $result->fetch_object('users')) {
-            $usersInformation[] = $row;
-        }
+        $success = $stmt->execute();
 
         $conex->close();
-        return $usersInformation;
+
+        return $success;
     }
 
     public static function updateUser($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("UPDATE users SET firstName = ?, lastName = ?, apartment = ?, address = ?, city = ?, state = ?, zipCode = ?, country = ? WHERE user_id = ?");
+        $stmt = $conex->prepare("INSERT INTO address (user_id, country, apartment, address, city, state, zipCode, first_name, last_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("ssssssssi", $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country, $userId);
+        $stmt->bind_param("isssssiss", $userId, $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
 
         $success = $stmt->execute();
 
@@ -119,5 +116,27 @@ class UsersDAO
 
         $stmt->close();
         $conex->close();
+    }
+
+    public static function getAddress()
+    {
+        $userId = $_SESSION['user']['id'];
+
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM address WHERE user_id = ?");
+
+        $stmt->bind_param("i", $userId);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $address = [];
+        while ($row = $result->fetch_object('users')) {
+            $address[] = $row;
+        }
+
+        $conex->close();
+        return $address;
     }
 }

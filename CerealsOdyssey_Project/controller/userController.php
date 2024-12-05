@@ -89,6 +89,7 @@ class userController
 
     public static function profile()
     {
+        $address = UsersDAO::getAddress();
         $view = 'views/pages/user/profile.php';
         include_once 'views/main.php';
     }
@@ -134,6 +135,8 @@ class userController
 
             $_SESSION['user']['firstName'] = $firstName;
             $_SESSION['user']['lastName'] = $lastName;
+
+            UsersDAO::addInformation($firstName, $lastName);
 
             header("Location:?controller=user&action=profile&success=1");
             exit;

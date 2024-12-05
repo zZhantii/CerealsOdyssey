@@ -66,24 +66,34 @@ class AllProductsDAO
 
     public static function createOrder($user, $cart)
     {
+        var_dump($user);
         $conex = database::connect();
 
         // Create order
         $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber) VALUES (?, 'making', ?)");
 
-        foreach ($user as $itemUser) {
-            $stmtOrder->bind_param("ii", $itemUser['id']);
+        if (isset($user['id']) && isset($user['cardNumber'])) {
+            // Accede a los valores directamente
+            $userId = $user['id'];
+            $cardNumber = $user['cardNumber'];
 
-            $stmtOrder->execute();
+            // Vincula los parámetros
+            $stmtOrder->bind_param("is", $userId, $cardNumber);
+
+            // Ejecuta la consulta
+            if ($stmtOrder->execute()) {
+                echo "Orden creada con éxito.";
+            } else {
+                echo "Error al crear la orden: " . $stmtOrder->error;
+            }
         }
-
         $orderId = $stmtOrder->insert_id;
 
         // Create Order_details
-        $stmtCart = $conex->prepare("INSERT INTO order_details (order_id, product_id, price, amount) VALUES ($orderId, ?, ?, ?)");
+        $stmtCart = $conex->prepare("INSERT INTO order_details (order_id, product_id, price, amount) VALUES (?, ?, ?, ?)");
 
         foreach ($cart as $itemCart) {
-            $stmtCart->bind_param("idi", $itemCart['id'], $itemCart['price'], $itemCart['amount']);
+            $stmtCart->bind_param("idid", $orderId, $itemCart['id'], $itemCart['price'], $itemCart['amount']);
 
             $stmtCart->execute();
         }
