@@ -10,6 +10,9 @@ class userController
     {
         $order_details = AllProductsDAO::getOrder_details();
         $orders = AllProductsDAO::getOrder();
+        $cart = $_SESSION['cart'];
+        $total = Cart::total_price($cart);
+        $totalItems = Cart::total_items($cart);
         $view = 'views/pages/orders.php';
         include_once 'views/main.php';
     }

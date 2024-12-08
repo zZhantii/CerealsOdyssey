@@ -9,6 +9,12 @@ abstract class Products
     protected $amount;
     protected $discount_value;
     protected $description;
+    protected $totalAmount;
+    protected $totalPrice;
+    protected $totalItems;
+    protected $totalDiscount;
+
+    // abstract public function applyDiscount();
 
     /**
      * Get the value of product_id
@@ -146,6 +152,86 @@ abstract class Products
     public function setDiscount_value($discount_value)
     {
         $this->discount_value = $discount_value;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalAmount
+     */
+    public function getTotalAmount()
+    {
+        return $this->totalAmount;
+    }
+
+    /**
+     * Set the value of totalAmount
+     *
+     * @return  self
+     */
+    public function setTotalAmount($totalAmount)
+    {
+        $this->totalAmount = $totalAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalPrice
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * Set the value of totalPrice
+     *
+     * @return  self
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalItems
+     */
+    public function getTotalItems()
+    {
+        return $this->totalItems;
+    }
+
+    /**
+     * Set the value of totalItems
+     *
+     * @return  self
+     */
+    public function setTotalItems($totalItems)
+    {
+        $this->totalItems = $totalItems;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalDiscount
+     */
+    public function getTotalDiscount()
+    {
+        return $this->totalDiscount;
+    }
+
+    /**
+     * Set the value of totalDiscount
+     *
+     * @return  self
+     */
+    public function setTotalDiscount($totalDiscount)
+    {
+        $this->totalDiscount = $totalDiscount;
 
         return $this;
     }

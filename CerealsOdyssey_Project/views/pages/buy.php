@@ -98,14 +98,15 @@
                 <div class="row d-flex flex-column gap-3">
 
                     <?php include_once 'views/assets/listProductBuy.php' ?>
-
-                    <div class="col">
-                        <div class="form-floating my-3 d-flex gap-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="Discount Code">
-                            <label for="floatingInput">Discount Code</label>
-                            <input type="submit" value="Apply" class="border rounded px-3">
+                    <form action="index.php?controller=cart&action=applyDiscount" method="post">
+                        <div class="col">
+                            <div class="form-floating my-3 d-flex gap-3">
+                                <input type="text" name="discount_code" class="form-control" id="floatingInput" placeholder="Discount Code">
+                                <label for="floatingInput">Discount Code</label>
+                                <input type="submit" value="Apply" class="border rounded px-3">
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="col d-flex flex-column gap-3">
                         <div class="col d-flex justify-content-between p-0">
                             <?php

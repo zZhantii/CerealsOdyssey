@@ -62,4 +62,20 @@ class Cart
         }
         return $total;
     }
+
+    public static function total_Amount($cart)
+    {
+        $totalAmount = 0;
+        foreach ($cart as $item) {
+            $totalAmount += $item['amount'];
+        }
+        return $totalAmount;
+    }
+
+    public static function total_Items($cart)
+    {
+        $totalItems = count($_SESSION['cart']);
+
+        return $totalItems;
+    }
 }

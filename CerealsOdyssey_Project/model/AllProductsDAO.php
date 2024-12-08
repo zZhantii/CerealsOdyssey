@@ -66,11 +66,14 @@ class AllProductsDAO
 
     public static function createOrder($user, $cart)
     {
-        var_dump($user);
         $conex = database::connect();
 
         // Create order
-        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber) VALUES (?, 'making', ?)");
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, discount_id, status, cardNumber, totalAmount, totalPrice, totalItems) VALUES (?, 1, 'making', ?, ?, ?, ?)");
+
+        $totalAmount = Cart::total_Amount($cart);
+        $totalPrice = Cart::total_Price($cart);
+        $totalItems = Cart::total_Items($cart);
 
         if (isset($user['id']) && isset($user['cardNumber'])) {
             // Accede a los valores directamente
@@ -78,19 +81,15 @@ class AllProductsDAO
             $cardNumber = $user['cardNumber'];
 
             // Vincula los parámetros
-            $stmtOrder->bind_param("is", $userId, $cardNumber);
+            $stmtOrder->bind_param("isidi", $userId, $cardNumber, $totalAmount, $totalPrice, $totalItems);
 
             // Ejecuta la consulta
-            if ($stmtOrder->execute()) {
-                echo "Orden creada con éxito.";
-            } else {
-                echo "Error al crear la orden: " . $stmtOrder->error;
-            }
+            $stmtOrder->execute();
         }
         $orderId = $stmtOrder->insert_id;
 
         // Create Order_details
-        $stmtCart = $conex->prepare("INSERT INTO order_details (order_id, product_id, price, amount) VALUES (?, ?, ?, ?)");
+        $stmtCart = $conex->prepare("INSERT INTO order_details (order_id, discount_id, product_id, price, amount) VALUES (?, 1, ?, ?, ?)");
 
         foreach ($cart as $itemCart) {
             $stmtCart->bind_param("idid", $orderId, $itemCart['id'], $itemCart['price'], $itemCart['amount']);
@@ -98,7 +97,6 @@ class AllProductsDAO
             $stmtCart->execute();
         }
 
-        $stmtCart->close();
         $conex->close();
     }
 
@@ -106,8 +104,9 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT o.order_id, price  FROM orders o
-                                    INNER JOIN order_details od ON o.order_id = od.order_id");
+        $stmtOrder = $conex->prepare("SELECT o.order_id, price, o.totalAmount, o.totalPrice, o.totalItems, d.discount_value FROM orders o
+                                    INNER JOIN order_details od ON o.order_id = od.order_id
+                                    INNER JOIN discounts d ON d.discount_id = od.discount_id");
 
         $stmtOrder->execute();
 
@@ -130,7 +129,7 @@ class AllProductsDAO
         // Order_details
         $stmtOrder_Details = $conex->prepare("SELECT p.name, p.price, d.discount_value, od.amount FROM order_details od 
                                             INNER JOIN products p ON p.product_id = od.product_id 
-                                            INNER JOIN discounts d ON d.discount_id = od.discount_id ");
+                                            INNER JOIN discounts d ON d.discount_id = od.discount_id");
 
         $stmtOrder_Details->execute();
 

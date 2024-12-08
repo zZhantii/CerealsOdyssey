@@ -8,10 +8,13 @@ class buyController
         $cartPrice = $_SESSION['cart'];
         $total = Cart::total_price($cartPrice);
 
-        $showForm = isset($_SESSION['user']) && !empty($_SESSION['user']);
-
-        $view = 'views/pages/buy.php';
-        include_once 'views/main.php';
+        if (empty($_SESSION['user'])) {
+            $view = 'views/pages/user/login.php';
+            include_once 'views/main.php';
+        } else {
+            $view = 'views/pages/buy.php';
+            include_once 'views/main.php';
+        }
     }
 
     public function createOrder()
@@ -29,7 +32,7 @@ class buyController
             $_SESSION['user']['cardNumber'] = $maskedCardNumber;
 
             AllProductsDAO::createOrder($_SESSION['user'], $_SESSION['cart']);
-            header("Location:?controller=categories");
+            header("Location:?controller=user&action=orders");
         }
     }
 }
