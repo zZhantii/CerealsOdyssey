@@ -576,3 +576,7 @@ hr {
 .container-order .title {
     background-color: #F6F7F8;
 }
+
+.discount {
+    color: red;
+}

@@ -21,4 +21,16 @@ class CategoriesDAO
         $conex->close();
         return $categories;
     }
+
+    public static function applyDiscount($discount)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare('INSERT INTO products (discount) VALUES (?)');
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $conex->close();
+    }
 }

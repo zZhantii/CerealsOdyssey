@@ -33,6 +33,8 @@ class buyController
             $_SESSION['user']['cardNumber'] = $maskedCardNumber;
 
             AllProductsDAO::createOrder($_SESSION['user'], $_SESSION['cart']);
+            unset($_SESSION['discounts']);
+            unset($_SESSION['cart']);
             header("Location:?controller=user&action=orders");
         }
     }

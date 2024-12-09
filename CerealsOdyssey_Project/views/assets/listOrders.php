@@ -31,7 +31,11 @@ foreach ($orders as $item2) { ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Total:</strong>
-            <p><?= $item2->getTotalPrice() ?> €</p>
+            <?php if ($item2->getDiscount_value() > 0) { ?>
+                <p class="discount text-decoration-line-through"><?= $item2->getTotalPrice() ?> €</p>
+            <?php } else { ?>
+                <p><?= $item2->getTotalPrice() ?> €</p>
+            <?php } ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Total with Discount:</strong>

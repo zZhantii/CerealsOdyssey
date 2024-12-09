@@ -56,10 +56,10 @@ class CartController
         include_once 'views/main.php';
     }
 
-    public function applyDiscount()
+    public function applyDiscountCart()
     {
         $cart = $_SESSION['cart'];
-        // $cartTotal = Cart::total_price($cart);
+        $cartTotal = Cart::total_price($cart);
         $discountCode = $_POST['description'] ?? null;
 
         // Obtener el valor del descuento
@@ -69,9 +69,7 @@ class CartController
             echo "El codigo no esta disponible";
         } else {
             $discount_value = $discount[0]->discount_value;
-            $newPrice = Discount::applyCartDiscount($discount_value);
-
-            $_SESSION['newPrice'] = $newPrice;
+            Discount::applyCartDiscount($cartTotal, $discount_value);
 
             header("Location:?controller=buy&action=buyOrder");
             exit;

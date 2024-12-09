@@ -13,7 +13,6 @@ abstract class Products
     protected $totalPrice;
     protected $totalItems;
     protected $totalDiscount;
-
     // abstract public function applyDiscount();
 
     /**

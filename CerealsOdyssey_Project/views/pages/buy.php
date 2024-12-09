@@ -98,7 +98,7 @@
                 <div class="row d-flex flex-column gap-3">
 
                     <?php include_once 'views/assets/listProductBuy.php' ?>
-                    <form action="index.php?controller=cart&action=applyDiscount" method="post">
+                    <form action="index.php?controller=cart&action=applyDiscountCart" method="post">
                         <div class="col">
                             <div class="form-floating my-3 d-flex gap-3">
                                 <input type="text" name="description" class="form-control" id="floatingInput" placeholder="Discount Code">
@@ -123,12 +123,15 @@
                         </div>
                         <div class="col d-flex justify-content-between p-0 mt-3">
                             <h3>Total</h3>
-                            <?php if (empty($_SESSION['newPrice'])) { ?>
+                            <?php if (empty($_SESSION['discounts'])) { ?>
                                 <h3><?= $total ?> €</h3>
-                            <?php } else { ?>
-                                <div class="d-flex flex-column gap-3">
-                                    <h3 class="text-decoration-line-through"><?= $total ?> €</h3>
-                                    <h3 class="text-color-red"><?= $_SESSION['newPrice'] ?> €</h3>
+                            <?php } else {
+                                $cartSummary = $_SESSION['discounts'];
+                                $totalDiscount = $cartSummary['newPrice'];
+                            ?>
+                                <div class="d-flex flex-column align-items-end gap-3">
+                                    <h3 class="text-decoration-line-through discount"><?= $total ?> €</h3>
+                                    <h3><?= $totalDiscount ?> €</h3>
                                 </div>
                             <?php } ?>
                         </div>
