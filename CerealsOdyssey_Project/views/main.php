@@ -13,7 +13,7 @@
 <body>
     <!-- Header -->
     <?php
-    if (isset($_GET['controller']) && $_GET['controller'] == 'categories' || $_GET['controller'] == 'product' || $_GET['controller'] == 'cart') {
+    if (isset($_GET['controller']) && $_GET['controller'] == 'categories' || $_GET['controller'] == 'product' || $_GET['controller'] == 'cart' || $_GET['controller'] == 'enterprise') {
         include_once 'partials/header.php';
     }
 

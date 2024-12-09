@@ -42,16 +42,7 @@
                             <line x1="104" y1="168" x2="104" y2="184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         </svg>Business
                     </a>
-                    <a class="nav-link disabled" aria-disabled="true" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none" />
-                            <path d="M48,112a80,80,0,0,1,160,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M89.6,112A80,80,0,0,1,168,48a81.61,81.61,0,0,1,8.61.46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M134.66,112A80.13,80.13,0,0,1,193,65.4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M88,199.3A96,96,0,0,1,32,112H224a96,96,0,0,1-56,87.3V208a8,8,0,0,1-8,8H96a8,8,0,0,1-8-8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                        </svg>Recipes
-                    </a>
-                    <a class="nav-link disabled" aria-disabled="true">
+                    <a class="nav-link" aria-current="page" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                             <rect width="256" height="256" fill="none" />
                             <polyline points="176 32 176 128 143.99 104 112 128 112 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
@@ -99,18 +90,14 @@
     <div class="collapse" id="collapseExample">
         <div>
             <div class="navbar mx-auto d-flex justify-content-center gap-4">
-                <a class="subnav-link disabled" href="#" aria-disabled="true">
-                    New arrivals
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none" />
-                        <polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                    </svg>
-                </a>
                 <a class="subnav-link disabled" href="?controller=product&action=filter&id=2" aria-disabled="true">
-                    Cereals
+                    Energy Boost
                 </a>
                 <a class="subnav-link disabled" href="?controller=product&action=filter&id=3" aria-disabled="true">
-                    Milks
+                    Calm & Relax
+                </a>
+                <a class="subnav-link disabled" href="#" aria-disabled="true">
+                    Kid’s Fun Mix
                 </a>
                 <a class="subnav-link" href="?controller=product&action=getAllProducts">
                     Shop All
@@ -119,6 +106,22 @@
                         <line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         <polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                     </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="collapse" id="collapseExample4">
+        <div>
+            <div class="navbar mx-auto d-flex justify-content-center gap-4">
+                <a class="subnav-link disabled" href="?controller=enterprise&action=story" aria-disabled="true">
+                    Our story
+                </a>
+                <a class="subnav-link disabled" href="?controller=product&action=filter&id=3" aria-disabled="true">
+                    Odyssey for Good
+                </a>
+                <a class="subnav-link" href="?controller=enterprise&action=contact">
+                    Contact Us
                 </a>
             </div>
         </div>

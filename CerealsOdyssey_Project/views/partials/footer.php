@@ -56,7 +56,11 @@
                         <div class="d-flex flex-column container-fluid gap-3">
                             <h2>Odyssey in your inbox</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque praesentium fugit minus illo. Corporis maxime minima consequuntur qui ipsa consectetur laboriosam ea, aspernatur reiciendis reprehenderit, iusto quasi repellat minus.</p>
-                            <a href="?controller=user&action=register" class="btn btn-primary buttonMain2">Sign in</a>
+                            <?php if (empty($_SESSION['user'])) { ?>
+                                <a href="?controller=user&action=register" class="btn btn-primary buttonMain2">Sign in</a>
+                            <?php } else { ?>
+                                <a href="?controller=user&action=profile" class="btn btn-primary buttonMain2">Profile</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
