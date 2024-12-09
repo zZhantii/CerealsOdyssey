@@ -1,6 +1,7 @@
 <?php
 include_once('model/Cart.php');
-require_once 'model/Discount.php';
+include_once('model/Discount.php');
+include_once('model/DiscountDAO.php');
 include_once('model/AllProductsDAO.php');
 include_once('config/dataBase.php');
 
@@ -58,25 +59,22 @@ class CartController
     public function applyDiscount()
     {
         $cart = $_SESSION['cart'];
-        $cartprice = Cart::total_price($cart);
-        $cartTotal = $cartprice;
-        $discountCode = $_POST['discount_code'] ?? null;
-        $discounts = [
-            "SALE10" => 10, // 10% de descuento
-            "FLAT50" => 50, // $50 de descuento
-        ];
+        // $cartTotal = Cart::total_price($cart);
+        $discountCode = $_POST['description'] ?? null;
 
-        // Verificar si el código de descuento es válido
-        if ($discountCode && isset($discounts[$discountCode])) {
-            $discountValue = $discounts[$discountCode];
-            if (is_numeric($discountValue)) {
-                $newTotal = Discount::applyCartDiscount($cartTotal, $discountValue);
-                echo "Nuevo total después del descuento: $" . number_format($newTotal, 2);
-            } else {
-                echo "Código de descuento no válido.";
-            }
+        // Obtener el valor del descuento
+        $discount = DiscountDAO::getDiscount($discountCode);
+
+        if (empty($discount)) {
+            echo "El codigo no esta disponible";
         } else {
-            echo "Por favor, introduce un código de descuento válido.";
+            $discount_value = $discount[0]->discount_value;
+            $newPrice = Discount::applyCartDiscount($discount_value);
+
+            $_SESSION['newPrice'] = $newPrice;
+
+            header("Location:?controller=buy&action=buyOrder");
+            exit;
         }
     }
 }

@@ -1,4 +1,6 @@
 <?php
+include_once('model/AddressDAO.php');
+include_once('model/Address.php');
 include_once('model/UsersDAO.php');
 include_once('model/Users.php');
 include_once('config/dataBase.php');
@@ -92,7 +94,15 @@ class userController
 
     public static function profile()
     {
-        $address = UsersDAO::getAddress();
+        $address = AddressDAO::getAddress();
+        $view = 'views/pages/user/profile.php';
+        include_once 'views/main.php';
+    }
+
+    public static function removeAddress()
+    {
+        $address_id = $_GET['id'];
+        $remove = AddressDAO::removeAddress($address_id);
         $view = 'views/pages/user/profile.php';
         include_once 'views/main.php';
     }

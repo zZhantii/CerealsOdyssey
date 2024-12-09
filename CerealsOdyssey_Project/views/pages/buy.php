@@ -40,15 +40,15 @@
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    <div>
-                                        <?php if (!empty($_SESSION['user']['first_name']) || !empty($_SESSION['user']['last_name']) || !empty($_SESSION['user']['address']) || !empty($_SESSION['user']['apartment']) || !empty($_SESSION['user']['city']) || !empty($_SESSION['user']['state']) || !empty($_SESSION['user']['zipCode']) || !empty($_SESSION['user']['country'])) { ?>
+                                <div class="accordion-body p-0">
+                                    <div class="d-flex align-items-center justify-content-between bg-info p-3 mt-2">
+                                        <div>
                                             <p><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] . ',' . $_SESSION['user']['address'] . ' ' .  $_SESSION['user']['apartment'] ?></p>
                                             <p><?= $_SESSION['user']['city'] . ' ' . $_SESSION['user']['state'] . ' ' . $_SESSION['user']['zipCode'] . ' ' . $_SESSION['user']['country'] ?></p>
-                                        <?php } else { ?>
-                                            <a href="?controller=user&action=addInformation">Use a different address</a>
-                                        <?php } ?>
+                                        </div>
+                                        <p>trespuntos</p>
                                     </div>
+                                    <a class="btn" href="?controller=user&action=addInformation">+ Use a different address</a>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                     <form action="index.php?controller=cart&action=applyDiscount" method="post">
                         <div class="col">
                             <div class="form-floating my-3 d-flex gap-3">
-                                <input type="text" name="discount_code" class="form-control" id="floatingInput" placeholder="Discount Code">
+                                <input type="text" name="description" class="form-control" id="floatingInput" placeholder="Discount Code">
                                 <label for="floatingInput">Discount Code</label>
                                 <input type="submit" value="Apply" class="border rounded px-3">
                             </div>
@@ -123,7 +123,14 @@
                         </div>
                         <div class="col d-flex justify-content-between p-0 mt-3">
                             <h3>Total</h3>
-                            <h3><?= $total ?> €</h3>
+                            <?php if (empty($_SESSION['newPrice'])) { ?>
+                                <h3><?= $total ?> €</h3>
+                            <?php } else { ?>
+                                <div class="d-flex flex-column gap-3">
+                                    <h3 class="text-decoration-line-through"><?= $total ?> €</h3>
+                                    <h3 class="text-color-red"><?= $_SESSION['newPrice'] ?> €</h3>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

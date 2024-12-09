@@ -1,14 +1,16 @@
 <?php
+// session_start();
 
 class Discount
 {
-    public static function applyProductDiscount($productPrice, $discountPercentage)
+    public static function applyCartDiscount($discountPercentage)
     {
-        return $productPrice - ($productPrice * ($discountPercentage / 100));
-    }
+        $cart = $_SESSION['cart'];
+        $cartTotal = Cart::total_price($cart);
 
-    public static function applyCartDiscount($cartTotal, $discountAmount)
-    {
-        return max(0, $cartTotal - $discountAmount); // Evitar valores negativos
+        $discount = $cartTotal * ($discountPercentage / 100);
+        $newprice = $cartTotal - $discount;
+
+        return $newprice;
     }
 }

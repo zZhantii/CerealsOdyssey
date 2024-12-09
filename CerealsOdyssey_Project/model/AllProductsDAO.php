@@ -104,9 +104,10 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT o.order_id, price, o.totalAmount, o.totalPrice, o.totalItems, d.discount_value FROM orders o
+        $stmtOrder = $conex->prepare("SELECT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, d.discount_value FROM orders o
                                     INNER JOIN order_details od ON o.order_id = od.order_id
-                                    INNER JOIN discounts d ON d.discount_id = od.discount_id");
+                                    INNER JOIN discounts d ON d.discount_id = od.discount_id
+                                    WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id)");
 
         $stmtOrder->execute();
 
@@ -127,9 +128,10 @@ class AllProductsDAO
         $conex = database::connect();
 
         // Order_details
-        $stmtOrder_Details = $conex->prepare("SELECT p.name, p.price, d.discount_value, od.amount FROM order_details od 
-                                            INNER JOIN products p ON p.product_id = od.product_id 
-                                            INNER JOIN discounts d ON d.discount_id = od.discount_id");
+        $stmtOrder_Details = $conex->prepare("SELECT p.name, od.amount, p.price FROM order_details od
+                                            INNER JOIN orders o ON o.order_id = od.order_detail_id
+                                            INNER JOIN products p ON p.product_id = od.product_id
+                                            WHERE od.order_id = o.order_id");
 
         $stmtOrder_Details->execute();
 

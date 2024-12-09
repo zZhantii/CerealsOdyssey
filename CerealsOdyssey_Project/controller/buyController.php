@@ -5,13 +5,14 @@ class buyController
 {
     public function buyOrder()
     {
-        $cartPrice = $_SESSION['cart'];
-        $total = Cart::total_price($cartPrice);
-
         if (empty($_SESSION['user'])) {
             $view = 'views/pages/user/login.php';
             include_once 'views/main.php';
         } else {
+            $cartPrice = $_SESSION['cart'];
+            $total = Cart::total_price($cartPrice);
+            $address = AddressDAO::getAddress();
+
             $view = 'views/pages/buy.php';
             include_once 'views/main.php';
         }

@@ -137,83 +137,12 @@
                 </form>
 
                 <div>
-                    <?php if (!empty($_SESSION['user']['first_name']) || !empty($_SESSION['user']['last_name']) || !empty($_SESSION['user']['address']) || !empty($_SESSION['user']['apartment']) || !empty($_SESSION['user']['city']) || !empty($_SESSION['user']['state']) || !empty($_SESSION['user']['zipCode']) || !empty($_SESSION['user']['country'])) { ?>
-                        <!-- Model para actualizar informacion -->
-                        <form action="?controller=user&action=addInformation" method="post">
-                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add an Address</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body d-flex gap-3 flex-column">
-                                            <div>
-                                                <div class="form-floating p-0">
-                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="country" required>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                    <label for="floatingSelect">Country / Regions</label>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="d-flex justify-content-between p-0 ">
-                                                    <div class="form-floating p-0 col-md-6 pe-2">
-                                                        <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name" value="<?= $_SESSION['user']['first_name'] ?>" required>
-                                                        <label for="floatingInput">First Name</label>
-                                                    </div>
-                                                    <div class="form-floating p-0 col-md-6 ps-2">
-                                                        <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name" value="<?= $_SESSION['user']['last_name'] ?>" required>
-                                                        <label for="floatingInput">Last Name</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="form-floating p-0 col-md-12">
-                                                    <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="address" value="<?= $_SESSION['user']['address'] ?>" required>
-                                                    <label for="floatingInput">Address</label>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="form-floating p-0 col-md-12">
-                                                    <input type="text" class="form-control" id="floatingInput" placeholder="Apartment" name="apartment" value="<?= $_SESSION['user']['apartment'] ?>" required>
-                                                    <label for="floatingInput">Apartment</label>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex ">
-                                                <div class="form-floating p-0 pe-3 col-md-4">
-                                                    <input type="text" class="form-control" id="floatingInput" placeholder="City" name="city" value="<?= $_SESSION['user']['city'] ?>" required>
-                                                    <label for="floatingInput">City</label>
-                                                </div>
-                                                <div class="form-floating p-0 pe-3 col-md-4">
-                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="state" required>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                    <label for="floatingSelect">State</label>
-                                                </div>
-                                                <div class="form-floating p-0 col-md-4">
-                                                    <input type="text" class="form-control" id="floatingInput" placeholder="Zip Code" name="zipCode" value="<?= $_SESSION['user']['zipCode'] ?>" required>
-                                                    <label for="floatingInput">Zip Code</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary buttonMain">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <?php include_once 'views/assets/listAddress.php' ?>
-                    <?php } else { ?>
+                    <?php if (empty($address)) { ?>
                         <div class="bg-secondary p-3 mt-3 rounded border">
                             <p>No se agregaron direcciones.</p>
                         </div>
+                    <?php } else { ?>
+                        <?php include_once 'views/assets/listAddress.php' ?>
                     <?php } ?>
 
                 </div>

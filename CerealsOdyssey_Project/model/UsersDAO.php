@@ -117,26 +117,4 @@ class UsersDAO
         $stmt->close();
         $conex->close();
     }
-
-    public static function getAddress()
-    {
-        $userId = $_SESSION['user']['id'];
-
-        $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM address WHERE user_id = ?");
-
-        $stmt->bind_param("i", $userId);
-
-        $stmt->execute();
-
-        $result = $stmt->get_result();
-
-        $address = [];
-        while ($row = $result->fetch_object('users')) {
-            $address[] = $row;
-        }
-
-        $conex->close();
-        return $address;
-    }
 }
