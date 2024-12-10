@@ -153,6 +153,21 @@ class AllProductsDAO
             $stmtCart->execute();
         }
 
+        // Shipments
+        $stmtShipment = $conex->prepare("INSERT INTO shipments ( order_id, status, address, city, date_shipment) VALUES ( ?, ?, ?, ?, ?)");
+
+        $address = AddressDAO::getAddress();
+
+        $dateShipment = date('Y-m-d', strtotime('+3 days'));
+        $status = 'making';
+
+        var_dump($address);
+
+        foreach ($address as $itemShipment) {
+            $stmtShipment->bind_param("issss", $orderId, $status, $itemShipment->getAddress(), $itemShipment->getCity(), $dateShipment);
+            $stmtShipment->execute();
+        }
+
         $conex->close();
     }
 
@@ -160,9 +175,10 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, o.totalDiscount, o.discount_value FROM orders o
+        $stmtOrder = $conex->prepare("SELECT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, o.totalDiscount, o.discount_value, s.status, s.date_shipment, o.date FROM orders o
                                     INNER JOIN order_details od ON o.order_id = od.order_id
                                     INNER JOIN discounts d ON d.discount_id = od.discount_id
+                                    INNER JOIN shipments s ON o.order_id = s.order_id
                                     WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id)");
 
         $stmtOrder->execute();

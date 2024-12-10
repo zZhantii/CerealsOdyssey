@@ -45,12 +45,11 @@
                                 <div class="accordion-body p-0 ">
                                     <div class="d-flex align-items-center justify-content-between bg-info p-3 mt-2 rounded">
                                         <div>
-                                            <p><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] . ',' . $_SESSION['user']['address'] . ' ' .  $_SESSION['user']['apartment'] ?></p>
-                                            <p><?= $_SESSION['user']['city'] . ' ' . $_SESSION['user']['state'] . ' ' . $_SESSION['user']['zipCode'] . ' ' . $_SESSION['user']['country'] ?></p>
+                                            <?php include_once 'views/assets/listAddressBuy.php' ?>
                                         </div>
                                         <p>trespuntos</p>
                                     </div>
-                                    <a class="btn" href="?controller=user&action=addInformation">+ Use a different address</a>
+                                    <a class="btn text-primary" href="?controller=user&action=addInformation">+ Use a different address</a>
                                 </div>
                             </div>
                         </div>
