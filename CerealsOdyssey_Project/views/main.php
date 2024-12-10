@@ -13,7 +13,7 @@
 <body>
     <!-- Header -->
     <?php
-    if (isset($_GET['controller']) && $_GET['controller'] == 'categories' || $_GET['controller'] == 'product' || $_GET['controller'] == 'cart' || $_GET['controller'] == 'enterprise') {
+    if (isset($_GET['controller']) && $_GET['controller'] == 'categories' || $_GET['controller'] == 'product' || $_GET['controller'] == 'cart' ||  $_GET['controller'] == 'admin') {
         include_once 'partials/header.php';
     }
 
@@ -45,6 +45,7 @@
 
     <!-- JS -->
     <script src="public/js/index.js"></script>
+    <script src="api/api.js" defer></script>
 
     <!-- BootStrap -->
 

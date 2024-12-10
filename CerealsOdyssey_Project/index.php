@@ -1,5 +1,6 @@
 <?php
 include_once 'config/params.php';
+include_once 'controller/adminController.php';
 include_once 'controller/enterpriseController.php';
 include_once 'controller/categoriesController.php';
 include_once 'controller/productController.php';

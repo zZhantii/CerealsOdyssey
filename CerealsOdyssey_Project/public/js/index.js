@@ -22,5 +22,8 @@ document.getElementById('openOffcanvas').addEventListener('click', function () {
 });
 
 
+// Admin Panel
+
+
 
 

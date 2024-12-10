@@ -33,6 +33,8 @@ class userController
 
             $user = UsersDAO::getUserByEmail($email);
 
+            $rol = $user->getRol();
+
             if ($user) {
                 $hashedPassword = $user->getPassword();
                 // Comprueba la contraseña encriptada
@@ -43,7 +45,8 @@ class userController
                 // Almacena datos en la variable
                 $_SESSION['user'] = [
                     'id' => $user_Id,
-                    'email' => $email
+                    'email' => $email,
+                    'rol' => $rol
                 ];
 
                 // Redirigir al perfil del usuario

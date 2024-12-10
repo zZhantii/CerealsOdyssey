@@ -8,6 +8,7 @@ class Users
     protected $lastName;
     protected $email;
     protected $password;
+    protected $rol;
 
     /**
      * Get the value of user_id
@@ -105,6 +106,26 @@ class Users
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rol
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set the value of rol
+     *
+     * @return  self
+     */
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
 
         return $this;
     }

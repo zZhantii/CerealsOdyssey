@@ -8,6 +8,9 @@ class buyController
         if (empty($_SESSION['user'])) {
             $view = 'views/pages/user/login.php';
             include_once 'views/main.php';
+        } elseif (empty($_SESSION['cart'])) {
+            $view = 'views/pages/cart.php';
+            include_once 'views/main.php';
         } else {
             $cartPrice = $_SESSION['cart'];
             $total = Cart::total_price($cartPrice);

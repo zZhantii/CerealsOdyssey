@@ -19,7 +19,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="accordion accordion-flush my-5" id="accordionFlushExample">
+                    <div class="accordion accordion-flush mt-5" id="accordionFlushExample">
                         <div class="accordion-item border-bottom pb-4">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed p-0 " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -33,15 +33,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                    </div>
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item border-0">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                <button class="accordion-button bg-white p-0 py-3" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                     Ship to
                                 </button>
                             </h2>
-                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                                <div class="accordion-body p-0">
-                                    <div class="d-flex align-items-center justify-content-between bg-info p-3 mt-2">
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show ">
+                                <div class="accordion-body p-0 ">
+                                    <div class="d-flex align-items-center justify-content-between bg-info p-3 mt-2 rounded">
                                         <div>
                                             <p><?= $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'] . ',' . $_SESSION['user']['address'] . ' ' .  $_SESSION['user']['apartment'] ?></p>
                                             <p><?= $_SESSION['user']['city'] . ' ' . $_SESSION['user']['state'] . ' ' . $_SESSION['user']['zipCode'] . ' ' . $_SESSION['user']['country'] ?></p>
@@ -109,13 +111,22 @@
                     </form>
                     <div class="col d-flex flex-column gap-3">
                         <div class="col d-flex justify-content-between p-0">
-                            <?php
-                            if (count($_SESSION['cart']) > 1) { ?>
+                            <?php if (count($_SESSION['cart']) > 1) { ?>
                                 <p>Subtotal · <?= count($_SESSION['cart']) ?> items</p>
                             <?php } else { ?>
                                 <p>Subtotal</p>
                             <?php } ?>
-                            <h6><?= $total ?> €</h6>
+                            <?php if (empty($_SESSION['discounts'])) { ?>
+                                <h6><?= $total ?> €</h6>
+                            <?php } else {
+                                $cartSummary = $_SESSION['discounts'];
+                                $totalDiscount = $cartSummary['newPrice'];
+                            ?>
+                                <div class="d-flex align-items-end gap-3">
+                                    <h6><?= $totalDiscount ?> €</h6>
+                                    <h6 class="text-decoration-line-through discount"><?= $total ?> €</h6>
+                                </div>
+                            <?php } ?>
                         </div>
                         <div class="col d-flex justify-content-between p-0">
                             <p>Shipping</p>

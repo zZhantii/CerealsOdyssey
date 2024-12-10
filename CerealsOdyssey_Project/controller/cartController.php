@@ -58,21 +58,25 @@ class CartController
 
     public function applyDiscountCart()
     {
-        $cart = $_SESSION['cart'];
-        $cartTotal = Cart::total_price($cart);
-        $discountCode = $_POST['description'] ?? null;
+        if (!empty($_SESSION['user'])) {
+            $cart = $_SESSION['cart'];
+            $cartTotal = Cart::total_price($cart);
+            $discountCode = $_POST['description'] ?? null;
 
-        // Obtener el valor del descuento
-        $discount = DiscountDAO::getDiscount($discountCode);
+            // Obtener el valor del descuento
+            $discount = DiscountDAO::getDiscount($discountCode);
 
-        if (empty($discount)) {
-            echo "El codigo no esta disponible";
+            if (empty($discount)) {
+                echo "El codigo no esta disponible";
+            } else {
+                $discount_value = $discount[0]->discount_value;
+                Discount::applyCartDiscount($cartTotal, $discount_value);
+
+                header("Location:?controller=buy&action=buyOrder");
+                exit;
+            }
         } else {
-            $discount_value = $discount[0]->discount_value;
-            Discount::applyCartDiscount($cartTotal, $discount_value);
-
-            header("Location:?controller=buy&action=buyOrder");
-            exit;
+            echo "debes iniciar sesion";
         }
     }
 }

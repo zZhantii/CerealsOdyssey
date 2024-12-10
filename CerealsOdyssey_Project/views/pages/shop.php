@@ -4,7 +4,7 @@
 
 <body>
     <main>
-        <section class="mx-5">
+        <section class="mx-5 my-3">
             <h3>Shop by</h3>
             <div class="container my-3">
 

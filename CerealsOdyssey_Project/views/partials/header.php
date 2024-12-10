@@ -19,29 +19,20 @@
                             <path d="M168,88a40,40,0,0,1-80,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         </svg>Shop
                     </a>
-                    <a class="nav-link disabled" aria-disabled="true" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none" />
-                            <rect x="32" y="80" width="192" height="48" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M208,128v72a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="128" y1="80" x2="128" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M176.79,31.21c9.34,9.34,9.89,25.06,0,33.82C159.88,80,128,80,128,80s0-31.88,15-48.79C151.73,21.32,167.45,21.87,176.79,31.21Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M79.21,31.21c-9.34,9.34-9.89,25.06,0,33.82C96.12,80,128,80,128,80s0-31.88-15-48.79C104.27,21.32,88.55,21.87,79.21,31.21Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                        </svg>
-                        Gifting
-                    </a>
-                    <a class="nav-link disabled" aria-disabled="true" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                            <rect width="256" height="256" fill="none" />
-                            <path d="M136,216V32a8,8,0,0,0-12.44-6.65l-80,53.33A8,8,0,0,0,40,85.35V216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <path d="M136,88h72a8,8,0,0,1,8,8V216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="16" y1="216" x2="240" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="104" y1="112" x2="104" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="72" y1="112" x2="72" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="72" y1="168" x2="72" y2="184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                            <line x1="104" y1="168" x2="104" y2="184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                        </svg>Business
-                    </a>
+                    <?php if ($_SESSION['user']['rol'] == 'Admin') { ?>
+                        <a class="nav-link" href="?controller=admin&action=showLogIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                <rect width="256" height="256" fill="none" />
+                                <path d="M136,216V32a8,8,0,0,0-12.44-6.65l-80,53.33A8,8,0,0,0,40,85.35V216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <path d="M136,88h72a8,8,0,0,1,8,8V216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <line x1="16" y1="216" x2="240" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <line x1="104" y1="112" x2="104" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <line x1="72" y1="112" x2="72" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <line x1="72" y1="168" x2="72" y2="184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                                <line x1="104" y1="168" x2="104" y2="184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                            </svg>Admin
+                        </a>
+                    <?php } ?>
                     <a class="nav-link" aria-current="page" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                             <rect width="256" height="256" fill="none" />
@@ -116,9 +107,6 @@
             <div class="navbar mx-auto d-flex justify-content-center gap-4">
                 <a class="subnav-link disabled" href="?controller=enterprise&action=story" aria-disabled="true">
                     Our story
-                </a>
-                <a class="subnav-link disabled" href="?controller=product&action=filter&id=3" aria-disabled="true">
-                    Odyssey for Good
                 </a>
                 <a class="subnav-link" href="?controller=enterprise&action=contact">
                     Contact Us
