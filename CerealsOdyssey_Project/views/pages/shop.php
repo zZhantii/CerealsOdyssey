@@ -49,15 +49,14 @@
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-around">
                             <div class="col col-sm-12 d-flex justify-content-between">
-                                <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
-                                <select name="" id="" class="border border-black py-2">
-                                    <option value="Order By" disabled>Order By</option>
-                                    <option value="Feature">Feature</option>
-                                    <option value="Price1">Price: Low to High</option>
-                                    <option value="Price2">Price: High to Low</option>
-                                    <option value="BestSelling">BestSelling</option>
-                                    <option value="Newest">Newest</option>
-                                </select>
+                                <form action="" method="post">
+                                    <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
+                                    <select name="order" id="order" class="border border-black py-2">
+                                        <option value="Order By" disabled selected>Order By</option>
+                                        <option value="asc">Price: Low to High</option>
+                                        <option value="desc">Price: High to Low</option>
+                                    </select>
+                                </form>
                             </div>
 
                             <?php include_once 'views/assets/listAllProducts.php' ?>

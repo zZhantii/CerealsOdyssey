@@ -43,9 +43,18 @@ class AllProductsDAO
     public static function getProductsFilter($id)
     {
         $conex = database::connect();
+        $order = isset($_POST['order']) ? $_POST['order'] : 'asc'; // Valor por defecto
+
+        // Asegúrate de que el valor sea válido
+        if ($order !== 'asc' && $order !== 'desc') {
+            $order = 'asc'; // Valor por defecto si no es válido
+        }
+
+        // Prepara la consulta SQL
         $stmt = $conex->prepare("SELECT p.* FROM products p 
                                 INNER JOIN categories c ON p.categorie_id = c.categorie_id 
-                                WHERE c.categorie_id = ?");
+                                WHERE c.categorie_id = ? 
+                                ORDER BY p.price $order");
 
         $stmt->bind_param("i", $id);
 
@@ -175,7 +184,8 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, o.totalDiscount, o.discount_value, s.status, s.date_shipment, o.date FROM orders o
+        $stmtOrder = $conex->prepare("SELECT DISTINCT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, o.totalDiscount, o.discount_value, s.status, s.date_shipment, o.date 
+                                    FROM orders o
                                     INNER JOIN order_details od ON o.order_id = od.order_id
                                     INNER JOIN discounts d ON d.discount_id = od.discount_id
                                     INNER JOIN shipments s ON o.order_id = s.order_id
@@ -200,10 +210,10 @@ class AllProductsDAO
         $conex = database::connect();
 
         // Order_details
-        $stmtOrder_Details = $conex->prepare("SELECT p.name, od.amount, p.price FROM order_details od
-                                            INNER JOIN orders o ON o.order_id = od.order_detail_id
-                                            INNER JOIN products p ON p.product_id = od.product_id
-                                            WHERE od.order_id = o.order_id");
+        $stmtOrder_Details = $conex->prepare("SELECT p.name, od.amount, p.price 
+                                            FROM order_details od
+                                            INNER JOIN orders o ON o.order_id = od.order_id
+                                            INNER JOIN products p ON p.product_id = od.product_id");
 
         $stmtOrder_Details->execute();
 

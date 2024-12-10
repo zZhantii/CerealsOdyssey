@@ -22,7 +22,10 @@ document.getElementById('openOffcanvas').addEventListener('click', function () {
 });
 
 
-// Admin Panel
+// submt
+document.getElementById('order').addEventListener('change', function () {
+    document.getElementById('orderForm').submit();
+});
 
 
 
