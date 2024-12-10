@@ -22,6 +22,24 @@ class AllProductsDAO
         return $allProducts;
     }
 
+    public static function getAllProductsApi()
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM products");
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $allProducts = [];
+        while ($row = $result->fetch_assoc()) {
+            $allProducts[] = $row;
+        }
+
+        $conex->close();
+        return $allProducts;
+    }
+
     public static function getProductsFilter($id)
     {
         $conex = database::connect();

@@ -1,10 +1,3 @@
 <?php
-
-class adminController
-{
-    public static function showPanel()
-    {
-        $view = 'views/admin/panelAdmin.php';
-        include_once 'views/main.php';
-    }
-}
+include_once 'model/AllProducts.php';
+include_once 'config/dataBase.php';

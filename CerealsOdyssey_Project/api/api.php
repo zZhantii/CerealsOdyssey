@@ -1,21 +1,20 @@
 <?php
+//include_once '../model/AllProductsDAO.php';
+
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Simulando una base de datos
-$cereals = [
-    ["id" => 1, "name" => "Corn Flakes", "brand" => "Kellogg's"],
-    ["id" => 2, "name" => "Froot Loops", "brand" => "Kellogg's"],
-    ["id" => 3, "name" => "Cheerios", "brand" => "General Mills"]
-];
-
 switch ($method) {
     case 'GET':
-        echo json_encode($cereals);
-        break;
+        $products = AllProductsDAO::getAllProductsApi();
+
+
+        echo json_encode(['status' => 'exito', 'data' => $products]);
+
+
     case 'POST':
         // Aquí puedes manejar la creación de un nuevo cereal
         break;
