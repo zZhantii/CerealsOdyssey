@@ -580,3 +580,29 @@ hr {
 .discount {
     color: red;
 }
+
+
+
+/* Estilos básicos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Estilo para las imágenes */
+img {
+    max-width: 100px;
+    height: auto;
+}

@@ -45,7 +45,6 @@
 
     <!-- JS -->
     <script src="public/js/index.js"></script>
-    <script src="api/api.js"></script>
 
     <!-- BootStrap -->
 
