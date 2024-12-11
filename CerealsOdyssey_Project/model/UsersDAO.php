@@ -62,6 +62,20 @@ class UsersDAO
         return $success;
     }
 
+    public static function editUser($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("UPDATE address SET user_id = ? ,country=?, apartment=?, address=?, city=?, state=?, zipCode=?, first_name=?, last_name=? WHERE addres_id=$userId");
+
+        $stmt->bind_param("isssssiss", $userId, $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
+
+        $success = $stmt->execute();
+
+        $conex->close();
+
+        return $success;
+    }
+
     public static function getUserID($userId)
     {
         $conex = database::connect();

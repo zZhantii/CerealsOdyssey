@@ -222,4 +222,48 @@ class userController
             echo "No entra isset";
         }
     }
+
+    public static function editInformationUser()
+    {
+        if (isset(
+            $_POST['first_name'],
+            $_POST['last_name'],
+            $_POST['apartment'],
+            $_POST['address'],
+            $_POST['city'],
+            $_POST['state'],
+            $_POST['zipCode'],
+            $_POST['country']
+        )) {
+
+            // Recoger los datos enviados por el formulario
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $apartment = $_POST['apartment'];
+            $address = $_POST['address'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $zipCode = $_POST['zipCode'];
+            $country = $_POST['country'];
+
+            // Obtener el ID del usuario desde la sesión
+            $userId = $_SESSION['user']['id'];
+
+            // Actualizar los datos del usuario en la base de datos
+            $success = UsersDAO::editUser(
+                $userId,
+                $first_name,
+                $last_name,
+                $apartment,
+                $address,
+                $city,
+                $state,
+                $zipCode,
+                $country
+            );
+
+            header("Location:?controller=user&action=profile&success=1");
+            exit;
+        }
+    }
 }

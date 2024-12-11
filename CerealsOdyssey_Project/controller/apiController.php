@@ -1,10 +1,16 @@
 <?php
+include_once('model/AllProductsDAO.php');
 
 class apiController
 {
-    public static function showPanel()
+    public static function test()
     {
-        $view = 'views/admin/panelAdmin.php';
-        include_once 'views/main.php';
+
+        $products = AllProductsDAO::getAllProductsApi();
+
+        echo json_encode([
+            'estado' => 'Correct',
+            'data' => 'HOla'
+        ]);
     }
 }

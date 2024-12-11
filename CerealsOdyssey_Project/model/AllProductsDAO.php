@@ -47,7 +47,7 @@ class AllProductsDAO
 
         // Asegúrate de que el valor sea válido
         if ($order !== 'asc' && $order !== 'desc') {
-            $order = 'asc'; // Valor por defecto si no es válido
+            $order = 'asc';
         }
 
         // Prepara la consulta SQL

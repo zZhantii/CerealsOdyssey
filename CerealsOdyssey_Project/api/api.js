@@ -1,4 +1,6 @@
-const apiUrl = 'http://localhost/CerealsOdyssey/CerealsOdyssey_Project/api/api.php';
+const apiUrl = '?controller=api&action=test';
+
+//document.getElementById("").addEventListener("change", getOrders());
 
 async function getCereals() {
     try {

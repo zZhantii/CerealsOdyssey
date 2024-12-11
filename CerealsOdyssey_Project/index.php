@@ -6,6 +6,9 @@ include_once 'controller/productController.php';
 include_once 'controller/buyController.php';
 include_once 'controller/userController.php';
 include_once 'controller/cartController.php';
+include_once 'controller/adminController.php';
+include_once 'controller/apiController.php';
+
 
 if (!isset($_GET['controller'])) {
     header("Location:" . url_base . "?controller=categories");
