@@ -1,31 +1,19 @@
 <?php
 include_once 'config/params.php';
-include_once 'controller/enterpriseController.php';
-include_once 'controller/categoriesController.php';
-include_once 'controller/productController.php';
-include_once 'controller/buyController.php';
-include_once 'controller/userController.php';
-include_once 'controller/cartController.php';
-include_once 'controller/adminController.php';
-include_once 'controller/apiController.php';
 
+$controllers = ['enterprise', 'categories', 'product', 'buy', 'user', 'cart', 'admin', 'api'];
 
-if (!isset($_GET['controller'])) {
-    header("Location:" . url_base . "?controller=categories");
+foreach ($controllers as $controller) {
+    include_once "controller/{$controller}Controller.php";
+}
+
+$controllerName = isset($_GET['controller']) ? $_GET['controller'] : default_controller;
+$name_controller = $controllerName . "Controller";
+
+if (class_exists($name_controller)) {
+    $controller = new $name_controller();
+    $action = isset($_GET['action']) && method_exists($controller, $_GET['action']) ? $_GET['action'] : default_action;
+    $controller->$action();
 } else {
-    $name_controller = $_GET['controller'] . "Controller";
-
-    if (class_exists($name_controller)) {
-        $controller = new $name_controller();
-
-        if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
-            $action = $_GET['action'];
-        } else {
-            $action = default_action;
-        }
-
-        $controller->$action();
-    } else {
-        header("Location:" . url_base . "?controller=categories");
-    }
+    header("Location:" . url_base . "?controller=" . default_controller);
 }
