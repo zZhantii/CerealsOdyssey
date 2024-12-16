@@ -557,7 +557,6 @@ hr {
 }
 
 
-
 /* order */
 
 #orders {
@@ -579,4 +578,25 @@ hr {
 
 .discount {
     color: red;
+}
+
+/* Admin Table */
+#tablaContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tablaContainer th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#tablaContainer th {
+    background-color: #f2f2f2;
+}
+
+#tablaContainer tr:hover {
+    background-color: #f5f5f5;
 }

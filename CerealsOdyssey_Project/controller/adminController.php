@@ -7,9 +7,4 @@ class adminController
         $view = 'views/admin/panelAdmin.php';
         include_once 'views/main.php';
     }
-
-    public static function apiGet()
-    {
-        return $products = AllProductsDAO::getAllProductsApi();
-    }
 }

@@ -19,9 +19,9 @@
     $controller = $_GET['controller'] ?? null;
     $action = $_GET['action'] ?? null;
 
-    if (in_array($controller, ['categories', 'product', 'cart', 'admin'])) {
+    if (in_array($controller, ['categories', 'product', 'cart'])) {
         include_once 'layouts/header.php';
-    } elseif ($controller === 'user' && in_array($action, ['login', 'register'])) {
+    } elseif (($controller == 'admin') || ($controller === 'user' && in_array($action, ['login', 'register']))) {
     } else {
         include_once 'layouts/headerUser.php';
     }
@@ -34,8 +34,9 @@
     <?php
     if ($controller === 'categories') {
         include_once 'layouts/footer.php';
-    } elseif ($controller === 'user' && !in_array($action, ['login', 'register', 'buyOrder'])) {
-        include_once 'layouts/footerUser .php';
+    } elseif ($controller === 'user' && in_array($action, ['login', 'register', 'buyOrder'])) {
+        include_once 'layouts/footerUser.php';
+    } elseif ($controller == 'admin') {
     } else {
         include_once 'layouts/footer2.php';
     }
@@ -43,7 +44,6 @@
 
     <!-- JS -->
     <script src="public/js/index.js"></script>
-    <script src="api/api.js"></script>
 </body>
 
 </html>
