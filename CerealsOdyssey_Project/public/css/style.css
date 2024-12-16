@@ -581,6 +581,14 @@ hr {
 }
 
 /* Admin Table */
+.buttonTable {
+    background-color: #0359ca;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 2px 30px;
+}
+
 #tablaContainer table {
     width: 100%;
     border-collapse: collapse;
@@ -590,7 +598,7 @@ hr {
 td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 #tablaContainer th {

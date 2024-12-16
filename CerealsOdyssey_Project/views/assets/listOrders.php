@@ -7,14 +7,18 @@ foreach ($orders as $item2) { ?>
         </div>
         <div class="container mt-3 p-3">
             <h4>Order summary</h4>
-            <?php foreach ($order_details as $items) { ?>
-                <div class="m-3 d-flex justify-content-between">
-                    <p><?= $items->getAmount() ?></p>
-                    <p><?= $items->getName() ?></p>
-                    <p><?= $items->getPrice() ?> €</p>
-                </div>
-                <div class="border-bottom border-black"></div>
-            <?php } ?>
+            <?php foreach ($order_details as $items) {
+
+                if ($item2->order_id == $items->order_id) {
+            ?>
+                    <div class="m-3 d-flex justify-content-between">
+                        <p><?= $items->getAmount() ?></p>
+                        <p><?= $items->getName() ?></p>
+                        <p><?= $items->getPrice() ?> €</p>
+                    </div>
+                    <div class="border-bottom border-black"></div>
+            <?php }
+            } ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Total Amount:</strong>

@@ -1,19 +1,20 @@
-const apiUrl = '?controller=api&action=get_products';
+const apiUrl = '?controller=api&action=get_orders';
+let orders = [];
 
-document.getElementById('refreshCereals').addEventListener('click', getCereals);
+document.getElementById('refreshCereals').addEventListener('click', getOrders);
 
-async function getCereals() {
+async function getOrders() {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`Error en la red: ${response.status} - ${response.statusText}`);
         }
         const data = await response.json();
-        const cereals = data.data || data;
-        console.log('Cereales obtenidos:', cereals);
+        orders = data.data || data;
+        console.log('Cereales obtenidos:', orders);
 
-        if (cereals.length > 0) {
-            crearTabla(cereals);
+        if (orders.length > 0) {
+            crearTabla(orders);
         } else {
             console.log('No se encontraron productos.');
         }
@@ -22,8 +23,37 @@ async function getCereals() {
     }
 }
 
-function crearTabla(cereals) {
-    console.log('Creando tabla con los productos:', cereals);
+function sortOrders(valueOrder) {
+    switch (valueOrder) {
+        case 'price':
+            orders.sort((a, b) => b.totalPrice - a.totalPrice);
+            break;
+        case 'order_id':
+            orders.sort((a, b) => a.order_id - b.order_id);
+            break;
+        case 'user_id':
+            orders.sort((a, b) => b.user_id - a.user_id);
+            break;
+        case 'status':
+            orders.sort((a, b) => (a.status || '').localeCompare(b.status || ''));
+            break;
+        case 'date':
+            orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+        default:
+            break;
+    }
+    crearTabla(orders);
+}
+
+document.querySelector('select[name="sort"]').addEventListener('change', (event) => {
+    const valueOrder = event.target.value;
+    console.log('Ordenar por:', valueOrder);
+    sortOrders(valueOrder); // Llamar a la función de ordenación
+});
+
+function crearTabla(orders) {
+    console.log('Creando tabla con los productos:', orders);
 
     const tablaContainer = document.getElementById('tablaContainer');
     tablaContainer.innerHTML = '';
@@ -33,7 +63,8 @@ function crearTabla(cereals) {
     const tbody = document.createElement('tbody');
 
     const filaEncabezado = document.createElement('tr');
-    const encabezados = ['Product_ID', 'Categorie_ID', 'Name', 'Price', 'Image', 'Price With Discount'];
+    const encabezados = ['Order_id', 'User_id', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
+
     encabezados.forEach(texto => {
         const th = document.createElement('th');
         th.textContent = texto;
@@ -41,42 +72,48 @@ function crearTabla(cereals) {
     });
     thead.appendChild(filaEncabezado);
 
-    cereals.forEach(cereal => {
+    orders.forEach(order => {
         const tr = document.createElement('tr');
 
-        // ID
-        const tdId = document.createElement('td');
-        tdId.textContent = cereal.product_id;
-        tr.appendChild(tdId);
+        // order_id
+        const tdOrder_id = document.createElement('td');
+        tdOrder_id.textContent = order.order_id;
+        tr.appendChild(tdOrder_id);
 
-        // Categoria
-        const tdCategoria_id = document.createElement('td');
-        tdCategoria_id.textContent = cereal.categorie_id;
-        tr.appendChild(tdCategoria_id);
+        // user_id
+        const tdUser_id = document.createElement('td');
+        tdUser_id.textContent = order.user_id;
+        tr.appendChild(tdUser_id);
 
-        // Nombre
-        const tdNombre = document.createElement('td');
-        tdNombre.textContent = cereal.name;
-        tr.appendChild(tdNombre);
+        // Date
+        const tdDatet = document.createElement('td');
+        tdDatet.textContent = order.date;
+        tr.appendChild(tdDatet);
 
-        // Precio
-        const tdPrecio = document.createElement('td');
-        tdPrecio.textContent = cereal.price;
-        tr.appendChild(tdPrecio);
+        // Card Number
+        const tdCardNumber = document.createElement('td');
+        tdCardNumber.textContent = order.cardNumber;
+        tr.appendChild(tdCardNumber);
 
-        // Imagen
-        const tdImagen = document.createElement('td');
-        const img = document.createElement('img');
-        img.src = `public/img/products/${cereal.image}`;
-        img.alt = cereal.name;
-        img.width = 50;
-        tdImagen.appendChild(img);
-        tr.appendChild(tdImagen);
+        // Status
+        const tdStatus = document.createElement('td');
+        tdStatus.textContent = order.status;
+        tr.appendChild(tdStatus);
+
+        // Price
+        const tdPrice = document.createElement('td');
+        tdPrice.textContent = order.totalPrice;
+        tr.appendChild(tdPrice);
 
         // priceDiscount
         const tdPriceDiscount = document.createElement('td');
-        tdPriceDiscount.textContent = cereal.priceDiscount !== null ? cereal.priceDiscount : 'Sin descuento';
+        tdPriceDiscount.textContent = order.totalDiscount !== null ? order.totalDiscount : 'Null';
         tr.appendChild(tdPriceDiscount);
+
+        // DiscountValue
+        const tdDiscountValue = document.createElement('td');
+        tdDiscountValue.textContent = order.discount_value !== null ? order.discount_value : 'Null';
+        tr.appendChild(tdDiscountValue);
 
         tbody.appendChild(tr);
     });

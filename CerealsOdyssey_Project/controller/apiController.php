@@ -1,30 +1,15 @@
 <?php
 include_once('model/AllProductsDAO.php');
 
-// Configurar las cabeceras para JSON
-// header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
 class apiController
 {
-    public static function get_products()
+    public static function get_orders()
     {
-        // Capturar el método HTTP
-        $method = $_SERVER['REQUEST_METHOD'];
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requestd-With");
 
-        switch ($method) {
-            case 'GET':
-
-                self::show();
-
-                break;
-        }
-    }
-
-
-    public static function show()
-    {
-        echo json_encode($products = AllProductsDAO::getAllProductsApi());
+        echo json_encode($products = AllProductsDAO::getOrderApi());
     }
 }

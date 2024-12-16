@@ -22,24 +22,6 @@ class AllProductsDAO
         return $allProducts;
     }
 
-    public static function getAllProductsApi()
-    {
-        $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM products");
-
-        $stmt->execute();
-
-        $result = $stmt->get_result();
-
-        $allProducts = [];
-        while ($row = $result->fetch_assoc()) {
-            $allProducts[] = $row;
-        }
-
-        $conex->close();
-        return $allProducts;
-    }
-
     public static function getProductsFilter($id)
     {
         $conex = database::connect();
@@ -184,12 +166,12 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT DISTINCT o.order_id, od.price, o.totalAmount, o.totalPrice, o.totalItems, o.totalDiscount, o.discount_value, s.status, s.date_shipment, o.date 
-                                    FROM orders o
-                                    INNER JOIN order_details od ON o.order_id = od.order_id
-                                    INNER JOIN discounts d ON d.discount_id = od.discount_id
-                                    INNER JOIN shipments s ON o.order_id = s.order_id
-                                    WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id)");
+        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
+        FROM orders o
+        LEFT JOIN order_details od ON o.order_id = od.order_id
+        LEFT JOIN discounts d ON d.discount_id = od.discount_id
+        LEFT JOIN shipments s ON o.order_id = s.order_id
+        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
 
         $stmtOrder->execute();
 
@@ -205,12 +187,37 @@ class AllProductsDAO
         return $orders;
     }
 
+    public static function getOrderApi()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
+        FROM orders o
+        LEFT JOIN order_details od ON o.order_id = od.order_id
+        LEFT JOIN discounts d ON d.discount_id = od.discount_id
+        LEFT JOIN shipments s ON o.order_id = s.order_id
+        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $orders = [];
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+
+        $conex->close();
+
+        return $orders;
+    }
+
+
     public static function getOrder_details()
     {
         $conex = database::connect();
 
         // Order_details
-        $stmtOrder_Details = $conex->prepare("SELECT p.name, od.amount, p.price 
+        $stmtOrder_Details = $conex->prepare("SELECT p.name, od.amount, p.price, o.order_id 
                                             FROM order_details od
                                             INNER JOIN orders o ON o.order_id = od.order_id
                                             INNER JOIN products p ON p.product_id = od.product_id");
