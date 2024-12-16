@@ -23,6 +23,12 @@ async function getOrders() {
     }
 }
 
+document.querySelector('select[name="sort"]').addEventListener('change', (event) => {
+    const valueOrder = event.target.value;
+    console.log('Ordenar por:', valueOrder);
+    sortOrders(valueOrder);
+});
+
 function sortOrders(valueOrder) {
     switch (valueOrder) {
         case 'price':
@@ -46,11 +52,6 @@ function sortOrders(valueOrder) {
     crearTabla(orders);
 }
 
-document.querySelector('select[name="sort"]').addEventListener('change', (event) => {
-    const valueOrder = event.target.value;
-    console.log('Ordenar por:', valueOrder);
-    sortOrders(valueOrder); // Llamar a la función de ordenación
-});
 
 function crearTabla(orders) {
     console.log('Creando tabla con los productos:', orders);
