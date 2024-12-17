@@ -235,4 +235,19 @@ class AllProductsDAO
 
         return $order_details;
     }
+
+    public static function delete_order_api($order_id)
+    {
+        $conex = database::connect();
+        // Delete Orders_details
+        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
+        $stmtOrder_Details->execute();
+
+        // Delete orders
+        $stmtOrder = $conex->prepare("DELETE FROM orders WHERE order_id = $order_id");
+        $stmtOrder->execute();
+
+        $conex->close();
+        return 'success';
+    }
 }

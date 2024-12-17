@@ -1,11 +1,19 @@
-const apiUrl = '?controller=api&action=get_orders';
+import { Order } from './model/Order.js';
+
+const apiUrlGet = '?controller=api&action=get_orders';
+const order = new Order(apiUrlGet);
+
+const apiUrlDelete = '?controller=api&action=delete_order';
+// const apiUrl = '?controller=api&action=get_orders';
+// const apiUrl = '?controller=api&action=get_orders';
+
 let orders = [];
 
 document.getElementById('refreshCereals').addEventListener('click', getOrders);
 
 async function getOrders() {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrlGet);
         if (!response.ok) {
             throw new Error(`Error en la red: ${response.status} - ${response.statusText}`);
         }
@@ -49,9 +57,10 @@ function sortOrders(valueOrder) {
         default:
             break;
     }
-    crearTabla(orders);
+    crearTabla(order);
 }
 
+let orderID = 0;
 
 function crearTabla(orders) {
     console.log('Creando tabla con los productos:', orders);
@@ -64,7 +73,7 @@ function crearTabla(orders) {
     const tbody = document.createElement('tbody');
 
     const filaEncabezado = document.createElement('tr');
-    const encabezados = ['Order_id', 'User_id', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
+    const encabezados = ['Order_id', 'User _id', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
 
     encabezados.forEach(texto => {
         const th = document.createElement('th');
@@ -73,7 +82,7 @@ function crearTabla(orders) {
     });
     thead.appendChild(filaEncabezado);
 
-    orders.forEach(order => {
+    orders.forEach(order => { // Cambia aquí a 'orders'
         const tr = document.createElement('tr');
 
         // order_id
@@ -116,6 +125,28 @@ function crearTabla(orders) {
         tdDiscountValue.textContent = order.discount_value !== null ? order.discount_value : 'Null';
         tr.appendChild(tdDiscountValue);
 
+        tr.addEventListener('dblclick', () => {
+            orderID = order.order_id;
+            console.log('Order ID seleccionado:', orderID);
+            // Quitar la clase 'selected' de todas las filas
+            const filas = tbody.getElementsByTagName('tr');
+            for (let fila of filas) {
+                fila.classList.remove('selected');
+            }
+            // Agregar la clase 'selected' a la fila clicada
+            tr.classList.add('selected');
+
+            document.getElementById('DeleteOrder').addEventListener('click', () => {
+                if (orderID !== 0) { // Asegúrate de que se haya seleccionado un orderID
+                    deleteOrder(orderID);
+                } else {
+                    console.log('No se ha seleccionado ningún pedido para eliminar.');
+                }
+            });
+
+            console.log("enviar id" + orderID);
+        });
+
         tbody.appendChild(tr);
     });
 
@@ -124,3 +155,24 @@ function crearTabla(orders) {
 
     tablaContainer.appendChild(tabla);
 }
+
+async function deleteOrder(orderID) {
+    console.log(orderID);
+    const response = await fetch(apiUrlDelete, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderID)
+    });
+
+    if (!response.ok) {
+        console.error('Error en la respuesta del servidor:', response.statusText);
+        return;
+    }
+
+    const dataPetition = await response.text();
+    console.log(dataPetition);
+
+    await getOrders();
+}
+
+

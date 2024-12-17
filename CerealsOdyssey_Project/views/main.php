@@ -21,7 +21,7 @@
 
     if (in_array($controller, ['categories', 'product', 'cart'])) {
         include_once 'layouts/header.php';
-    } elseif (($controller == 'admin') || ($controller === 'user' && in_array($action, ['login', 'register']))) {
+    } elseif (($controller == 'admin' || $controller == 'buy') || ($controller === 'user' && in_array($action, ['login', 'register']))) {
     } else {
         include_once 'layouts/headerUser.php';
     }
