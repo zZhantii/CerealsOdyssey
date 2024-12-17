@@ -137,6 +137,7 @@ function crearTabla(orders) {
             tr.classList.add('selected');
 
             document.getElementById('submitCreateOrder').addEventListener('click', () => {
+                console.log("funciona")
                 const price = document.getElementById('floatingPrice').value;
                 const cardNumber = document.getElementById('floatingCardNumber').value;
                 const status = document.getElementById('floatingStatus').value;

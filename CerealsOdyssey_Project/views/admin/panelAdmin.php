@@ -19,8 +19,8 @@
                 <label for="floatingSelect">Filter</label>
             </div>
             <p>CRUD</p>
-            <button id="" class="buttonTable" data-bs-toggle="modal" data-bs-target="#CreateOrder">Create Order</button>
-            <button id="" class="buttonTable" data-bs-toggle="modal" data-bs-target="#ModifyOrder">Modify Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#CreateOrder">Create Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#ModifyOrder">Modify Order</button>
             <button id="DeleteOrder" class="buttonTable">Delete Order</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
         </div>
@@ -34,7 +34,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Order</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modify</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -51,18 +51,19 @@
                             <option selected>Open this select menu</option>
                             <option value="Making">Making</option>
                             <option value="Delivery">Delivery</option>
-                            <option value="Three">Three</option>
+                            <option value="Cancelled">Cancelled</option>
                         </select>
                         <label for="floatingStatus">Status</label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="submitCreateOrder" class="btn btn-primary">Create</button>
+                    <button type="button" class="btn btn-primary" id="submitCreateOrder">Save</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Modal Modify -->
     <div class="modal fade" id="ModifyOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
