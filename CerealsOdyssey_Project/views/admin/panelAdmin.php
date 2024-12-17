@@ -39,22 +39,26 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
-                        <label for="floatingInput">Name Product</label>
+                        <input type="text" class="form-control" id="floatingPrice" placeholder="Price">
+                        <label for="floatingPrice">Price</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingCardNumber" placeholder="Card Number">
+                        <label for="floatingCardNumber">Card Number</label>
                     </div>
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="Making">Making</option>
+                            <option value="Delivery">Delivery</option>
+                            <option value="Three">Three</option>
                         </select>
-                        <label for="floatingSelect">Works with selects</label>
+                        <label for="floatingStatus">Status</label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="saveCreate" class="btn btn-primary">Save</button>
+                    <button type="button" id="submitCreateOrder" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </div>
@@ -70,26 +74,26 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
-                        <label for="floatingInput">Price</label>
+                        <input type="text" class="form-control" id="floatingPrice" placeholder="Price">
+                        <label for="floatingPrice">Price</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
-                        <label for="floatingInput">Card Number</label>
+                        <input type="text" class="form-control" id="floatingCardNumber" placeholder="Card Number">
+                        <label for="floatingCardNumber">Card Number</label>
                     </div>
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">Making</option>
-                            <option value="2">Delivery</option>
-                            <option value="3">Three</option>
+                            <option value="Making">Making</option>
+                            <option value="Delivery">Delivery</option>
+                            <option value="Three">Three</option>
                         </select>
-                        <label for="floatingSelect">Status</label>
+                        <label for="floatingStatus">Status</label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-primary" id="submitModifyOrder">Save</button>
                 </div>
             </div>
         </div>

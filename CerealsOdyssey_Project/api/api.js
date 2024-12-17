@@ -3,9 +3,9 @@ import { Order } from './model/Order.js';
 const apiUrlGet = '?controller=api&action=get_orders';
 const order = new Order(apiUrlGet);
 
+const apiUrlCreate = '?controller=api&action=create_order';
+const apiUrlModify = '?controller=api&action=modify_order';
 const apiUrlDelete = '?controller=api&action=delete_order';
-// const apiUrl = '?controller=api&action=get_orders';
-// const apiUrl = '?controller=api&action=get_orders';
 
 let orders = [];
 
@@ -136,11 +136,31 @@ function crearTabla(orders) {
             // Agregar la clase 'selected' a la fila clicada
             tr.classList.add('selected');
 
+            document.getElementById('submitCreateOrder').addEventListener('click', () => {
+                const price = document.getElementById('floatingPrice').value;
+                const cardNumber = document.getElementById('floatingCardNumber').value;
+                const status = document.getElementById('floatingStatus').value;
+
+                createOrder(orderID, { price, cardNumber, status });
+            });
+
+            document.getElementById('submitModifyOrder').addEventListener('click', () => {
+                const price = document.getElementById('floatingPrice').value;
+                const cardNumber = document.getElementById('floatingCardNumber').value;
+                const status = document.getElementById('floatingStatus').value;
+
+                if (orderID !== 0) {
+                    modifyOrder(orderID, { price, cardNumber, status });
+                } else {
+                    alert('No se ha seleccionado ningún pedido para modificar.');
+                }
+            });
+
             document.getElementById('DeleteOrder').addEventListener('click', () => {
-                if (orderID !== 0) { // Asegúrate de que se haya seleccionado un orderID
+                if (orderID !== 0) {
                     deleteOrder(orderID);
                 } else {
-                    console.log('No se ha seleccionado ningún pedido para eliminar.');
+                    alert('No se ha seleccionado ningún pedido para eliminar.');
                 }
             });
 
@@ -154,6 +174,44 @@ function crearTabla(orders) {
     tabla.appendChild(tbody);
 
     tablaContainer.appendChild(tabla);
+}
+
+async function createOrder(orderID, orderData) {
+    console.log('Modificando pedido ID:', orderID, 'con datos:', orderData);
+    const response = await fetch(apiUrlCreate, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderID, ...orderData }) // Envía el ID y los datos del formulario
+    });
+
+    if (!response.ok) {
+        console.error('Error en la respuesta del servidor:', response.statusText);
+        return;
+    }
+
+    const dataPetition = await response.text();
+    console.log(dataPetition);
+
+    await getOrders();
+}
+
+async function modifyOrder(orderID, orderData) {
+    console.log('Modificando pedido ID:', orderID, 'con datos:', orderData);
+    const response = await fetch(apiUrlModify, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderID, ...orderData }) // Envía el ID y los datos del formulario
+    });
+
+    if (!response.ok) {
+        console.error('Error en la respuesta del servidor:', response.statusText);
+        return;
+    }
+
+    const dataPetition = await response.text();
+    console.log(dataPetition);
+
+    await getOrders();
 }
 
 async function deleteOrder(orderID) {
@@ -174,5 +232,3 @@ async function deleteOrder(orderID) {
 
     await getOrders();
 }
-
-
