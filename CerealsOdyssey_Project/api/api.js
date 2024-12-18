@@ -1,15 +1,12 @@
 import { Order } from './model/Order.js';
-
 const apiUrlGet = '?controller=api&action=get_orders';
-const order = new Order(apiUrlGet);
-
 const apiUrlCreate = '?controller=api&action=create_order';
 const apiUrlModify = '?controller=api&action=modify_order';
 const apiUrlDelete = '?controller=api&action=delete_order';
-
 let orders = [];
+let order_ID = 0;
 
-document.getElementById('refreshCereals').addEventListener('click', getOrders);
+document.getElementById('createTable').addEventListener('click', getOrders);
 
 async function getOrders() {
     try {
@@ -19,52 +16,18 @@ async function getOrders() {
         }
         const data = await response.json();
         orders = data.data || data;
-        console.log('Cereales obtenidos:', orders);
 
         if (orders.length > 0) {
             crearTabla(orders);
         } else {
-            console.log('No se encontraron productos.');
+            document.getElementById('tablaContainer').innerHTML = '<p>No se encontraron pedidos.</p>';
         }
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-document.querySelector('select[name="sort"]').addEventListener('change', (event) => {
-    const valueOrder = event.target.value;
-    console.log('Ordenar por:', valueOrder);
-    sortOrders(valueOrder);
-});
-
-function sortOrders(valueOrder) {
-    switch (valueOrder) {
-        case 'price':
-            orders.sort((a, b) => b.totalPrice - a.totalPrice);
-            break;
-        case 'order_id':
-            orders.sort((a, b) => a.order_id - b.order_id);
-            break;
-        case 'user_id':
-            orders.sort((a, b) => b.user_id - a.user_id);
-            break;
-        case 'status':
-            orders.sort((a, b) => (a.status || '').localeCompare(b.status || ''));
-            break;
-        case 'date':
-            orders.sort((a, b) => new Date(b.date) - new Date(a.date));
-            break;
-        default:
-            break;
-    }
-    crearTabla(order);
-}
-
-let orderID = 0;
-
 function crearTabla(orders) {
-    console.log('Creando tabla con los productos:', orders);
-
     const tablaContainer = document.getElementById('tablaContainer');
     tablaContainer.innerHTML = '';
 
@@ -72,109 +35,138 @@ function crearTabla(orders) {
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
 
-    const filaEncabezado = document.createElement('tr');
-    const encabezados = ['Order_id', 'User _id', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
+    const encabezados = ['Order ID', 'User ID', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
 
-    encabezados.forEach(texto => {
+    const filaEncabezado = document.createElement('tr');
+    encabezados.forEach(encabezado => {
         const th = document.createElement('th');
-        th.textContent = texto;
+        th.textContent = encabezado;
         filaEncabezado.appendChild(th);
     });
     thead.appendChild(filaEncabezado);
 
-    orders.forEach(order => { // Cambia aquí a 'orders'
-        const tr = document.createElement('tr');
+    orders.forEach(order => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${order.order_id}</td>
+            <td>${order.user_id}</td>
+            <td>${order.date}</td>
+            <td>${order.cardNumber}</td>
+            <td>${order.status}</td>
+            <td>${order.totalPrice}</td>
+            <td>${order.totalDiscount || 'Null'}</td>
+            <td>${order.discount_value || 'Null'}</td>
+        `;
 
-        // order_id
-        const tdOrder_id = document.createElement('td');
-        tdOrder_id.textContent = order.order_id;
-        tr.appendChild(tdOrder_id);
-
-        // user_id
-        const tdUser_id = document.createElement('td');
-        tdUser_id.textContent = order.user_id;
-        tr.appendChild(tdUser_id);
-
-        // Date
-        const tdDatet = document.createElement('td');
-        tdDatet.textContent = order.date;
-        tr.appendChild(tdDatet);
-
-        // Card Number
-        const tdCardNumber = document.createElement('td');
-        tdCardNumber.textContent = order.cardNumber;
-        tr.appendChild(tdCardNumber);
-
-        // Status
-        const tdStatus = document.createElement('td');
-        tdStatus.textContent = order.status;
-        tr.appendChild(tdStatus);
-
-        // Price
-        const tdPrice = document.createElement('td');
-        tdPrice.textContent = order.totalPrice;
-        tr.appendChild(tdPrice);
-
-        // priceDiscount
-        const tdPriceDiscount = document.createElement('td');
-        tdPriceDiscount.textContent = order.totalDiscount !== null ? order.totalDiscount : 'Null';
-        tr.appendChild(tdPriceDiscount);
-
-        // DiscountValue
-        const tdDiscountValue = document.createElement('td');
-        tdDiscountValue.textContent = order.discount_value !== null ? order.discount_value : 'Null';
-        tr.appendChild(tdDiscountValue);
-
-        tr.addEventListener('dblclick', () => {
-            orderID = order.order_id;
-            console.log('Order ID seleccionado:', orderID);
-            // Quitar la clase 'selected' de todas las filas
-            const filas = tbody.getElementsByTagName('tr');
-            for (let fila of filas) {
-                fila.classList.remove('selected');
-            }
-            // Agregar la clase 'selected' a la fila clicada
-            tr.classList.add('selected');
-
-            document.getElementById('submitCreateOrder').addEventListener('click', () => {
-                console.log("funciona")
-                const price = document.getElementById('floatingPrice').value;
-                const cardNumber = document.getElementById('floatingCardNumber').value;
-                const status = document.getElementById('floatingStatus').value;
-
-                createOrder(orderID, { price, cardNumber, status });
-            });
-
-            document.getElementById('submitModifyOrder').addEventListener('click', () => {
-                const price = document.getElementById('floatingPrice').value;
-                const cardNumber = document.getElementById('floatingCardNumber').value;
-                const status = document.getElementById('floatingStatus').value;
-
-                if (orderID !== 0) {
-                    modifyOrder(orderID, { price, cardNumber, status });
-                } else {
-                    alert('No se ha seleccionado ningún pedido para modificar.');
-                }
-            });
-
-            document.getElementById('DeleteOrder').addEventListener('click', () => {
-                if (orderID !== 0) {
-                    deleteOrder(orderID);
-                } else {
-                    alert('No se ha seleccionado ningún pedido para eliminar.');
-                }
-            });
-
-            console.log("enviar id" + orderID);
-        });
-
-        tbody.appendChild(tr);
+        fila.addEventListener('dblclick', () => seleccionarFila(order.order_id, fila));
+        tbody.appendChild(fila);
     });
 
     tabla.appendChild(thead);
     tabla.appendChild(tbody);
-
     tablaContainer.appendChild(tabla);
+}
+
+function seleccionarFila(orderID, fila) {
+    document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
+    fila.classList.add('selected');
+    order_ID = orderID;
+    console.log('ID seleccionado:', order_ID);
+}
+
+document.getElementById('apply-filter').addEventListener('click', () => {
+    const filtro = document.getElementById('filter').value.toLowerCase();
+    const pedidosFiltrados = orders.filter(order => order.user_id.toString().includes(filtro));
+    crearTabla(pedidosFiltrados);
+});
+
+document.getElementById('order-by').addEventListener('change', (event) => {
+    const criterio = event.target.value;
+    orders.sort((a, b) => {
+        if (criterio === 'price') {
+            return b.totalPrice - a.totalPrice;
+        } else if (criterio === 'date') {
+            return new Date(b.date) - new Date(a.date);
+        } else if (criterio === 'status') {
+            return a.status.localeCompare(b.status);
+        } else {
+            return a[criterio] - b[criterio];
+        }
+    });
+    crearTabla(orders);
+});
+
+// Funcion para hacer Delete
+document.getElementById('DeleteOrder').addEventListener('click', () => {
+    const selectedRow = document.querySelector('tr.selected');
+    if (!selectedRow) {
+        alert('Selecciona un pedido primero.');
+        return;
+    }
+    const orderID = selectedRow.cells[0].textContent;
+    deleteOrder(orderID);
+});
+
+
+async function deleteOrder(order_ID) {
+    console.log(orderID);
+    const response = await fetch(apiUrlDelete, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderID)
+    });
+
+    if (!response.ok) {
+        console.error('Error en la respuesta del servidor:', response.statusText);
+        return;
+    }
+
+    const dataPetition = await response.text();
+    console.log(dataPetition);
+
+    await getOrders();
+}
+
+// Funcion para hacer Modificar
+document.getElementById('submitOrder').addEventListener('click', () => {
+    const price = document.getElementById('floatingPrice').value;
+    const cardNumber = document.getElementById('floatingCardNumber').value;
+    const status = document.getElementById('floatingStatus').value;
+
+    console.log("Valores capturados:", { price, cardNumber, status });
+    console.log(order_ID);
+
+    modifyOrder(order_ID, { price, cardNumber, status });
+});
+
+async function modifyOrder(order_ID, orderData) {
+    try {
+        console.log(`Modificando pedido ID: ${order_ID} con datos:`, orderData);
+
+        const requestBody = {
+            orderID: order_ID,
+            status: orderData.status,
+            totalPrice: orderData.totalPrice,
+            cardNumber: orderData.cardNumber,
+        };
+
+        const response = await fetch(apiUrlModify, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+        }
+
+        const data = await response.text();
+        console.log('Respuesta del servidor:', data);
+
+        await getOrders();
+    } catch (error) {
+        console.error('Error modificando el pedido:', error);
+    }
 }
 
 async function createOrder(orderID, orderData) {
@@ -196,40 +188,5 @@ async function createOrder(orderID, orderData) {
     await getOrders();
 }
 
-async function modifyOrder(orderID, orderData) {
-    console.log('Modificando pedido ID:', orderID, 'con datos:', orderData);
-    const response = await fetch(apiUrlModify, {
-        method: 'PUT',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderID, ...orderData }) // Envía el ID y los datos del formulario
-    });
 
-    if (!response.ok) {
-        console.error('Error en la respuesta del servidor:', response.statusText);
-        return;
-    }
 
-    const dataPetition = await response.text();
-    console.log(dataPetition);
-
-    await getOrders();
-}
-
-async function deleteOrder(orderID) {
-    console.log(orderID);
-    const response = await fetch(apiUrlDelete, {
-        method: 'DELETE',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderID)
-    });
-
-    if (!response.ok) {
-        console.error('Error en la respuesta del servidor:', response.statusText);
-        return;
-    }
-
-    const dataPetition = await response.text();
-    console.log(dataPetition);
-
-    await getOrders();
-}

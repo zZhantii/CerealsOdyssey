@@ -46,6 +46,7 @@ class apiController
             return;
         }
 
+        error_log(print_r($data, true));
         $result = AllProductsDAO::modify_order_api($data);
 
         echo json_encode($result);

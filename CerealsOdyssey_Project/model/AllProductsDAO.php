@@ -260,13 +260,13 @@ class AllProductsDAO
         $conex = database::connect();
         // Asegúrate de que estás accediendo a los valores correctos
         $orderID = $data['orderID'];
-        $price = $data['price'];
+        $price = $data['totalPrice'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=? WHERE order_id=?");
-        $stmt->bind_param("ssdi", $status, $cardNumber, $price, $orderID); // Asegúrate de que los tipos de datos sean correctos
+        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=? WHERE order_id=$orderID");
+        $stmt->bind_param("ssd", $status, $cardNumber, $price);
 
         // Ejecuta la consulta
         if ($stmt->execute()) {
@@ -280,7 +280,7 @@ class AllProductsDAO
     {
         $conex = database::connect();
         // Delete Orders_details
-        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = ?");
+        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
         $stmtOrder_Details->execute();
 
         // Delete orders
