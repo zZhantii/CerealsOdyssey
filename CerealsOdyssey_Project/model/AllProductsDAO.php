@@ -239,12 +239,12 @@ class AllProductsDAO
     public static function create_order_api($data)
     {
         $conex = database::connect();
-        $price = $data['price'];
+        $price = $data['totalPrice'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("INSERT INTO orders (status, cardNumber, totalPrice) VALUES(?, ?, ?)");
+        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=?");
         $stmt->bind_param("ssd", $status, $cardNumber, $price);
 
         // Ejecuta la consulta

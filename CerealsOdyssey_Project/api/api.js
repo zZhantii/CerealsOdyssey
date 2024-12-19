@@ -71,6 +71,7 @@ function seleccionarFila(orderID, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
     order_ID = orderID;
+    document.getElementById('ID').innerHTML = '<p>ID</p> ' + order_ID;
     console.log('ID seleccionado:', order_ID);
 }
 
@@ -136,7 +137,12 @@ document.getElementById('submitOrder').addEventListener('click', () => {
     console.log("Valores capturados:", { price, cardNumber, status });
     console.log(order_ID);
 
-    modifyOrder(order_ID, { price, cardNumber, status });
+    if (order_ID == 0) {
+        createOrder({ price, cardNumber, status })
+    } else {
+        modifyOrder(order_ID, { price, cardNumber, status });
+    }
+
 });
 
 async function modifyOrder(order_ID, orderData) {
@@ -169,12 +175,20 @@ async function modifyOrder(order_ID, orderData) {
     }
 }
 
-async function createOrder(orderID, orderData) {
-    console.log('Modificando pedido ID:', orderID, 'con datos:', orderData);
+// Funcion para crear Pedidos
+async function createOrder(orderData) {
+    console.log('Creando pedido con datos:', orderData);
+
+    const requestBody = {
+        status: orderData.status,
+        totalPrice: orderData.totalPrice,
+        cardNumber: orderData.cardNumber,
+    };
+
     const response = await fetch(apiUrlCreate, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderID, ...orderData }) // Envía el ID y los datos del formulario
+        body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {

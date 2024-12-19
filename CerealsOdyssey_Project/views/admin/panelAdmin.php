@@ -8,8 +8,8 @@
         <div class="d-flex flex-column gap-3">
             <button id="createTable" class="buttonTable">Get Orders</button>
             <button class="buttonTable">View History</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#CreateOrder">Create Order</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#ModifyOrder">Modify Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify Order</button>
             <button id="DeleteOrder" class="buttonTable">Delete Order</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
 
@@ -48,11 +48,12 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="ModifyOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="Order" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Orders </h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Orders</h1>
+                <p class="d-flex ps-3 gap-2" id="ID"></p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
