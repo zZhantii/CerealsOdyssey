@@ -10,7 +10,7 @@
             <button class="buttonTable">View History</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create Order</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify Order</button>
-            <button id="DeleteOrder" class="buttonTable">Delete Order</button>
+            <button id="DeleteUser" class="buttonTable">Delete Order</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
@@ -32,7 +32,7 @@
             <button id="apply-filter">Aplicar Filtros</button>
 
             <label for="order-by">Ordenar por:</label>
-            <select id="order-by">
+            <select id="user-by">
                 <option value="order_id">ID Pedido</option>
                 <option value="user_id">ID Usuario</option>
                 <option value="price">Precio</option>
@@ -59,34 +59,33 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingUser" placeholder="Price">
-                    <label for="floatingPrice">User_ID</label>
+                    <input type="text" class="form-control" id="floatingEmail" placeholder="Email">
+                    <label for="floatingEmail">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPrice" placeholder="Price">
-                    <label for="floatingPrice">Price</label>
+                    <input type="text" class="form-control" id="floatingFirstName" placeholder="First Name">
+                    <label for="floatingFirstName">First Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingCardNumber" placeholder="Card Number">
-                    <label for="floatingCardNumber">Card Number</label>
+                    <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name">
+                    <label for="floatingLastName">Last Name</label>
                 </div>
                 <div class="form-floating">
-                    <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
+                    <select class="form-select" id="floatingRol" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>
-                        <option value="Making">Making</option>
-                        <option value="Delivery">Delivery</option>
-                        <option value="Three">Three</option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
                     </select>
-                    <label for="floatingStatus">Status</label>
+                    <label for="floatingRol">Rol</label>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="submitOrder">Save</button>
+                <button type="button" class="btn btn-primary" id="submitUser">Save</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- JS -->
-<script type="module" src="api/api.js"></script>
+<script type="module" src="api/apiUser.js"></script>

@@ -35,7 +35,7 @@ function crearTabla(users) {
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
 
-    const encabezados = ['user ID', 'User ID', 'Date', 'Card Number', 'Status', 'Price', 'Price With Discount', 'Discount Value'];
+    const encabezados = ['user_id', 'First Name', 'Last Name', 'Password', 'Email', 'rol'];
 
     const filaEncabezado = document.createElement('tr');
     encabezados.forEach(encabezado => {
@@ -49,13 +49,11 @@ function crearTabla(users) {
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <td>${user.user_id}</td>
-            <td>${user.user_id}</td>
-            <td>${user.date}</td>
-            <td>${user.cardNumber}</td>
-            <td>${user.status}</td>
-            <td>${user.totalPrice}</td>
-            <td>${user.totalDiscount || 'Null'}</td>
-            <td>${user.discount_value || 'Null'}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.password}</td>
+            <td>${user.email}</td>
+            <td>${user.rol}</td>
         `;
 
         fila.addEventListener('dblclick', () => seleccionarFila(user.user_id, fila));
@@ -97,19 +95,19 @@ document.getElementById('user-by').addEventListener('change', (event) => {
     crearTabla(users);
 });
 
-document.getElementById('submituser').addEventListener('click', () => {
-    const price = document.getElementById('floatingPrice').value;
-    const cardNumber = document.getElementById('floatingCardNumber').value;
-    const status = document.getElementById('floatingStatus').value;
+document.getElementById('submitUser').addEventListener('click', () => {
+    const email = document.getElementById('floatingEmail').value;
+    const firstName = document.getElementById('floatingFirstName').value;
+    const lastName = document.getElementById('floatingLastName').value;
+    const rol = document.getElementById('floatingRol').value;
 
-    console.log("Valores capturados:", { price, cardNumber, status });
+    console.log("Valores capturados:", { email, firstName, lastName, rol });
     console.log(user_ID);
 
     if (user_ID == 0) {
-        const user_id = document.getElementById('floatingUser').value;
-        createuser({ user_id, price, cardNumber, status })
+        createuser({ email, firstName, lastName, rol })
     } else {
-        modifyuser(user_ID, { price, cardNumber, status });
+        modifyuser(user_ID, { email, firstName, lastName, rol });
     }
 });
 
@@ -120,12 +118,11 @@ async function modifyuser(user_ID, userData) {
 
         const requestBody = {
             userID: user_ID,
-            status: userData.status,
-            price: userData.price,
-            cardNumber: userData.cardNumber,
+            email: userData.email,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            rol: userData.rol
         };
-
-        console.log("Datos: " + userData.price + userData.status);
 
         const response = await fetch(apiUrlModify, {
             method: 'PUT',
@@ -151,10 +148,10 @@ async function createuser(userData) {
     console.log('Creando pedido con datos:', userData);
 
     const requestBody = {
-        user_id: userData.user_id,
-        status: userData.status,
-        price: userData.price,
-        cardNumber: userData.cardNumber,
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        rol: userData.rol
     };
 
     console.log("Datos: " + userData.user_id + userData.status);
@@ -177,7 +174,7 @@ async function createuser(userData) {
 }
 
 // Funcion para hacer Delete
-document.getElementById('Deleteuser').addEventListener('click', () => {
+document.getElementById('DeleteUser').addEventListener('click', () => {
     const selectedRow = document.querySelector('tr.selected');
     if (!selectedRow) {
         alert('Selecciona un pedido primero.');
