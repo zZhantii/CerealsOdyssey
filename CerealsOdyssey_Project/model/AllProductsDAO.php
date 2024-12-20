@@ -187,31 +187,6 @@ class AllProductsDAO
         return $orders;
     }
 
-    public static function getOrderApi()
-    {
-        $conex = database::connect();
-
-        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
-        FROM orders o
-        LEFT JOIN order_details od ON o.order_id = od.order_id
-        LEFT JOIN discounts d ON d.discount_id = od.discount_id
-        LEFT JOIN shipments s ON o.order_id = s.order_id
-        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
-        $stmtOrder->execute();
-
-        $result = $stmtOrder->get_result();
-
-        $orders = [];
-        while ($row = $result->fetch_assoc()) {
-            $orders[] = $row;
-        }
-
-        $conex->close();
-
-        return $orders;
-    }
-
-
     public static function getOrder_details()
     {
         $conex = database::connect();
@@ -239,12 +214,58 @@ class AllProductsDAO
     public static function create_order_api($data)
     {
         $conex = database::connect();
-        $price = $data['totalPrice'];
+        $user_id = $data['user_id'];
+        $price = $data['price'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=?");
+        $stmt = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber, totalPrice) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("issd", $user_id, $status, $cardNumber, $price);
+
+        // Ejecuta la consulta
+        if ($stmt->execute()) {
+            return ['success' => true, 'message' => 'Order create successfully'];
+        } else {
+            return ['success' => false, 'message' => 'Error modifying order: ' . $stmt->error];
+        }
+    }
+
+    public static function getOrderApi()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
+        FROM orders o
+        LEFT JOIN order_details od ON o.order_id = od.order_id
+        LEFT JOIN discounts d ON d.discount_id = od.discount_id
+        LEFT JOIN shipments s ON o.order_id = s.order_id
+        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $orders = [];
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+
+        $conex->close();
+
+        return $orders;
+    }
+
+    public static function modify_order_api($data)
+    {
+        $conex = database::connect();
+        // Asegúrate de que estás accediendo a los valores correctos
+        $orderID = $data['orderID'];
+        $price = $data['price'];
+        $cardNumber = $data['cardNumber'];
+        $status = $data['status'];
+
+        // Aquí es donde deberías preparar tu consulta SQL
+        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=? WHERE order_id=$orderID");
         $stmt->bind_param("ssd", $status, $cardNumber, $price);
 
         // Ejecuta la consulta
@@ -255,12 +276,51 @@ class AllProductsDAO
         }
     }
 
+    public static function delete_order_api($order_id)
+    {
+        $conex = database::connect();
+        // Delete Orders_details
+        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
+        $stmtOrder_Details->execute();
+
+        // Delete orders
+        $stmtOrder = $conex->prepare("DELETE FROM orders WHERE order_id = $order_id");
+        $stmtOrder->execute();
+
+        $conex->close();
+        return 'success';
+    }
+
+    public static function getUserApi()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
+        FROM orders o
+        LEFT JOIN order_details od ON o.order_id = od.order_id
+        LEFT JOIN discounts d ON d.discount_id = od.discount_id
+        LEFT JOIN shipments s ON o.order_id = s.order_id
+        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $orders = [];
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+
+        $conex->close();
+
+        return $orders;
+    }
+
     public static function modify_order_api($data)
     {
         $conex = database::connect();
         // Asegúrate de que estás accediendo a los valores correctos
         $orderID = $data['orderID'];
-        $price = $data['totalPrice'];
+        $price = $data['price'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 

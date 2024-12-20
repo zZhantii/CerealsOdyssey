@@ -97,38 +97,6 @@ document.getElementById('order-by').addEventListener('change', (event) => {
     crearTabla(orders);
 });
 
-// Funcion para hacer Delete
-document.getElementById('DeleteOrder').addEventListener('click', () => {
-    const selectedRow = document.querySelector('tr.selected');
-    if (!selectedRow) {
-        alert('Selecciona un pedido primero.');
-        return;
-    }
-    const orderID = selectedRow.cells[0].textContent;
-    deleteOrder(orderID);
-});
-
-
-async function deleteOrder(order_ID) {
-    console.log(orderID);
-    const response = await fetch(apiUrlDelete, {
-        method: 'DELETE',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderID)
-    });
-
-    if (!response.ok) {
-        console.error('Error en la respuesta del servidor:', response.statusText);
-        return;
-    }
-
-    const dataPetition = await response.text();
-    console.log(dataPetition);
-
-    await getOrders();
-}
-
-// Funcion para hacer Modificar
 document.getElementById('submitOrder').addEventListener('click', () => {
     const price = document.getElementById('floatingPrice').value;
     const cardNumber = document.getElementById('floatingCardNumber').value;
@@ -138,13 +106,14 @@ document.getElementById('submitOrder').addEventListener('click', () => {
     console.log(order_ID);
 
     if (order_ID == 0) {
-        createOrder({ price, cardNumber, status })
+        const user_id = document.getElementById('floatingUser').value;
+        createOrder({ user_id, price, cardNumber, status })
     } else {
         modifyOrder(order_ID, { price, cardNumber, status });
     }
-
 });
 
+// Funcion para hacer Modificar
 async function modifyOrder(order_ID, orderData) {
     try {
         console.log(`Modificando pedido ID: ${order_ID} con datos:`, orderData);
@@ -152,9 +121,11 @@ async function modifyOrder(order_ID, orderData) {
         const requestBody = {
             orderID: order_ID,
             status: orderData.status,
-            totalPrice: orderData.totalPrice,
+            price: orderData.price,
             cardNumber: orderData.cardNumber,
         };
+
+        console.log("Datos: " + orderData.price + orderData.status);
 
         const response = await fetch(apiUrlModify, {
             method: 'PUT',
@@ -180,10 +151,13 @@ async function createOrder(orderData) {
     console.log('Creando pedido con datos:', orderData);
 
     const requestBody = {
+        user_id: orderData.user_id,
         status: orderData.status,
-        totalPrice: orderData.totalPrice,
+        price: orderData.price,
         cardNumber: orderData.cardNumber,
     };
+
+    console.log("Datos: " + orderData.user_id + orderData.status);
 
     const response = await fetch(apiUrlCreate, {
         method: 'POST',
@@ -202,5 +176,33 @@ async function createOrder(orderData) {
     await getOrders();
 }
 
+// Funcion para eliminar
+// Funcion para hacer Delete
+document.getElementById('DeleteOrder').addEventListener('click', () => {
+    const selectedRow = document.querySelector('tr.selected');
+    if (!selectedRow) {
+        alert('Selecciona un pedido primero.');
+        return;
+    }
+    const order_ID = selectedRow.cells[0].textContent;
+    deleteOrder(order_ID);
+});
 
+async function deleteOrder(order_ID) {
+    console.log(order_ID);
+    const response = await fetch(apiUrlDelete, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order_ID)
+    });
 
+    if (!response.ok) {
+        console.error('Error en la respuesta del servidor:', response.statusText);
+        return;
+    }
+
+    const dataPetition = await response.text();
+    console.log(dataPetition);
+
+    await getOrders();
+}
