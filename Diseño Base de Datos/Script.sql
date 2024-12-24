@@ -1,10 +1,10 @@
 -- Tabla users
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100),
+    firstName VARCHAR(100),
+    lastName VARCHAR(100),
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    phone INT,
     rol VARCHAR(100) NOT NULL DEFAULT 'user'
 );
 
@@ -21,8 +21,7 @@ CREATE TABLE discounts (
 CREATE TABLE categories (
     categorie_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    img VARCHAR(100) NOT NULL,
-    description VARCHAR(100)
+    img VARCHAR(100) NOT NULL
 );
 
 -- Tabla products
@@ -33,7 +32,8 @@ CREATE TABLE products (
     discount_id INT,
     name VARCHAR(100) NOT NULL,
     price INT NOT NULL,
-    image VARCHAR(100),
+    priceDiscount INT,
+    image VARCHAR(100) NOT NULL,
     description VARCHAR(100)
 );
 
@@ -42,8 +42,8 @@ CREATE TABLE orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     discount_id INT,
-    date DATETIME NOT NULL,  
-    status VARCHAR(100) NOT NULL,
+    date DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP',  
+    status VARCHAR(100) DEFAULT 'Making',
     total_amount INT NOT NULL,
     total_price INT NOT NULL
 );
@@ -63,16 +63,6 @@ CREATE TABLE ingredients(
     ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(100) NOT NULL
-);
-
--- Tabla shipments
-CREATE TABLE shipments (
-    shipment_id INT PRIMARY KEY AUTO_INCREMENT,
-    order_id INT NOT NULL,
-    status VARCHAR(100) NOT NULL,
-    address VARCHAR(100), 
-    city VARCHAR(100),
-    date_shipment DATE  
 );
 
 -- Tabla intermedia users-orders
@@ -114,10 +104,6 @@ FOREIGN KEY (order_detail_id) REFERENCES order_details(order_detail_id),
 ADD FOREIGN KEY (categorie_id) REFERENCES categories(categorie_id),
 ADD FOREIGN KEY (discount_id) REFERENCES discounts(discount_id);
 
--- Agregar claves foráneas a shipments
-ALTER TABLE shipments
-ADD FOREIGN KEY (order_id) REFERENCES orders(order_id);
-
 -- Agregar claves foráneas a user_orders
 ALTER TABLE user_orders
 ADD FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -133,14 +119,15 @@ ALTER TABLE order_detail_ingredients
 ADD FOREIGN KEY (order_detail_id) REFERENCES order_details(order_detail_id),
 ADD FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id);
 
-
-
 -- Insertar datos en la tabla categories
-INSERT INTO categories (name, image, description) VALUES ('OdysseyID', 'category1.webp', 'Description for OdysseyID');
-INSERT INTO categories (name, image, description) VALUES ('Cereals', 'category2.webp', 'Description for Cereals');
-INSERT INTO categories (name, image, description) VALUES ('Milks', 'category3.webp', 'Description for Milks');
-INSERT INTO categories (name, image, description) VALUES ('Celebrates', 'category4.webp', 'Description for Celebrates');
-INSERT INTO categories (name, image , description) VALUES ('All Products', 'category5.webp', 'Description for AllProducts');
+INSERT INTO categories (name, image, description) VALUES ('OdysseyID', 'category1.webp');
+INSERT INTO categories (name, image, description) VALUES ('Energy Boost', 'category2.webp');
+INSERT INTO categories (name, image, description) VALUES ('Calm & Relax', 'category3.webp');
+INSERT INTO categories (name, image, description) VALUES ('Kids Fun Mix', 'category4.webp');
+
+-- Insertar datos en la tabla Discounts
+INSERT INTO discounts (description, discount_value) VALUES ('No Discount', 0);
+INSERT INTO discounts (description, discount_value) VALUES ('SALE10', '10');
 
 
 
