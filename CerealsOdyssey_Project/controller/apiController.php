@@ -78,7 +78,7 @@ class apiController
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requestd-With");
 
-        echo json_encode($products = AllProductsDAO::getUserApi());
+        echo json_encode($products = UsersDAO::getUserApi());
     }
 
     public static function create_user()
@@ -95,7 +95,7 @@ class apiController
             return;
         }
 
-        $result = AllProductsDAO::create_user_api($data);
+        $result = UsersDAO::create_user_api($data);
 
         echo json_encode($result);
     }
@@ -115,7 +115,7 @@ class apiController
         }
 
         error_log(print_r($data, true));
-        $result = AllProductsDAO::modify_user_api($data);
+        $result = UsersDAO::modify_user_api($data);
 
         echo json_encode($result);
     }
@@ -134,7 +134,76 @@ class apiController
             return;
         }
 
-        $result = AllProductsDAO::delete_user_api($data);
+        $result = UsersDAO::delete_user_api($data);
+
+        echo json_encode($result);
+    }
+
+    public static function get_product()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requestd-With");
+
+        echo json_encode($products = AllProductsDAO::get_product_api());
+    }
+
+    public static function create_product()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if ($data === null) {
+            echo json_encode(['error' => 'Invalid JSON input']);
+            return;
+        }
+
+        error_log(print_r($data, true));
+        $result = AllProductsDAO::create_product_api($data);
+
+        echo json_encode($result);
+    }
+
+    public static function modify_product()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if ($data === null) {
+            echo json_encode(['error' => 'Invalid JSON input']);
+            return;
+        }
+
+        error_log(print_r($data, true));
+        $result = AllProductsDAO::modify_product_api($data);
+
+        echo json_encode($result);
+    }
+
+    public static function delete_product()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if ($data === null) {
+            echo json_encode(['error' => 'Invalid JSON input']);
+            return;
+        }
+
+        $result = AllProductsDAO::delete_product_api($data);
 
         echo json_encode($result);
     }

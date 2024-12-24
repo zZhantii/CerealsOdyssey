@@ -131,4 +131,86 @@ class UsersDAO
         $stmt->close();
         $conex->close();
     }
+
+
+    public static function getUserApi()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT * FROM users");
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $users = [];
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+
+        $conex->close();
+
+        return $users;
+    }
+
+    public static function create_user_api($data)
+    {
+        $conex = database::connect();
+
+        $email = $data['email'];
+        $firstName = $data['firstName'];
+        $lastName = $data['lastName'];
+        $password = $data['password'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $rol = $data['rol'];
+
+        // Aquí es donde deberías preparar tu consulta SQL
+        $stmt = $conex->prepare("INSERT INTO users (email, firstName, lastName, password, rol) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $email, $firstName, $lastName, $hashedPassword, $rol);
+
+        // Ejecuta la consulta
+        if ($stmt->execute()) {
+            return ['success' => true, 'message' => 'Order create successfully'];
+        } else {
+            return ['success' => false, 'message' => 'Error modifying order: ' . $stmt->error];
+        }
+    }
+
+    public static function modify_user_api($data)
+    {
+        $conex = database::connect();
+        // Asegúrate de que estás accediendo a los valores correctos
+        $userId = $data['userID'];
+        $email = $data['email'];
+        $firstName = $data['firstName'];
+        $lastName = $data['lastName'];
+        $password = $data['password'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $rol = $data['rol'];
+
+        // Aquí es donde deberías preparar tu consulta SQL
+        $stmt = $conex->prepare("UPDATE users SET email=?, firstName=?, lastName=?, password=?, rol=? WHERE user_id=$userId");
+        $stmt->bind_param("sssss", $email, $firstName, $lastName, $hashedPassword, $rol);
+
+        // Ejecuta la consulta
+        if ($stmt->execute()) {
+            return ['success' => true, 'message' => 'Order modified successfully'];
+        } else {
+            return ['success' => false, 'message' => 'Error modifying order: ' . $stmt->error];
+        }
+    }
+
+    public static function delete_user_api($order_id)
+    {
+        $conex = database::connect();
+        // Delete Orders_details
+        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
+        $stmtOrder_Details->execute();
+
+        // Delete orders
+        $stmtOrder = $conex->prepare("DELETE FROM orders WHERE order_id = $order_id");
+        $stmtOrder->execute();
+
+        $conex->close();
+        return 'success';
+    }
 }

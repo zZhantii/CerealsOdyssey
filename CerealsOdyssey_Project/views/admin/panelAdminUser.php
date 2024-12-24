@@ -70,6 +70,10 @@
                     <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name">
                     <label for="floatingLastName">Last Name</label>
                 </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
                 <div class="form-floating">
                     <select class="form-select" id="floatingRol" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>

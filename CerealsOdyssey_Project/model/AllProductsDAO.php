@@ -291,36 +291,37 @@ class AllProductsDAO
         return 'success';
     }
 
-    public static function getUserApi()
+    public static function get_product_api()
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT * FROM users");
+        $stmtOrder = $conex->prepare("SELECT * FROM products");
         $stmtOrder->execute();
 
         $result = $stmtOrder->get_result();
 
-        $users = [];
+        $products = [];
         while ($row = $result->fetch_assoc()) {
-            $users[] = $row;
+            $products[] = $row;
         }
 
         $conex->close();
 
-        return $users;
+        return $products;
     }
 
-    public static function create_user_api($data)
+    public static function create_product_api($data)
     {
         $conex = database::connect();
-        $email = $data['email'];
-        $firstName = $data['firstName'];
-        $lastName = $data['lastName'];
-        $rol = $data['rol'];
+
+        $price = $data['price'];
+        $name = $data['name'];
+        $image = $data['image'];
+        $PriceDiscount = $data['PriceDiscount'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("INSERT INTO users (email, firstName, lastName, rol) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $email, $firstName, $lastName, $rol);
+        $stmt = $conex->prepare("INSERT INTO products (name, price, image, priceDiscount) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sdsd", $name, $price, $image, $PriceDiscount);
 
         // Ejecuta la consulta
         if ($stmt->execute()) {
@@ -330,19 +331,19 @@ class AllProductsDAO
         }
     }
 
-    public static function modify_user_api($data)
+    public static function modify_product_api($data)
     {
         $conex = database::connect();
         // Asegúrate de que estás accediendo a los valores correctos
-        $userId = $data['userID'];
-        $email = $data['email'];
-        $firstName = $data['firstName'];
-        $lastName = $data['lastName'];
-        $rol = $data['rol'];
+        $productID = $data['productID'];
+        $price = $data['price'];
+        $name = $data['name'];
+        $image = $data['image'];
+        $PriceDiscount = $data['PriceDiscount'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("UPDATE users SET email=?, firstName=?, lastName=?, rol=? WHERE user_id=$userId");
-        $stmt->bind_param("ssss", $email, $firstName, $lastName, $rol);
+        $stmt = $conex->prepare("UPDATE products SET name=?, price=?, image=?, priceDiscount=? WHERE product_id=$productID");
+        $stmt->bind_param("sdsd", $name, $price, $image, $PriceDiscount);
 
         // Ejecuta la consulta
         if ($stmt->execute()) {
@@ -352,15 +353,15 @@ class AllProductsDAO
         }
     }
 
-    public static function delete_user_api($order_id)
+    public static function delete_product_api($product_ID)
     {
         $conex = database::connect();
         // Delete Orders_details
-        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
+        $stmtOrder_Details = $conex->prepare("DELETE FROM products WHERE product_id = $product_ID");
         $stmtOrder_Details->execute();
 
         // Delete orders
-        $stmtOrder = $conex->prepare("DELETE FROM orders WHERE order_id = $order_id");
+        $stmtOrder = $conex->prepare("DELETE FROM products WHERE product_id = $product_ID");
         $stmtOrder->execute();
 
         $conex->close();
