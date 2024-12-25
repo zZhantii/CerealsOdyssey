@@ -21,7 +21,8 @@ CREATE TABLE discounts (
 CREATE TABLE categories (
     categorie_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    img VARCHAR(100) NOT NULL
+    image VARCHAR(100) NOT NULL,
+    description VARCHAR(100)
 );
 
 -- Tabla products
@@ -42,7 +43,7 @@ CREATE TABLE orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     discount_id INT,
-    date DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP',  
+    date DATETIME,  
     status VARCHAR(100) DEFAULT 'Making',
     total_amount INT NOT NULL,
     total_price INT NOT NULL
@@ -120,10 +121,10 @@ ADD FOREIGN KEY (order_detail_id) REFERENCES order_details(order_detail_id),
 ADD FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id);
 
 -- Insertar datos en la tabla categories
-INSERT INTO categories (name, image, description) VALUES ('OdysseyID', 'category1.webp');
-INSERT INTO categories (name, image, description) VALUES ('Energy Boost', 'category2.webp');
-INSERT INTO categories (name, image, description) VALUES ('Calm & Relax', 'category3.webp');
-INSERT INTO categories (name, image, description) VALUES ('Kids Fun Mix', 'category4.webp');
+INSERT INTO categories (name, image) VALUES ('OdysseyID', 'category1.webp');
+INSERT INTO categories (name, image) VALUES ('Energy Boost', 'category2.webp');
+INSERT INTO categories (name, image) VALUES ('Calm & Relax', 'category3.webp');
+INSERT INTO categories (name, image) VALUES ('Kids Fun Mix', 'category4.webp');
 
 -- Insertar datos en la tabla Discounts
 INSERT INTO discounts (description, discount_value) VALUES ('No Discount', 0);
