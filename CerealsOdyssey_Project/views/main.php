@@ -17,7 +17,7 @@
 <body>
     <!-- Header -->
     <?php
-    $controller = $_GET['controller'] ?? null;
+    $controller = $_GET['controller'];
     $action = $_GET['action'] ?? null;
 
     if (in_array($controller, ['categories', 'product', 'cart'])) {

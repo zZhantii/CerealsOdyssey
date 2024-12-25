@@ -16,7 +16,7 @@ class buyController
             $total = Cart::total_price($cartPrice);
             $address = AddressDAO::getAddress();
 
-            $view = 'views/pages/buy.php';
+            $view = 'views/pages/checkOut/buy.php';
             include_once 'views/main.php';
         }
     }

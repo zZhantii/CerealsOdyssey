@@ -7,8 +7,17 @@ class AllProductsDAO
     public static function getAllProducts()
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM products");
 
+        $order = isset($_GET['order']) ? $_GET['order'] : '';
+        $sql = "SELECT * FROM products";
+
+        if ($order === 'asc') {
+            $sql .= " ORDER BY price ASC";
+        } elseif ($order === 'desc') {
+            $sql .= " ORDER BY price DESC";
+        }
+
+        $stmt = $conex->prepare($sql);
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -22,21 +31,15 @@ class AllProductsDAO
         return $allProducts;
     }
 
+
     public static function getProductsFilter($id)
     {
         $conex = database::connect();
-        $order = isset($_POST['order']) ? $_POST['order'] : 'asc'; // Valor por defecto
-
-        // Asegúrate de que el valor sea válido
-        if ($order !== 'asc' && $order !== 'desc') {
-            $order = 'asc';
-        }
 
         // Prepara la consulta SQL
         $stmt = $conex->prepare("SELECT p.* FROM products p 
                                 INNER JOIN categories c ON p.categorie_id = c.categorie_id 
-                                WHERE c.categorie_id = ? 
-                                ORDER BY p.price $order");
+                                WHERE c.categorie_id = ?");
 
         $stmt->bind_param("i", $id);
 
@@ -144,21 +147,6 @@ class AllProductsDAO
             $stmtCart->execute();
         }
 
-        // Shipments
-        $stmtShipment = $conex->prepare("INSERT INTO shipments ( order_id, status, address, city, date_shipment) VALUES ( ?, ?, ?, ?, ?)");
-
-        $address = AddressDAO::getAddress();
-
-        $dateShipment = date('Y-m-d', strtotime('+3 days'));
-        $status = 'making';
-
-        var_dump($address);
-
-        foreach ($address as $itemShipment) {
-            $stmtShipment->bind_param("issss", $orderId, $status, $itemShipment->getAddress(), $itemShipment->getCity(), $dateShipment);
-            $stmtShipment->execute();
-        }
-
         $conex->close();
     }
 
@@ -170,7 +158,6 @@ class AllProductsDAO
         FROM orders o
         LEFT JOIN order_details od ON o.order_id = od.order_id
         LEFT JOIN discounts d ON d.discount_id = od.discount_id
-        LEFT JOIN shipments s ON o.order_id = s.order_id
         WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
 
         $stmtOrder->execute();

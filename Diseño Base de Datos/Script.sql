@@ -8,6 +8,20 @@ CREATE TABLE users (
     rol VARCHAR(100) NOT NULL DEFAULT 'user'
 );
 
+-- Tabla address
+CREATE TABLE address (
+    address_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    country VARCHAR(100),
+    apartment VARCHAR(100),
+    address VARCHAR(100),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zipCode VARCHAR(100)
+);
+
 -- Tabla discounts
 CREATE TABLE discounts (
     discount_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -110,6 +124,10 @@ ALTER TABLE user_orders
 ADD FOREIGN KEY (user_id) REFERENCES users(user_id),
 ADD FOREIGN KEY (order_id) REFERENCES orders(order_id);
 
+-- Agregar claves foráneas a user
+ALTER TABLE address
+ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
+
 -- Agregar claves foráneas a discount_products
 ALTER TABLE discount_products
 ADD FOREIGN KEY (discount_id) REFERENCES discounts(discount_id),
@@ -130,6 +148,15 @@ INSERT INTO categories (name, image) VALUES ('Kids Fun Mix', 'category4.webp');
 INSERT INTO discounts (description, discount_value) VALUES ('No Discount', 0);
 INSERT INTO discounts (description, discount_value) VALUES ('SALE10', '10');
 
+-- Insertar datos en la tabla Products
+INSERT INTO products (categorie_id, name, price, image, description)
+VALUES 
+( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.jpg', 'Classic cornflakes made with whole grain, perfect for breakfast'),
+( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.jpg', 'Oats packed with vitamins and minerals to give you a morning energy boost'),
+( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.jpg', 'A calming cereal blend with chamomile and lavender, ideal for evening relaxation'),
+( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.jpg', 'Crunchy cornflakes sweetened with natural honey for a tasty breakfast'),
+( 4,  'Fun Fruit Cereal', 3, 'fun_fruit_cereal.jpg', 'Colorful fruity cereal that kids will love, with no artificial colors or preservatives'),
+( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.jpg', 'Oats enriched with lavender and chamomile, perfect for a relaxing breakfast');
 
 
 

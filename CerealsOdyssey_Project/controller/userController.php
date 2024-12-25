@@ -15,7 +15,7 @@ class userController
         $cart = $_SESSION['cart'];
         $total = Cart::total_price($cart);
         $totalItems = Cart::total_items($cart);
-        $view = 'views/pages/orders.php';
+        $view = 'views/pages/user/orders.php';
         include_once 'views/main.php';
     }
 
@@ -31,7 +31,7 @@ class userController
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $user = UsersDAO::getUserByEmail($email);
+            $user = UsersDAO::get_User_ByEmail($email);
 
             $rol = $user->getRol();
 
@@ -98,6 +98,8 @@ class userController
     public static function profile()
     {
         $address = AddressDAO::getAddress();
+        $email = $_SESSION['user']['email'];
+        $user = UsersDAO::get_User_ByEmail($email);
         $view = 'views/pages/user/profile.php';
         include_once 'views/main.php';
     }
@@ -250,7 +252,7 @@ class userController
             $userId = $_SESSION['user']['id'];
 
             // Actualizar los datos del usuario en la base de datos
-            $success = UsersDAO::editUser(
+            $success = AddressDAO::edit_Address(
                 $userId,
                 $first_name,
                 $last_name,

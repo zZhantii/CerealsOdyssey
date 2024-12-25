@@ -8,7 +8,7 @@
             <h3>Shop by</h3>
             <div class="container my-3">
 
-                <?php include_once 'views/assets/listCategories.php' ?>
+                <?php include_once 'views/pages/home/listCategories.php' ?>
 
             </div>
         </section>
@@ -33,13 +33,16 @@
                                 <div id="flush-collapseOne" class="accordion-collapse collapse border-bottom box-shadow-none" data-bs-parent="#accordionFlushExample">
                                     <ul class="ms-3">
                                         <li class="d-flex align-items-center gap-3 mb-4 mt-4 cereals">
-                                            <input type="checkbox" class="squareCheckBox">OdysseyID</input>
+                                            <input type="checkbox" class="squareCheckBox" value="1" onchange="filterURL()"> Classics
                                         </li>
-                                        <li class="d-flex align-items-center gap-3 mb-4 cereals ">
-                                            <input type="checkbox" class="squareCheckBox">Cereals</input>
+                                        <li class="d-flex align-items-center gap-3 mb-4 cereals">
+                                            <input type="checkbox" class="squareCheckBox" value="2" onchange="filterURL()"> Energy Boost
                                         </li>
-                                        <li class="d-flex align-items-center gap-3 mb-4 cereals ">
-                                            <input type="checkbox" class="squareCheckBox">Milks</input>
+                                        <li class="d-flex align-items-center gap-3 mb-4 cereals">
+                                            <input type="checkbox" class="squareCheckBox" value="3" onchange="filterURL()"> Calm & Relax
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4 cereals">
+                                            <input type="checkbox" class="squareCheckBox" value="4" onchange="filterURL()"> Kids Fun Mix
                                         </li>
                                     </ul>
                                 </div>
@@ -49,17 +52,17 @@
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-around">
                             <div class="col col-sm-12 d-flex justify-content-between">
-                                <form action="" method="post">
-                                    <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
-                                    <select name="order" id="order" class="border border-black py-2">
-                                        <option value="Order By" disabled selected>Order By</option>
-                                        <option value="asc">Price: Low to High</option>
-                                        <option value="desc">Price: High to Low</option>
+                                <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
+                                <form method="GET" action="">
+                                    <select id="order" class="border border-black py-2" onchange="location.href=this.value">
+                                        <option value="#" disabled selected>Order By</option>
+                                        <option value="?controller=product&action=getAllProducts&order=asc">Price: Low to High</option>
+                                        <option value="?controller=product&action=getAllProducts&order=desc">Price: High to Low</option>
                                     </select>
                                 </form>
                             </div>
 
-                            <?php include_once 'views/assets/listAllProducts.php' ?>
+                            <?php include_once 'views/pages/products/listAllProducts.php' ?>
 
                         </div>
                     </div>

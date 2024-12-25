@@ -10,7 +10,7 @@ class productController
     {
         $allProducts = AllProductsDAO::getAllProducts();
         $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/shop.php';
+        $view = 'views/pages/products/shop.php';
         include_once 'views/main.php';
     }
 
@@ -19,7 +19,7 @@ class productController
         $id = $_GET['id'];
         $allProducts = AllProductsDAO::getProductsFilter($id);
         $categories = CategoriesDAO::getAllCategories();
-        $view = 'views/pages/shop.php';
+        $view = 'views/pages/products/shop.php';
         include_once 'views/main.php';
     }
 
@@ -27,7 +27,7 @@ class productController
     {
         $product_id = $_GET['id'];
         $product = AllProductsDAO::getProductId($product_id);
-        $view = 'views/pages/product.php';
+        $view = 'views/pages/products/product.php';
         include_once 'views/main.php';
     }
 }

@@ -4,6 +4,23 @@ include_once 'config/dataBase.php';
 
 class UsersDAO
 {
+    public static function get_User_ByEmail($email)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $user = $result->fetch_object('Users');
+
+        $stmt->close();
+        $conex->close();
+
+        return $user;
+    }
+
     public static function createUser($user)
     {
         $conex = database::connect();
@@ -62,20 +79,6 @@ class UsersDAO
         return $success;
     }
 
-    public static function editUser($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
-    {
-        $conex = database::connect();
-        $stmt = $conex->prepare("UPDATE address SET user_id = ? ,country=?, apartment=?, address=?, city=?, state=?, zipCode=?, first_name=?, last_name=? WHERE addres_id=$userId");
-
-        $stmt->bind_param("isssssiss", $userId, $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
-
-        $success = $stmt->execute();
-
-        $conex->close();
-
-        return $success;
-    }
-
     public static function getUserID($userId)
     {
         $conex = database::connect();
@@ -96,22 +99,7 @@ class UsersDAO
         return $users;
     }
 
-    public static function getUserByEmail($email)
-    {
-        $conex = database::connect();
-        $stmt = $conex->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
 
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $user = $result->fetch_object('Users');
-
-        $stmt->close();
-        $conex->close();
-
-        return $user;
-    }
 
     public static function findUser($email)
     {

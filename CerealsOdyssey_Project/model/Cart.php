@@ -58,10 +58,16 @@ class Cart
     {
         $total = 0;
         foreach ($cart as $item) {
-            (float)$total += $item['price'] * $item['amount'];
+            // Sumar el precio del item multiplicado por su cantidad
+            $total += $item['price'] * $item['amount'];
         }
-        return $total;
+
+        // Sumar el 21% de IVA al total
+        $totalWithIVA = $total * 1.21;
+
+        return $totalWithIVA;
     }
+
 
     public static function total_Amount($cart)
     {

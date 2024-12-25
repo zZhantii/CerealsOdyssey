@@ -8,8 +8,7 @@
 </head>
 
 <body class="bg-light">
-    <?php include_once 'views\partials\headerUser.php' ?>
-    <main>
+    <main class="my-5 profile">
         <section class="container mt-4">
             <h3>Settings</h3>
             <div class="d-flex mt-5 align-items-center">
@@ -24,7 +23,6 @@
             </div>
         </section>
     </main>
-    <?php include_once 'views\partials\footerUser.php' ?>
 </body>
 
 </html>

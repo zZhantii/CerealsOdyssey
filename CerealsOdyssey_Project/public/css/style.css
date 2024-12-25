@@ -179,6 +179,10 @@ header {
     color: #0359ca;
 }
 
+.profile {
+    height: 100vh;
+}
+
 .subnav-link {
     display: flex;
     align-items: center;
@@ -204,6 +208,7 @@ header {
 hr {
     margin: 0;
 }
+
 
 /* footer */
 

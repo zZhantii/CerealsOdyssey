@@ -1,4 +1,9 @@
 <?php
+if (empty($orders)) { ?>
+    <div class="bg-secondary p-3 mt-3 rounded border">
+        <p>No orders were create.</p>
+    </div>
+<?php }
 foreach ($orders as $item2) { ?>
     <div class="col-md-6 col-sm-12 container-order border rounded bg-white p-3">
         <div class="title rounded d-flex justify-content-between align-items-center p-4 gap-3">

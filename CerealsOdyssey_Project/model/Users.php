@@ -10,6 +10,7 @@ class Users
     protected $password;
     protected $rol;
 
+
     /**
      * Get the value of user_id
      */

@@ -26,6 +26,20 @@ class AddressDAO
         return $address;
     }
 
+    public static function edit_Address($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
+    {
+        $conex = database::connect();
+        $stmt = $conex->prepare("UPDATE address SET user_id = ? ,country=?, apartment=?, address=?, city=?, state=?, zipCode=?, first_name=?, last_name=? WHERE address_id=$userId");
+
+        $stmt->bind_param("isssssiss", $userId, $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
+
+        $success = $stmt->execute();
+
+        $conex->close();
+
+        return $success;
+    }
+
     public static function removeAddress($address_id)
     {
         $conex = database::connect();

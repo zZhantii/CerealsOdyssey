@@ -197,7 +197,7 @@
                         </div>
                         <div class="col d-flex justify-content-between p-0">
                             <p>Shipping</p>
-                            <p>Enter shipping address</p>
+                            <p>IVA included</p>
                         </div>
                         <div class="col d-flex justify-content-between p-0 mt-3">
                             <h3>Total</h3>

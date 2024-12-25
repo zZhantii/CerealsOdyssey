@@ -4,9 +4,6 @@
             <a class="navbar-brand" href="?controller=categories">
                 <img src="public/img/logo.png" alt="Logo" width="64" height="64" class="img-fluid">
             </a>
-            <a class="navbar-link buttonSpecial disabled" aria-disabled="true" href="?controller=product&action=getProductID">
-                Custom cookies with OdysseyID
-            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,13 +41,6 @@
                 </div>
             </div>
             <div class="nav-link-profile">
-                <a href="#" class="nav-link-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none" />
-                        <circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                        <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
-                    </svg>
-                </a>
                 <?php if (empty($_SESSION['user'])) { ?>
                     <a href="?controller=user&action=login" class="nav-link-icon ps-3">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -140,7 +130,11 @@
                     </div>
                 </div>
                 <div class="col-12 d-flex sticky-bottom bg-white justify-content-center flex-column mt-3">
-                    <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= $total ?></a>
+                    <?php
+                    $cart = $_SESSION['cart'];
+                    $total = Cart::total_price($cart);
+                    ?>
+                    <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= $total ?> €</a>
                     <div class="container">
                         <div class="row">
                             <div class="col-3 d-flex align-items-center justify-content-center">
