@@ -304,7 +304,7 @@ class AllProductsDAO
         $price = $data['price'];
         $name = $data['name'];
         $image = $data['image'];
-        $PriceDiscount = $data['PriceDiscount'];
+        $PriceDiscount = $data['priceDiscount'];
 
         // Aquí es donde deberías preparar tu consulta SQL
         $stmt = $conex->prepare("INSERT INTO products (name, price, image, priceDiscount) VALUES (?, ?, ?, ?)");

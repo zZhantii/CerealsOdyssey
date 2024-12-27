@@ -51,7 +51,7 @@ function crearTabla(products) {
             <td>${product.product_id}</td>
             <td>${product.name}</td>
             <td>${product.price}</td>
-            <td>${product.image}</td>
+            <td><img src="public/img/products/${product.image}" alt="${product.name}" style="width:100px; height:100px;"></td>
             <td>${product.priceDiscount}</td>
         `;
 
@@ -99,14 +99,15 @@ document.getElementById('submitproduct').addEventListener('click', () => {
     const price = document.getElementById('floatingPrice').value;
     const image = document.getElementById('floatingImage').value;
     const priceDiscount = document.getElementById('floatingPriceDiscount').value;
+    const imageFile = document.getElementById('floatingImage').files[0];
 
-    console.log("Valores capturados:", { name, price, image, priceDiscount });
+    console.log("Valores capturados:", { name, price, image, priceDiscount, imageFile });
     console.log(product_ID);
 
     if (product_ID == 0) {
-        createproduct({ name, price, image, priceDiscount })
+        createproduct({ name, price, image, priceDiscount, imageFile })
     } else {
-        modifyproduct(product_ID, { name, price, image, priceDiscount });
+        modifyproduct(product_ID, { name, price, image, priceDiscount, imageFile });
     }
 });
 

@@ -43,7 +43,7 @@
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show ">
                             <div class="accordion-body p-0 ">
 
-                                <?php include_once 'views/assets/listAddressBuy.php' ?>
+                                <?php include_once 'views/pages/checkOut/listAddressBuy.php' ?>
 
                                 <button class="btn ms-3 text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2"> + use a different address</button>
                                 <!-- Model -->
@@ -59,9 +59,63 @@
                                                     <div>
                                                         <div class="form-floating p-0">
                                                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="country" required>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
+                                                                <!-- África -->
+                                                                <optgroup label="Africa">
+                                                                    <option value="Nigeria">Nigeria</option>
+                                                                    <option value="South Africa">South Africa</option>
+                                                                    <option value="Egypt">Egypt</option>
+                                                                    <option value="Kenya">Kenya</option>
+                                                                    <option value="Uganda">Uganda</option>
+                                                                </optgroup>
+
+                                                                <!-- América del Norte -->
+                                                                <optgroup label="North America">
+                                                                    <option value="United States">United States</option>
+                                                                    <option value="Canada">Canada</option>
+                                                                    <option value="Mexico">Mexico</option>
+                                                                </optgroup>
+
+                                                                <!-- América del Sur -->
+                                                                <optgroup label="South America">
+                                                                    <option value="Brazil">Brazil</option>
+                                                                    <option value="Argentina">Argentina</option>
+                                                                    <option value="Chile">Chile</option>
+                                                                    <option value="Colombia">Colombia</option>
+                                                                    <option value="Peru">Peru</option>
+                                                                </optgroup>
+
+                                                                <!-- Europa -->
+                                                                <optgroup label="Europe">
+                                                                    <option value="United Kingdom">United Kingdom</option>
+                                                                    <option value="Germany">Germany</option>
+                                                                    <option value="France">France</option>
+                                                                    <option value="Italy">Italy</option>
+                                                                    <option value="Spain">Spain</option>
+                                                                    <option value="Sweden">Sweden</option>
+                                                                </optgroup>
+
+                                                                <!-- Asia -->
+                                                                <optgroup label="Asia">
+                                                                    <option value="China">China</option>
+                                                                    <option value="India">India</option>
+                                                                    <option value="Japan">Japan</option>
+                                                                    <option value="South Korea">South Korea</option>
+                                                                    <option value="Singapore">Singapore</option>
+                                                                </optgroup>
+
+                                                                <!-- Oceanía -->
+                                                                <optgroup label="Oceania">
+                                                                    <option value="Australia">Australia</option>
+                                                                    <option value="New Zealand">New Zealand</option>
+                                                                </optgroup>
+
+                                                                <!-- Medio Oriente -->
+                                                                <optgroup label="Middle East">
+                                                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                                                    <option value="Israel">Israel</option>
+                                                                    <option value="Turkey">Turkey</option>
+                                                                </optgroup>
                                                             </select>
                                                             <label for="floatingSelect">Country / Regions</label>
                                                         </div>
@@ -97,9 +151,59 @@
                                                         </div>
                                                         <div class="form-floating p-0 pe-3 col-md-4">
                                                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="state" required>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
+                                                                <!-- Estados de Estados Unidos -->
+                                                                <optgroup label="United States">
+                                                                    <option value="Alabama">Alabama</option>
+                                                                    <option value="Alaska">Alaska</option>
+                                                                    <option value="Arizona">Arizona</option>
+                                                                    <option value="Arkansas">Arkansas</option>
+                                                                    <option value="California">California</option>
+                                                                    <option value="Colorado">Colorado</option>
+                                                                    <option value="Connecticut">Connecticut</option>
+                                                                    <option value="Delaware">Delaware</option>
+                                                                    <option value="Florida">Florida</option>
+                                                                    <option value="Georgia">Georgia</option>
+                                                                    <option value="Hawaii">Hawaii</option>
+                                                                    <option value="Idaho">Idaho</option>
+                                                                    <option value="Illinois">Illinois</option>
+                                                                    <option value="Indiana">Indiana</option>
+                                                                    <option value="Iowa">Iowa</option>
+                                                                    <option value="Kansas">Kansas</option>
+                                                                    <option value="Kentucky">Kentucky</option>
+                                                                    <option value="Louisiana">Louisiana</option>
+                                                                    <option value="Maine">Maine</option>
+                                                                    <option value="Maryland">Maryland</option>
+                                                                    <option value="Massachusetts">Massachusetts</option>
+                                                                    <option value="Michigan">Michigan</option>
+                                                                    <option value="Minnesota">Minnesota</option>
+                                                                    <option value="Mississippi">Mississippi</option>
+                                                                    <option value="Missouri">Missouri</option>
+                                                                    <option value="Montana">Montana</option>
+                                                                    <option value="Nebraska">Nebraska</option>
+                                                                    <option value="Nevada">Nevada</option>
+                                                                    <option value="New Hampshire">New Hampshire</option>
+                                                                    <option value="New Jersey">New Jersey</option>
+                                                                    <option value="New Mexico">New Mexico</option>
+                                                                    <option value="New York">New York</option>
+                                                                    <option value="North Carolina">North Carolina</option>
+                                                                    <option value="North Dakota">North Dakota</option>
+                                                                    <option value="Ohio">Ohio</option>
+                                                                    <option value="Oklahoma">Oklahoma</option>
+                                                                    <option value="Oregon">Oregon</option>
+                                                                    <option value="Pennsylvania">Pennsylvania</option>
+                                                                    <option value="Rhode Island">Rhode Island</option>
+                                                                    <option value="South Carolina">South Carolina</option>
+                                                                    <option value="South Dakota">South Dakota</option>
+                                                                    <option value="Tennessee">Tennessee</option>
+                                                                    <option value="Texas">Texas</option>
+                                                                    <option value="Utah">Utah</option>
+                                                                    <option value="Vermont">Vermont</option>
+                                                                    <option value="Virginia">Virginia</option>
+                                                                    <option value="Washington">Washington</option>
+                                                                    <option value="West Virginia">West Virginia</option>
+                                                                    <option value="Wisconsin">Wisconsin</option>
+                                                                    <option value="Wyoming">Wyoming</option>
+                                                                </optgroup>
                                                             </select>
                                                             <label for="floatingSelect">State</label>
                                                         </div>
@@ -166,7 +270,7 @@
             <div class="container sticky-top buyProducts2">
                 <div class="row d-flex flex-column gap-3">
 
-                    <?php include_once 'views/assets/listProductBuy.php' ?>
+                    <?php include_once 'views/pages/checkOut/listProductBuy.php' ?>
                     <form action="index.php?controller=cart&action=applyDiscountCart" method="post">
                         <div class="col">
                             <div class="form-floating my-3 d-flex gap-3">
@@ -197,7 +301,7 @@
                         </div>
                         <div class="col d-flex justify-content-between p-0">
                             <p>Shipping</p>
-                            <p>IVA included</p>
+                            <p>IVA 21%</p>
                         </div>
                         <div class="col d-flex justify-content-between p-0 mt-3">
                             <h3>Total</h3>

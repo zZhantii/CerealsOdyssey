@@ -6,38 +6,30 @@
     <h1>Admin Panel</h1>
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
-            <button id="createTable" class="buttonTable">Get Orders</button>
+            <button id="createTable" class="buttonTable">Get Products</button>
             <button class="buttonTable">View History</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create Order</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify Order</button>
-            <button id="Deleteproduct" class="buttonTable">Delete Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
+            <button id="Deleteproduct" class="buttonTable">Delete</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
-            <label for="filter-user-id">Buscar por User ID:</label>
-            <input type="text" id="filter-user-id" placeholder="Ingrese User ID">
+            <label for="filter-user-id">Find by product ID:</label>
+            <input type="text" id="filter-user-id" placeholder="put User ID">
 
-            <label for="filter-order-id">Buscar por Order ID:</label>
-            <input type="text" id="filter-order-id" placeholder="Ingrese Order ID">
+            <label for="filter-price">Find by price:</label>
+            <input type="number" id="filter-price" placeholder="put price">
 
-            <label for="filter-date">Buscar por Fecha:</label>
-            <input type="date" id="filter-date">
+            <label for="filter-name">Find by name:</label>
+            <input type="number" id="filter-name" placeholder="put name">
 
-            <label for="filter-price">Buscar por Precio:</label>
-            <input type="number" id="filter-price" placeholder="Ingrese Precio">
+            <button id="apply-filter" class="buttonTable">Apply Filters</button>
 
-            <label for="filter-status">Buscar por Estado:</label>
-            <input type="text" id="filter-status" placeholder="Ingrese Estado">
-
-            <button id="apply-filter">Aplicar Filtros</button>
-
-            <label for="order-by">Ordenar por:</label>
+            <label for="order-by">Order by:</label>
             <select id="product-by">
-                <option value="order_id">ID Pedido</option>
-                <option value="user_id">ID Usuario</option>
-                <option value="price">Precio</option>
-                <option value="date">Fecha</option>
-                <option value="status">Estado</option>
+                <option value="product_id">ID Product</option>
+                <option value="price">price</option>
+                <option value="name">Name</option>
             </select>
         </div>
         <div class="w-100">
@@ -67,7 +59,7 @@
                     <label for="floatingPrice">Price</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingImage" placeholder="Image">
+                    <input type="file" class="form-control" id="floatingImage">
                     <label for="floatingImage">Image</label>
                 </div>
                 <div class="form-floating mb-3">

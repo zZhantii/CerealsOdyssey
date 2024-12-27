@@ -46,7 +46,7 @@ CREATE TABLE products (
     categorie_id INT,
     discount_id INT,
     name VARCHAR(100) NOT NULL,
-    price INT NOT NULL,
+    price FLOAT NOT NULL,
     priceDiscount INT,
     image VARCHAR(100) NOT NULL,
     description VARCHAR(100)
@@ -58,9 +58,13 @@ CREATE TABLE orders (
     user_id INT NOT NULL,
     discount_id INT,
     date DATETIME,  
+    cardNumber VARCHAR(100),
     status VARCHAR(100) DEFAULT 'Making',
-    total_amount INT NOT NULL,
-    total_price INT NOT NULL
+    totalAmount INT NOT NULL,
+    totalPrice FLOAT NOT NULL,
+    totalItems INT NOT NULL,
+    totalDiscount FLOAT NOT NULL,
+    discount_value FLOAT NOT NULL
 );
 
 -- Tabla order_details

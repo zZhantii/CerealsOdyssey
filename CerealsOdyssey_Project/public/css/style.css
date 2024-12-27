@@ -402,6 +402,10 @@ hr {
     padding: 43px;
 }
 
+.bg-buy {
+    background-color: #F4F6FF;
+}
+
 .informationPersonal {
     margin-left: 13%;
     padding-left: 0;

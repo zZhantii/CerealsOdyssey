@@ -6,8 +6,13 @@
     $itemAmount = $item['amount'];
 ?>
     <div class="col d-flex gap-3">
-        <img src="<?= url_base ?>public/img/products/<?= $itemImage ?>" alt="producto" height="64" width="64" class="img-product border rounded">
-        <div class="notification position-absolute translate-middle badge rounded-circle"><?= $itemAmount ?></div>
+        <div class="img-product border rounded position-relative">
+            <img src="<?= url_base ?>public/img/products/<?= $itemImage ?>" alt="producto" height="64" width="64">
+            <span class="notification position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                <?= $itemAmount ?>
+                <span class="visually-hidden">unread messages</span>
+            </span>
+        </div>
         <div class="d-flex flex-column justify-content-center">
             <p><?= $itemName ?></p>
         </div>
