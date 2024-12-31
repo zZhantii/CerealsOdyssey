@@ -14,21 +14,21 @@
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
-            <label for="filter-user-id">Find by product ID:</label>
-            <input type="text" id="filter-user-id" placeholder="put User ID">
+            <label for="filter-product-id">Find by product ID:</label>
+            <input type="text" id="filter-product-id" placeholder="put Product ID">
 
             <label for="filter-price">Find by price:</label>
-            <input type="number" id="filter-price" placeholder="put price">
+            <input type="number" id="filter-price" placeholder="put Price">
 
             <label for="filter-name">Find by name:</label>
-            <input type="number" id="filter-name" placeholder="put name">
+            <input type="text" id="filter-name" placeholder="put Name">
 
             <button id="apply-filter" class="buttonTable">Apply Filters</button>
 
             <label for="order-by">Order by:</label>
             <select id="product-by">
                 <option value="product_id">ID Product</option>
-                <option value="price">price</option>
+                <option value="price">Price</option>
                 <option value="name">Name</option>
             </select>
         </div>

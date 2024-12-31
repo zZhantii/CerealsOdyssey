@@ -6,38 +6,38 @@
     <h1>Admin Panel</h1>
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
-            <button id="createTable" class="buttonTable">Get Orders</button>
+            <button id="createTable" class="buttonTable">Get</button>
             <button class="buttonTable">View History</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create Order</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify Order</button>
-            <button id="DeleteUser" class="buttonTable">Delete Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
+            <button id="DeleteUser" class="buttonTable">Delete</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
             <label for="filter-user-id">Buscar por User ID:</label>
             <input type="text" id="filter-user-id" placeholder="Ingrese User ID">
 
-            <label for="filter-order-id">Buscar por Order ID:</label>
-            <input type="text" id="filter-order-id" placeholder="Ingrese Order ID">
+            <label for="filter-name">Buscar por Name:</label>
+            <input type="text" id="filter-name" placeholder="Ingrese Name">
 
-            <label for="filter-date">Buscar por Fecha:</label>
-            <input type="date" id="filter-date">
+            <label for="filter-lastName">Buscar por Last Name:</label>
+            <input type="text" id="filter-lastName" placeholder="Ingrese Last Name">
 
-            <label for="filter-price">Buscar por Precio:</label>
-            <input type="number" id="filter-price" placeholder="Ingrese Precio">
+            <label for="filter-email">Buscar por Email:</label>
+            <input type="text" id="filter-email" placeholder="Ingrese Email">
 
-            <label for="filter-status">Buscar por Estado:</label>
-            <input type="text" id="filter-status" placeholder="Ingrese Estado">
+            <label for="filter-rol">Buscar por Rol:</label>
+            <input type="text" id="filter-rol" placeholder="Ingrese Rol">
 
             <button id="apply-filter">Aplicar Filtros</button>
 
             <label for="order-by">Ordenar por:</label>
             <select id="user-by">
-                <option value="order_id">ID Pedido</option>
                 <option value="user_id">ID Usuario</option>
-                <option value="price">Precio</option>
-                <option value="date">Fecha</option>
-                <option value="status">Estado</option>
+                <option value="firstName">firstName</option>
+                <option value="lastName">lastName</option>
+                <option value="email">Email</option>
+                <option value="rol">Rol</option>
             </select>
         </div>
         <div class="w-100">

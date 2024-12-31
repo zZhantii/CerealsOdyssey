@@ -73,20 +73,34 @@ function seleccionarFila(product_id, fila) {
 }
 
 document.getElementById('apply-filter').addEventListener('click', () => {
-    const filtro = document.getElementById('filter').value.toLowerCase();
-    const pedidosFiltrados = products.filter(product => product.product_id.toString().includes(filtro));
+    const filtroID = document.getElementById('filter-product-id').value.toLowerCase();
+    const filtroPrice = document.getElementById('filter-price').value.toLowerCase();
+    const filtroName = document.getElementById('filter-name').value.toLowerCase();
+
+    const pedidosFiltrados = products.filter(product => {
+        const matchID = filtroID ? product.product_id.toString().toLowerCase().includes(filtroID) : true;
+
+        const matchPrice = filtroPrice ? product.price.toString().toLowerCase().includes(filtroPrice) : true;
+
+        const matchName = filtroName ? product.name.toLowerCase().includes(filtroName) : true;
+
+        return matchID && matchPrice && matchName;
+    });
+
+    console.log(pedidosFiltrados);
     crearTabla(pedidosFiltrados);
 });
+
 
 document.getElementById('product-by').addEventListener('change', (event) => {
     const criterio = event.target.value;
     products.sort((a, b) => {
         if (criterio === 'price') {
-            return b.totalPrice - a.totalPrice;
-        } else if (criterio === 'date') {
-            return new Date(b.date) - new Date(a.date);
-        } else if (criterio === 'status') {
-            return a.status.localeCompare(b.status);
+            return b.price - a.price;
+        } else if (criterio === 'product_id') {
+            return b.product_id - a.product_id;
+        } else if (criterio === 'name') {
+            return b.name - a.name;
         } else {
             return a[criterio] - b[criterio];
         }

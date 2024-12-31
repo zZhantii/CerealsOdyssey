@@ -57,7 +57,7 @@ CREATE TABLE orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     discount_id INT,
-    date DATETIME,  
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,  
     cardNumber VARCHAR(100),
     status VARCHAR(100) DEFAULT 'Making',
     totalAmount INT NOT NULL,

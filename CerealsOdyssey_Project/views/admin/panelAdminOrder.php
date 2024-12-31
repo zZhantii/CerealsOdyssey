@@ -6,11 +6,11 @@
     <h1>Admin Panel</h1>
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
-            <button id="createTable" class="buttonTable">Get Orders</button>
+            <button id="createTable" class="buttonTable">Get</button>
             <button class="buttonTable">View History</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create Order</button>
-            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify Order</button>
-            <button id="DeleteOrder" class="buttonTable">Delete Order</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
+            <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
+            <button id="DeleteOrder" class="buttonTable">Delete</button>
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 

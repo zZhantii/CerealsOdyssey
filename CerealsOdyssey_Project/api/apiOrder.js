@@ -67,6 +67,23 @@ function crearTabla(orders) {
     tablaContainer.appendChild(tabla);
 }
 
+document.addEventListener('dblclick', (event) => {
+    const tablaContainer = document.getElementById('tablaContainer');
+    const selectedRow = document.querySelector('tr.selected');
+
+    // Verificar si el clic fue fuera de la tabla y no sobre una fila seleccionada
+    if (tablaContainer && !tablaContainer.contains(event.target)) {
+        // Solo si hay una fila seleccionada, deseleccionarla
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+            order_ID = 0;
+            document.getElementById('ID').innerHTML = '<p>ID</p> ' + order_ID; // Mostrar que no hay selección
+            console.log('ID deseleccionado:', order_ID);
+        }
+    }
+});
+
+
 function seleccionarFila(orderID, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
@@ -84,18 +101,23 @@ document.getElementById('apply-filter').addEventListener('click', () => {
 document.getElementById('order-by').addEventListener('change', (event) => {
     const criterio = event.target.value;
     orders.sort((a, b) => {
-        if (criterio === 'price') {
-            return b.totalPrice - a.totalPrice;
-        } else if (criterio === 'date') {
-            return new Date(b.date) - new Date(a.date);
+        if (criterio === 'order_id') {
+            return b.order_id - a.order_id;
+        } else if (criterio === 'user_id') {
+            return b.user_id - a.user_id;
         } else if (criterio === 'status') {
             return a.status.localeCompare(b.status);
+        } else if (criterio === 'date') {
+            return new Date(b.date) - new Date(a.date);
+        } else if (criterio === 'price') {
+            return b.totalPrice - a.totalPrice;
         } else {
             return a[criterio] - b[criterio];
         }
     });
     crearTabla(orders);
 });
+
 
 document.getElementById('submitOrder').addEventListener('click', () => {
     const price = document.getElementById('floatingPrice').value;
@@ -177,7 +199,6 @@ async function createOrder(orderData) {
 }
 
 // Funcion para eliminar
-// Funcion para hacer Delete
 document.getElementById('DeleteOrder').addEventListener('click', () => {
     const selectedRow = document.querySelector('tr.selected');
     if (!selectedRow) {

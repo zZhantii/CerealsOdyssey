@@ -74,26 +74,40 @@ function seleccionarFila(userID, fila) {
 }
 
 document.getElementById('apply-filter').addEventListener('click', () => {
-    const filtro = document.getElementById('filter').value.toLowerCase();
-    const pedidosFiltrados = users.filter(user => user.user_id.toString().includes(filtro));
+    const filtroID = document.getElementById('filter-user-id').value.toLowerCase();
+    const filtroName = document.getElementById('filter-name').value.toLowerCase();
+    const filtrolastName = document.getElementById('filter-lastName').value.toLowerCase();
+    const filtroEmail = document.getElementById('filter-email').value.toLowerCase();
+    const filtroRol = document.getElementById('filter-rol').value.toLowerCase();
+
+    const pedidosFiltrados = users.filter(user => {
+        const matchID = filtroID ? user.user_id.toString().toLowerCase().includes(filtroID) : true;
+        const matchName = filtroName ? user.firstName.toLowerCase().includes(filtroName) : true;
+        const matchLastName = filtrolastName ? user.lastName.toLowerCase().includes(filtrolastName) : true;
+        const matchEmail = filtroEmail ? user.email.toLowerCase().includes(filtroEmail) : true;
+        const matchRol = filtroRol ? user.rol.toLowerCase().includes(filtroRol) : true;
+
+        return matchID && matchName && matchLastName && matchEmail && matchRol;
+    });
+
+    console.log(pedidosFiltrados);
     crearTabla(pedidosFiltrados);
 });
 
 document.getElementById('user-by').addEventListener('change', (event) => {
     const criterio = event.target.value;
     users.sort((a, b) => {
-        if (criterio === 'price') {
-            return b.totalPrice - a.totalPrice;
-        } else if (criterio === 'date') {
-            return new Date(b.date) - new Date(a.date);
-        } else if (criterio === 'status') {
-            return a.status.localeCompare(b.status);
+        if (criterio === 'user_id') {
+            return b.user_id - a.user_id;
+        } else if (['firstName', 'lastName', 'email', 'rol'].includes(criterio)) {
+            return b[criterio].localeCompare(a[criterio]);
         } else {
             return a[criterio] - b[criterio];
         }
     });
     crearTabla(users);
 });
+
 
 document.getElementById('submitUser').addEventListener('click', () => {
     const email = document.getElementById('floatingEmail').value;

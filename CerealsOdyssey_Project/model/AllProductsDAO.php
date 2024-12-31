@@ -222,12 +222,7 @@ class AllProductsDAO
     {
         $conex = database::connect();
 
-        $stmtOrder = $conex->prepare("SELECT DISTINCT o.*
-        FROM orders o
-        LEFT JOIN order_details od ON o.order_id = od.order_id
-        LEFT JOIN discounts d ON d.discount_id = od.discount_id
-        LEFT JOIN shipments s ON o.order_id = s.order_id
-        WHERE od.order_detail_id = (SELECT MIN(order_detail_id) FROM order_details WHERE order_id = o.order_id) OR od.order_detail_id IS NULL");
+        $stmtOrder = $conex->prepare("SELECT * FROM orders");
         $stmtOrder->execute();
 
         $result = $stmtOrder->get_result();
