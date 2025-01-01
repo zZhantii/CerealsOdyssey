@@ -73,7 +73,7 @@
 
                 <div class="form-floating mb-3">
                     <select class="form-select" id="floatingOptionsProducts" aria-label="Floating label select example>
-                        include_once('views/admin/optionsProducts.php');
+                        include_once('views/admin/OptionsProducts.php');
                     </select>
                 </div>
                 
