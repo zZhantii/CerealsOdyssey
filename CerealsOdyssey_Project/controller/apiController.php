@@ -13,6 +13,11 @@ class apiController
         echo json_encode($products = AllProductsDAO::getOrderApi());
     }
 
+    public static function get_products_orders()
+    {
+        echo json_encode($products = AllProductsDAO::get_products_order_api());
+    }
+
     public static function create_order()
     {
         header("Content-Type: application/json; charset=UTF-8");

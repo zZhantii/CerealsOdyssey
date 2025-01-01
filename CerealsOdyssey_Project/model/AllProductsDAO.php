@@ -202,20 +202,58 @@ class AllProductsDAO
     {
         $conex = database::connect();
         $user_id = $data['user_id'];
-        $price = $data['price'];
+        $totalPrice = $data['price'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 
-        // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber, totalPrice) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("issd", $user_id, $status, $cardNumber, $price);
+        $amount = $data['amount'];
+        $product = (int) $data['product'];
+        $price = $data['priceProduct'];
+        $discountId = 1;
 
-        // Ejecuta la consulta
-        if ($stmt->execute()) {
-            return ['success' => true, 'message' => 'Order create successfully'];
-        } else {
-            return ['success' => false, 'message' => 'Error modifying order: ' . $stmt->error];
+        // Debería ser un entero
+        var_dump($discountId); // Debería ser un entero
+        var_dump($product);    // Debería ser un entero
+        var_dump($price);      // Debería ser un float
+        var_dump($amount);     // Debería ser un entero
+
+
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber, totalPrice, totalAmount) VALUES (?, ?, ?, ?, ?)");
+        $initialTotalItems = 0;
+        $stmtOrder->bind_param("issdi", $user_id, $status, $cardNumber, $totalPrice, $initialTotalItems);
+
+        if (!$stmtOrder->execute()) {
+            return ['success' => false, 'message' => 'Error creating order: ' . $stmtOrder->error];
         }
+
+
+        $orderId = $stmtOrder->insert_id;
+
+        $stmtOrderDetails = $conex->prepare("INSERT INTO order_details (order_id, discount_id, product_id, price, amount) VALUES (?, ?, ?, ?, ?)");
+        $stmtOrderDetails->bind_param("iiiii", $orderId, $discountId, $product, $price, $amount);
+
+
+        if (!$stmtOrderDetails->execute()) {
+            return ['success' => false, 'message' => 'Error creating order details: ' . $stmtOrderDetails->error];
+        }
+
+        // Calcular el total de registros en order_details para este order_id
+        $countQuery = $conex->prepare("SELECT COUNT(*) FROM order_details WHERE order_id = ?");
+        $countQuery->bind_param("i", $orderId);
+        $countQuery->execute();
+        $countQuery->bind_result($totalItems);
+        $countQuery->fetch();
+        $countQuery->close();
+
+        // Actualizar el campo totalItems en la tabla orders
+        $updateOrderQuery = $conex->prepare("UPDATE orders SET totalAmount = ? WHERE order_id = ?");
+        $updateOrderQuery->bind_param("ii", $totalItems, $orderId);
+
+        if (!$updateOrderQuery->execute()) {
+            return ['success' => false, 'message' => 'Error updating total items in orders: ' . $updateOrderQuery->error];
+        }
+
+        return ['success' => true, 'message' => 'Order created successfully'];
     }
 
     public static function getOrderApi()
@@ -235,6 +273,25 @@ class AllProductsDAO
         $conex->close();
 
         return $orders;
+    }
+
+    public static function get_products_order_api()
+    {
+        $conex = database::connect();
+
+        $stmtOrder = $conex->prepare("SELECT * FROM products");
+        $stmtOrder->execute();
+
+        $result = $stmtOrder->get_result();
+
+        $products = [];
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+
+        $conex->close();
+
+        return $products;
     }
 
     public static function modify_order_api($data)

@@ -3,6 +3,7 @@ const apiUrlGet = '?controller=api&action=get_orders';
 const apiUrlCreate = '?controller=api&action=create_order';
 const apiUrlModify = '?controller=api&action=modify_order';
 const apiUrlDelete = '?controller=api&action=delete_order';
+const apiUrlGetProducts = '?controller=api&action=get_products_orders';
 let orders = [];
 let order_ID = 0;
 
@@ -26,6 +27,44 @@ async function getOrders() {
         console.error('Error:', error);
     }
 }
+
+const selectElement = document.getElementById("floatingOptionsProducts");
+const quantityInput = document.getElementById("productQuantity");
+const increaseButton = document.getElementById("increaseQuantity");
+
+let selectedProduct = null;
+let quantity = 1;
+let price = 0;
+
+fetch(apiUrlGetProducts)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Error al obtener los productos.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        data.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option.product_id;
+            optionElement.textContent = option.name;
+            price = option.price;
+            selectElement.appendChild(optionElement);
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+selectElement.addEventListener("change", (event) => {
+    selectedProduct = event.target.value;
+    console.log("Producto seleccionado:", selectedProduct);
+});
+
+increaseButton.addEventListener("click", () => {
+    quantity += 1;
+    quantityInput.value = quantity;
+});
 
 function crearTabla(orders) {
     const tablaContainer = document.getElementById('tablaContainer');
@@ -83,7 +122,6 @@ document.addEventListener('dblclick', (event) => {
     }
 });
 
-
 function seleccionarFila(orderID, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
@@ -118,7 +156,6 @@ document.getElementById('order-by').addEventListener('change', (event) => {
     crearTabla(orders);
 });
 
-
 document.getElementById('submitOrder').addEventListener('click', () => {
     const price = document.getElementById('floatingPrice').value;
     const cardNumber = document.getElementById('floatingCardNumber').value;
@@ -129,7 +166,7 @@ document.getElementById('submitOrder').addEventListener('click', () => {
 
     if (order_ID == 0) {
         const user_id = document.getElementById('floatingUser').value;
-        createOrder({ user_id, price, cardNumber, status })
+        createOrder({ user_id, price, cardNumber, status, quantity, selectedProduct, price })
     } else {
         modifyOrder(order_ID, { price, cardNumber, status });
     }
@@ -168,6 +205,8 @@ async function modifyOrder(order_ID, orderData) {
     }
 }
 
+
+
 // Funcion para crear Pedidos
 async function createOrder(orderData) {
     console.log('Creando pedido con datos:', orderData);
@@ -177,9 +216,10 @@ async function createOrder(orderData) {
         status: orderData.status,
         price: orderData.price,
         cardNumber: orderData.cardNumber,
+        amount: quantity,
+        product: selectedProduct,
+        priceProduct: price
     };
-
-    console.log("Datos: " + orderData.user_id + orderData.status);
 
     const response = await fetch(apiUrlCreate, {
         method: 'POST',

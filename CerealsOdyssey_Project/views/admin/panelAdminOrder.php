@@ -59,11 +59,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingUser" placeholder="Price">
+                    <input type="number" class="form-control" id="floatingUser" placeholder="Price">
                     <label for="floatingPrice">User_ID</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPrice" placeholder="Price">
+                    <input type="number" class="form-control" id="floatingPrice" placeholder="Price">
                     <label for="floatingPrice">Price</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -71,13 +71,17 @@
                     <label for="floatingCardNumber">Card Number</label>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingOptionsProducts" aria-label="Floating label select example>
-                        include_once('views/admin/OptionsProducts.php');
-                    </select>
+                <div class="form-floating mb-9 d-flex">
+                    <select class="form-select" id="floatingOptionsProducts" aria-label="Floating label select example"></select>
+                    <label for="floatingOptionsProducts">Products</label>
+
+                    <div class="d-flex">
+                        <input type="number" id="productQuantity" value="1" min="1" readonly>
+                        <button id="increaseQuantity">+</button>
+                    </div>
                 </div>
-                
-                <div class="form-floating">
+
+                <div class=" mb-3 form-floating">
                     <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>
                         <option value="Making">Making</option>
