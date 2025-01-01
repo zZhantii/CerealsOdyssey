@@ -70,6 +70,13 @@
                     <input type="text" class="form-control" id="floatingCardNumber" placeholder="Card Number">
                     <label for="floatingCardNumber">Card Number</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingOptionsProducts" aria-label="Floating label select example>
+                        include_once('views/admin/optionsProducts.php');
+                    </select>
+                </div>
+                
                 <div class="form-floating">
                     <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
                         <option selected>Open this select menu</option>
