@@ -112,8 +112,7 @@ class userController
     {
         $address_id = $_GET['id'];
         $remove = AddressDAO::removeAddress($address_id);
-        $view = 'views/pages/user/profile.php';
-        include_once 'views/main.php';
+        header("Location:?controller=user&action=profile&success=2");
     }
 
     public static function addInformationUser()
@@ -232,6 +231,7 @@ class userController
     public static function editInformationUser()
     {
         if (isset(
+            $_POST['address_id'],
             $_POST['first_name'],
             $_POST['last_name'],
             $_POST['apartment'],
@@ -243,6 +243,7 @@ class userController
         )) {
 
             // Recoger los datos enviados por el formulario
+            $address_id = $_POST['address_id'];
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $apartment = $_POST['apartment'];
@@ -252,12 +253,9 @@ class userController
             $zipCode = $_POST['zipCode'];
             $country = $_POST['country'];
 
-            // Obtener el ID del usuario desde la sesión
-            $userId = $_SESSION['user']['id'];
-
             // Actualizar los datos del usuario en la base de datos
             $success = AddressDAO::edit_Address(
-                $userId,
+                $address_id,
                 $first_name,
                 $last_name,
                 $apartment,

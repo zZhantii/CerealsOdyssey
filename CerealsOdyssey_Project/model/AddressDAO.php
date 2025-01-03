@@ -26,12 +26,12 @@ class AddressDAO
         return $address;
     }
 
-    public static function edit_Address($userId, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
+    public static function edit_Address($address_id, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("UPDATE address SET user_id = ? ,country=?, apartment=?, address=?, city=?, state=?, zipCode=?, first_name=?, last_name=? WHERE address_id=$userId");
+        $stmt = $conex->prepare("UPDATE address SET country=?, apartment=?, address=?, city=?, state=?, zipCode=?, first_name=?, last_name=? WHERE address_id=$address_id");
 
-        $stmt->bind_param("isssssiss", $userId, $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
+        $stmt->bind_param("sssssiss", $country, $apartment, $address, $city, $state, $zipCode, $first_name, $last_name,);
 
         $success = $stmt->execute();
 
@@ -43,7 +43,8 @@ class AddressDAO
     public static function removeAddress($address_id)
     {
         $conex = database::connect();
-        $stmt = $conex->prepare("DELETE FROM address WHERE address_id = $address_id");
+        $stmt = $conex->prepare("DELETE FROM address WHERE address_id = ?");
+        $stmt->bind_param("i", $address_id);
 
         $stmt->execute();
 

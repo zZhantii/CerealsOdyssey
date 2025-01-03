@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const successCodes = [1, 2, 3, 4, 200];
+    const successCodes = [1, 2, 3, 4, 5, 200];
     if (urlParams.has('success')) {
         const successParam = parseInt(urlParams.get('success'), 10);
         if (successCodes.includes(successParam)) {

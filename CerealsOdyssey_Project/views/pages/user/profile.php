@@ -164,7 +164,7 @@
                                             <label for="floatingInput">Apartment</label>
                                         </div>
                                     </div>
-                                    <div class="d-flex ">
+                                    <div class="d-flex">
                                         <div class="form-floating p-0 pe-3 col-md-4">
                                             <input type="text" class="form-control" id="floatingInput" placeholder="City" name="city" required>
                                             <label for="floatingInput">City</label>

@@ -14,6 +14,7 @@ class buyController
         } else {
             $cartPrice = $_SESSION['cart'];
             $total = Cart::total_price($cartPrice);
+            $totalIVA = Cart::total_price_IVA($cartPrice);
             $address = AddressDAO::getAddress();
 
             $view = 'views/pages/checkOut/buy.php';
@@ -38,7 +39,7 @@ class buyController
             AllProductsDAO::createOrder($_SESSION['user'], $_SESSION['cart']);
             unset($_SESSION['discounts']);
             unset($_SESSION['cart']);
-            header("Location:?controller=user&action=orders");
+            header("Location:?controller=user&action=orders&success=5");
         }
     }
 }

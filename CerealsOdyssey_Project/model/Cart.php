@@ -69,6 +69,16 @@ class Cart
             $total += $item['price'] * $item['amount'];
         }
 
+        return $total;
+    }
+
+    public static function total_price_IVA($cart)
+    {
+        $total = 0;
+        foreach ($cart as $item) {
+            $total += $item['price'] * $item['amount'];
+        }
+
         $totalWithIVA = $total * 1.21;
 
         return $totalWithIVA;

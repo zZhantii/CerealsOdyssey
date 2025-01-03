@@ -7,9 +7,12 @@ class Discount
         $discount = $cartTotal * ($discountPercentage / 100);
         $newPrice = $cartTotal - $discount;
 
+        $newPriceIVA = $newPrice * 1.21;
+
         $_SESSION['discounts'] = [
             'discount' => $discount,
             'newPrice' => $newPrice,
+            'newPriceIVA' => $newPriceIVA
         ];
 
         return $newPrice;
