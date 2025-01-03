@@ -1,25 +1,28 @@
 <?php
 
 if (empty($_SESSION['cart'])) { ?>
-    <div class="container border-0 container-product py-2 px-5 d-flex flex-column w-75 gap-4">
-        <div class="container productInformation d-flex flex-column justify-content-evenly">
-            <h3>Oh no! Your Cart is Empty!</h3>
-            <div>
-                <h3 class="mt-5">Shop by</h3>
-            </div>
-        </div>
-        <?php include_once 'views/assets/listCategoriesCart.php' ?>
-        <div class=" container d-flex flex-column  gap-4">
-            <div>
-                <h4>You May Also Like</h4>
-                <div class="d-flex border rounded-2 py-2 px-3 my-3 container-like align-items-center gap-2">
-                    <img src="public/img/products/product1.jpg" alt="producto" height="96" width="96" class="object-fit-cover img-fluid">
-                    <div class="container-buy">
-                        <div>
-                            <h4>Cereales de colores</h4>
+    <div class="container ">
+        <div class="row d-flex flex-column justify-content-center">
+            <?php include_once 'views/assets/listCartHeaderProducts.php' ?>
+            <div class="col-12 d-flex bg-white justify-content-center flex-column mt-3">
+                <?php
+                $cart = $_SESSION['cart'];
+                $total = Cart::total_price($cart);
+                ?>
+                <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= $total ?> €</a>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <img src="public/img/ShopPay.svg" height="20" alt="ShopPay">
                         </div>
-                        <div>
-                            <p>2.50€</p>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <img src="public/img/AmazonPay.svg" height="70" alt="AmazonPay">
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <img src="public/img/ApplePay.svg" height="70" alt="AppelPay">
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <img src="public/img/GooglePay.svg" height="70" alt="GooglePay">
                         </div>
                     </div>
                 </div>
@@ -61,22 +64,6 @@ if (empty($_SESSION['cart'])) { ?>
                 </div>
             </div>
         <?php } ?>
-        <div class=" container d-flex flex-column my-5 gap-4">
-            <div>
-                <h4>You May Also Like</h4>
-                <div class="d-flex border rounded-2 py-2 px-3 my-3 container-like align-items-center gap-2">
-                    <img src="public/img/products/product1.jpg" alt="producto" height="96" width="96" class="object-fit-cover img-fluid">
-                    <div class="container-buy">
-                        <div>
-                            <h4>Cereales de colores</h4>
-                        </div>
-                        <div>
-                            <p>2.50€</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container mb-3">
             <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain container">Continue to Cheackout - <?= $total ?> €</a>
             <div class="row d-flex align-items-center mt-4">

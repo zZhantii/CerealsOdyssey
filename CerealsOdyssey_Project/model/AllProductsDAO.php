@@ -202,35 +202,27 @@ class AllProductsDAO
     {
         $conex = database::connect();
         $user_id = $data['user_id'];
-        $totalPrice = $data['price'];
+        $discount = $data['discount'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
 
         $amount = $data['amount'];
         $product = (int) $data['product'];
         $price = $data['priceProduct'];
-        $discountId = 1;
+        $totalPrice = $amount * $price;
 
-        // Debería ser un entero
-        var_dump($discountId); // Debería ser un entero
-        var_dump($product);    // Debería ser un entero
-        var_dump($price);      // Debería ser un float
-        var_dump($amount);     // Debería ser un entero
-
-
-        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, status, cardNumber, totalPrice, totalAmount) VALUES (?, ?, ?, ?, ?)");
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, discount_id, status, cardNumber, totalPrice, totalAmount) VALUES (?, ?, ?, ?, ?, ?)");
         $initialTotalItems = 0;
-        $stmtOrder->bind_param("issdi", $user_id, $status, $cardNumber, $totalPrice, $initialTotalItems);
+        $stmtOrder->bind_param("iissdi", $user_id, $discount, $status, $cardNumber, $totalPrice, $initialTotalItems);
 
         if (!$stmtOrder->execute()) {
             return ['success' => false, 'message' => 'Error creating order: ' . $stmtOrder->error];
         }
 
-
         $orderId = $stmtOrder->insert_id;
 
         $stmtOrderDetails = $conex->prepare("INSERT INTO order_details (order_id, discount_id, product_id, price, amount) VALUES (?, ?, ?, ?, ?)");
-        $stmtOrderDetails->bind_param("iiiii", $orderId, $discountId, $product, $price, $amount);
+        $stmtOrderDetails->bind_param("iiiii", $orderId, $discount, $product, $price, $amount);
 
 
         if (!$stmtOrderDetails->execute()) {

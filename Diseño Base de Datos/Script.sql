@@ -105,6 +105,17 @@ CREATE TABLE order_detail_ingredients (
     PRIMARY KEY (order_detail_id, ingredient_id)  
 );
 
+-- Tabla auditoria
+CREATE TABLE auditoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tabla VARCHAR(255) NOT NULL,
+    accion ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    usuario VARCHAR(255),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    datos_anteriores TEXT,
+    datos_nuevos TEXT
+);
+
 -- Agregar claves foráneas a orders
 ALTER TABLE orders
 ADD FOREIGN KEY (user_id) REFERENCES users(user_id),

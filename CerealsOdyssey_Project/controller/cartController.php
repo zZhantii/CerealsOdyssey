@@ -11,7 +11,7 @@ class CartController
     {
         $cart = $_SESSION['cart'];
         $total = Cart::total_price($cart);
-        $view = 'views/pages/cart.php';
+        $view = 'views/pages/products/cart.php';
         include_once 'views/main.php';
     }
 
@@ -41,9 +41,6 @@ class CartController
             $cart = $_SESSION['cart'];
             $total = Cart::total_price($cart);
             header("Location:?controller=cart&action=show");
-            exit;
-        } else {
-            header("Location:?controller=cart&action=show&error=invalid_id");
             exit;
         }
     }

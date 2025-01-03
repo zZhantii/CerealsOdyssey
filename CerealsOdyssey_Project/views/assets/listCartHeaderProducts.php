@@ -4,8 +4,8 @@ if (empty($_SESSION['cart'])) { ?>
     <div class="col-12 bg-white">
         <h3>Oh no, your cart is empty!</h3>
         <div>
-            <h3 class="mt-5">Shop by</h2>
-                <?php include_once 'views/assets/listCategoriesCart.php' ?>
+            <h3 class="mt-5">Shop by</h3>
+            <?php include_once 'views/assets/listCategoriesCart.php' ?>
         </div>
     </div>
     <?php } else {
@@ -38,4 +38,5 @@ if (empty($_SESSION['cart'])) { ?>
         </div>
 
 <?php }
-} ?>
+}
+?>

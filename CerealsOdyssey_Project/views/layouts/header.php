@@ -112,24 +112,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <div class="container  ">
+        <div class="container ">
             <div class="row d-flex flex-column justify-content-center">
                 <?php include_once 'views/assets/listCartHeaderProducts.php' ?>
-                <div class="col-12">
-                    <h3>You may also like</h3>
-                    <div class="container border rounded-3">
-                        <div class="row">
-                            <div class="col d-flex align-items-center gap-3">
-                                <img src="public/img/products/product2.jpg" alt="productp" height="96" class="object-contain">
-                                <div class="">
-                                    <h5>Leches</h5>
-                                    <p>2.5 €</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 d-flex sticky-bottom bg-white justify-content-center flex-column mt-3">
+                <div class="col-12 d-flex bg-white justify-content-center flex-column mt-3">
                     <?php
                     $cart = $_SESSION['cart'];
                     $total = Cart::total_price($cart);

@@ -183,6 +183,10 @@ header {
     height: 100vh;
 }
 
+.orders {
+    height: 100%;
+}
+
 .subnav-link {
     display: flex;
     align-items: center;
@@ -361,6 +365,15 @@ hr {
 
 .containt-product {
     width: 32%;
+}
+
+.h-title {
+    height: 50px;
+}
+
+.h-image {
+    height: 262px;
+    width: 262px;
 }
 
 .img-product-shop {

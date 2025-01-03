@@ -36,6 +36,8 @@ let selectedProduct = null;
 let quantity = 1;
 let price = 0;
 
+let products = {};
+
 fetch(apiUrlGetProducts)
     .then(response => {
         if (!response.ok) {
@@ -48,7 +50,9 @@ fetch(apiUrlGetProducts)
             const optionElement = document.createElement("option");
             optionElement.value = option.product_id;
             optionElement.textContent = option.name;
-            price = option.price;
+
+            products[option.product_id] = option.price;
+
             selectElement.appendChild(optionElement);
         });
     })
@@ -58,8 +62,10 @@ fetch(apiUrlGetProducts)
 
 selectElement.addEventListener("change", (event) => {
     selectedProduct = event.target.value;
-    console.log("Producto seleccionado:", selectedProduct);
+    price = products[selectedProduct];
+    console.log("Producto seleccionado:", selectedProduct, "Precio:", price);
 });
+
 
 increaseButton.addEventListener("click", () => {
     quantity += 1;
@@ -110,13 +116,12 @@ document.addEventListener('dblclick', (event) => {
     const tablaContainer = document.getElementById('tablaContainer');
     const selectedRow = document.querySelector('tr.selected');
 
-    // Verificar si el clic fue fuera de la tabla y no sobre una fila seleccionada
+
     if (tablaContainer && !tablaContainer.contains(event.target)) {
-        // Solo si hay una fila seleccionada, deseleccionarla
         if (selectedRow) {
             selectedRow.classList.remove('selected');
             order_ID = 0;
-            document.getElementById('ID').innerHTML = '<p>ID</p> ' + order_ID; // Mostrar que no hay selección
+            document.getElementById('ID').innerHTML = '<p>ID</p> ' + order_ID;
             console.log('ID deseleccionado:', order_ID);
         }
     }
@@ -157,18 +162,18 @@ document.getElementById('order-by').addEventListener('change', (event) => {
 });
 
 document.getElementById('submitOrder').addEventListener('click', () => {
-    const price = document.getElementById('floatingPrice').value;
+    const discount = document.getElementById('floatingDiscount').value;
     const cardNumber = document.getElementById('floatingCardNumber').value;
     const status = document.getElementById('floatingStatus').value;
 
-    console.log("Valores capturados:", { price, cardNumber, status });
+    console.log("Valores capturados:", { discount, cardNumber, status });
     console.log(order_ID);
 
     if (order_ID == 0) {
         const user_id = document.getElementById('floatingUser').value;
-        createOrder({ user_id, price, cardNumber, status, quantity, selectedProduct, price })
+        createOrder({ user_id, discount, cardNumber, status, quantity, selectedProduct, price })
     } else {
-        modifyOrder(order_ID, { price, cardNumber, status });
+        modifyOrder(order_ID, { discount, cardNumber, status });
     }
 });
 
@@ -180,11 +185,9 @@ async function modifyOrder(order_ID, orderData) {
         const requestBody = {
             orderID: order_ID,
             status: orderData.status,
-            price: orderData.price,
+            discount: orderData.discount,
             cardNumber: orderData.cardNumber,
         };
-
-        console.log("Datos: " + orderData.price + orderData.status);
 
         const response = await fetch(apiUrlModify, {
             method: 'PUT',
@@ -205,21 +208,19 @@ async function modifyOrder(order_ID, orderData) {
     }
 }
 
-
-
 // Funcion para crear Pedidos
 async function createOrder(orderData) {
-    console.log('Creando pedido con datos:', orderData);
-
     const requestBody = {
         user_id: orderData.user_id,
         status: orderData.status,
-        price: orderData.price,
+        discount: orderData.discount,
         cardNumber: orderData.cardNumber,
         amount: quantity,
         product: selectedProduct,
         priceProduct: price
     };
+
+    console.log('Creando pedido con datos:', requestBody);
 
     const response = await fetch(apiUrlCreate, {
         method: 'POST',

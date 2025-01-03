@@ -17,8 +17,7 @@ class Cart
 
             $found = false;
 
-            // Añadir un campo ['producto'] y buscarlo directamente sin tener que hacer if
-
+            // Si la sesión ya tiene un carrito, lo obtenemos
             if (isset($_SESSION['cart'])) {
                 foreach ($_SESSION['cart'] as &$cartItem) {
                     if ($cartItem['id'] === $productId) {
@@ -30,10 +29,15 @@ class Cart
                 unset($cartItem);
             }
 
+            // Si el producto no se encontró en la sesión, lo agregamos
             if (!$found) {
                 $_SESSION['cart'][] = $productDetails;
             }
+
+            // Actualizacion cookie al insertar
+            self::updateCartCookie($_SESSION['cart']);
         }
+
         return $_SESSION['cart'];
     }
 
@@ -46,28 +50,29 @@ class Cart
                     break;
                 }
             }
+            // Actualizacion cookie al eliminar
+            self::updateCartCookie($_SESSION['cart']);
         }
     }
 
     public static function clearCart()
     {
         unset($_SESSION['cart']);
+        // Limpiar cookie
+        setcookie('cart', '', time() - 3600, '/');
     }
 
     public static function total_price($cart)
     {
         $total = 0;
         foreach ($cart as $item) {
-            // Sumar el precio del item multiplicado por su cantidad
             $total += $item['price'] * $item['amount'];
         }
 
-        // Sumar el 21% de IVA al total
         $totalWithIVA = $total * 1.21;
 
         return $totalWithIVA;
     }
-
 
     public static function total_Amount($cart)
     {
@@ -80,8 +85,24 @@ class Cart
 
     public static function total_Items($cart)
     {
-        $totalItems = count($_SESSION['cart']);
+        $totalItems = count($cart);
 
         return $totalItems;
+    }
+
+    // Función para actualizar la cookie 
+    private static function updateCartCookie($cart)
+    {
+        $cartJson = json_encode($cart);
+        // x dias x horas x min x s
+        setcookie('cart', $cartJson, time() + (60), '/');
+    }
+
+    // Función para recuperar el carrito desde la cookie si no hay sesión activa
+    public static function loadCartFromCookie()
+    {
+        if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
+            $_SESSION['cart'] = json_decode($_COOKIE['cart'], true);
+        }
     }
 }

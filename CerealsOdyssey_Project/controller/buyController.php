@@ -1,5 +1,6 @@
 <?php
 include_once('config/dataBase.php');
+include_once('config/proteccion.php');
 
 class buyController
 {
@@ -9,8 +10,7 @@ class buyController
             $view = 'views/pages/user/login.php';
             include_once 'views/main.php';
         } elseif (empty($_SESSION['cart'])) {
-            $view = 'views/pages/cart.php';
-            include_once 'views/main.php';
+            //Alert
         } else {
             $cartPrice = $_SESSION['cart'];
             $total = Cart::total_price($cartPrice);
