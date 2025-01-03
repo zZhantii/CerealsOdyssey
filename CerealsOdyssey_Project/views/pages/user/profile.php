@@ -254,6 +254,7 @@
                 </div>
             </div>
         </section>
+        <?php include_once 'views/assets/success.php' ?>
     </main>
 </body>
 

@@ -28,6 +28,7 @@
             <button type="submit" class="btn btn-primary buttonMain" id="liveToastBtn">Submit</button>
 
             <?php include_once 'views/assets/errors.php' ?>
+            <?php include_once 'views/assets/success.php' ?>
         </form>
     </div>
 </body>

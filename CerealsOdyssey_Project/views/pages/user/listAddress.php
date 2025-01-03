@@ -181,7 +181,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a class="btn" href="?controller=user&action=removeAddress&id=<?= $item->getAddress_id() ?>">Delete</a>
+                            <a class="btn" href="?controller=user&action=removeAddress&id=<?= $item->getAddress_id() ?>&success=2">Delete</a>
                             <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary buttonMain">Save changes</button>
                         </div>

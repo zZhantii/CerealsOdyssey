@@ -33,14 +33,18 @@ class userController
 
             $user = UsersDAO::get_User_ByEmail($email);
 
-            $rol = $user->getRol();
-
             if ($user) {
                 $hashedPassword = $user->getPassword();
                 // Comprueba la contraseña encriptada
                 if (password_verify($password, $hashedPassword)) {
                     $user_Id = $user->getUser_id();
+                } else {
+                    // Redirigir con un error
+                    header("Location:?controller=user&action=login&error=402");
+                    exit;
                 }
+
+                $rol = $user->getRol();
 
                 // Almacena datos en la variable
                 $_SESSION['user'] = [
@@ -74,7 +78,7 @@ class userController
             $confirmPassword = $_POST['confirmPassword']; // Mantener la confirmación en texto plano
 
             if (UsersDAO::findUser($email)) {
-                header("Location:?controller=user&action=register&error=4012");
+                header("Location:?controller=user&action=register&error=403");
                 exit;
             } else {
                 if ($password === $confirmPassword) { // Comparar las contraseñas en texto plano
@@ -85,10 +89,10 @@ class userController
                     $user->setEmail($email);
 
                     UsersDAO::createUser($user);
-                    header("Location:?controller=user&action=login");
+                    header("Location:?controller=user&action=login&success=200");
                     exit;
                 } else {
-                    header("Location:?controller=user&action=register&error=4013");
+                    header("Location:?controller=user&action=register&error=404");
                     exit;
                 }
             }
@@ -214,7 +218,7 @@ class userController
                 $_SESSION['user']['zipCode'] = $zipCode;
                 $_SESSION['user']['country'] = $country;
 
-                header("Location:?controller=user&action=profile&success=1");
+                header("Location:?controller=user&action=profile&success=3");
                 exit;
             } else {
                 header("Location:?controller=user&action=profile&error=500");
@@ -264,7 +268,7 @@ class userController
                 $country
             );
 
-            header("Location:?controller=user&action=profile&success=1");
+            header("Location:?controller=user&action=profile&success=4");
             exit;
         }
     }

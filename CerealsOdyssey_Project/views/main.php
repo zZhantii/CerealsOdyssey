@@ -36,7 +36,6 @@
     if ($controller === 'categories') {
         include_once 'layouts/footer.php';
     } elseif ($controller === 'user' && in_array($action, ['login', 'register', 'buyOrder'])) {
-        include_once 'layouts/footerUser.php';
     } elseif ($controller == 'admin') {
     } else {
         include_once 'layouts/footer2.php';

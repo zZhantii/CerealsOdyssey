@@ -3,11 +3,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const toastLiveExample = document.getElementById('liveToast');
 
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('error') && (urlParams.get('error') == 401 || urlParams.get('error') == 4013)) {
-        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        toastBootstrap.show();
+    const errorCodes = [401, 402, 403, 404];
+
+    if (urlParams.has('error')) {
+        const errorParam = parseInt(urlParams.get('error'), 10);
+        if (errorCodes.includes(errorParam)) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            toastBootstrap.show();
+        }
+    }
+
+    const successCodes = [1, 2, 3, 4, 200];
+    if (urlParams.has('success')) {
+        const successParam = parseInt(urlParams.get('success'), 10);
+        if (successCodes.includes(successParam)) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            toastBootstrap.show();
+        }
     }
 });
+
 
 // Cart
 
