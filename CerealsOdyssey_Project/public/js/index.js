@@ -33,19 +33,18 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         const url = this.getAttribute('href');
 
         fetch(url)
-            .then(response => response.text()) // Lee la respuesta como texto
+            .then(response => response.text())
             .then(data => {
-                console.log(data); // Mostrar respuesta del servidor en la consola para depuración
+                console.log(data);
 
                 if (data.includes("Producto añadido correctamente")) {
-                    // Abre el canvas
+
                     const offcanvasElement = document.querySelector('#offcanvasRight');
                     const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
                     offcanvas.show();
 
-                    // Opcional: puedes actualizar el contenido del canvas aquí
                 } else {
-                    console.error("Error:", data); // Muestra el error si ocurre
+                    console.error("Error:", data);
                 }
             })
             .catch(error => console.error('Error al realizar la solicitud:', error));
@@ -64,7 +63,7 @@ function filterURL() {
 
     // Construir nueva URL
     const baseURL = "?controller=product&action=getAllProducts";
-    const filterParam = selectedValues.length > 0 ? "&action=filter&id=" + selectedValues.join(",") : "";
+    const filterParam = selectedValues.length > 0 ? "&id=" + selectedValues.join(",") : "";
     const newURL = baseURL + filterParam;
 
     // Redirigir a la nueva URL

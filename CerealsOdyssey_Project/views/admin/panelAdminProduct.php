@@ -14,6 +14,12 @@
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
+            <select id="currency-selector">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+            <button id="convert-button">Converted Price</button>
+
             <label for="filter-product-id">Find by product ID:</label>
             <input type="text" id="filter-product-id" placeholder="put Product ID">
 

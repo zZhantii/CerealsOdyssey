@@ -11,12 +11,26 @@ document.getElementById('createTable').addEventListener('click', getOrders);
 
 async function getOrders() {
     try {
+        // Verificación SessionStorage
+        const storage = sessionStorage.getItem('orders');
+
+        if (storage) {
+            console.log('Datos cargados desde sessionStorage');
+            orders = JSON.parse(storedOrders);
+            crearTabla(orders);
+            return;
+        }
+
         const response = await fetch(apiUrlGet);
         if (!response.ok) {
             throw new Error(`Error en la red: ${response.status} - ${response.statusText}`);
         }
         const data = await response.json();
         orders = data.data || data;
+
+        // Almacenar datos en la sessionStorage
+        sessionStorage.setItem('orders', JSON.stringify(orders));
+        console.log('Datos almacenados: ', orders);
 
         if (orders.length > 0) {
             crearTabla(orders);
@@ -203,6 +217,7 @@ async function modifyOrder(order_ID, orderData) {
         console.log('Respuesta del servidor:', data);
 
         await getOrders();
+        sessionStorage.removeItem('orders');
     } catch (error) {
         console.error('Error modificando el pedido:', error);
     }
@@ -237,6 +252,7 @@ async function createOrder(orderData) {
     console.log(dataPetition);
 
     await getOrders();
+    sessionStorage.removeItem('orders');
 }
 
 // Funcion para eliminar
@@ -267,4 +283,5 @@ async function deleteOrder(order_ID) {
     console.log(dataPetition);
 
     await getOrders();
+    sessionStorage.removeItem('orders');
 }

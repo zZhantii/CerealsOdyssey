@@ -2,6 +2,8 @@
 
 abstract class Products
 {
+    const TYPE_Cereals = 1;
+    const TYPE_Milks = 2;
     protected $product_id;
     protected $name;
     protected $price;

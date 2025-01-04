@@ -18,14 +18,24 @@ async function getProduct() {
         products = data.data || data;
 
         if (products.length > 0) {
+            const tipoCambio = await obtenerTipoCambio('USD', 'EUR');
+            if (tipoCambio) {
+                products = products.map(product => {
+                    product.price = (product.price * tipoCambio).toFixed(2);
+                    product.priceDiscount = (product.priceDiscount * tipoCambio).toFixed(2);
+                    return product;
+                });
+            }
+
             crearTabla(products);
         } else {
-            document.getElementById('tablaContainer').innerHTML = '<p>No se encontraron pedidos.</p>';
+            document.getElementById('tablaContainer').innerHTML = '<p>No se encontraron productos.</p>';
         }
     } catch (error) {
         console.error('Error:', error);
     }
 }
+
 
 function crearTabla(products) {
     const tablaContainer = document.getElementById('tablaContainer');
@@ -63,6 +73,7 @@ function crearTabla(products) {
     tabla.appendChild(tbody);
     tablaContainer.appendChild(tabla);
 }
+
 
 function seleccionarFila(product_id, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
@@ -214,3 +225,42 @@ async function deleteproduct(product_ID) {
 
     await getProduct();
 }
+
+// Api externa
+
+async function obtenerTipoCambio(baseCurrency, targetCurrency) {
+    const apiKey = 'fca_live_LEjMqqBCL5xCeTCi0TzejSx4xeYWUrrLA0nq1cNW';
+    const apiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${apiKey}&base_currency=${baseCurrency}&currencies=${targetCurrency}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Error al obtener el tipo de cambio: ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data.data[targetCurrency];
+    } catch (error) {
+        console.error('Error al obtener el tipo de cambio:', error);
+        return null;
+    }
+}
+
+async function convertirPrecios() {
+    const baseCurrency = 'EUR';
+    const targetCurrency = document.getElementById('currency-selector').value;
+
+    const tipoCambio = await obtenerTipoCambio(baseCurrency, targetCurrency);
+    if (tipoCambio) {
+        products.forEach(product => {
+            product.price = (product.price * tipoCambio).toFixed(2);
+            product.priceDiscount = (product.priceDiscount * tipoCambio).toFixed(2);
+        });
+
+        crearTabla(products);
+    } else {
+        alert("No se pudo obtener el tipo de cambio.");
+    }
+}
+
+
+document.getElementById('convert-button').addEventListener('click', convertirPrecios);
