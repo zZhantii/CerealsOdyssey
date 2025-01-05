@@ -1,5 +1,5 @@
 <?php foreach ($product as $item) { ?>
-    <div class="container-fluid bg-info c1 p-0">
+    <div class="container-fluid bg-product c1 p-0">
         <div class="container d-flex justify-content-end p-4">
             <img src="public\img\products\<?= $item->getImage() ?>" alt="product" height="750" class="rounded bg-white">
         </div>

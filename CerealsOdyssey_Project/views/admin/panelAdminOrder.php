@@ -11,33 +11,33 @@
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
             <button id="DeleteOrder" class="buttonTable">Delete</button>
-            <a href="?controller=catgories" class="buttonTable">Go to home</a>
-            <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
+            <a href="?controller=catgories" class="buttonTable">Go to Home</a>
+            <a href="?controller=admin&action=showPanel" class="buttonTable">Go to Choose</a>
 
-            <label for="filter-user-id">Buscar por User ID:</label>
-            <input type="text" id="filter-user-id" placeholder="Ingrese User ID">
+            <label for="filter-user-id">Search by User ID:</label>
+            <input type="text" id="filter-user-id" placeholder="Enter User ID">
 
-            <label for="filter-order-id">Buscar por Order ID:</label>
-            <input type="text" id="filter-order-id" placeholder="Ingrese Order ID">
+            <label for="filter-order-id">Search by Order ID:</label>
+            <input type="text" id="filter-order-id" placeholder="Enter Order ID">
 
-            <label for="filter-date">Buscar por Fecha:</label>
+            <label for="filter-date">Search by Date:</label>
             <input type="date" id="filter-date">
 
-            <label for="filter-price">Buscar por Precio:</label>
-            <input type="number" id="filter-price" placeholder="Ingrese Precio">
+            <label for="filter-price">Search by Price:</label>
+            <input type="number" id="filter-price" placeholder="Enter Price">
 
-            <label for="filter-status">Buscar por Estado:</label>
-            <input type="text" id="filter-status" placeholder="Ingrese Estado">
+            <label for="filter-status">Search by Status:</label>
+            <input type="text" id="filter-status" placeholder="Enter Status">
 
-            <button id="apply-filter">Aplicar Filtros</button>
+            <button id="apply-filter" class="buttonTable">Apply Filters</button>
 
-            <label for="order-by">Ordenar por:</label>
+            <label for="order-by">Sort by:</label>
             <select id="order-by">
-                <option value="order_id">ID Pedido</option>
-                <option value="user_id">ID Usuario</option>
-                <option value="price">Precio</option>
-                <option value="date">Fecha</option>
-                <option value="status">Estado</option>
+                <option value="order_id">Order ID</option>
+                <option value="user_id">User ID</option>
+                <option value="price">Price</option>
+                <option value="date">Date</option>
+                <option value="status">Status</option>
             </select>
         </div>
         <div class="w-100">
@@ -45,8 +45,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="Order" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -59,31 +57,28 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingUser" placeholder="Price">
-                    <label for="floatingPrice">User_ID</label>
+                    <input type="number" class="form-control" id="floatingUser" placeholder="User ID">
+                    <label for="floatingUser">User ID</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingDiscount" placeholder="Price">
+                    <input type="number" class="form-control" id="floatingDiscount" placeholder="Discount">
                     <label for="floatingDiscount">Discount</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingCardNumber" placeholder="Card Number">
                     <label for="floatingCardNumber">Card Number</label>
                 </div>
-
                 <div class="form-floating mb-9 d-flex">
-                    <select class="form-select" id="floatingOptionsProducts" aria-label="Floating label select example"></select>
+                    <select class="form-select" id="floatingOptionsProducts" aria-label="Select Product"></select>
                     <label for="floatingOptionsProducts">Products</label>
-
                     <div class="d-flex">
                         <input type="number" id="productQuantity" value="1" min="1" readonly>
                         <button id="increaseQuantity">+</button>
                     </div>
                 </div>
-
-                <div class=" mb-3 form-floating">
-                    <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
-                        <option selected>Open this select menu</option>
+                <div class="mb-3 form-floating">
+                    <select class="form-select" id="floatingStatus" aria-label="Select Status">
+                        <option selected>Choose status</option>
                         <option value="Making">Making</option>
                         <option value="Delivery">Delivery</option>
                         <option value="Three">Three</option>

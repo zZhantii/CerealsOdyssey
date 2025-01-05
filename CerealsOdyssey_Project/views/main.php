@@ -20,7 +20,7 @@
     $controller = $_GET['controller'];
     $action = $_GET['action'] ?? null;
 
-    if (in_array($controller, ['categories', 'product', 'cart'])) {
+    if (in_array($controller, ['categories', 'product', 'cart', 'enterprise'])) {
         include_once 'layouts/header.php';
     } elseif (($controller == 'admin' || $controller == 'buy') || ($controller === 'user' && in_array($action, ['login', 'register']))) {
     } else {

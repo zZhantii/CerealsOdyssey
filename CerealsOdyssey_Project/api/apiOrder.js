@@ -11,12 +11,11 @@ document.getElementById('createTable').addEventListener('click', getOrders);
 
 async function getOrders() {
     try {
-        // Verificación SessionStorage
         const storage = sessionStorage.getItem('orders');
 
         if (storage) {
             console.log('Datos cargados desde sessionStorage');
-            orders = JSON.parse(storedOrders);
+            orders = JSON.parse(storage);
             crearTabla(orders);
             return;
         }
@@ -41,6 +40,7 @@ async function getOrders() {
         console.error('Error:', error);
     }
 }
+
 
 const selectElement = document.getElementById("floatingOptionsProducts");
 const quantityInput = document.getElementById("productQuantity");
@@ -142,38 +142,77 @@ document.addEventListener('dblclick', (event) => {
 });
 
 function seleccionarFila(orderID, fila) {
+    // Resaltamos la fila seleccionada
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
+
+    // Almacenamos el ID del pedido seleccionado
     order_ID = orderID;
-    document.getElementById('ID').innerHTML = '<p>ID</p> ' + order_ID;
-    console.log('ID seleccionado:', order_ID);
+    document.getElementById('ID').innerHTML = '<p>Selected Order ID: </p>' + order_ID;
+    console.log('Order ID seleccionado:', order_ID);
+
+    // Buscar el pedido correspondiente en el array orders usando el orderID
+    const orderSeleccionado = orders.find(order => order.order_id === orderID);
+
+    if (orderSeleccionado) {
+        // Asignamos la información del pedido a los campos del formulario
+        document.getElementById('floatingUser').value = orderSeleccionado.user_id || '';
+        document.getElementById('floatingCardNumber').value = orderSeleccionado.cardNumber || '';
+        document.getElementById('floatingStatus').value = orderSeleccionado.status || '';
+        document.getElementById('floatingDiscount').value = orderSeleccionado.discount_value || '';
+
+        console.log('Pedido seleccionado:', orderSeleccionado);
+    } else {
+        console.log('No se encontró el pedido con ID:', orderID);
+    }
 }
 
 document.getElementById('apply-filter').addEventListener('click', () => {
-    const filtro = document.getElementById('filter').value.toLowerCase();
-    const pedidosFiltrados = orders.filter(order => order.user_id.toString().includes(filtro));
+    const userIdFilter = document.getElementById('filter-user-id').value.toLowerCase();
+    const orderIdFilter = document.getElementById('filter-order-id').value.toLowerCase();
+    const dateFilter = document.getElementById('filter-date').value;
+    const priceFilter = document.getElementById('filter-price').value;
+    const statusFilter = document.getElementById('filter-status').value.toLowerCase();
+
+    const pedidosFiltrados = orders.filter(order => {
+        const matchesUserId = userIdFilter ? order.user_id.toString().includes(userIdFilter) : true;
+        const matchesOrderId = orderIdFilter ? order.order_id.toString().includes(orderIdFilter) : true;
+        const matchesDate = dateFilter ? order.date === dateFilter : true;
+        const matchesPrice = priceFilter ? order.totalPrice.toString().includes(priceFilter) : true;
+        const matchesStatus = statusFilter ? order.status.toLowerCase().includes(statusFilter) : true;
+
+        return matchesUserId && matchesOrderId && matchesDate && matchesPrice && matchesStatus;
+    });
+
     crearTabla(pedidosFiltrados);
 });
+
+
 
 document.getElementById('order-by').addEventListener('change', (event) => {
     const criterio = event.target.value;
     orders.sort((a, b) => {
-        if (criterio === 'order_id') {
+        if (criterio === 'price') {
+            return b.totalPrice - a.totalPrice;
+        } else if (criterio === 'order_id') {
             return b.order_id - a.order_id;
         } else if (criterio === 'user_id') {
             return b.user_id - a.user_id;
-        } else if (criterio === 'status') {
-            return a.status.localeCompare(b.status);
         } else if (criterio === 'date') {
             return new Date(b.date) - new Date(a.date);
-        } else if (criterio === 'price') {
-            return b.totalPrice - a.totalPrice;
+        } else if (criterio === 'status') {
+            const statusA = a.status || '';
+            const statusB = b.status || '';
+            return statusA.localeCompare(statusB);
         } else {
-            return a[criterio] - b[criterio];
+            return 0;
         }
     });
     crearTabla(orders);
 });
+
+
+
 
 document.getElementById('submitOrder').addEventListener('click', () => {
     const discount = document.getElementById('floatingDiscount').value;

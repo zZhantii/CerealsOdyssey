@@ -4,7 +4,7 @@
 
 
 <main>
-    <div class="container d-flex align-items-center flex-column my-5">
+    <div class="container d-flex align-items-center flex-column my-5 profile">
         <h1>Contact Us</h1>
         <p>Need help? No worries, our team can assist you.</p>
         <a href="" class="d-flex flex-column border p-4 my-3 rounded buttonMain2">

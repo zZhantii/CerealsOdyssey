@@ -548,6 +548,10 @@ hr {
 
 /* Product */
 
+.bg-product {
+    background: linear-gradient(to bottom, #055CCA, #6ABBE5);
+}
+
 #product .c1 {
     width: 55%;
 }
@@ -562,6 +566,16 @@ hr {
     height: 54px;
     width: 72px;
     border-radius: 0;
+    color: #303B43;
+}
+
+#product .plus,
+.minus {
+    background-color: #F0F1F3;
+}
+
+#product .amount {
+    background-color: #F7F8F9;
 }
 
 #product .col .buttonMain {

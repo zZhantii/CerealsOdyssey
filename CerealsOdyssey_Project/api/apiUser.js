@@ -69,8 +69,22 @@ function seleccionarFila(userID, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
     user_ID = userID;
+
+    // Mostrar el ID seleccionado
     document.getElementById('ID').innerHTML = '<p>ID</p> ' + user_ID;
     console.log('ID seleccionado:', user_ID);
+
+    // Buscar el usuario seleccionado en la lista de usuarios
+    const usuarioSeleccionado = users.find(user => user.user_id === userID);
+
+    // Si se encuentra el usuario, cargar la información en los campos del formulario
+    if (usuarioSeleccionado) {
+        document.getElementById('floatingEmail').value = usuarioSeleccionado.email || '';
+        document.getElementById('floatingFirstName').value = usuarioSeleccionado.firstName || '';
+        document.getElementById('floatingLastName').value = usuarioSeleccionado.lastName || '';
+        document.getElementById('floatingPassword').value = usuarioSeleccionado.password || '';
+        document.getElementById('floatingRol').value = usuarioSeleccionado.rol || 'Open this select menu';
+    }
 }
 
 document.getElementById('apply-filter').addEventListener('click', () => {

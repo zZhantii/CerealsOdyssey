@@ -48,7 +48,7 @@ CREATE TABLE products (
     discount_id INT,
     name VARCHAR(100) NOT NULL,
     price FLOAT NOT NULL,
-    priceDiscount INT,
+    priceDiscount FLOAT,
     image VARCHAR(100) NOT NULL,
     description VARCHAR(100)
 );
@@ -74,7 +74,7 @@ CREATE TABLE order_details (
     order_id INT NOT NULL,
     discount_id INT,
     product_id INT NOT NULL,
-    price INT NOT NULL,  
+    price FLOAT NOT NULL,  
     amount INT NOT NULL
 );
 

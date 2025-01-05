@@ -11,33 +11,33 @@
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
             <button id="DeleteUser" class="buttonTable">Delete</button>
-            <a href="?controller=catgories" class="buttonTable">Go to home</a>
-            <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
+            <a href="?controller=catgories" class="buttonTable">Go to Home</a>
+            <a href="?controller=admin&action=showPanel" class="buttonTable">Go to Choose</a>
 
-            <label for="filter-user-id">Buscar por User ID:</label>
-            <input type="text" id="filter-user-id" placeholder="Ingrese User ID">
+            <label for="filter-user-id">Search by User ID:</label>
+            <input type="text" id="filter-user-id" placeholder="Enter User ID">
 
-            <label for="filter-name">Buscar por Name:</label>
-            <input type="text" id="filter-name" placeholder="Ingrese Name">
+            <label for="filter-name">Search by Name:</label>
+            <input type="text" id="filter-name" placeholder="Enter Name">
 
-            <label for="filter-lastName">Buscar por Last Name:</label>
-            <input type="text" id="filter-lastName" placeholder="Ingrese Last Name">
+            <label for="filter-lastName">Search by Last Name:</label>
+            <input type="text" id="filter-lastName" placeholder="Enter Last Name">
 
-            <label for="filter-email">Buscar por Email:</label>
-            <input type="text" id="filter-email" placeholder="Ingrese Email">
+            <label for="filter-email">Search by Email:</label>
+            <input type="text" id="filter-email" placeholder="Enter Email">
 
-            <label for="filter-rol">Buscar por Rol:</label>
-            <input type="text" id="filter-rol" placeholder="Ingrese Rol">
+            <label for="filter-rol">Search by Role:</label>
+            <input type="text" id="filter-rol" placeholder="Enter Role">
 
-            <button id="apply-filter">Aplicar Filtros</button>
+            <button id="apply-filter">Apply Filters</button>
 
-            <label for="order-by">Ordenar por:</label>
+            <label for="order-by">Sort by:</label>
             <select id="user-by">
-                <option value="user_id">ID Usuario</option>
-                <option value="firstName">firstName</option>
-                <option value="lastName">lastName</option>
+                <option value="user_id">User ID</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
                 <option value="email">Email</option>
-                <option value="rol">Rol</option>
+                <option value="rol">Role</option>
             </select>
         </div>
         <div class="w-100">
@@ -45,8 +45,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="Order" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -80,7 +78,7 @@
                         <option value="User">User</option>
                         <option value="Admin">Admin</option>
                     </select>
-                    <label for="floatingRol">Rol</label>
+                    <label for="floatingRol">Role</label>
                 </div>
             </div>
             <div class="modal-footer">

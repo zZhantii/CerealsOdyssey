@@ -14,26 +14,23 @@
             <a href="?controller=catgories" class="buttonTable">Go to home</a>
             <a href="?controller=admin&action=showPanel" class="buttonTable">Go to choose</a>
 
-            <select id="currency-selector">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-            <button id="convert-button">Converted Price</button>
+            <button id="convertCurrency" class="buttonTable">Convert to USD</button>
+            <button id="convertToEuro" class="buttonTable">Convert to EUR</button>
 
-            <label for="filter-product-id">Find by product ID:</label>
-            <input type="text" id="filter-product-id" placeholder="put Product ID">
+            <label for="filter-product-id">Search by Product ID:</label>
+            <input type="text" id="filter-product-id" placeholder="Enter Product ID">
 
-            <label for="filter-price">Find by price:</label>
-            <input type="number" id="filter-price" placeholder="put Price">
+            <label for="filter-price">Search by Price:</label>
+            <input type="number" id="filter-price" placeholder="Enter Price">
 
-            <label for="filter-name">Find by name:</label>
-            <input type="text" id="filter-name" placeholder="put Name">
+            <label for="filter-name">Search by Name:</label>
+            <input type="text" id="filter-name" placeholder="Enter Name">
 
             <button id="apply-filter" class="buttonTable">Apply Filters</button>
 
-            <label for="order-by">Order by:</label>
+            <label for="order-by">Sort by:</label>
             <select id="product-by">
-                <option value="product_id">ID Product</option>
+                <option value="product_id">Product ID</option>
                 <option value="price">Price</option>
                 <option value="name">Name</option>
             </select>
@@ -43,8 +40,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="Order" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

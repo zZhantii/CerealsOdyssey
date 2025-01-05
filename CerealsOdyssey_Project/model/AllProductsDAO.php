@@ -13,15 +13,16 @@ class AllProductsDAO
 
         if ($filter == null) {
             $sql = "SELECT * FROM products";
-            $stmt = $conex->prepare($sql);
-
             if ($order === 'asc') {
                 $sql .= " ORDER BY price ASC";
             } elseif ($order === 'desc') {
                 $sql .= " ORDER BY price DESC";
             }
+
+            $stmt = $conex->prepare($sql);
         } else {
             $sql = "SELECT * FROM products p JOIN categories c ON c.categorie_id = p.categorie_id WHERE p.categorie_id = ?";
+
             $stmt = $conex->prepare($sql);
             $stmt->bind_param("i", $filter);
 
@@ -34,6 +35,7 @@ class AllProductsDAO
 
         $stmt->execute();
 
+
         $result = $stmt->get_result();
 
         $allProducts = [];
@@ -42,33 +44,9 @@ class AllProductsDAO
         }
 
         $conex->close();
+
         return $allProducts;
     }
-
-
-    // public static function getProductsFilter($id)
-    // {
-    //     $conex = database::connect();
-
-    //     // Prepara la consulta SQL
-    //     $stmt = $conex->prepare("SELECT p.* FROM products p 
-    //                             INNER JOIN categories c ON p.categorie_id = c.categorie_id 
-    //                             WHERE c.categorie_id = ?");
-
-    //     $stmt->bind_param("i", $id);
-
-    //     $stmt->execute();
-
-    //     $result = $stmt->get_result();
-
-    //     $categories = [];
-    //     while ($row = $result->fetch_object('Cereals')) {
-    //         $categories[] = $row;
-    //     }
-
-    //     $conex->close();
-    //     return $categories;
-    // }
 
     public static function getProductId($productId)
     {
