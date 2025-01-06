@@ -14,20 +14,18 @@
                     <h4><?= $item->getPrice() ?> €</h4>
                 </div>
                 <div class="col">
-                    <div class="d-flex align-items-center">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary border-0 minus rounded-start">-</button>
-                            <button type="button" class="btn btn-primary border-0 amount">01</button>
-                            <button type="button" class="btn btn-primary border-0 plus ">+</button>
-                        </div>
-                        <a href="" class="btn btn-primary buttonMain rounded-end px-5"> Add to Bag - <?= $item->getPrice() ?> €</a>
+                    <div class="buttons" id="cart">
+                        <a href="?controller=cart&action=add&id=<?= $item->getProduct_id() ?>"
+                            class="btn btn-primary buttonMain px-5 d-flex align-items-center justify-content-center"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight">
+                            Add to Cart
+                        </a>
+                    </div>
+                    <div class="col text">
+                        <p><?= $item->getDescription() ?></p>
                     </div>
                 </div>
-                <div class="col text">
-                    <p><?= $item->getDescription() ?></p>
-                </div>
-
             </div>
         </div>
-    </div>
-<?php } ?>
+    <?php } ?>

@@ -15,7 +15,7 @@ class Discount
             'newPriceIVA' => $newPriceIVA
         ];
 
-        return $newPrice;
+        return $newPriceIVA;
     }
 
     public static function applyProductDiscount($ProductPrice, $discountPercentage)

@@ -35,19 +35,27 @@ foreach ($orders as $item2) { ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Discount:</strong>
-            <p><?= $item2->getDiscount_value() ?> €</p>
+            <?php if ($item2->getDiscount_value() == null) { ?>
+                <p>0 €</p>
+            <?php } else { ?>
+                <p><?= number_format($item2->getDiscount_value(), 2, '.', '') ?> €</p>
+            <?php } ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Total:</strong>
             <?php if ($item2->getDiscount_value() > 0) { ?>
                 <p class="discount text-decoration-line-through"><?= $item2->getTotalPrice() ?> €</p>
             <?php } else { ?>
-                <p><?= $item2->getTotalPrice() ?> €</p>
+                <p><?= number_format($item2->getTotalPrice(), 2, '.', '') ?> €</p>
             <?php } ?>
         </div>
         <div class="mt-3 d-flex justify-content-between px-4">
             <strong>Total with Discount:</strong>
-            <p><?= $item2->getTotalDiscount() ?> €</p>
+            <?php if ($item2->getTotalDiscount() == null) { ?>
+                <p>0 €</p>
+            <?php } else { ?>
+                <p><?= number_format($item2->getTotalDiscount(), 2, '.', '') ?> €</p>
+            <?php } ?>
         </div>
     </div>
 <?php

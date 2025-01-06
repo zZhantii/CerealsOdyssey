@@ -115,4 +115,32 @@ class Cart
             $_SESSION['cart'] = json_decode($_COOKIE['cart'], true);
         }
     }
+
+    public static function incrementAmount($productId)
+    {
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as &$item) {
+                if ($item['id'] == $productId) {
+                    $item['amount']++;
+                    break;
+                }
+            }
+            unset($item);
+            self::updateCartCookie($_SESSION['cart']);
+        }
+    }
+
+    public static function decrementAmount($productId)
+    {
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as &$item) {
+                if ($item['id'] == $productId && $item['amount'] > 1) {
+                    $item['amount']--;
+                    break;
+                }
+            }
+            unset($item);
+            self::updateCartCookie($_SESSION['cart']);
+        }
+    }
 }

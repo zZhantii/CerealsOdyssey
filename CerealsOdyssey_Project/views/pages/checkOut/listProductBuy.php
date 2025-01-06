@@ -4,6 +4,7 @@
     $itemImage = $item['image'];
     $itemId = $item['id'];
     $itemAmount = $item['amount'];
+    $totalPrice = $itemPrice * $itemAmount;
 ?>
     <div class="col d-flex gap-3">
         <div class="img-product border rounded position-relative">
@@ -17,7 +18,7 @@
             <p><?= $itemName ?></p>
         </div>
         <div class="col d-flex flex-column justify-content-center">
-            <p class="text-end"><?= $itemPrice * $itemAmount ?> €</p>
+            <p class="text-end"><?= number_format($totalPrice, 2, '.', '') ?> €</p>
         </div>
     </div>
 <?php } ?>

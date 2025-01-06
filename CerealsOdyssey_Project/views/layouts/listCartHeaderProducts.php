@@ -15,6 +15,7 @@ if (empty($_SESSION['cart'])) { ?>
         $itemImage = $item['image'];
         $itemId = $item['id'];
         $itemAmount = $item['amount'];
+        $total = $itemPrice * $itemAmount;
     ?>
 
         <div class="container border rounded-2 container-product d-flex gap-2 mb-3">
@@ -28,11 +29,21 @@ if (empty($_SESSION['cart'])) { ?>
                 </div>
                 <div class="d-flex justify-content-between align-items-center buttons" id="cart">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="border-0 minus  rounded-start">-</button>
-                        <button type="button" class="border-0 amount"><?= $itemAmount ?></button></button>
-                        <button type="button" class="border-0 plus rounded-end">+</button>
+                        <form method="post" action="?controller=cart&action=decrementAmountProduct&id=<?= $item['id'] ?>">
+                            <input type="hidden" name="action" value="decrement">
+                            <input type="hidden" name="productId" value="<?= $item['id'] ?>">
+                            <button type="submit" class="border-0 minus rounded-start">-</button>
+                        </form>
+
+                        <span class="amount d-flex justify-content-center align-items-center"><?= $itemAmount ?></span>
+
+                        <form method="post" action="?controller=cart&action=incrementAmountProduct&id=<?= $item['id'] ?>">
+                            <input type="hidden" name="action" value="increment">
+                            <input type="hidden" name="productId" value="<?= $productId ?>">
+                            <button type="submit" class="border-0 plus rounded-end">+</button>
+                        </form>
                     </div>
-                    <p><?= $itemPrice * $itemAmount ?> €</p>
+                    <p><?= number_format($total, 2, '.', '') ?> €</p>
                 </div>
             </div>
         </div>

@@ -112,14 +112,14 @@
                                 <p>Subtotal</p>
                             <?php } ?>
                             <?php if (empty($_SESSION['discounts'])) { ?>
-                                <h6><?= $total ?> €</h6>
+                                <h6><?= number_format($total, 2, '.', '') ?> €</h6>
                             <?php } else {
                                 $cartSummary = $_SESSION['discounts'];
                                 $totalDiscount = $cartSummary['newPrice'];
                             ?>
                                 <div class="d-flex align-items-end gap-3">
-                                    <h6><?= $totalDiscount ?> €</h6>
-                                    <h6 class="text-decoration-line-through discount"><?= $total ?> €</h6>
+                                    <h6><?= number_format($totalDiscount, 2, '.', '') ?> €</h6>
+                                    <h6 class="text-decoration-line-through discount"><?= number_format($total, 2, '.', '') ?> €</h6>
                                 </div>
                             <?php } ?>
                         </div>
@@ -136,8 +136,8 @@
                                 $totalDiscountIVA = $cartSummary['newPriceIVA'];
                             ?>
                                 <div class="d-flex flex-column align-items-end gap-3">
-                                    <h3 class="text-decoration-line-through discount"><?= $totalIVA ?> €</h3>
-                                    <h3><?= $totalDiscountIVA ?> €</h3>
+                                    <h3 class="text-decoration-line-through discount"><?= number_format($totalIVA, 2, '.', '') ?> €</h3>
+                                    <h3><?= number_format($totalDiscountIVA, 2, '.', '') ?> €</h3>
                                 </div>
                             <?php } ?>
                         </div>

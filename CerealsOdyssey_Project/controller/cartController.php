@@ -11,6 +11,7 @@ class CartController
     {
         $cart = $_SESSION['cart'];
         $total = Cart::total_price($cart);
+        $categories = CategoriesDAO::getAllCategories();
         $view = 'views/pages/products/cart.php';
         include_once 'views/main.php';
     }
@@ -74,6 +75,50 @@ class CartController
             }
         } else {
             echo "debes iniciar sesion";
+        }
+    }
+
+    public static function incrementAmount()
+    {
+        if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
+            $productId = $_GET['id'];
+            Cart::incrementAmount($productId);
+
+            header("Location:?controller=cart&action=show");
+            exit;
+        }
+    }
+
+    public static function decrementAmount()
+    {
+        if (isset($_GET['id'])) {
+            $productId = $_GET['id'];
+            Cart::decrementAmount($productId);
+
+            header("Location:?controller=cart&action=show");
+            exit;
+        }
+    }
+
+    public static function incrementAmountProduct()
+    {
+        if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
+            $productId = $_GET['id'];
+            Cart::incrementAmount($productId);
+
+            header("Location:?controller=product&action=getAllProducts");
+            exit;
+        }
+    }
+
+    public static function decrementAmountProduct()
+    {
+        if (isset($_GET['id'])) {
+            $productId = $_GET['id'];
+            Cart::decrementAmount($productId);
+
+            header("Location:?controller=product&action=getAllProducts");
+            exit;
         }
     }
 }

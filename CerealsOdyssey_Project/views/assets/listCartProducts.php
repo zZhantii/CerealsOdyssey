@@ -3,13 +3,13 @@
 if (empty($_SESSION['cart'])) { ?>
     <div class="container ">
         <div class="row d-flex flex-column justify-content-center">
-            <?php include_once 'views/assets/listCartHeaderProducts.php' ?>
+            <?php include_once 'views/layouts/listCartHeaderProducts.php' ?>
             <div class="col-12 d-flex bg-white justify-content-center flex-column mt-3">
                 <?php
                 $cart = $_SESSION['cart'];
                 $total = Cart::total_price($cart);
                 ?>
-                <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= $total ?> €</a>
+                <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain mt-3"><b>Continue to Checkout</b> - <?= number_format($total, 2, '.', '') ?> €</a>
                 <div class="container">
                     <div class="row">
                         <div class="col-3 d-flex align-items-center justify-content-center">
@@ -55,17 +55,31 @@ if (empty($_SESSION['cart'])) { ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center buttons" id="cart">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="border-0 minus  rounded-start">-</button>
-                            <button type="button" class="border-0 amount"><?= $itemAmount ?></button></button>
-                            <button type="button" class="border-0 plus rounded-end">+</button>
+                            <!-- Botón para disminuir cantidad -->
+                            <form method="post" action="?controller=cart&action=decrementAmount&id=<?= $item['id'] ?>">
+                                <input type="hidden" name="action" value="decrement">
+                                <input type="hidden" name="productId" value="<?= $item['id'] ?>">
+                                <button type="submit" class="border-0 minus rounded-start">-</button>
+                            </form>
+
+                            <!-- Muestra la cantidad actual -->
+                            <span class="amount d-flex justify-content-center align-items-center"><?= $itemAmount ?></span>
+
+                            <!-- Botón para incrementar cantidad -->
+                            <form method="post" action="?controller=cart&action=incrementAmount&id=<?= $item['id'] ?>">
+                                <input type="hidden" name="action" value="increment">
+                                <input type="hidden" name="productId" value="<?= $productId ?>">
+                                <button type="submit" class="border-0 plus rounded-end">+</button>
+                            </form>
                         </div>
-                        <p><?= $itemPrice * $itemAmount ?> €</p>
+                        <!-- Precio del producto -->
+                        <p><?= number_format($itemPrice * $itemAmount, 2, '.', '') ?> €</p>
                     </div>
                 </div>
             </div>
         <?php } ?>
         <div class="container mb-3">
-            <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain container">Continue to Cheackout - <?= $total ?> €</a>
+            <a href="?controller=buy&action=buyOrder" class="btn btn-primary buttonMain container">Continue to Cheackout - <?= number_format($total, 2, '.', '') ?> €</a>
             <div class="row d-flex align-items-center mt-4">
                 <div class="col-3 d-flex align-items-center justify-content-center">
                     <img src="public/img/ShopPay.svg" height="40" alt="ShopPay">
