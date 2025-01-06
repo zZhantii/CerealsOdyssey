@@ -57,6 +57,20 @@ if (isset($_GET['error'])) {
                 </div>
             </div>
         </div>
+    <?php } elseif ($error == 10) { ?>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <strong class="me-auto">Cereals Odyssey</strong>
+                    <small>1 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Error: You must choose a product.
+                </div>
+            </div>
+        </div>
 <?php }
 }
 ?>

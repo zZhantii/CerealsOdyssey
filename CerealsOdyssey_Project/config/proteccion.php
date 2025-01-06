@@ -2,10 +2,12 @@
 
 session_start();
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
+if (!isset($_SESSION['usuario'])) {
+    header("Location:?controller=user&action=login");
+    exit();
 }
 
-if (!isset($_SESSION['user']) || !is_array($_SESSION['user'])) {
-    $_SESSION['user'] = [];
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
 }

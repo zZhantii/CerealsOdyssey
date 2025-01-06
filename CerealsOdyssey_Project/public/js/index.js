@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const toastLiveExample = document.getElementById('liveToast');
 
     const urlParams = new URLSearchParams(window.location.search);
-    const errorCodes = [401, 402, 403, 404];
+    const errorCodes = [401, 402, 403, 404, 10];
 
     if (urlParams.has('error')) {
         const errorParam = parseInt(urlParams.get('error'), 10);
@@ -61,12 +61,10 @@ function filterURL() {
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
-    // Construir nueva URL
     const baseURL = "?controller=product&action=getAllProducts";
     const filterParam = selectedValues.length > 0 ? "&id=" + selectedValues.join(",") : "";
     const newURL = baseURL + filterParam;
 
-    // Redirigir a la nueva URL
     window.location.href = newURL;
 }
 

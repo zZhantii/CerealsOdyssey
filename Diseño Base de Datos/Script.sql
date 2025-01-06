@@ -108,8 +108,8 @@ CREATE TABLE order_detail_ingredients (
 
 -- Tabla auditoria
 CREATE TABLE auditoria (
-    user_id INT PRIMARY KEY,
-    operation ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    user_id INT,
+    operation VARCHAR(100),
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
     new_data TEXT
 );
@@ -152,10 +152,10 @@ ADD FOREIGN KEY (order_detail_id) REFERENCES order_details(order_detail_id),
 ADD FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id);
 
 -- Insertar datos en la tabla categories
-INSERT INTO categories (name, image) VALUES ('OdysseyID', 'category1.webp');
+INSERT INTO categories (name, image) VALUES ('Classics', 'category1.webp');
 INSERT INTO categories (name, image) VALUES ('Energy Boost', 'category2.webp');
 INSERT INTO categories (name, image) VALUES ('Calm & Relax', 'category3.webp');
-INSERT INTO categories (name, image) VALUES ('Kids Fun Mix', 'category4.webp');
+INSERT INTO categories (name, image) VALUES ('Milks', 'category4.webp');
 
 -- Insertar datos en la tabla Discounts
 INSERT INTO discounts (description, discount_value) VALUES ('No Discount', 0);
@@ -164,12 +164,11 @@ INSERT INTO discounts (description, discount_value) VALUES ('SALE10', '10');
 -- Insertar datos en la tabla Products
 INSERT INTO products (categorie_id, name, price, image, description)
 VALUES 
-( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.jpg', 'Classic cornflakes made with whole grain, perfect for breakfast'),
-( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.jpg', 'Oats packed with vitamins and minerals to give you a morning energy boost'),
-( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.jpg', 'A calming cereal blend with chamomile and lavender, ideal for evening relaxation'),
-( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.jpg', 'Crunchy cornflakes sweetened with natural honey for a tasty breakfast'),
-( 4,  'Fun Fruit Cereal', 3, 'fun_fruit_cereal.jpg', 'Colorful fruity cereal that kids will love, with no artificial colors or preservatives'),
-( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.jpg', 'Oats enriched with lavender and chamomile, perfect for a relaxing breakfast');
+( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', 'Classic cornflakes made with whole grain, perfect for breakfast'),
+( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.webp', 'Oats packed with vitamins and minerals to give you a morning energy boost'),
+( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.webp', 'A calming cereal blend with chamomile and lavender, ideal for evening relaxation'),
+( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.webp', 'Crunchy cornflakes sweetened with natural honey for a tasty breakfast'),
+( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.webp', 'Oats enriched with lavender and chamomile, perfect for a relaxing breakfast');
 
 
 

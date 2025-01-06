@@ -1,6 +1,7 @@
 <?php
 include_once 'model/Categories.php';
 include_once 'config/dataBase.php';
+error_reporting(E_ALL & ~E_DEPRECATED);
 
 class CategoriesDAO
 {
