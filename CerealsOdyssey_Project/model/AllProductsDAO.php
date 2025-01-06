@@ -361,11 +361,10 @@ class AllProductsDAO
         $price = $data['price'];
         $name = $data['name'];
         $image = $data['image'];
-        $PriceDiscount = $data['PriceDiscount'];
 
         // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("UPDATE products SET name=?, price=?, image=?, priceDiscount=? WHERE product_id=$productID");
-        $stmt->bind_param("sdsd", $name, $price, $image, $PriceDiscount);
+        $stmt = $conex->prepare("UPDATE products SET name=?, price=?, image=? WHERE product_id=$productID");
+        $stmt->bind_param("sds", $name, $price, $image);
 
         // Ejecuta la consulta
         if ($stmt->execute()) {
@@ -415,15 +414,21 @@ class AllProductsDAO
 
         $operation = $input['operation'];
         $details = $input['details'];
-        $order_id = $input['order_id'];
+        $user_id = $details['user_id'];
+        $user_id = (int)$user_id;
 
         $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
-        $stmt = $conex->prepare("INSERT INTO auditoria (order_id, operation, new_data) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $order_id, $operation, $detailsJson);
+        $stmt = $conex->prepare("INSERT INTO auditoria (user_id, operation, new_data) VALUES (?, ?, ?)");
+
+        $stmt->bind_param("iss", $user_id, $operation, $detailsJson);
+
+        $stmt->execute();
 
         $conex->close();
+
         return 'success';
     }
+
 
     public static function log_audit_products($input)
     {
@@ -431,11 +436,14 @@ class AllProductsDAO
 
         $operation = $input['operation'];
         $details = $input['details'];
-        $product_id = $input['product_id'];
+        $user_id = $details['productID'];
+        $user_id = (int)$user_id;
 
         $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
-        $stmt = $conex->prepare("INSERT INTO auditoria (product_id, operation, new_data) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $product_id, $operation, $detailsJson);
+        $stmt = $conex->prepare("INSERT INTO auditoria (user_id, operation, new_data) VALUES (?, ?, ?)");
+        $stmt->bind_param("iss", $user_id, $operation, $detailsJson);
+
+        $stmt->execute();
 
         $conex->close();
         return 'success';
@@ -447,11 +455,15 @@ class AllProductsDAO
 
         $operation = $input['operation'];
         $details = $input['details'];
-        $user_id = $input['user_id'];
+        $user_id = $details['user_id'];
+        $user_id = (int)$user_id;
 
         $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
-        $stmt = $conex->prepare("INSERT INTO auditoria (user_id, operation, new_data) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $user_id, $operation, $detailsJson);
+        $stmt = $conex->prepare("INSERT INTO auditoria (user_id, operation, new_data) VALUES (?, ?, ?)");
+        $stmt->bind_param("iss", $user_id, $operation, $detailsJson);
+
+        $stmt->execute();
+
 
         $conex->close();
         return 'success';

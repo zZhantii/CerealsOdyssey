@@ -108,13 +108,10 @@ CREATE TABLE order_detail_ingredients (
 
 -- Tabla auditoria
 CREATE TABLE auditoria (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tabla VARCHAR(255) NOT NULL,
-    accion ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
-    usuario VARCHAR(255),
-    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
-    datos_anteriores TEXT,
-    datos_nuevos TEXT
+    user_id INT PRIMARY KEY,
+    operation ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    new_data TEXT
 );
 
 -- Agregar claves foráneas a orders

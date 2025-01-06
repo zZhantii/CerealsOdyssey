@@ -65,6 +65,21 @@ function crearTabla(users) {
     tablaContainer.appendChild(tabla);
 }
 
+document.addEventListener('dblclick', (event) => {
+    const tablaContainer = document.getElementById('tablaContainer');
+    const selectedRow = document.querySelector('tr.selected');
+
+
+    if (tablaContainer && !tablaContainer.contains(event.target)) {
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+            user_ID = 0;
+            document.getElementById('ID').innerHTML = '<p>ID</p> ' + user_ID;
+            console.log('ID deseleccionado:', user_ID);
+        }
+    }
+});
+
 function seleccionarFila(userID, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
     fila.classList.add('selected');
@@ -84,6 +99,8 @@ function seleccionarFila(userID, fila) {
         document.getElementById('floatingLastName').value = usuarioSeleccionado.lastName || '';
         document.getElementById('floatingPassword').value = usuarioSeleccionado.password || '';
         document.getElementById('floatingRol').value = usuarioSeleccionado.rol || 'Open this select menu';
+    } else {
+
     }
 }
 

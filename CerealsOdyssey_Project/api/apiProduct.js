@@ -58,7 +58,7 @@ function crearTabla(products) {
         fila.innerHTML = `
             <td>${product.product_id}</td>
             <td>${product.name}</td>
-            <td>${product.currency || ''} ${product.price.toFixed(2)}</td>
+            <td>${product.currency || ''} ${product.price}</td>
             <td><img src="public/img/products/${product.image}" alt="${product.name}" style="width:100px; height:100px;"></td>
             <td>${product.currency || ''} ${product.priceDiscount}</td>
         `;
@@ -71,6 +71,21 @@ function crearTabla(products) {
     tabla.appendChild(tbody);
     tablaContainer.appendChild(tabla);
 }
+
+document.addEventListener('dblclick', (event) => {
+    const tablaContainer = document.getElementById('tablaContainer');
+    const selectedRow = document.querySelector('tr.selected');
+
+
+    if (tablaContainer && !tablaContainer.contains(event.target)) {
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+            product_ID = 0;
+            document.getElementById('ID').innerHTML = '<p>ID</p> ' + product_ID;
+            console.log('ID deseleccionado:', product_ID);
+        }
+    }
+});
 
 function seleccionarFila(product_id, fila) {
     document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
@@ -86,6 +101,8 @@ function seleccionarFila(product_id, fila) {
         document.getElementById('floatingPrice').value = productoSeleccionado.price || '';
         document.getElementById('floatingPriceDiscount').value = productoSeleccionado.priceDiscount || '';
         document.getElementById('floatingImage').value = '';
+    } else {
+
     }
 }
 
@@ -209,6 +226,7 @@ async function createproduct(productData) {
     console.log(dataPetition);
 
     logAudit('insert', {
+        productID: product_ID,
         name: productData.name,
         price: productData.price,
         image: productData.image,
@@ -390,7 +408,7 @@ function crearTablaAuditoria(audits) {
     const tbody = document.createElement('tbody');
 
     // Encabezados de la tabla
-    const headers = ['ID', 'Operación', 'Detalles', 'Fecha', 'Usuario'];
+    const headers = ['User_id', 'Operation', 'date', 'New Data'];
     const headerRow = document.createElement('tr');
     headers.forEach(header => {
         const th = document.createElement('th');
@@ -405,7 +423,7 @@ function crearTablaAuditoria(audits) {
         row.innerHTML = `
             <td>${audit.user_id || 'Null'}</td>
             <td>${audit.operation || 'Null'}</td>
-            <td>${audit.timestamp || 'Null'}</td>
+            <td>${audit.date || 'Null'}</td>
             <td>${audit.new_data || 'Null'}</td>
         `;
         tbody.appendChild(row);

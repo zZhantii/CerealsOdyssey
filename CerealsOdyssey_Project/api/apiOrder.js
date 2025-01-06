@@ -250,8 +250,11 @@ async function modifyOrder(order_ID, orderData) {
         const data = await response.text();
         console.log('Respuesta del servidor:', data);
 
+        const user_id = document.getElementById('floatingUser').value;
+
         logAudit('modify', {
-            orderID: order_ID,
+            user_id: user_id,
+            order_id: order_ID,
             status: orderData.status,
             discount: orderData.discount,
             cardNumber: orderData.cardNumber
@@ -291,8 +294,11 @@ async function createOrder(orderData) {
     const dataPetition = await response.text();
     console.log(dataPetition);
 
+    const user_id = document.getElementById('floatingUser').value;
+
     logAudit('create', {
-        orderID: order_ID,
+        user_id: user_id,
+        order_id: order_ID,
         status: orderData.status,
         discount: orderData.discount,
         cardNumber: orderData.cardNumber,
@@ -333,7 +339,10 @@ async function deleteOrder(order_ID) {
     const dataPetition = await response.text();
     console.log(dataPetition);
 
-    logAudit('delete', { orderID });
+    const user_id = document.getElementById('floatingUser').value;
+
+    logAudit('delete', { order_ID, });
+
     await getOrders();
     sessionStorage.removeItem('orders');
 }
@@ -398,7 +407,7 @@ function crearTablaAuditoria(audits) {
     const tbody = document.createElement('tbody');
 
     // Encabezados de la tabla
-    const headers = ['ID', 'Operación', 'Detalles', 'Fecha', 'Usuario'];
+    const headers = ['User_id', 'Operation', 'Date', 'new Data'];
     const headerRow = document.createElement('tr');
     headers.forEach(header => {
         const th = document.createElement('th');
@@ -413,7 +422,7 @@ function crearTablaAuditoria(audits) {
         row.innerHTML = `
             <td>${audit.user_id || 'Null'}</td>
             <td>${audit.operation || 'Null'}</td>
-            <td>${audit.timestamp || 'Null'}</td>
+            <td>${audit.date || 'Null'}</td>
             <td>${audit.new_data || 'Null'}</td>
         `;
         tbody.appendChild(row);

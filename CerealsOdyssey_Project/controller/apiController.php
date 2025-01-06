@@ -269,6 +269,7 @@ class apiController
             echo json_encode(["error" => "Error al registrar la auditoría"]);
         }
     }
+
     public static function log_get_audi()
     {
         header("Content-Type: application/json; charset=UTF-8");
@@ -276,6 +277,6 @@ class apiController
         header("Access-Control-Allow-Methods: POST");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo json_encode($products = AllProductsDAO::get_audit_log());
+        echo json_encode($auditoria = AllProductsDAO::get_audit_log());
     }
 }
