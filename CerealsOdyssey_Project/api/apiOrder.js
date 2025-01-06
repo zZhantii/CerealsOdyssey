@@ -187,8 +187,6 @@ document.getElementById('apply-filter').addEventListener('click', () => {
     crearTabla(pedidosFiltrados);
 });
 
-
-
 document.getElementById('order-by').addEventListener('change', (event) => {
     const criterio = event.target.value;
     orders.sort((a, b) => {
@@ -210,9 +208,6 @@ document.getElementById('order-by').addEventListener('change', (event) => {
     });
     crearTabla(orders);
 });
-
-
-
 
 document.getElementById('submitOrder').addEventListener('click', () => {
     const discount = document.getElementById('floatingDiscount').value;
@@ -255,6 +250,12 @@ async function modifyOrder(order_ID, orderData) {
         const data = await response.text();
         console.log('Respuesta del servidor:', data);
 
+        logAudit('modify', {
+            orderID: order_ID,
+            status: orderData.status,
+            discount: orderData.discount,
+            cardNumber: orderData.cardNumber
+        });
         await getOrders();
         sessionStorage.removeItem('orders');
     } catch (error) {
@@ -290,8 +291,19 @@ async function createOrder(orderData) {
     const dataPetition = await response.text();
     console.log(dataPetition);
 
+    logAudit('create', {
+        orderID: order_ID,
+        status: orderData.status,
+        discount: orderData.discount,
+        cardNumber: orderData.cardNumber,
+        product: orderData.product,
+        quantity: orderData.amount,
+        priceProduct: orderData.priceProduct
+    });
     await getOrders();
     sessionStorage.removeItem('orders');
+
+
 }
 
 // Funcion para eliminar
@@ -321,6 +333,95 @@ async function deleteOrder(order_ID) {
     const dataPetition = await response.text();
     console.log(dataPetition);
 
+    logAudit('delete', { orderID });
     await getOrders();
     sessionStorage.removeItem('orders');
 }
+
+// Auditoria
+const apiUrlAudit = '?controller=api&action=log_audit_orders';
+
+async function logAudit(operation, details) {
+    try {
+        const requestBody = {
+            operation,
+            details
+        };
+
+        const response = await fetch(apiUrlAudit, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+        }
+
+        const data = await response.text();
+        console.log('Auditoría registrada con éxito:', data);
+    } catch (error) {
+        console.error('Error registrando la auditoría:', error);
+    }
+}
+
+const apiGetUrlAudit = '?controller=api&action=log_get_audi';
+
+async function getAuditLogs() {
+    try {
+        const response = await fetch(apiGetUrlAudit);
+        if (!response.ok) {
+            throw new Error(`Error en la red: ${response.status} - ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const audits = data.data || data;
+
+        if (audits.length > 0) {
+            crearTablaAuditoria(audits);
+        } else {
+            document.getElementById('tablaContainer').innerHTML = '<p>No se encontraron registros de auditoría.</p>';
+        }
+    } catch (error) {
+        console.error('Error obteniendo registros de auditoría:', error);
+    }
+}
+
+document.getElementById('createAudi').addEventListener('click', getAuditLogs);
+
+function crearTablaAuditoria(audits) {
+    const auditTableContainer = document.getElementById('tablaContainer');
+    auditTableContainer.innerHTML = ''; // Limpiar contenido previo
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    // Encabezados de la tabla
+    const headers = ['ID', 'Operación', 'Detalles', 'Fecha', 'Usuario'];
+    const headerRow = document.createElement('tr');
+    headers.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+
+    // Filas de la tabla
+    audits.forEach(audit => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${audit.user_id || 'Null'}</td>
+            <td>${audit.operation || 'Null'}</td>
+            <td>${audit.timestamp || 'Null'}</td>
+            <td>${audit.new_data || 'Null'}</td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    auditTableContainer.appendChild(table);
+}
+
+

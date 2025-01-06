@@ -7,7 +7,7 @@
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
             <button id="createTable" class="buttonTable">Get</button>
-            <button class="buttonTable">View History</button>
+            <button id="createAudi" class="buttonTable">View History</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
             <button id="DeleteOrder" class="buttonTable">Delete</button>
@@ -43,6 +43,9 @@
         <div class="w-100">
             <div id="tablaContainer"></div>
         </div>
+        <!-- <div class="w-100">
+            <div id="auditTableContainer"></div>
+        </div> -->
     </div>
 </div>
 

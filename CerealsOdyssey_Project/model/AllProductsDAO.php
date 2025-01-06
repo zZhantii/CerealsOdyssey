@@ -283,13 +283,12 @@ class AllProductsDAO
         $conex = database::connect();
         // Asegúrate de que estás accediendo a los valores correctos
         $orderID = $data['orderID'];
-        $price = $data['price'];
         $cardNumber = $data['cardNumber'];
         $status = $data['status'];
+        $discount = $data['discount'];
 
-        // Aquí es donde deberías preparar tu consulta SQL
-        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, totalPrice=? WHERE order_id=$orderID");
-        $stmt->bind_param("ssd", $status, $cardNumber, $price);
+        $stmt = $conex->prepare("UPDATE orders SET status=?, cardNumber=?, discount_value=? WHERE order_id=?");
+        $stmt->bind_param("ssdi", $status, $cardNumber, $discount, $orderID);
 
         // Ejecuta la consulta
         if ($stmt->execute()) {
@@ -386,6 +385,73 @@ class AllProductsDAO
         // Delete orders
         $stmtOrder = $conex->prepare("DELETE FROM products WHERE product_id = $product_ID");
         $stmtOrder->execute();
+
+        $conex->close();
+        return 'success';
+    }
+
+    public static function get_audit_log()
+    {
+        $conex = database::connect();
+
+        $stmt = $conex->prepare("SELECT * FROM auditoria");
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $auditoria = [];
+        while ($row = $result->fetch_assoc()) {
+            $auditoria[] = $row;
+        }
+
+        $conex->close();
+
+        return $auditoria;
+    }
+
+    public static function log_audit_orders($input)
+    {
+        $conex = Database::connect();
+
+        $operation = $input['operation'];
+        $details = $input['details'];
+        $order_id = $input['order_id'];
+
+        $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
+        $stmt = $conex->prepare("INSERT INTO auditoria (order_id, operation, new_data) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $order_id, $operation, $detailsJson);
+
+        $conex->close();
+        return 'success';
+    }
+
+    public static function log_audit_products($input)
+    {
+        $conex = Database::connect();
+
+        $operation = $input['operation'];
+        $details = $input['details'];
+        $product_id = $input['product_id'];
+
+        $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
+        $stmt = $conex->prepare("INSERT INTO auditoria (product_id, operation, new_data) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $product_id, $operation, $detailsJson);
+
+        $conex->close();
+        return 'success';
+    }
+
+    public static function log_audit_users($input)
+    {
+        $conex = Database::connect();
+
+        $operation = $input['operation'];
+        $details = $input['details'];
+        $user_id = $input['user_id'];
+
+        $detailsJson = json_encode($details, JSON_UNESCAPED_UNICODE);
+        $stmt = $conex->prepare("INSERT INTO auditoria (user_id, operation, new_data) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $user_id, $operation, $detailsJson);
 
         $conex->close();
         return 'success';

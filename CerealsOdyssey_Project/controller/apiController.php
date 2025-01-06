@@ -212,4 +212,70 @@ class apiController
 
         echo json_encode($result);
     }
+
+    public static function log_audit_orders()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $input = json_decode(file_get_contents('php://input'), true);
+
+
+        if (AllProductsDAO::log_audit_orders($input)) {
+            http_response_code(201); // Creado
+            echo json_encode(["message" => "Auditoría registrada correctamente"]);
+        } else {
+            http_response_code(500); // Error interno del servidor
+            echo json_encode(["error" => "Error al registrar la auditoría"]);
+        }
+    }
+
+    public static function log_audit_products()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $input = json_decode(file_get_contents('php://input'), true);
+
+
+        if (AllProductsDAO::log_audit_products($input)) {
+            http_response_code(201); // Creado
+            echo json_encode(["message" => "Auditoría registrada correctamente"]);
+        } else {
+            http_response_code(500); // Error interno del servidor
+            echo json_encode(["error" => "Error al registrar la auditoría"]);
+        }
+    }
+
+    public static function log_audit_users()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $input = json_decode(file_get_contents('php://input'), true);
+
+
+        if (AllProductsDAO::log_audit_users($input)) {
+            http_response_code(201); // Creado
+            echo json_encode(["message" => "Auditoría registrada correctamente"]);
+        } else {
+            http_response_code(500); // Error interno del servidor
+            echo json_encode(["error" => "Error al registrar la auditoría"]);
+        }
+    }
+    public static function log_get_audi()
+    {
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        echo json_encode($products = AllProductsDAO::get_audit_log());
+    }
 }
