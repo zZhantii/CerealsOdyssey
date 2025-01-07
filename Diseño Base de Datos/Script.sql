@@ -164,11 +164,18 @@ INSERT INTO discounts (description, discount_value) VALUES ('SALE10', '10');
 -- Insertar datos en la tabla Products
 INSERT INTO products (categorie_id, name, price, image, description)
 VALUES 
-( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', 'Classic cornflakes made with whole grain, perfect for breakfast'),
-( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.webp', 'Oats packed with vitamins and minerals to give you a morning energy boost'),
-( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.webp', 'A calming cereal blend with chamomile and lavender, ideal for evening relaxation'),
-( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.webp', 'Crunchy cornflakes sweetened with natural honey for a tasty breakfast'),
-( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.webp', 'Oats enriched with lavender and chamomile, perfect for a relaxing breakfast');
+( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', ''),
+( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', ''),
+( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.webp', ''),
+( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.webp', ''),
+( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.webp', ''),
+( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.webp', ''),
+( 4,  'Blue Milk', 2.50,  'blue_milk.webp', ''),
+( 4,  'White Milk', 1.20,  'white_milk.webp', ''),
+( 4,  'Green Milk', 1.20,  'green_milk.webp', ''),
+( 4,  'Pink Milk', 1.20,  'pink_milk.webp', ''),
+( 4,  'Purple Milk', 1.20,  'purple_milk.webp', ''),
+( 4,  'All Milks Colors', 5.50,  'all_milks_colors.webp', '');
 
 
 

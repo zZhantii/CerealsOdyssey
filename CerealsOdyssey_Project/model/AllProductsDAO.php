@@ -21,7 +21,7 @@ class AllProductsDAO
 
             $stmt = $conex->prepare($sql);
         } else {
-            $sql = "SELECT p.product_id, p.name, p.price, p.image FROM products p JOIN categories c ON c.categorie_id = p.categorie_id WHERE p.categorie_id = ?";
+            $sql = "SELECT * FROM products p JOIN categories c ON c.categorie_id = p.categorie_id WHERE p.categorie_id = ?";
 
             $stmt = $conex->prepare($sql);
             $stmt->bind_param("i", $filter);

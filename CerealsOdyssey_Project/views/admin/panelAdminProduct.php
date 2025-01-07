@@ -3,10 +3,10 @@
 </head>
 
 <div class="container my-3">
-    <h1>Admin Panel</h1>
+    <h1>Admin Panel Products</h1>
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
-            <button id="createTable" class="buttonTable">Get Products</button>
+            <button id="createTable" class="buttonTable">Get</button>
             <button id="createAudi" class="buttonTable">View History</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Create</button>
             <button class="buttonTable" data-bs-toggle="modal" data-bs-target="#Order">Modify</button>
@@ -46,7 +46,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Orders</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Products</h1>
                 <p class="d-flex ps-3 gap-2" id="ID"></p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

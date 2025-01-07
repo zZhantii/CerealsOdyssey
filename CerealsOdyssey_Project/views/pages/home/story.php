@@ -4,9 +4,11 @@
 
 <body>
     <main>
-        <section class="d-flex justify-content-center align-items-center profile bg-product">
-            <div class="d-flex flex-column align-items-center text-light">
+        <section class="bg-info">
+            <div>
                 <h4>Welcom to over 3 years of Odyssey</h4>
+            </div>
+            <div>
                 <p>Scroll down to learn more about the history of Cereals Odyssey</p>
             </div>
         </section>
@@ -21,12 +23,12 @@
                     </p>
                 </div>
                 <div class="w-50">
-                    <img src="public/img/story/story1.webp" height="375" alt="story1">
+                    <img src="<?= url_base ?>public/img/story/story1.webp" height="375" alt="story1">
                 </div>
             </div>
             <div class="container d-flex gap-5 align-items-center my-5">
                 <div class="w-50">
-                    <img src="public/img/story/story2.webp" height="370" alt="story3">
+                    <img src="<?= url_base ?>public/img/story/story2.webp" height="370" alt="story3">
                 </div>
                 <div class="w-50 text-md-center">
                     <strong> Innovation and Growth</strong>
@@ -51,7 +53,7 @@
                     </p>
                 </div>
                 <div class="w-50">
-                    <img src="public/img/story/story3.webp" height="375" alt="story3">
+                    <img src="<?= url_base ?>public/img/story/story3.webp" height="375" alt="story3">
                 </div>
             </div>
         </section>

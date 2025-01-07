@@ -3,7 +3,7 @@
 </head>
 
 <div class="container my-3">
-    <h1>Admin Panel</h1>
+    <h1>Admin Panel Orders</h1>
     <div class="d-flex gap-3">
         <div class="d-flex flex-column gap-3">
             <button id="createTable" class="buttonTable">Get</button>

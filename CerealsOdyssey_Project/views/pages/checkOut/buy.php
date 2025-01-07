@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <a href="?controller=categories">
-                            <img src="public/img/logo.png" alt="logo" height="90" width="90">
+                            <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
                         </a>
                         <a href="?controller=cart&action=show">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#0359ca" viewBox="0 0 256 256">
@@ -64,12 +64,12 @@
                                 <input type="text" class="form-control" name="name" id="floatingInput" placeholder="Card Number">
                                 <label for="floatingInput">Name</label>
                             </div>
-                            <div class="col-12 d-flex  p-0">
-                                <div class="form-floating col-mb-6">
+                            <div class="col-12 d-flex justify-content-between  p-0">
+                                <div class="form-floating">
                                     <input type="text" class="form-control" name="expiry_date" id="floatingInput" placeholder="MM/YY">
                                     <label for="floatingInput">Expiry Date</label>
                                 </div>
-                                <div class="form-floating col-mb-6">
+                                <div class="form-floating">
                                     <input type="text" class="form-control" name="cvv" id="floatingInput" placeholder="CVV">
                                     <label for="floatingInput">CVV</label>
                                 </div>

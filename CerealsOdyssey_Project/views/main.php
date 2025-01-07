@@ -17,7 +17,6 @@
 <body>
     <!-- Header -->
     <?php
-
     $controller = $_GET['controller'];
     $action = $_GET['action'] ?? null;
 
@@ -30,9 +29,7 @@
     ?>
 
     <!-- View -->
-    <?php include_once $view;
-    var_dump($view); ?>
-
+    <?php include_once $view ?>
 
     <!-- Footer -->
     <?php

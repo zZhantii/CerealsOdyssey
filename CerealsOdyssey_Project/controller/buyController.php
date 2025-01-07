@@ -1,22 +1,21 @@
 <?php
 include_once('config/dataBase.php');
+include_once('config/proteccion.php');
 
 class buyController
 {
     public function buyOrder()
     {
         if (empty($_SESSION['user'])) {
-            header("Location:?controller=user&action=login");
-            exit();
+            $view = 'views/pages/user/login.php';
+            include_once 'views/main.php';
         } elseif (empty($_SESSION['cart'])) {
-            header("Location:controller=product&action=getAllProducts&error=10");
-            exit();
+            //Alert
         } else {
             $cartPrice = $_SESSION['cart'];
             $total = Cart::total_price($cartPrice);
             $totalIVA = Cart::total_price_IVA($cartPrice);
             $address = AddressDAO::getAddress();
-
 
             $view = 'views/pages/checkOut/buy.php';
             include_once 'views/main.php';

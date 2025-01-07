@@ -101,7 +101,6 @@ class userController
 
     public static function profile()
     {
-        include_once('config/proteccion.php');
         $address = AddressDAO::getAddress();
         $email = $_SESSION['user']['email'];
         $user = UsersDAO::get_User_ByEmail($email);
@@ -139,7 +138,6 @@ class userController
 
     public static function settings()
     {
-        include_once('config/proteccion.php');
         $view = 'views/pages/user/settings.php';
         include_once 'views/main.php';
     }
@@ -147,7 +145,7 @@ class userController
     public static function destroy()
     {
         session_destroy();
-        header("location:?controller=categories");
+        header("location:" . url_base . "?controller=categories");
     }
 
     public static function addInformationPersonal()

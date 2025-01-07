@@ -42,7 +42,7 @@
                                             <input type="checkbox" class="squareCheckBox" value="3" onchange="filterURL()"> Calm & Relax
                                         </li>
                                         <li class="d-flex align-items-center gap-3 mb-4 cereals">
-                                            <input type="checkbox" class="squareCheckBox" value="4" onchange="filterURL()"> Milks
+                                            <input type="checkbox" class="squareCheckBox" value="4" onchange="filterURL()"> Kids Fun Mix
                                         </li>
                                     </ul>
                                 </div>
@@ -70,5 +70,4 @@
             </div>
         </section>
     </main>
-    <?php include_once 'views/assets/errors.php' ?>
 </body>

@@ -5,7 +5,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -19,7 +19,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -33,7 +33,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -47,7 +47,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -61,7 +61,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -75,7 +75,7 @@ if (isset($_GET['success'])) {
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="success" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="public/img/logo.png" class="rounded me-2" height="30" alt="logo">
+                    <img src="<?= url_base ?>public/img/logo.png" class="rounded me-2" height="30" alt="logo">
                     <strong class="me-auto">Cereals Odyssey</strong>
                     <small>1 mins ago</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

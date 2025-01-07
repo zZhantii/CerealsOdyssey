@@ -2,7 +2,7 @@
 
 class database
 {
-    public static function connect($host = 'fdb1029.awardspace.net', $user = '4571976_cerealsodyssey', $pass = 'Ex-hN8Ck9W,Ri%(I', $db = '4571976_cerealsodyssey')
+    public static function connect($host = 'localhost', $user = 'root', $pass = 'Cereals2024!@#', $db = 'CerealsOdyssey_DB')
     {
         $con = new mysqli($host, $user, $pass, $db);
 
