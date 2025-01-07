@@ -39,10 +39,10 @@ class apiController
 
     public static function modify_order()
     {
-        header("Content-Type: application/json; charset=UTF-8");
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        header("Access-Control-Allow-Origin: *"); // Permite todas las solicitudes de origen cruzado
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE"); // Métodos permitidos
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With"); // Encabezados permitidos
+
 
         $data = json_decode(file_get_contents("php://input"), true);
 

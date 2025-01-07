@@ -4,12 +4,12 @@ include_once('model/Address.php');
 include_once('model/UsersDAO.php');
 include_once('model/Users.php');
 include_once('config/dataBase.php');
+include_once('config/proteccion.php');
 
 class userController
 {
     public static function orders()
     {
-        include_once('config/proteccion.php');
         $order_details = AllProductsDAO::getOrder_details();
         $orders = AllProductsDAO::getOrder();
         $cart = $_SESSION['cart'];
@@ -147,7 +147,7 @@ class userController
     public static function destroy()
     {
         session_destroy();
-        header("location:" . url_base . "?controller=categories");
+        header("location:?controller=categories");
     }
 
     public static function addInformationPersonal()

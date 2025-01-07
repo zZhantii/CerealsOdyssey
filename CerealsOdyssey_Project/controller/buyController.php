@@ -5,8 +5,6 @@ class buyController
 {
     public function buyOrder()
     {
-        include_once('config/proteccion.php');
-
         if (empty($_SESSION['user'])) {
             header("Location:?controller=user&action=login");
             exit();

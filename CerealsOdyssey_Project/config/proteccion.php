@@ -3,8 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location:?controller=user&action=login");
-    exit();
+    $_SESSION['usuario'] = [];
 }
 
 
