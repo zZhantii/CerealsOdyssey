@@ -18,13 +18,14 @@ class AddressDAO
         $result = $stmt->get_result();
 
         $address = [];
-        while ($row = $result->fetch_object('address')) {
+        while ($row = $result->fetch_assoc()) {
             $address[] = $row;
         }
 
         $conex->close();
         return $address;
     }
+
 
     public static function edit_Address($address_id, $first_name, $last_name, $apartment, $address, $city, $state, $zipCode, $country)
     {

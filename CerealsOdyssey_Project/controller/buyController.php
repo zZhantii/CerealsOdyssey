@@ -17,6 +17,7 @@ class buyController
             $totalIVA = Cart::total_price_IVA($cartPrice);
             $address = AddressDAO::getAddress();
 
+
             $view = 'views/pages/checkOut/buy.php';
             include_once 'views/main.php';
         }

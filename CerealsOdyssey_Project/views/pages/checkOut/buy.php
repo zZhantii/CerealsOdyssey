@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <a href="?controller=categories">
-                            <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
+                            <img src="public/img/logo.png" alt="logo" height="90" width="90">
                         </a>
                         <a href="?controller=cart&action=show">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#0359ca" viewBox="0 0 256 256">

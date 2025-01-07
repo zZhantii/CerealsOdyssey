@@ -1,7 +1,7 @@
 <?php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 include_once 'model/Categories.php';
 include_once 'config/dataBase.php';
-error_reporting(E_ALL & ~E_DEPRECATED);
 
 class CategoriesDAO
 {
@@ -15,7 +15,7 @@ class CategoriesDAO
         $result = $stmt->get_result();
 
         $categories = [];
-        while ($row = $result->fetch_object('categories')) {
+        while ($row = $result->fetch_object('Categories')) {
             $categories[] = $row;
         }
 
