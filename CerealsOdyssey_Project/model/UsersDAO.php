@@ -187,16 +187,12 @@ class UsersDAO
         }
     }
 
-    public static function delete_user_api($order_id)
+    public static function delete_user_api($user_id)
     {
         $conex = database::connect();
         // Delete Orders_details
-        $stmtOrder_Details = $conex->prepare("DELETE FROM order_details WHERE order_id = $order_id");
+        $stmtOrder_Details = $conex->prepare("DELETE FROM users WHERE user_id = $user_id");
         $stmtOrder_Details->execute();
-
-        // Delete orders
-        $stmtOrder = $conex->prepare("DELETE FROM orders WHERE order_id = $order_id");
-        $stmtOrder->execute();
 
         $conex->close();
         return 'success';

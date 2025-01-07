@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const toastLiveExample = document.getElementById('liveToast');
 
     const urlParams = new URLSearchParams(window.location.search);
-    const errorCodes = [401, 402, 403, 404];
+    const errorCodes = [401, 402, 403, 404, 10];
 
     if (urlParams.has('error')) {
         const errorParam = parseInt(urlParams.get('error'), 10);

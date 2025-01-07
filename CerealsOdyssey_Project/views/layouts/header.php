@@ -16,7 +16,7 @@
                             <path d="M168,88a40,40,0,0,1-80,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
                         </svg>Shop
                     </a>
-                    <?php if (isset($_SESSION['user']['rol']) && $_SESSION['user']['rol'] == 'Admin') { ?>
+                    <?php if (isset($_SESSION['user']['rol']) && $_SESSION['user']['rol'] == 'admin') { ?>
                         <a class="nav-link" href="?controller=admin&action=showPanel">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                                 <rect width="256" height="256" fill="none" />

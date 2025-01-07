@@ -21,7 +21,7 @@ class AllProductsDAO
 
             $stmt = $conex->prepare($sql);
         } else {
-            $sql = "SELECT * FROM products p JOIN categories c ON c.categorie_id = p.categorie_id WHERE p.categorie_id = ?";
+            $sql = "SELECT p.product_id, p.name, p.price, p.image FROM products p JOIN categories c ON c.categorie_id = p.categorie_id WHERE p.categorie_id = ?";
 
             $stmt = $conex->prepare($sql);
             $stmt->bind_param("i", $filter);
@@ -199,13 +199,15 @@ class AllProductsDAO
         $status = $data['status'];
 
         $amount = $data['amount'];
-        $product = (int) $data['product'];
         $price = $data['priceProduct'];
+        $productID = $data['product'];
         $totalPrice = $amount * $price;
 
-        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, discount_id, status, cardNumber, totalPrice, totalAmount) VALUES (?, ?, ?, ?, ?, ?)");
-        $initialTotalItems = 0;
-        $stmtOrder->bind_param("iissdi", $user_id, $discount, $status, $cardNumber, $totalPrice, $initialTotalItems);
+        $stmtOrder = $conex->prepare("INSERT INTO orders (user_id, discount_id, status, cardNumber, totalPrice, totalAmount, totalItems, totalDiscount, discount_value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $initialTotalAmount = 0;
+        $totalDiscount = 0;
+        $discount_value = 0;
+        $stmtOrder->bind_param("iissdiiii", $user_id, $discount, $status, $cardNumber, $totalPrice, $initialTotalAmount, $amount, $totalDiscount, $discount_value);
 
         if (!$stmtOrder->execute()) {
             return ['success' => false, 'message' => 'Error creating order: ' . $stmtOrder->error];
@@ -214,7 +216,7 @@ class AllProductsDAO
         $orderId = $stmtOrder->insert_id;
 
         $stmtOrderDetails = $conex->prepare("INSERT INTO order_details (order_id, discount_id, product_id, price, amount) VALUES (?, ?, ?, ?, ?)");
-        $stmtOrderDetails->bind_param("iiiii", $orderId, $discount, $product, $price, $amount);
+        $stmtOrderDetails->bind_param("iiiii", $orderId, $discount, $productID, $price, $amount);
 
 
         if (!$stmtOrderDetails->execute()) {
@@ -225,13 +227,13 @@ class AllProductsDAO
         $countQuery = $conex->prepare("SELECT COUNT(*) FROM order_details WHERE order_id = ?");
         $countQuery->bind_param("i", $orderId);
         $countQuery->execute();
-        $countQuery->bind_result($totalItems);
+        $countQuery->bind_result($totalAmount);
         $countQuery->fetch();
         $countQuery->close();
 
         // Actualizar el campo totalItems en la tabla orders
-        $updateOrderQuery = $conex->prepare("UPDATE orders SET totalAmount = ? WHERE order_id = ?");
-        $updateOrderQuery->bind_param("ii", $totalItems, $orderId);
+        $updateOrderQuery = $conex->prepare("UPDATE orders SET totalAmount = ?, totalItems=? WHERE order_id = ?");
+        $updateOrderQuery->bind_param("iii", $totalAmount, $totalItems, $orderId);
 
         if (!$updateOrderQuery->execute()) {
             return ['success' => false, 'message' => 'Error updating total items in orders: ' . $updateOrderQuery->error];

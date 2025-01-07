@@ -70,4 +70,5 @@
             </div>
         </section>
     </main>
+    <?php include_once 'views/assets/errors.php' ?>
 </body>

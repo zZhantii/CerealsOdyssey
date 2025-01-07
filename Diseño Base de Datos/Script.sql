@@ -63,8 +63,8 @@ CREATE TABLE orders (
     status VARCHAR(100) DEFAULT 'Making',
     totalAmount INT NOT NULL,
     totalPrice FLOAT NOT NULL,
-    totalItems INT NOT NULL,
-    totalDiscount FLOAT NOT NULL,
+    totalItems INT ,
+    totalDiscount FLOAT,
     discount_value FLOAT NOT NULL
 );
 
@@ -164,18 +164,19 @@ INSERT INTO discounts (description, discount_value) VALUES ('SALE10', '10');
 -- Insertar datos en la tabla Products
 INSERT INTO products (categorie_id, name, price, image, description)
 VALUES 
-( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', ''),
-( 1,  'Classic Cornflakes', 4,  'classic_cornflakes.webp', ''),
-( 2,  'Energy Boost Oats', 5, 'energy_boost_oats.webp', ''),
-( 3,  'Relaxing Herbal Cereal', 6,  'relaxing_herbal_cereal.webp', ''),
-( 1,  'Honey Crunch Flakes', 4,  'honey_crunch_flakes.webp', ''),
-( 3,  'Calm & Cozy Oats', 6, 'calm_cozy_oats.webp', ''),
-( 4,  'Blue Milk', 2.50,  'blue_milk.webp', ''),
-( 4,  'White Milk', 1.20,  'white_milk.webp', ''),
-( 4,  'Green Milk', 1.20,  'green_milk.webp', ''),
-( 4,  'Pink Milk', 1.20,  'pink_milk.webp', ''),
-( 4,  'Purple Milk', 1.20,  'purple_milk.webp', ''),
-( 4,  'All Milks Colors', 5.50,  'all_milks_colors.webp', '');
+(1, 'Classic Cornflakes', 2.3, 'classic_cornflakes.webp', 'Classic Cornflakes es un cereal delicioso y crujiente, ideal para comenzar el día con energía. Hecho con maíz de alta calidad, ofrece una opción saludable y sabrosa para tu desayuno. Su textura ligera y su sabor suave lo convierten en la elección perfecta para acompañar con leche o frutas. Perfecto para quienes buscan un desayuno rápido, nutritivo y lleno de sabor.'),
+(1, 'Froot Loops', 1.50, 'froot_loops.webp', 'Disfruta de la simplicidad y el sabor clásico con los Cornflakes. Este cereal está hecho con maíz seleccionado, ofreciendo una opción ligera para el desayuno. Puedes combinarlo con tu leche o bebida vegetal favorita y añadirle frutas o miel para un toque extra de sabor. Una excelente fuente de energía para comenzar el día.'),
+(2, 'Energy Boost Oats', 3, 'energy_boost_oats.webp', 'Energy Boost Oats es el desayuno perfecto para aquellos que buscan un impulso de energía natural. Con avena rica en fibra y nutrientes esenciales, este cereal proporciona una liberación constante de energía a lo largo de la mañana. Ideal para acompañar con frutas frescas, frutos secos o tu leche favorita, asegurando un desayuno completo y equilibrado.'),
+(2, 'Energy Boost', 3.5, 'energy_boost.webp', 'Energy Boost es una mezcla de cereales energizantes que te dará el impulso que necesitas para afrontar el día. Con ingredientes seleccionados para mejorar tu vitalidad, esta opción es perfecta para aquellos que necesitan energía adicional. Su sabor único y textura crujiente combinan perfectamente con leche o yogur. Además, es una excelente fuente de fibra y nutrientes.'),
+(3, 'Relaxing Herbal Cereal', 4, 'relaxin_herbal.webp', 'Relaxing Herbal Cereal es una opción ideal para aquellos que buscan relajarse después de un día agitado. Infusionado con hierbas relajantes como la manzanilla y la lavanda, este cereal está diseñado para promover la calma y el bienestar. Perfecto para la noche, puedes acompañarlo con leche tibia o tu bebida preferida, creando una experiencia reconfortante y relajante.'),
+(3, 'Calm & Cozy Oats', 6, 'calm_cozy_oats.webp', 'Calm & Cozy Oats es la mezcla perfecta de avena suave y reconfortante, con ingredientes relajantes que te ayudarán a encontrar la calma. Ideal para una noche tranquila, este cereal combina avena con toques suaves de especias y hierbas, proporcionando una sensación de comodidad. Puedes disfrutarlo caliente, con leche o como más te guste para un descanso reparador.'),
+(4, 'Blue Milk', 2.50, 'blue_milk.webp', 'Blue Milk es una bebida láctea innovadora y deliciosa, con un toque único de sabor y un color fascinante. Perfecta para quienes buscan un cambio refrescante, su sabor suave y cremoso la convierte en la opción ideal para disfrutar en cualquier momento del día. Puedes usarla en cereales, café o simplemente disfrutarla sola. Es una bebida que despierta la curiosidad y el placer de cada sorbo.'),
+(4, 'White Milk', 1.20, 'white_milk.webp', 'White Milk es la leche tradicional que todos conocemos y amamos. Con su sabor natural y cremoso, es perfecta para acompañar cualquier desayuno o para disfrutar sola. Ideal para agregar a cereales, batidos o café, esta leche aporta todos los beneficios nutricionales esenciales, incluyendo calcio y proteínas. Un básico imprescindible en cada hogar.'),
+(4, 'Green Milk', 1.40, 'green_milk.webp', 'Green Milk es una variante fresca y deliciosa de leche que se distingue por su color vibrante y sabor suave. Ideal para quienes buscan algo diferente, esta leche se combina perfectamente con cereales o como base para batidos saludables. Aporta todos los beneficios de la leche tradicional, mientras ofrece una experiencia visualmente atractiva que hará que tu desayuno sea aún más especial.'),
+(4, 'Pink Milk', 1.60, 'pink_milk.webp', 'Pink Milk es una leche de color rosa encantador que ofrece una experiencia única en sabor y color. Su sabor suave y ligeramente dulce es perfecto para los más pequeños de la casa, o para quienes disfrutan de una bebida creativa y divertida. Puedes disfrutarla con cereales, postres o simplemente sola. Una excelente opción para agregar un toque de diversión a tu día.'),
+(4, 'Purple Milk', 2    , 'purple_milk.webp', 'Purple Milk es una bebida láctea innovadora y colorida que ofrece un sabor suave y encantador. Este producto único es perfecto para quienes desean experimentar con nuevos sabores y colores en su dieta. Puedes disfrutarla con cereales, batidos o como un refresco independiente. No solo es deliciosa, sino que también ofrece todos los beneficios nutricionales de la leche tradicional.'),
+(4, 'All Milks Colors', 5.50, 'all_milks_colors.webp', 'All Milks Colors es un conjunto exclusivo de leches en diversos colores vibrantes. Incluye todas las opciones más populares: azul, verde, rosa y morado. Cada leche tiene un sabor suave y delicioso, y es perfecta para quienes buscan explorar nuevas experiencias sensoriales en sus bebidas. Disfrútalas por separado o crea combinaciones divertidas, todo mientras obtienes los beneficios nutricionales que proporciona la leche tradicional. Ideal para ocasiones especiales o para darle un toque único a tus desayunos.'); 
+
 
 
 

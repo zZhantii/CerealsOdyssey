@@ -7,10 +7,11 @@ class buyController
     public function buyOrder()
     {
         if (empty($_SESSION['user'])) {
-            $view = 'views/pages/user/login.php';
-            include_once 'views/main.php';
+            header("Location:?controller=user&action=login");
+            exit();
         } elseif (empty($_SESSION['cart'])) {
-            //Alert
+            header("Location:?controller=product&action=getAllProducts&error=10");
+            exit();
         } else {
             $cartPrice = $_SESSION['cart'];
             $total = Cart::total_price($cartPrice);
