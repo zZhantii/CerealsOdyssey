@@ -24,6 +24,7 @@ async function getOrders() {
         if (!response.ok) {
             throw new Error(`Error en la red: ${response.status} - ${response.statusText}`);
         }
+
         const data = await response.json();
         orders = data.data || data;
 
@@ -40,7 +41,6 @@ async function getOrders() {
         console.error('Error:', error);
     }
 }
-
 
 const selectElement = document.getElementById("floatingOptionsProducts");
 const quantityInput = document.getElementById("productQuantity");

@@ -81,7 +81,7 @@ class AllProductsDAO
 
         $totalAmount = Cart::total_Amount($cart);
 
-        $totalPrice = Cart::total_Price($cart);
+        $totalPrice = Cart::total_price_IVA($cart);
 
         $totalItems = Cart::total_Items($cart);
 
@@ -93,7 +93,7 @@ class AllProductsDAO
             if (!empty($_SESSION['discounts'])) {
                 $cartSummary = $_SESSION['discounts'];
 
-                $totalDiscount = $cartSummary['newPrice'];
+                $totalDiscount = $cartSummary['newPriceIVA'];
                 $discount_value = $cartSummary['discount'];
 
                 $status = 'making';

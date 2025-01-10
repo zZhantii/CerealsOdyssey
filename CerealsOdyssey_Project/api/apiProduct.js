@@ -106,7 +106,6 @@ function seleccionarFila(product_id, fila) {
     }
 }
 
-
 document.getElementById('apply-filter').addEventListener('click', () => {
     const filtroID = document.getElementById('filter-product-id').value.toLowerCase();
     const filtroPrice = document.getElementById('filter-price').value.toLowerCase();
@@ -125,7 +124,6 @@ document.getElementById('apply-filter').addEventListener('click', () => {
     console.log(pedidosFiltrados);
     crearTabla(pedidosFiltrados);
 });
-
 
 document.getElementById('product-by').addEventListener('change', (event) => {
     const criterio = event.target.value;

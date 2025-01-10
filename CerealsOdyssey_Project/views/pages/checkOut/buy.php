@@ -130,7 +130,7 @@
                         <div class="col d-flex justify-content-between p-0 mt-3">
                             <h3>Total</h3>
                             <?php if (empty($_SESSION['discounts'])) { ?>
-                                <h3><?= $totalIVA ?> €</h3>
+                                <h3><?= number_format($totalIVA, 2, '.', '') ?> €</h3>
                             <?php } else {
                                 $cartSummary = $_SESSION['discounts'];
                                 $totalDiscountIVA = $cartSummary['newPriceIVA'];
