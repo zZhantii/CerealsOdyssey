@@ -10,10 +10,13 @@ foreach ($controllers as $controller) {
 $controllerName = isset($_GET['controller']) ? $_GET['controller'] : default_controller;
 $name_controller = $controllerName . "Controller";
 
-if (class_exists($name_controller)) {
+if (!isset($_GET['controller']) && !isset($_GET['action'])) {
+    header("Location:" . url_base . "?controller=" . default_controller);
+} elseif (class_exists($name_controller)) {
     $controller = new $name_controller();
     $action = isset($_GET['action']) && method_exists($controller, $_GET['action']) ? $_GET['action'] : default_action;
     $controller->$action();
 } else {
     header("Location:" . url_base . "?controller=" . default_controller);
+    exit();
 }
