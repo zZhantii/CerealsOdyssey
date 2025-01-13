@@ -3,13 +3,13 @@
 </head>
 
 <body>
-    <main class="d-flex justify-content-center">
+    <main class="d-flex justify-content-center" id="checkOut">
         <section class="informationPersonal container-fluid">
             <div class="container">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <a href="?controller=categories">
-                            <img src="<?= url_base ?>public/img/logo.png" alt="logo" height="90" width="90">
+                            <img src="<?= url_base ?>public/img/logo.png" class="img-fluid" alt="logo" height="90" width="90">
                         </a>
                         <a href="?controller=cart&action=show">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#0359ca" viewBox="0 0 256 256">

@@ -53,7 +53,7 @@
                                 <li>Promotion terms and conditions</li>
                             </ul>
                         </div>
-                        <div class="d-flex flex-column container-fluid gap-3">
+                        <div class="d-flex flex-column gap-3">
                             <h2>Odyssey in your inbox</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque praesentium fugit minus illo. Corporis maxime minima consequuntur qui ipsa consectetur laboriosam ea, aspernatur reiciendis reprehenderit, iusto quasi repellat minus.</p>
                             <?php if (empty($_SESSION['user'])) { ?>

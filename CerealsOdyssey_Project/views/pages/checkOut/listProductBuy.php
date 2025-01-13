@@ -8,7 +8,7 @@
 ?>
     <div class="col d-flex gap-3">
         <div class="img-product border rounded position-relative">
-            <img src="<?= url_base ?>public/img/products/<?= $itemImage ?>" alt="producto" height="64" width="64">
+            <img src="<?= url_base ?>public/img/products/<?= $itemImage ?>" class="img-fluid" alt="producto" height="64" width="64">
             <span class="notification position-absolute top-0 start-100 translate-middle badge rounded-pill">
                 <?= $itemAmount ?>
                 <span class="visually-hidden">unread messages</span>

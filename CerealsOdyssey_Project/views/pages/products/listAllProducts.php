@@ -2,7 +2,7 @@
     <div class="card mb-3 d-flex " style="width: 18rem;">
         <div class="h-image">
             <a href="?controller=product&action=showProduct&id=<?= $item->getProduct_id() ?>">
-                <img src="public/img/products/<?= $item->getImage() ?>" class="card-img-top" alt="product">
+                <img src="public/img/products/<?= $item->getImage() ?>" class="card-img-top img-fluid" alt="product">
             </a>
         </div>
         <div class="card-body p-0 ">

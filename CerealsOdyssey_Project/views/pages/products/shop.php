@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="row d-flex justify-content-around">
-                            <div class="col col-sm-12 d-flex justify-content-between">
+                            <div class="filterProduct col col-sm-12 d-flex justify-content-between">
                                 <h3 class="mb-4">Products (<?= count($allProducts) ?>)</h3>
                                 <form method="GET" action="">
                                     <select id="order" class="border border-black py-2" onchange="location.href=this.value">

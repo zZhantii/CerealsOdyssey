@@ -5,7 +5,7 @@ if (empty($orders)) { ?>
     </div>
 <?php }
 foreach ($orders as $item2) { ?>
-    <div class="col-md-6 col-sm-12 container-order border rounded bg-white p-3">
+    <div class="container-order border rounded bg-white p-3">
         <div class="title rounded d-flex justify-content-between align-items-center p-4 gap-3">
             <img src="public/img/logo.png" height="40" alt="product">
             <h3>Order #<?= $item2->order_id ?></h3>

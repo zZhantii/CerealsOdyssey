@@ -46,6 +46,13 @@ h2 {
     margin: 0;
 }
 
+@media (max-width: 500px) {
+    h2 {
+        font-size: 2.5rem;
+        margin: 0;
+    }
+}
+
 h3 {
     font-family: 'PlutoHeavy', sans-serif;
     font-size: 1.8rem;
@@ -92,6 +99,22 @@ label {
 
 header {
     background-color: white;
+}
+
+.banner {
+    width: 65%;
+}
+
+@media (max-width: 500px) {
+    #responsive-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filterProduct {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
 }
 
 /* Buttons */
@@ -298,8 +321,7 @@ hr {
 }
 
 .section-product-main {
-    margin-left: 32px;
-    margin-right: 32px;
+    margin: auto;
 }
 
 .productMain {
@@ -323,6 +345,16 @@ hr {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     align-items: center;
+}
+
+@media (max-width: 500px) {
+    .square {
+        width: 300px;
+        padding: 10px;
+        padding-bottom: 10px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 }
 
 .square div .button {
@@ -428,6 +460,21 @@ hr {
     padding-right: 13%;
 }
 
+@media (max-width: 500px) {
+    #checkOut {
+        flex-direction: column;
+    }
+
+    .informationPersonal {
+        padding: 43px;
+        margin: 0;
+    }
+
+    .buyProducts {
+        padding-right: 0;
+    }
+}
+
 .informationPersonal .col {
     padding: 0;
 }
@@ -525,7 +572,17 @@ hr {
 }
 
 .offcanvas.show {
-    width: 43%;
+    width: 50%;
+}
+
+@media (max-width: 500px) {
+    .offcanvas.show {
+        width: 60%;
+    }
+
+    img {
+        height: 20px;
+    }
 }
 
 /* login */
@@ -599,8 +656,10 @@ hr {
     background-color: #F6F7F8;
 }
 
-.container-order {
-    width: 32%;
+@media (min-width: 1000px) {
+    .container-order {
+        width: 32%;
+    }
 }
 
 .container-order .container {
